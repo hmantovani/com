@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #08080f;
+  --color-surface: #0d0d1f;
+  --color-surface-alt: #12122a;
+  --color-edge: #1e1e3f;
+  --color-purple: #8b5cf6;
+  --color-purple-light: #a78bfa;
+  --color-purple-dim: #6d28d9;
+  --color-teal: #0d9488;
+  --color-teal-light: #2dd4bf;
+  --color-teal-dim: #0f766e;
+  --color-gold: #c4a135;
+  --color-gold-light: #d4b44a;
+  --color-text: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-subtle: #475569;
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #08080f;
+  --foreground: #f1f5f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: #1e1e3f; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+
+/* Dot grid hero pattern */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(139, 92, 246, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.12), 0 0 60px rgba(139, 92, 246, 0.06);
+}
+.glow-teal {
+  box-shadow: 0 0 30px rgba(13, 148, 136, 0.12), 0 0 60px rgba(13, 148, 136, 0.06);
+}
+.hover-glow-purple:hover {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  transition: all 0.25s ease;
+}
+.hover-glow-teal:hover {
+  box-shadow: 0 0 40px rgba(13, 148, 136, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  transition: all 0.25s ease;
+}
+
+/* Gradient text */
+.gradient-purple-teal {
+  background: linear-gradient(135deg, #8b5cf6 0%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card transitions */
+.card-transition {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
