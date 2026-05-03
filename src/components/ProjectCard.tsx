@@ -28,7 +28,6 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
           borderLeftWidth: '3px',
         }}
       >
-        {/* Top row: category badge + optional real-case badge */}
         <div className="flex items-center gap-2 mb-4 flex-wrap">
           <span
             className="text-xs font-semibold px-2.5 py-1 rounded-full"
@@ -46,20 +45,15 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
           )}
         </div>
 
-        {/* Title */}
-        <h3
-          className="text-base font-semibold leading-snug mb-3 text-[#f1f5f9] group-hover:text-white transition-colors"
-        >
+        <h3 className="text-base font-semibold leading-snug mb-3 text-[#f1f5f9] group-hover:text-white transition-colors">
           {project.title}
         </h3>
 
-        {/* Description */}
         <p className="text-sm text-[#94a3b8] leading-relaxed flex-1 mb-5">
           {project.cardDescription}
         </p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {project.tags.slice(0, 5).map((tag) => (
             <span
               key={tag}
@@ -76,10 +70,14 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
           )}
         </div>
 
-        {/* Arrow CTA */}
+        {/* CTA — more prominent */}
         <div
-          className="flex items-center gap-1 text-xs font-semibold mt-auto transition-colors"
-          style={{ color: accent.border }}
+          className="flex items-center gap-2 text-sm font-semibold mt-auto px-4 py-2 rounded-lg self-start transition-all duration-200 group-hover:opacity-100"
+          style={{
+            background: `rgba(${variant === 'real' ? '139,92,246' : '13,148,136'},0.12)`,
+            color: accent.border,
+            border: `1px solid ${accent.border}33`,
+          }}
         >
           <span>View project</span>
           <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>

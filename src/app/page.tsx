@@ -10,16 +10,32 @@ const SOCIAL_LINKS = {
   upwork: 'https://www.upwork.com/freelancers/~011c4553024d9ba7cc',
 };
 
-function SectionLabel({ children, color }: { children: React.ReactNode; color: string }) {
-  return (
-    <div className="flex items-center gap-3 mb-3">
-      <span className="w-8 h-px" style={{ background: color }} />
-      <span className="text-xs font-bold uppercase tracking-widest" style={{ color }}>
-        {children}
-      </span>
-    </div>
-  );
-}
+const COMPANIES = [
+  {
+    name: 'IBM',
+    logo: (
+      <svg viewBox="0 0 60 24" className="h-5 fill-current" aria-label="IBM">
+        <text x="0" y="20" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="2">IBM</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'Keyence',
+    logo: (
+      <svg viewBox="0 0 110 24" className="h-5 fill-current" aria-label="Keyence">
+        <text x="0" y="19" fontSize="18" fontWeight="700" fontFamily="Arial, sans-serif" letterSpacing="1">KEYENCE</text>
+      </svg>
+    ),
+  },
+  {
+    name: 'Thermo Fisher Scientific',
+    logo: (
+      <svg viewBox="0 0 220 24" className="h-5 fill-current" aria-label="Thermo Fisher Scientific">
+        <text x="0" y="19" fontSize="15" fontWeight="600" fontFamily="Arial, sans-serif" letterSpacing="0.5">Thermo Fisher Scientific</text>
+      </svg>
+    ),
+  },
+];
 
 export default function HomePage() {
   const { lang } = useLanguage();
@@ -33,10 +49,7 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center dot-grid overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, #08080f 100%)',
-          }}
+          style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, #08080f 100%)' }}
         />
         <div
           className="absolute top-0 left-0 w-96 h-96 rounded-full pointer-events-none"
@@ -48,38 +61,37 @@ export default function HomePage() {
         />
 
         <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-20 w-full">
+          {/* Available badge */}
           <div className="mb-8 inline-flex">
             <span
               className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border"
-              style={{
-                background: 'rgba(13,148,136,0.1)',
-                borderColor: 'rgba(13,148,136,0.3)',
-                color: '#2dd4bf',
-              }}
+              style={{ background: 'rgba(13,148,136,0.1)', borderColor: 'rgba(13,148,136,0.3)', color: '#2dd4bf' }}
             >
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#0d9488' }} />
               {c.hero.available}
             </span>
           </div>
 
+          {/* Name */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f1f5f9] mb-4 leading-none">
             Henrique{' '}
             <span className="gradient-purple-teal">Mantovani</span>
           </h1>
 
+          {/* Title */}
           <p className="text-lg sm:text-xl text-[#94a3b8] mb-8 font-light tracking-wide">
             {c.hero.title}
           </p>
 
+          {/* Bio */}
           <div className="max-w-2xl mb-10 space-y-4">
             {bioParagraphs.map((para, i) => (
-              <p key={i} className="text-[#94a3b8] leading-relaxed text-base">
-                {para}
-              </p>
+              <p key={i} className="text-[#94a3b8] leading-relaxed text-base">{para}</p>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 mb-14">
+          {/* Primary CTAs */}
+          <div className="flex flex-wrap gap-4 mb-8">
             <a
               href="#real-cases"
               className="px-6 py-3 rounded-lg font-semibold text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
@@ -96,22 +108,36 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="flex items-center gap-6">
+          {/* Social link buttons */}
+          <div className="flex flex-wrap gap-2">
             {[
-              { label: 'GitHub', href: SOCIAL_LINKS.github },
-              { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin },
-              { label: 'Upwork', href: SOCIAL_LINKS.upwork },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#475569] hover:text-[#8b5cf6] transition-colors font-medium"
-              >
-                {s.label} ↗
-              </a>
-            ))}
+              { label: 'GitHub', href: SOCIAL_LINKS.github, live: true },
+              { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin, live: true },
+              { label: 'Upwork', href: SOCIAL_LINKS.upwork, live: true },
+              { label: 'Fiverr', href: null, live: false },
+            ].map((s) =>
+              s.live ? (
+                <a
+                  key={s.label}
+                  href={s.href!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
+                  style={{ border: '1px solid #1e1e3f', color: '#94a3b8', background: '#0d0d1f' }}
+                >
+                  {s.label} <span className="text-xs opacity-60">↗</span>
+                </a>
+              ) : (
+                <span
+                  key={s.label}
+                  title="Coming soon"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed"
+                  style={{ border: '1px dashed #1e1e3f', color: '#475569', background: '#0d0d1f' }}
+                >
+                  {s.label} <span className="text-xs opacity-50">Soon</span>
+                </span>
+              )
+            )}
           </div>
         </div>
       </section>
@@ -119,14 +145,18 @@ export default function HomePage() {
       {/* ── COMPANIES BAR ────────────────────────────────────────────── */}
       <section className="border-y py-10" style={{ borderColor: '#1e1e3f', background: '#0d0d1f' }}>
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-[#475569] mb-6">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-[#475569] mb-8">
             {lang === 'en' ? 'Experienced at global market leaders' : 'Experiência em líderes globais de mercado'}
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-16">
-            {['IBM', 'Keyence', 'Thermo Fisher Scientific'].map((company) => (
-              <span key={company} className="text-sm font-semibold tracking-wider text-[#475569]">
-                {company}
-              </span>
+          <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-20">
+            {COMPANIES.map((company) => (
+              <div
+                key={company.name}
+                className="text-[#64748b] hover:text-[#94a3b8] transition-colors duration-200"
+                title={company.name}
+              >
+                {company.logo}
+              </div>
             ))}
           </div>
         </div>
@@ -135,8 +165,7 @@ export default function HomePage() {
       {/* ── REAL CASES ───────────────────────────────────────────────── */}
       <section id="real-cases" className="py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <SectionLabel color="#8b5cf6">{c.sections.realCases.title}</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#8b5cf6' }}>
             {c.sections.realCases.title}
           </h2>
           <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.realCases.subtitle}</p>
@@ -160,8 +189,7 @@ export default function HomePage() {
         style={{ background: 'linear-gradient(180deg, #08080f 0%, #0d0d1f 50%, #08080f 100%)' }}
       >
         <div className="max-w-6xl mx-auto px-6">
-          <SectionLabel color="#0d9488">{c.sections.projects.title}</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#0d9488' }}>
             {c.sections.projects.title}
           </h2>
           <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.projects.subtitle}</p>
@@ -176,8 +204,7 @@ export default function HomePage() {
       {/* ── CONTACT ──────────────────────────────────────────────────── */}
       <section id="contact" className="py-24 border-t" style={{ borderColor: '#1e1e3f' }}>
         <div className="max-w-6xl mx-auto px-6">
-          <SectionLabel color="#c4a135">{c.sections.contact.title}</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#c4a135' }}>
             {c.sections.contact.title}
           </h2>
           <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.contact.subtitle}</p>

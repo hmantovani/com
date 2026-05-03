@@ -6,15 +6,15 @@ export default function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 group select-none">
       <div
-        className="w-8 h-8 rounded-md flex items-center justify-center text-xs font-bold text-white shrink-0"
-        style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #0d9488 100%)' }}
+        className="w-9 h-9 rounded-md flex items-center justify-center shrink-0 relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #0d9488 100%)' }}
       >
-        HM
+        <span className="text-[11px] font-black text-white tracking-tight leading-none">HMV</span>
       </div>
       <span className="font-mono text-base font-semibold tracking-tight">
         <span style={{ color: '#8b5cf6' }}>h</span>
-        <span style={{ color: '#0d9488' }}>m</span>
-        <span className="text-[#f1f5f9]">antovani</span>
+        <span style={{ color: '#2dd4bf' }}>m</span>
+        <span style={{ color: '#c4a135' }}>antovani</span>
       </span>
     </Link>
   );

@@ -19,11 +19,11 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, accent }: { title: string; children: React.ReactNode; accent: string }) {
   return (
     <div className="mb-12">
-      <h2 className="text-xs font-bold uppercase tracking-widest text-[#475569] mb-4 flex items-center gap-3">
-        <span className="w-6 h-px bg-[#475569] inline-block" />
+      <h2 className="text-xl font-bold text-[#f1f5f9] mb-4 flex items-center gap-3">
+        <span className="w-1 h-6 rounded-full shrink-0 inline-block" style={{ background: accent }} />
         {title}
       </h2>
       <div className="text-[#94a3b8] leading-relaxed text-base">{children}</div>
@@ -115,26 +115,26 @@ export default function ProjectPage({ params }: Props) {
         <div className="h-px mb-14" style={{ background: '#1e1e3f' }} />
 
         {/* Content sections */}
-        <Section title={c.projectPage.overview}>
+        <Section title={c.projectPage.overview} accent={accent}>
           <p>{project.overview}</p>
         </Section>
 
-        <Section title={c.projectPage.challenge}>
+        <Section title={c.projectPage.challenge} accent={accent}>
           <p>{project.challenge}</p>
         </Section>
 
-        <Section title={c.projectPage.solution}>
+        <Section title={c.projectPage.solution} accent={accent}>
           <p>{project.solution}</p>
         </Section>
 
-        <Section title={c.projectPage.results}>
+        <Section title={c.projectPage.results} accent={accent}>
           <p>{project.results}</p>
         </Section>
 
         {/* Stack */}
         <div className="mb-12">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-[#475569] mb-4 flex items-center gap-3">
-            <span className="w-6 h-px bg-[#475569] inline-block" />
+          <h2 className="text-xl font-bold text-[#f1f5f9] mb-4 flex items-center gap-3">
+            <span className="w-1 h-6 rounded-full shrink-0 inline-block" style={{ background: accent }} />
             {c.projectPage.stack}
           </h2>
           <div className="flex flex-wrap gap-2">

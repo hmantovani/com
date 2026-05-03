@@ -16,39 +16,27 @@ export default function Footer() {
   const c = content[lang];
 
   return (
-    <footer
-      className="border-t mt-auto"
-      style={{ borderColor: '#1e1e3f', background: '#08080f' }}
-    >
+    <footer className="border-t mt-auto" style={{ borderColor: '#1e1e3f', background: '#08080f' }}>
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="flex flex-col gap-3">
             <Logo />
-            <p className="text-sm text-[#475569] max-w-xs">
-              {c.hero.title}
-            </p>
+            <p className="text-sm text-[#475569] max-w-xs">{c.hero.title}</p>
           </div>
 
           <div className="flex flex-col gap-2 text-sm text-[#94a3b8]">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#475569] mb-1">
               {c.contact.socialHeading}
             </span>
-            <a href={LINKS.github} target="_blank" rel="noopener noreferrer"
-              className="hover:text-[#8b5cf6] transition-colors">GitHub</a>
-            <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer"
-              className="hover:text-[#8b5cf6] transition-colors">LinkedIn</a>
-            <a href={LINKS.upwork} target="_blank" rel="noopener noreferrer"
-              className="hover:text-[#8b5cf6] transition-colors">Upwork</a>
+            <a href={LINKS.github} target="_blank" rel="noopener noreferrer" className="hover:text-[#8b5cf6] transition-colors">GitHub</a>
+            <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#8b5cf6] transition-colors">LinkedIn</a>
+            <a href={LINKS.upwork} target="_blank" rel="noopener noreferrer" className="hover:text-[#8b5cf6] transition-colors">Upwork</a>
           </div>
 
           <div className="flex flex-col gap-2 text-sm text-[#94a3b8]">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#475569] mb-1">
-              Contact
-            </span>
-            <a href="mailto:contato@hmantovani.com"
-              className="hover:text-[#8b5cf6] transition-colors">contato@hmantovani.com</a>
-            <a href="mailto:hq.mantovani@gmail.com"
-              className="hover:text-[#8b5cf6] transition-colors">hq.mantovani@gmail.com</a>
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#475569] mb-1">Contact</span>
+            <a href="mailto:contato@hmantovani.com" className="hover:text-[#8b5cf6] transition-colors">contato@hmantovani.com</a>
+            <a href="mailto:hq.mantovani@gmail.com" className="hover:text-[#8b5cf6] transition-colors">hq.mantovani@gmail.com</a>
           </div>
         </div>
 
@@ -56,16 +44,12 @@ export default function Footer() {
           className="mt-10 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#475569]"
           style={{ borderColor: '#1e1e3f' }}
         >
-          <span>{c.footer.rights}</span>
+          <span>© 2026 Henrique Mantovani. {lang === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}</span>
           <span>
             Built with{' '}
-            <Link href="https://nextjs.org" target="_blank" className="hover:text-[#8b5cf6] transition-colors">
-              Next.js
-            </Link>
+            <Link href="https://nextjs.org" target="_blank" className="hover:text-[#8b5cf6] transition-colors">Next.js</Link>
             {' '}+{' '}
-            <Link href="https://tailwindcss.com" target="_blank" className="hover:text-[#8b5cf6] transition-colors">
-              Tailwind CSS
-            </Link>
+            <Link href="https://tailwindcss.com" target="_blank" className="hover:text-[#8b5cf6] transition-colors">Tailwind CSS</Link>
           </span>
         </div>
       </div>
