@@ -7,11 +7,11 @@ export default function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 group select-none">
       <Image
-        src="/hmv_square.png"
+        src="/hmv.png"
         alt="HMV"
-        width={36}
+        width={48}
         height={36}
-        className="rounded-md shrink-0"
+        className="shrink-0"
       />
       <span className="font-mono text-base font-semibold tracking-tight">
         <span style={{ color: '#8b5cf6' }}>h</span>

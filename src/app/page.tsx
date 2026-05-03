@@ -107,8 +107,6 @@ export default function HomePage() {
             >
               {c.hero.ctaContact}
             </a>
-            {/* HMV mark — replace src with transparent PNG when available */}
-            <Image src="/hmv.png" alt="hmantovani" width={44} height={44} className="opacity-90" />
           </div>
 
           {/* Social link buttons */}
