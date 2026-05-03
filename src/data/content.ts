@@ -239,7 +239,7 @@ export const content: Record<Lang, SiteContent> = {
         overview:
           'Desenvolvimento de um pipeline completo para automatizar 40 processos individuais de extração do SAP ERP, eliminando esforço manual e habilitando infraestrutura de dados consistente e auditável para relatórios de business intelligence.',
         challenge:
-          'A empresa dependia de 40 extrações manuais do SAP realizadas por diferentes membros da equipe em cronogramas distintos — gerando inconsistências, lacunas nos dados e horas de produtividade perdida semanalmente. Não havia uma camada de dados unificada para relatórios.',
+          'Restrições de TI impediam o acesso via API, forçando as equipes a manter manualmente dezenas de relatórios SAP com lógica fragmentada e cálculos ocultos em Excel. Isso criava um ambiente de alto atrito onde os dados eram extraídos de forma inconsistente, difíceis de verificar e exigiam horas de manutenção manual semanal.',
         solution:
           'Construção de uma camada de automação Python com Selenium e PyAutoGUI para replicar cada extração SAP de forma programática. Todos os dados foram estruturados em um Data Warehouse baseado em Parquet com versionamento histórico, permitindo consultas point-in-time e auditabilidade completa. O pipeline foi agendado para execução recorrente, mantendo a base continuamente atualizada.',
         results:
