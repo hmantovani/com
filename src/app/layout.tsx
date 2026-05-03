@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Henrique Mantovani', url: 'https://hmantovani.com' }],
   creator: 'Henrique Mantovani',
+  icons: {
+    icon: '/hmv.png',
+    apple: '/hmv.png',
+  },
   openGraph: {
     type: 'website',
     url: 'https://hmantovani.com',
@@ -26,11 +30,13 @@ export const metadata: Metadata = {
     description:
       'ETL pipelines, data modeling, and predictive analytics. 3 experiences at global market leaders.',
     siteName: 'hmantovani.com',
+    images: [{ url: '/hmv.png', width: 512, height: 512, alt: 'hmantovani' }],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'Henrique Mantovani | Data Professional',
     description: 'ETL pipelines, data modeling, and predictive analytics.',
+    images: ['/hmv.png'],
   },
   robots: { index: true, follow: true },
   metadataBase: new URL('https://hmantovani.com'),

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { content } from '@/data/content';
 import ProjectCard from '@/components/ProjectCard';
@@ -101,9 +102,10 @@ export default function HomePage() {
             </a>
             <a
               href="#contact"
-              className="px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
+              className="flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
               style={{ border: '1px solid #1e1e3f', color: '#94a3b8', background: 'transparent' }}
             >
+              <Image src="/hmv.png" alt="" width={18} height={18} className="opacity-80" />
               {c.hero.ctaContact}
             </a>
           </div>
@@ -213,24 +215,24 @@ export default function HomePage() {
             <a
               href="mailto:contato@hmantovani.com"
               className="group p-6 rounded-xl border card-transition hover:border-[#8b5cf6]"
-              style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}
+              style={{ background: '#13132b', borderColor: '#2a2a50' }}
             >
               <div className="text-2xl mb-3">✉️</div>
               <div className="text-sm font-semibold text-[#f1f5f9] mb-1">{c.contact.emailLabel}</div>
               <div className="text-xs text-[#94a3b8]">contato@hmantovani.com</div>
-              <div className="text-xs text-[#475569] mt-1">{c.contact.or} hq.mantovani@gmail.com</div>
+              <div className="text-xs text-[#64748b] mt-1">{c.contact.or} hq.mantovani@gmail.com</div>
             </a>
 
             <div
               className="p-6 rounded-xl border relative overflow-hidden"
-              style={{ background: '#0d0d1f', borderColor: '#1e1e3f', borderStyle: 'dashed' }}
+              style={{ background: '#13132b', borderColor: '#2a2a50', borderStyle: 'dashed' }}
             >
               <div className="text-2xl mb-3">📄</div>
               <div className="text-sm font-semibold text-[#f1f5f9] mb-1">{c.contact.downloadCV}</div>
-              <div className="text-xs text-[#475569]">{c.contact.cvNote}</div>
+              <div className="text-xs text-[#64748b]">{c.contact.cvNote}</div>
               <span
                 className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-medium"
-                style={{ background: 'rgba(196,161,53,0.15)', color: '#d4b44a' }}
+                style={{ background: 'rgba(196,161,53,0.2)', color: '#d4b44a' }}
               >
                 Soon
               </span>
@@ -238,14 +240,14 @@ export default function HomePage() {
 
             <div
               className="p-6 rounded-xl border relative overflow-hidden"
-              style={{ background: '#0d0d1f', borderColor: '#1e1e3f', borderStyle: 'dashed' }}
+              style={{ background: '#13132b', borderColor: '#2a2a50', borderStyle: 'dashed' }}
             >
               <div className="text-2xl mb-3">🎯</div>
               <div className="text-sm font-semibold text-[#f1f5f9] mb-1">Fiverr</div>
-              <div className="text-xs text-[#475569]">{c.contact.fiverrNote}</div>
+              <div className="text-xs text-[#64748b]">{c.contact.fiverrNote}</div>
               <span
                 className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-medium"
-                style={{ background: 'rgba(196,161,53,0.15)', color: '#d4b44a' }}
+                style={{ background: 'rgba(196,161,53,0.2)', color: '#d4b44a' }}
               >
                 Soon
               </span>
