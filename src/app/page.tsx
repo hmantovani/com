@@ -92,7 +92,7 @@ export default function HomePage() {
           </div>
 
           {/* Primary CTAs */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap items-center gap-4 mb-8">
             <a
               href="#real-cases"
               className="px-6 py-3 rounded-lg font-semibold text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
@@ -102,12 +102,13 @@ export default function HomePage() {
             </a>
             <a
               href="#contact"
-              className="flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
+              className="px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
               style={{ border: '1px solid #1e1e3f', color: '#94a3b8', background: 'transparent' }}
             >
-              <Image src="/hmv.png" alt="" width={18} height={18} className="opacity-80" />
               {c.hero.ctaContact}
             </a>
+            {/* HMV mark — replace src with transparent PNG when available */}
+            <Image src="/hmv.png" alt="hmantovani" width={44} height={44} className="opacity-90" />
           </div>
 
           {/* Social link buttons */}
