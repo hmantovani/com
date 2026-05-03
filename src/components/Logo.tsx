@@ -15,8 +15,10 @@ export default function Logo() {
       />
       <span className="font-mono text-base font-semibold tracking-tight">
         <span style={{ color: '#8b5cf6' }}>h</span>
-        <span style={{ color: '#2dd4bf' }}>m</span>
-        <span style={{ color: '#c4a135' }}>antovani</span>
+        <span style={{ color: '#56a0c8' }}>m</span>
+        <span style={{ color: '#64748b' }}>anto</span>
+        <span style={{ color: '#2dd4bf' }}>v</span>
+        <span style={{ color: '#64748b' }}>ani</span>
       </span>
     </Link>
   );
