@@ -50,30 +50,29 @@ export interface SiteContent {
 
 export const content: Record<Lang, SiteContent> = {
   en: {
-    nav: { home: 'Home', realCases: 'Real Cases', projects: 'Projects', contact: 'Contact' },
+    nav: { home: 'Home', realCases: 'Real cases', projects: 'Projects', contact: 'Contact' },
     hero: {
       title: 'Data Professional | Engineering · Science · Analytics',
       bio: 'I combine an appreciation for efficiency from Production Engineering (PUC-SP) with the analytical depth of Data Science (PUC-RS). I used both sides to translate complex operations into information ecosystems in three experiences at leading global companies in their sectors: IBM, Keyence and Thermo Fisher Scientific.\n\nMy pillars are building ETL pipelines, data modeling for analytical process automation, and developing predictive analyses and models — structuring raw data into reliable databases with a focus on consistency, scalability and measurability.',
-      ctaWork: 'View My Work',
-      ctaContact: 'Get In Touch',
-      available: 'Open to full-time, freelance & remote opportunities',
+      ctaWork: 'View my work',
+      ctaContact: 'Get in touch',
+      available: 'Open to full-time, freelance & remote',
     },
     sections: {
       realCases: {
-        title: 'Real Cases',
-        subtitle: 'Production-grade solutions delivered in corporate environments at global market leaders.',
+        title: 'Real cases',
+        subtitle: 'Production-grade solutions implemented at global companies.',
       },
       projects: {
         title: 'Projects',
-        subtitle: 'A curated portfolio demonstrating the full breadth of a modern data stack.',
-      },
+        subtitle: 'Showcase of end-to-end data, AI and analytics solutions. Architecture, automation, machine learning and business intelligence.',},
       contact: {
-        title: 'Get In Touch',
-        subtitle: 'Available for new opportunities, freelance projects, and collaboration.',
+        title: 'Get in touch',
+        subtitle: 'Available for opportunities, freelance projects and collaboration.',
       },
     },
     contact: {
-      emailLabel: 'Send an Email',
+      emailLabel: 'Send an email',
       downloadCV: 'Download CV',
       cvNote: 'CV available soon',
       fiverrNote: 'Fiverr profile coming soon',
@@ -83,34 +82,34 @@ export const content: Record<Lang, SiteContent> = {
     realCases: [
       {
         slug: 'sap-pipeline-automation',
-        title: 'Strategic ETL & Data Infrastructure: Architecting Reliability Amidst Constraints',
+        title: 'Automated SAP data warehouse without native API',
         category: 'Data Engineering & BI',
         tags: ['Python', 'Selenium', 'PyAutoGUI', 'ETL', 'SAP', 'Automation', 'Data Governance'],
         cardDescription:
-          'A resilient Python-based automation layer bypassing API absence to unify company data into 40 separate extractions from SAP inside a self-healing and auditable Data Warehouse.',
+          'A Python-based framework that automated 40 SAP reporting workflows without API dependency to unify company data into a select number of extractions from SAP inside a centralized and auditable Data Warehouse.',
         overview:
           'Engineered a complete data ecosystem to automate 40 complex SAP extraction loops, transitioning the organization from fragmented, manual Excel-based reporting to an automated, auditable infrastructure that feeds real-time BI and executive dashboards.',
         challenge:
-          'IT restrictions meant no API access, forcing teams to manually maintain dozens of SAP reports with fragmented logic and hidden Excel calculations. This created a high-friction environment where data was inconsistently extracted, difficult to verify, and required hours of weekly manual maintenance.',
+          'Enterprise IT constraints and the absence of native API access required teams to rely on manual SAP report extraction across dozens of workflows, supported by fragmented Excel logic and inconsistent reporting structures. This created operational bottlenecks, reduced auditability, and consumed significant weekly effort to maintain reliable data outputs.',
         solution:
-          'Developed a Python automation layer using Selenium and PyAutoGUI on a dedicated VM to simulate human interaction and interact with our SAP system during the day. I architected an "always-ready" Data Warehouse that maintained both historical daily/monthly archives and a root-level "latest version" for instant Python/PowerBI consumption. Additionally, I implemented a monitoring layer that validated 30–50 variables per loop, triggering real-time bug reports via Microsoft Teams to ensure data integrity.',
+          'Developed a Python automation layer using Selenium and PyAutoGUI on a dedicated VM to simulate human interaction and interact with our SAP system during the day. I architected an "always-ready" data warehouse that maintained both historical daily/monthly archives and a root-level "latest version" for instant Python/PowerBI consumption. Additionally, I implemented a monitoring layer that validated 30–50 variables per loop, triggering real-time bug reports via Microsoft Teams to ensure data integrity.',
         results:
           'Eliminated waiting times for data extraction, reducing 15-minute Excel "freezes" during report updating to near-instant updates. The system also improved data reliability by identifying suspected human input errors in real-time and established a unified, 100% auditable data layer for company-wide reporting.',
         isReal: true,
       },
       {
         slug: 'market-intelligence',
-        title: 'Market Intelligence with Lead Scoring',
+        title: 'Market intelligence with lead scoring',
         category: 'Data Science & Strategy',
         tags: ['Python', 'Machine Learning', 'Predictive Modeling', 'Lead Scoring', 'Classification'],
         cardDescription:
-          'A classification model prioritizing companies within the active customer base, integrating sales activity, purchase history, and geographic variables to optimize field team deployment.',
+          'A classification model prioritizing companies within the active customer base, integrating sales activity, purchase history, geographic variables and inputs from sales leadership to optimize field team deployment and targeted marketing campaigns',
         overview:
-          'Designed and implemented a machine learning classification model to score and rank companies within the active customer base by their likelihood of conversion and relationship depth — enabling strategic allocation of field sales resources.',
+          'Designed and implemented a machine learning classification model to score and rank companies within the active customer base. By combining data-driven behavioral patterns with strategic human inputs, the model defined "target companies" to align field sales resources and marketing efforts for conversions',
         challenge:
-          'The sales team had a large active customer base with no systematic method for prioritizing outreach. Account selection depended on individual intuition, causing high-potential accounts to be overlooked and low-potential ones to consume disproportionate time.',
+          'The sales team had a large active customer base with no systematic method for prioritizing outreach. Account selection relied on individual intuition, causing high-potential accounts to be overlooked and low-potential ones to consume disproportionate time, leading to missed opportunities and inefficient resource allocation.',
         solution:
-          'Integrated data from sales activity logs, purchase history, and geographic variables to build a feature-rich dataset. A supervised classification model was trained to score each account based on behavioral patterns and management-defined strategic signals. The output was a ranked list focused on the accounts with the highest conversion and upsell potential.',
+          'Integrated data from sales activity logs, purchase history, geographic variables and human input to build a feature-rich dataset. The model featured a mechanism allowing us to intentionally weight metrics based on sales leaders command, aligning the algorithm with their specific business strategies A supervised classification model was trained to score each account based on that and the output was a ranked list focused on the accounts with the highest conversion and upsell potential.',
         results:
           "Systematic, data-driven account prioritization replacing ad-hoc intuition. Improved alignment between field deployment and revenue opportunity. The model was embedded into the team's regular planning cycle, creating a feedback loop for continuous refinement.",
         isReal: true,
