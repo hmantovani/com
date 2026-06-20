@@ -119,7 +119,7 @@ export const content: Record<Lang, SiteContent> = {
     projects: [
       {
         slug: '2026-world-cup',
-        image: '/projects/world-cup-2026.svg',
+        image: '/projects/world-cup-2026.png',
         title: 'FIFA World Cup 2026 Prediction Model',
         category: 'Data Science & Sports Modeling',
         tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
@@ -285,7 +285,7 @@ export const content: Record<Lang, SiteContent> = {
     projects: [
       {
         slug: '2026-world-cup',
-        image: '/projects/world-cup-2026.svg',
+        image: '/projects/world-cup-2026.png',
         title: 'Modelo de Previsão da Copa do Mundo 2026',
         category: 'Ciência de Dados & Modelagem Esportiva',
         tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
