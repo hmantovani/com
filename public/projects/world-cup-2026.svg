@@ -1,0 +1,58 @@
+<svg width="640" height="240" viewBox="0 0 640 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FIFA World Cup 2026 prediction model">
+  <defs>
+    <linearGradient id="wc-bg" x1="0" y1="0" x2="640" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0d0d1f"/>
+      <stop offset="0.55" stop-color="#0f1326"/>
+      <stop offset="1" stop-color="#0a1a1c"/>
+    </linearGradient>
+    <radialGradient id="wc-glow" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="wc-glow2" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="640" height="240" fill="url(#wc-bg)"/>
+  <ellipse cx="470" cy="80" rx="220" ry="180" fill="url(#wc-glow)"/>
+  <ellipse cx="120" cy="210" rx="200" ry="160" fill="url(#wc-glow2)"/>
+
+  <!-- dot grid -->
+  <g fill="#2dd4bf" opacity="0.10">
+    <circle cx="40" cy="40" r="1.5"/><circle cx="80" cy="40" r="1.5"/><circle cx="120" cy="40" r="1.5"/><circle cx="160" cy="40" r="1.5"/>
+    <circle cx="40" cy="80" r="1.5"/><circle cx="80" cy="80" r="1.5"/><circle cx="120" cy="80" r="1.5"/>
+    <circle cx="40" cy="120" r="1.5"/><circle cx="80" cy="120" r="1.5"/>
+    <circle cx="40" cy="160" r="1.5"/>
+  </g>
+
+  <!-- pitch lines (lower band) -->
+  <g stroke="#2dd4bf" stroke-opacity="0.22" stroke-width="1.5" fill="none">
+    <line x1="0" y1="200" x2="640" y2="200"/>
+    <circle cx="320" cy="200" r="46"/>
+    <line x1="320" y1="160" x2="320" y2="240"/>
+    <rect x="40" y="170" width="70" height="60" rx="2"/>
+    <rect x="530" y="170" width="70" height="60" rx="2"/>
+  </g>
+
+  <!-- stylized soccer ball -->
+  <g transform="translate(470 96)">
+    <circle r="58" fill="#0a0a16" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
+    <g fill="#8b5cf6" fill-opacity="0.85" stroke="#0a0a16" stroke-width="1.5">
+      <polygon points="0,-22 21,-7 13,18 -13,18 -21,-7"/>
+    </g>
+    <g stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.45" fill="none">
+      <line x1="0" y1="-22" x2="0" y2="-50"/>
+      <line x1="21" y1="-7" x2="48" y2="-16"/>
+      <line x1="13" y1="18" x2="33" y2="42"/>
+      <line x1="-13" y1="18" x2="-33" y2="42"/>
+      <line x1="-21" y1="-7" x2="-48" y2="-16"/>
+    </g>
+  </g>
+
+  <!-- text block -->
+  <text x="48" y="92" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" letter-spacing="3" fill="#2dd4bf" opacity="0.9">FIFA WORLD CUP</text>
+  <text x="46" y="156" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="78" font-weight="800" fill="#f1f5f9" letter-spacing="-2">2026</text>
+  <text x="50" y="184" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" letter-spacing="2" fill="#94a3b8">PREDICTION MODEL</text>
+</svg>

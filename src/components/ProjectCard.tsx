@@ -20,7 +20,7 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
   return (
     <Link href={`/projects/${project.slug}`} className="block group">
       <article
-        className={`card-transition rounded-xl h-full flex flex-col p-6 border cursor-pointer ${accent.hover}`}
+        className={`card-transition rounded-xl h-full flex flex-col border cursor-pointer overflow-hidden ${accent.hover}`}
         style={{
           background: '#0d0d1f',
           borderColor: '#1e1e3f',
@@ -28,6 +28,22 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
           borderLeftWidth: '3px',
         }}
       >
+        {/* Banner image */}
+        <div className="relative w-full overflow-hidden" style={{ borderBottom: '1px solid #1e1e3f' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={project.image ?? '/projects/placeholder.svg'}
+            alt=""
+            loading="lazy"
+            className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'linear-gradient(180deg, transparent 60%, #0d0d1f 100%)' }}
+          />
+        </div>
+
+        <div className="flex flex-col flex-1 p-6">
         <div className="flex items-center gap-2 mb-4 flex-wrap">
           <span
             className="text-xs font-semibold px-2.5 py-1 rounded-full"
@@ -81,6 +97,7 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
         >
           <span>View project</span>
           <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+        </div>
         </div>
       </article>
     </Link>

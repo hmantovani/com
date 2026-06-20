@@ -13,6 +13,7 @@ export interface ProjectData {
   isReal?: boolean;
   githubUrl?: string;
   linkedinUrl?: string;
+  image?: string;
 }
 
 export interface SiteContent {
@@ -118,6 +119,7 @@ export const content: Record<Lang, SiteContent> = {
     projects: [
       {
         slug: '2026-world-cup',
+        image: '/projects/world-cup-2026.svg',
         title: 'FIFA World Cup 2026 Prediction Model',
         category: 'Data Science & Sports Modeling',
         tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
@@ -283,6 +285,7 @@ export const content: Record<Lang, SiteContent> = {
     projects: [
       {
         slug: '2026-world-cup',
+        image: '/projects/world-cup-2026.svg',
         title: 'Modelo de Previsão da Copa do Mundo 2026',
         category: 'Ciência de Dados & Modelagem Esportiva',
         tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
