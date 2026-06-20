@@ -117,6 +117,23 @@ export const content: Record<Lang, SiteContent> = {
     ],
     projects: [
       {
+        slug: '2026-world-cup',
+        title: 'FIFA World Cup 2026 Prediction Model',
+        category: 'Data Science & Sports Modeling',
+        tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
+        cardDescription:
+          'A living statistical model forecasting the 2026 World Cup one stage at a time — a Poisson + Elo ensemble trained on 48,000+ international matches and re-run after every round, with full group-stage simulation.',
+        overview:
+          'An end-to-end sports-prediction project: a two-model ensemble (Poisson + Elo regression blended with a Poisson GLM of per-team attack/defense strengths) that predicts every match and Monte-Carlo simulates the tournament to produce qualification odds. Re-run as results come in, publishing a fresh forecast for each remaining stage.',
+        challenge:
+          'International football spans 150 years of uneven data, neutral-venue tournaments, and wildly varying opponent quality. The model must weight recent form, respect venue neutrality, and turn raw goal expectations into calibrated match and tournament probabilities.',
+        solution:
+          'Time-decayed training on 48k+ matches, a numerically-stabilized Poisson GLM with team fixed effects, a Dixon-Coles low-score correction, and a 20,000-run Monte-Carlo simulation of the full group stage. Results are exported as JSON and rendered into interactive prediction pages.',
+        results:
+          'A self-updating forecast with per-match outcome probabilities, scorelines, over/under and BTTS markets, plus projected group standings and qualification odds for all 48 nations.',
+        isReal: false,
+      },
+      {
         slug: 'sql-sales-analytics',
         title: 'SQL Sales Analytics Dashboard',
         category: 'Data Analytics & SQL',
@@ -264,6 +281,23 @@ export const content: Record<Lang, SiteContent> = {
       },
     ],
     projects: [
+      {
+        slug: '2026-world-cup',
+        title: 'Modelo de Previsão da Copa do Mundo 2026',
+        category: 'Ciência de Dados & Modelagem Esportiva',
+        tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
+        cardDescription:
+          'Um modelo estatístico vivo que prevê a Copa do Mundo de 2026 etapa por etapa — um ensemble Poisson + Elo treinado em mais de 48.000 partidas internacionais e reexecutado a cada rodada, com simulação completa da fase de grupos.',
+        overview:
+          'Projeto completo de previsão esportiva: um ensemble de dois modelos (regressão Poisson + Elo combinada com um GLM de Poisson de força de ataque/defesa por seleção) que prevê cada partida e simula o torneio via Monte Carlo para gerar probabilidades de classificação. Reexecutado conforme os resultados saem, publicando uma nova previsão para cada etapa restante.',
+        challenge:
+          'O futebol internacional abrange 150 anos de dados irregulares, torneios em campo neutro e qualidade de adversários muito variável. O modelo precisa ponderar a forma recente, respeitar a neutralidade do mando de campo e transformar expectativas de gols em probabilidades calibradas.',
+        solution:
+          'Treinamento com decaimento temporal em mais de 48 mil partidas, um GLM de Poisson com efeitos fixos por seleção numericamente estabilizado, correção de Dixon-Coles para placares baixos e uma simulação de Monte Carlo de 20.000 execuções de toda a fase de grupos. Os resultados são exportados em JSON e renderizados em páginas interativas.',
+        results:
+          'Uma previsão autoatualizável com probabilidades de resultado por partida, placares, mercados de over/under e ambas marcam, além das classificações projetadas e odds de avanço para todas as 48 seleções.',
+        isReal: false,
+      },
       {
         slug: 'sql-sales-analytics',
         title: 'SQL Sales Analytics Dashboard',

@@ -1,0 +1,559 @@
+{
+  "generated_from_train_cutoff": "2026-06-11",
+  "teams": [
+    {
+      "team": "Spain",
+      "iso2": "es",
+      "group": "H",
+      "confederation": "UEFA",
+      "elo": 2157,
+      "attack": 0.086,
+      "defense": -0.139,
+      "elo_rank": 1
+    },
+    {
+      "team": "Argentina",
+      "iso2": "ar",
+      "group": "J",
+      "confederation": "CONMEBOL",
+      "elo": 2115,
+      "attack": -0.112,
+      "defense": -0.835,
+      "elo_rank": 2
+    },
+    {
+      "team": "France",
+      "iso2": "fr",
+      "group": "I",
+      "confederation": "UEFA",
+      "elo": 2063,
+      "attack": 0.0,
+      "defense": 0.0,
+      "elo_rank": 3
+    },
+    {
+      "team": "England",
+      "iso2": "gb-eng",
+      "group": "L",
+      "confederation": "UEFA",
+      "elo": 2024,
+      "attack": -0.248,
+      "defense": -0.431,
+      "elo_rank": 4
+    },
+    {
+      "team": "Brazil",
+      "iso2": "br",
+      "group": "C",
+      "confederation": "CONMEBOL",
+      "elo": 1991,
+      "attack": 0.151,
+      "defense": 0.134,
+      "elo_rank": 5
+    },
+    {
+      "team": "Portugal",
+      "iso2": "pt",
+      "group": "K",
+      "confederation": "UEFA",
+      "elo": 1989,
+      "attack": -0.048,
+      "defense": -0.1,
+      "elo_rank": 6
+    },
+    {
+      "team": "Colombia",
+      "iso2": "co",
+      "group": "K",
+      "confederation": "CONMEBOL",
+      "elo": 1982,
+      "attack": -0.045,
+      "defense": 0.071,
+      "elo_rank": 7
+    },
+    {
+      "team": "Netherlands",
+      "iso2": "nl",
+      "group": "F",
+      "confederation": "UEFA",
+      "elo": 1948,
+      "attack": 0.003,
+      "defense": 0.016,
+      "elo_rank": 8
+    },
+    {
+      "team": "Ecuador",
+      "iso2": "ec",
+      "group": "E",
+      "confederation": "CONMEBOL",
+      "elo": 1938,
+      "attack": -0.561,
+      "defense": -0.633,
+      "elo_rank": 9
+    },
+    {
+      "team": "Germany",
+      "iso2": "de",
+      "group": "E",
+      "confederation": "UEFA",
+      "elo": 1932,
+      "attack": 0.107,
+      "defense": 0.054,
+      "elo_rank": 10
+    },
+    {
+      "team": "Norway",
+      "iso2": "no",
+      "group": "I",
+      "confederation": "UEFA",
+      "elo": 1914,
+      "attack": 0.002,
+      "defense": -0.08,
+      "elo_rank": 11
+    },
+    {
+      "team": "Croatia",
+      "iso2": "hr",
+      "group": "L",
+      "confederation": "UEFA",
+      "elo": 1912,
+      "attack": -0.309,
+      "defense": 0.145,
+      "elo_rank": 12
+    },
+    {
+      "team": "Turkey",
+      "iso2": "tr",
+      "group": "D",
+      "confederation": "UEFA",
+      "elo": 1911,
+      "attack": -0.169,
+      "defense": 0.173,
+      "elo_rank": 13
+    },
+    {
+      "team": "Japan",
+      "iso2": "jp",
+      "group": "F",
+      "confederation": "AFC",
+      "elo": 1906,
+      "attack": -0.3,
+      "defense": -0.541,
+      "elo_rank": 14
+    },
+    {
+      "team": "Belgium",
+      "iso2": "be",
+      "group": "G",
+      "confederation": "UEFA",
+      "elo": 1894,
+      "attack": -0.009,
+      "defense": 0.012,
+      "elo_rank": 15
+    },
+    {
+      "team": "Uruguay",
+      "iso2": "uy",
+      "group": "H",
+      "confederation": "CONMEBOL",
+      "elo": 1892,
+      "attack": -0.711,
+      "defense": -0.23,
+      "elo_rank": 16
+    },
+    {
+      "team": "Switzerland",
+      "iso2": "ch",
+      "group": "B",
+      "confederation": "UEFA",
+      "elo": 1891,
+      "attack": -0.049,
+      "defense": 0.009,
+      "elo_rank": 17
+    },
+    {
+      "team": "Mexico",
+      "iso2": "mx",
+      "group": "A",
+      "confederation": "CONCACAF",
+      "elo": 1875,
+      "attack": -0.403,
+      "defense": -0.139,
+      "elo_rank": 18
+    },
+    {
+      "team": "Senegal",
+      "iso2": "sn",
+      "group": "I",
+      "confederation": "CAF",
+      "elo": 1860,
+      "attack": -0.289,
+      "defense": 0.111,
+      "elo_rank": 19
+    },
+    {
+      "team": "Paraguay",
+      "iso2": "py",
+      "group": "D",
+      "confederation": "CONMEBOL",
+      "elo": 1834,
+      "attack": -0.421,
+      "defense": -0.035,
+      "elo_rank": 20
+    },
+    {
+      "team": "Austria",
+      "iso2": "at",
+      "group": "J",
+      "confederation": "UEFA",
+      "elo": 1830,
+      "attack": -0.35,
+      "defense": -0.159,
+      "elo_rank": 21
+    },
+    {
+      "team": "Morocco",
+      "iso2": "ma",
+      "group": "C",
+      "confederation": "CAF",
+      "elo": 1827,
+      "attack": -0.437,
+      "defense": -0.611,
+      "elo_rank": 22
+    },
+    {
+      "team": "Canada",
+      "iso2": "ca",
+      "group": "B",
+      "confederation": "CONCACAF",
+      "elo": 1788,
+      "attack": -0.6,
+      "defense": -0.131,
+      "elo_rank": 23
+    },
+    {
+      "team": "Scotland",
+      "iso2": "gb-sct",
+      "group": "C",
+      "confederation": "UEFA",
+      "elo": 1782,
+      "attack": -0.29,
+      "defense": 0.279,
+      "elo_rank": 24
+    },
+    {
+      "team": "Australia",
+      "iso2": "au",
+      "group": "D",
+      "confederation": "AFC",
+      "elo": 1777,
+      "attack": -0.485,
+      "defense": 0.063,
+      "elo_rank": 25
+    },
+    {
+      "team": "Iran",
+      "iso2": "ir",
+      "group": "G",
+      "confederation": "AFC",
+      "elo": 1772,
+      "attack": -0.4,
+      "defense": 0.151,
+      "elo_rank": 26
+    },
+    {
+      "team": "Algeria",
+      "iso2": "dz",
+      "group": "J",
+      "confederation": "CAF",
+      "elo": 1772,
+      "attack": -0.283,
+      "defense": -0.154,
+      "elo_rank": 27
+    },
+    {
+      "team": "South Korea",
+      "iso2": "kr",
+      "group": "A",
+      "confederation": "AFC",
+      "elo": 1758,
+      "attack": -0.527,
+      "defense": 0.341,
+      "elo_rank": 28
+    },
+    {
+      "team": "Czech Republic",
+      "iso2": "cz",
+      "group": "A",
+      "confederation": "UEFA",
+      "elo": 1740,
+      "attack": -0.441,
+      "defense": 0.481,
+      "elo_rank": 29
+    },
+    {
+      "team": "Panama",
+      "iso2": "pa",
+      "group": "L",
+      "confederation": "CONCACAF",
+      "elo": 1730,
+      "attack": -0.73,
+      "defense": 0.743,
+      "elo_rank": 30
+    },
+    {
+      "team": "United States",
+      "iso2": "us",
+      "group": "D",
+      "confederation": "CONCACAF",
+      "elo": 1726,
+      "attack": -0.342,
+      "defense": 0.527,
+      "elo_rank": 31
+    },
+    {
+      "team": "Uzbekistan",
+      "iso2": "uz",
+      "group": "K",
+      "confederation": "AFC",
+      "elo": 1714,
+      "attack": -0.888,
+      "defense": 0.216,
+      "elo_rank": 32
+    },
+    {
+      "team": "Sweden",
+      "iso2": "se",
+      "group": "F",
+      "confederation": "UEFA",
+      "elo": 1712,
+      "attack": -0.197,
+      "defense": 0.606,
+      "elo_rank": 33
+    },
+    {
+      "team": "Egypt",
+      "iso2": "eg",
+      "group": "G",
+      "confederation": "CAF",
+      "elo": 1696,
+      "attack": -0.805,
+      "defense": -0.004,
+      "elo_rank": 34
+    },
+    {
+      "team": "Ivory Coast",
+      "iso2": "ci",
+      "group": "E",
+      "confederation": "CAF",
+      "elo": 1695,
+      "attack": -0.619,
+      "defense": -0.119,
+      "elo_rank": 35
+    },
+    {
+      "team": "Jordan",
+      "iso2": "jo",
+      "group": "J",
+      "confederation": "AFC",
+      "elo": 1680,
+      "attack": -0.545,
+      "defense": 0.721,
+      "elo_rank": 36
+    },
+    {
+      "team": "DR Congo",
+      "iso2": "cd",
+      "group": "K",
+      "confederation": "CAF",
+      "elo": 1652,
+      "attack": -0.925,
+      "defense": -0.137,
+      "elo_rank": 37
+    },
+    {
+      "team": "Tunisia",
+      "iso2": "tn",
+      "group": "F",
+      "confederation": "CAF",
+      "elo": 1628,
+      "attack": -0.826,
+      "defense": 0.382,
+      "elo_rank": 38
+    },
+    {
+      "team": "Iraq",
+      "iso2": "iq",
+      "group": "I",
+      "confederation": "AFC",
+      "elo": 1607,
+      "attack": -1.06,
+      "defense": 0.316,
+      "elo_rank": 39
+    },
+    {
+      "team": "Bosnia and Herzegovina",
+      "iso2": "ba",
+      "group": "B",
+      "confederation": "UEFA",
+      "elo": 1595,
+      "attack": -0.774,
+      "defense": 0.413,
+      "elo_rank": 40
+    },
+    {
+      "team": "Cape Verde",
+      "iso2": "cv",
+      "group": "H",
+      "confederation": "CAF",
+      "elo": 1578,
+      "attack": -0.962,
+      "defense": 0.742,
+      "elo_rank": 41
+    },
+    {
+      "team": "Saudi Arabia",
+      "iso2": "sa",
+      "group": "H",
+      "confederation": "AFC",
+      "elo": 1576,
+      "attack": -0.906,
+      "defense": 0.517,
+      "elo_rank": 42
+    },
+    {
+      "team": "New Zealand",
+      "iso2": "nz",
+      "group": "G",
+      "confederation": "OFC",
+      "elo": 1562,
+      "attack": -1.09,
+      "defense": 0.571,
+      "elo_rank": 43
+    },
+    {
+      "team": "Haiti",
+      "iso2": "ht",
+      "group": "C",
+      "confederation": "CONCACAF",
+      "elo": 1548,
+      "attack": -0.742,
+      "defense": 0.759,
+      "elo_rank": 44
+    },
+    {
+      "team": "South Africa",
+      "iso2": "za",
+      "group": "A",
+      "confederation": "CAF",
+      "elo": 1517,
+      "attack": -0.917,
+      "defense": 0.501,
+      "elo_rank": 45
+    },
+    {
+      "team": "Ghana",
+      "iso2": "gh",
+      "group": "L",
+      "confederation": "CAF",
+      "elo": 1510,
+      "attack": -0.819,
+      "defense": 0.507,
+      "elo_rank": 46
+    },
+    {
+      "team": "Curaçao",
+      "iso2": "cw",
+      "group": "E",
+      "confederation": "CONCACAF",
+      "elo": 1434,
+      "attack": -1.144,
+      "defense": 1.007,
+      "elo_rank": 47
+    },
+    {
+      "team": "Qatar",
+      "iso2": "qa",
+      "group": "B",
+      "confederation": "AFC",
+      "elo": 1421,
+      "attack": -1.157,
+      "defense": 1.042,
+      "elo_rank": 48
+    }
+  ],
+  "groups": {
+    "A": [
+      "Mexico",
+      "South Africa",
+      "South Korea",
+      "Czech Republic"
+    ],
+    "B": [
+      "Canada",
+      "Bosnia and Herzegovina",
+      "Qatar",
+      "Switzerland"
+    ],
+    "C": [
+      "Brazil",
+      "Haiti",
+      "Morocco",
+      "Scotland"
+    ],
+    "D": [
+      "United States",
+      "Australia",
+      "Paraguay",
+      "Turkey"
+    ],
+    "E": [
+      "Germany",
+      "Curaçao",
+      "Ivory Coast",
+      "Ecuador"
+    ],
+    "F": [
+      "Netherlands",
+      "Japan",
+      "Sweden",
+      "Tunisia"
+    ],
+    "G": [
+      "Belgium",
+      "Egypt",
+      "Iran",
+      "New Zealand"
+    ],
+    "H": [
+      "Spain",
+      "Cape Verde",
+      "Saudi Arabia",
+      "Uruguay"
+    ],
+    "I": [
+      "France",
+      "Senegal",
+      "Iraq",
+      "Norway"
+    ],
+    "J": [
+      "Argentina",
+      "Algeria",
+      "Austria",
+      "Jordan"
+    ],
+    "K": [
+      "Portugal",
+      "DR Congo",
+      "Uzbekistan",
+      "Colombia"
+    ],
+    "L": [
+      "England",
+      "Croatia",
+      "Ghana",
+      "Panama"
+    ]
+  }
+}
