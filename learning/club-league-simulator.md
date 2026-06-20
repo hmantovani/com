@@ -11,7 +11,7 @@ related: [football-vault, predictor-wc]
 
 ## 1. Visão geral
 
-Simulador de "realidades alternativas" para campeonatos de clubes (ligas nacionais, começando pela Premier League). Diferente do `predictor-wc` (que tenta prever o futuro real da Copa), este projeto re-simula competições **que já aconteceram**, usando dados reais da própria temporada + decaimento temporal sobre histórico, para gerar um universo plausível mas distinto do que de fato ocorreu.
+Simulador de "realidades alternativas" para campeonatos de clubes (ligas nacionais, começando pela Premier League). Diferente de outros projetos que tentam prever o futuro, este projeto re-simula competições **que já aconteceram**, usando dados reais da própria temporada + decaimento temporal sobre histórico, para gerar um universo plausível mas distinto do que de fato ocorreu.
 
 Objetivo final: hospedar no portfólio pessoal (www.hmantovani.com) como site **100% estático** — sem backend rodando, sem servidor ligado continuamente. Toda a computação pesada (Monte Carlo, fit do modelo) acontece offline/local; o site serve apenas os resultados já processados.
 
