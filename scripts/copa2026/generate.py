@@ -65,6 +65,7 @@ with open(GROUPS_JSON, encoding="utf-8") as f:
     cfg = json.load(f)
 
 GROUPS = cfg["groups"]
+FIXTURES = cfg["fixtures"]   # explicit r1/r2/r3 per group
 TEAM_META = cfg["team_meta"]
 TEAM_TO_GROUP = {t: g for g, teams in GROUPS.items() for t in teams}
 COPA_TEAMS = list(TEAM_META.keys())
@@ -281,37 +282,44 @@ def btts(mat):
 # Predict all 72 group matches
 # ----------------------------------------------------------------------------
 print("Predicting 72 group-stage matches...")
+
+# Build a date lookup from the parquet fixtures: (home, away) -> date
+fixture_dates = {}
+for _, row in wc.iterrows():
+    fixture_dates[(row["home_team"], row["away_team"])] = row["date"].strftime("%Y-%m-%d")
+
 matches = []
 match_matrices = {}
-for ridx, (lo, hi, rnd) in enumerate([(0, 24, 1), (24, 48, 2), (48, 72, 3)]):
-    for _, row in wc.iloc[lo:hi].iterrows():
-        home, away = row["home_team"], row["away_team"]
-        mat = predict_match(home, away)
-        match_matrices[(home, away)] = mat
-        ph, pdr, pa = outcome_probs(mat)
-        ou_over, ou_under = over_under(mat)
-        by, bn = btts(mat)
-        matches.append({
-            "round": rnd,
-            "group": TEAM_TO_GROUP[home],
-            "date": row["date"].strftime("%Y-%m-%d"),
-            "home": home,
-            "away": away,
-            "home_iso": TEAM_META[home]["iso2"],
-            "away_iso": TEAM_META[away]["iso2"],
-            "home_elo": round(elo_now[home]),
-            "away_elo": round(elo_now[away]),
-            "p_home": round(ph, 4),
-            "p_draw": round(pdr, 4),
-            "p_away": round(pa, 4),
-            "top_scores": top_scorelines(mat),
-            "over25": round(ou_over, 4),
-            "under25": round(ou_under, 4),
-            "btts_yes": round(by, 4),
-            "btts_no": round(bn, 4),
-            "exp_home_goals": round(float((mat.sum(axis=1) * np.arange(MAX_GOALS + 1)).sum()), 2),
-            "exp_away_goals": round(float((mat.sum(axis=0) * np.arange(MAX_GOALS + 1)).sum()), 2),
-        })
+for g, rounds in FIXTURES.items():
+    for rnd_key, pairs in [("r1", 1), ("r2", 2), ("r3", 3)]:
+        for home, away in rounds[rnd_key]:
+            mat = predict_match(home, away)
+            match_matrices[(home, away)] = mat
+            ph, pdr, pa = outcome_probs(mat)
+            ou_over, ou_under = over_under(mat)
+            by, bn = btts(mat)
+            date_str = fixture_dates.get((home, away), fixture_dates.get((away, home), ""))
+            matches.append({
+                "round": pairs,
+                "group": g,
+                "date": date_str,
+                "home": home,
+                "away": away,
+                "home_iso": TEAM_META[home]["iso2"],
+                "away_iso": TEAM_META[away]["iso2"],
+                "home_elo": round(elo_now[home]),
+                "away_elo": round(elo_now[away]),
+                "p_home": round(ph, 4),
+                "p_draw": round(pdr, 4),
+                "p_away": round(pa, 4),
+                "top_scores": top_scorelines(mat),
+                "over25": round(ou_over, 4),
+                "under25": round(ou_under, 4),
+                "btts_yes": round(by, 4),
+                "btts_no": round(bn, 4),
+                "exp_home_goals": round(float((mat.sum(axis=1) * np.arange(MAX_GOALS + 1)).sum()), 2),
+                "exp_away_goals": round(float((mat.sum(axis=0) * np.arange(MAX_GOALS + 1)).sum()), 2),
+            })
 
 # ----------------------------------------------------------------------------
 # Monte Carlo — final group standings + advancement
@@ -428,6 +436,7 @@ for t in COPA_TEAMS:
         "iso2": TEAM_META[t]["iso2"],
         "group": TEAM_TO_GROUP[t],
         "confederation": TEAM_META[t]["confederation"],
+        "pot": TEAM_META[t]["pot"],
         "elo": round(elo_now[t]),
         "attack": round(attack_b.get(t, 0.0), 3),
         "defense": round(defense_b.get(t, 0.0), 3),

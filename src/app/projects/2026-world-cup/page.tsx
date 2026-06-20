@@ -28,7 +28,7 @@ export default function WorldCup2026Home() {
   const c = copaCopy[lang];
 
   const byGroup = (g: string): Team[] =>
-    teamsData.teams.filter((t) => t.group === g).sort((a, b) => b.elo - a.elo);
+    teamsData.teams.filter((t) => t.group === g).sort((a, b) => a.pot - b.pot || b.elo - a.elo);
 
   const MOMENTS = c.moments.map((m, i) => ({ n: i + 1, ...m, live: i === 0 }));
 

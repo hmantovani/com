@@ -99,6 +99,174 @@
       "exp_away_goals": 1.23
     },
     {
+      "round": 2,
+      "group": "A",
+      "date": "2026-06-18",
+      "home": "Czech Republic",
+      "away": "South Africa",
+      "home_iso": "cz",
+      "away_iso": "za",
+      "home_elo": 1740,
+      "away_elo": 1517,
+      "p_home": 0.5393,
+      "p_draw": 0.2609,
+      "p_away": 0.1998,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1287
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1231
+        },
+        {
+          "score": "2-0",
+          "prob": 0.108
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0937
+        },
+        {
+          "score": "0-0",
+          "prob": 0.09
+        }
+      ],
+      "over25": 0.45,
+      "under25": 0.55,
+      "btts_yes": 0.4692,
+      "btts_no": 0.5308,
+      "exp_home_goals": 1.6,
+      "exp_away_goals": 0.87
+    },
+    {
+      "round": 2,
+      "group": "A",
+      "date": "2026-06-18",
+      "home": "Mexico",
+      "away": "South Korea",
+      "home_iso": "mx",
+      "away_iso": "kr",
+      "home_elo": 1875,
+      "away_elo": 1758,
+      "p_home": 0.4943,
+      "p_draw": 0.2888,
+      "p_away": 0.2169,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1471
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1305
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1177
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1055
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0859
+        }
+      ],
+      "over25": 0.3785,
+      "under25": 0.6215,
+      "btts_yes": 0.425,
+      "btts_no": 0.575,
+      "exp_home_goals": 1.38,
+      "exp_away_goals": 0.82
+    },
+    {
+      "round": 3,
+      "group": "A",
+      "date": "2026-06-24",
+      "home": "Mexico",
+      "away": "Czech Republic",
+      "home_iso": "mx",
+      "away_iso": "cz",
+      "home_elo": 1875,
+      "away_elo": 1740,
+      "p_home": 0.5244,
+      "p_draw": 0.2709,
+      "p_away": 0.2047,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1359
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1265
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1081
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0993
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0916
+        }
+      ],
+      "over25": 0.4231,
+      "under25": 0.5769,
+      "btts_yes": 0.4532,
+      "btts_no": 0.5468,
+      "exp_home_goals": 1.52,
+      "exp_away_goals": 0.85
+    },
+    {
+      "round": 3,
+      "group": "A",
+      "date": "2026-06-24",
+      "home": "South Africa",
+      "away": "South Korea",
+      "home_iso": "za",
+      "away_iso": "kr",
+      "home_elo": 1517,
+      "away_elo": 1758,
+      "p_home": 0.1869,
+      "p_draw": 0.2677,
+      "p_away": 0.5453,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.1424
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1233
+        },
+        {
+          "score": "0-2",
+          "prob": 0.1142
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1036
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0902
+        }
+      ],
+      "over25": 0.4141,
+      "under25": 0.5859,
+      "btts_yes": 0.434,
+      "btts_no": 0.566,
+      "exp_home_goals": 0.79,
+      "exp_away_goals": 1.55
+    },
+    {
       "round": 1,
       "group": "B",
       "date": "2026-06-12",
@@ -142,48 +310,6 @@
     },
     {
       "round": 1,
-      "group": "D",
-      "date": "2026-06-12",
-      "home": "United States",
-      "away": "Paraguay",
-      "home_iso": "us",
-      "away_iso": "py",
-      "home_elo": 1726,
-      "away_elo": 1834,
-      "p_home": 0.2373,
-      "p_draw": 0.2704,
-      "p_away": 0.4923,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1282
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1188
-        },
-        {
-          "score": "0-2",
-          "prob": 0.0948
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0927
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0887
-        }
-      ],
-      "over25": 0.4556,
-      "under25": 0.5444,
-      "btts_yes": 0.4931,
-      "btts_no": 0.5069,
-      "exp_home_goals": 0.98,
-      "exp_away_goals": 1.52
-    },
-    {
-      "round": 1,
       "group": "B",
       "date": "2026-06-13",
       "home": "Qatar",
@@ -223,6 +349,174 @@
       "btts_no": 0.6335,
       "exp_home_goals": 0.48,
       "exp_away_goals": 3.37
+    },
+    {
+      "round": 2,
+      "group": "B",
+      "date": "2026-06-18",
+      "home": "Switzerland",
+      "away": "Bosnia and Herzegovina",
+      "home_iso": "ch",
+      "away_iso": "ba",
+      "home_elo": 1891,
+      "away_elo": 1595,
+      "p_home": 0.6838,
+      "p_draw": 0.2057,
+      "p_away": 0.1105,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.1371
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1311
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0969
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0932
+        },
+        {
+          "score": "3-0",
+          "prob": 0.0923
+        }
+      ],
+      "over25": 0.5063,
+      "under25": 0.4937,
+      "btts_yes": 0.4323,
+      "btts_no": 0.5677,
+      "exp_home_goals": 2.02,
+      "exp_away_goals": 0.68
+    },
+    {
+      "round": 2,
+      "group": "B",
+      "date": "2026-06-18",
+      "home": "Canada",
+      "away": "Qatar",
+      "home_iso": "ca",
+      "away_iso": "qa",
+      "home_elo": 1788,
+      "away_elo": 1421,
+      "p_home": 0.7702,
+      "p_draw": 0.1668,
+      "p_away": 0.063,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.1658
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1455
+        },
+        {
+          "score": "3-0",
+          "prob": 0.1229
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0784
+        },
+        {
+          "score": "1-1",
+          "prob": 0.074
+        }
+      ],
+      "over25": 0.5081,
+      "under25": 0.4919,
+      "btts_yes": 0.3428,
+      "btts_no": 0.6572,
+      "exp_home_goals": 2.22,
+      "exp_away_goals": 0.48
+    },
+    {
+      "round": 3,
+      "group": "B",
+      "date": "2026-06-24",
+      "home": "Canada",
+      "away": "Switzerland",
+      "home_iso": "ca",
+      "away_iso": "ch",
+      "home_elo": 1788,
+      "away_elo": 1891,
+      "p_home": 0.2456,
+      "p_draw": 0.3015,
+      "p_away": 0.4529,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.1436
+        },
+        {
+          "score": "1-1",
+          "prob": 0.135
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1256
+        },
+        {
+          "score": "0-2",
+          "prob": 0.095
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0949
+        }
+      ],
+      "over25": 0.3623,
+      "under25": 0.6377,
+      "btts_yes": 0.4238,
+      "btts_no": 0.5762,
+      "exp_home_goals": 0.87,
+      "exp_away_goals": 1.28
+    },
+    {
+      "round": 3,
+      "group": "B",
+      "date": "2026-06-24",
+      "home": "Bosnia and Herzegovina",
+      "away": "Qatar",
+      "home_iso": "ba",
+      "away_iso": "qa",
+      "home_elo": 1595,
+      "away_elo": 1421,
+      "p_home": 0.6068,
+      "p_draw": 0.2395,
+      "p_away": 0.1537,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1368
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1252
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1122
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0932
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0865
+        }
+      ],
+      "over25": 0.4593,
+      "under25": 0.5407,
+      "btts_yes": 0.4403,
+      "btts_no": 0.5597,
+      "exp_home_goals": 1.76,
+      "exp_away_goals": 0.75
     },
     {
       "round": 1,
@@ -309,6 +603,216 @@
       "exp_away_goals": 2.08
     },
     {
+      "round": 2,
+      "group": "C",
+      "date": "2026-06-19",
+      "home": "Scotland",
+      "away": "Morocco",
+      "home_iso": "gb-sct",
+      "away_iso": "ma",
+      "home_elo": 1782,
+      "away_elo": 1827,
+      "p_home": 0.226,
+      "p_draw": 0.3062,
+      "p_away": 0.4678,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.163
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1431
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1286
+        },
+        {
+          "score": "0-2",
+          "prob": 0.1044
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0925
+        }
+      ],
+      "over25": 0.3293,
+      "under25": 0.6707,
+      "btts_yes": 0.3829,
+      "btts_no": 0.6171,
+      "exp_home_goals": 0.78,
+      "exp_away_goals": 1.24
+    },
+    {
+      "round": 2,
+      "group": "C",
+      "date": "2026-06-19",
+      "home": "Brazil",
+      "away": "Haiti",
+      "home_iso": "br",
+      "away_iso": "ht",
+      "home_elo": 1991,
+      "away_elo": 1548,
+      "p_home": 0.843,
+      "p_draw": 0.1091,
+      "p_away": 0.0479,
+      "top_scores": [
+        {
+          "score": "3-0",
+          "prob": 0.109
+        },
+        {
+          "score": "2-0",
+          "prob": 0.109
+        },
+        {
+          "score": "4-0",
+          "prob": 0.0841
+        },
+        {
+          "score": "3-1",
+          "prob": 0.0731
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0724
+        }
+      ],
+      "over25": 0.7214,
+      "under25": 0.2786,
+      "btts_yes": 0.472,
+      "btts_no": 0.528,
+      "exp_home_goals": 3.14,
+      "exp_away_goals": 0.68
+    },
+    {
+      "round": 3,
+      "group": "C",
+      "date": "2026-06-24",
+      "home": "Scotland",
+      "away": "Brazil",
+      "home_iso": "gb-sct",
+      "away_iso": "br",
+      "home_elo": 1782,
+      "away_elo": 1991,
+      "p_home": 0.1895,
+      "p_draw": 0.2259,
+      "p_away": 0.5846,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1026
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0959
+        },
+        {
+          "score": "0-2",
+          "prob": 0.0939
+        },
+        {
+          "score": "0-1",
+          "prob": 0.0934
+        },
+        {
+          "score": "1-3",
+          "prob": 0.0638
+        }
+      ],
+      "over25": 0.5816,
+      "under25": 0.4184,
+      "btts_yes": 0.5633,
+      "btts_no": 0.4367,
+      "exp_home_goals": 1.06,
+      "exp_away_goals": 1.99
+    },
+    {
+      "round": 3,
+      "group": "C",
+      "date": "2026-06-24",
+      "home": "Morocco",
+      "away": "Haiti",
+      "home_iso": "ma",
+      "away_iso": "ht",
+      "home_elo": 1827,
+      "away_elo": 1548,
+      "p_home": 0.7142,
+      "p_draw": 0.2007,
+      "p_away": 0.0852,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.1647
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1647
+        },
+        {
+          "score": "3-0",
+          "prob": 0.1072
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0906
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0859
+        }
+      ],
+      "over25": 0.4447,
+      "under25": 0.5553,
+      "btts_yes": 0.3388,
+      "btts_no": 0.6612,
+      "exp_home_goals": 1.95,
+      "exp_away_goals": 0.51
+    },
+    {
+      "round": 1,
+      "group": "D",
+      "date": "2026-06-12",
+      "home": "United States",
+      "away": "Paraguay",
+      "home_iso": "us",
+      "away_iso": "py",
+      "home_elo": 1726,
+      "away_elo": 1834,
+      "p_home": 0.2373,
+      "p_draw": 0.2704,
+      "p_away": 0.4923,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1282
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1188
+        },
+        {
+          "score": "0-2",
+          "prob": 0.0948
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0927
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0887
+        }
+      ],
+      "over25": 0.4556,
+      "under25": 0.5444,
+      "btts_yes": 0.4931,
+      "btts_no": 0.5069,
+      "exp_home_goals": 0.98,
+      "exp_away_goals": 1.52
+    },
+    {
       "round": 1,
       "group": "D",
       "date": "2026-06-13",
@@ -349,6 +853,174 @@
       "btts_no": 0.5247,
       "exp_home_goals": 1.0,
       "exp_away_goals": 1.36
+    },
+    {
+      "round": 2,
+      "group": "D",
+      "date": "2026-06-19",
+      "home": "United States",
+      "away": "Australia",
+      "home_iso": "us",
+      "away_iso": "au",
+      "home_elo": 1726,
+      "away_elo": 1777,
+      "p_home": 0.2826,
+      "p_draw": 0.279,
+      "p_away": 0.4384,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1324
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1106
+        },
+        {
+          "score": "0-0",
+          "prob": 0.09
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0886
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0839
+        }
+      ],
+      "over25": 0.4524,
+      "under25": 0.5476,
+      "btts_yes": 0.5039,
+      "btts_no": 0.4961,
+      "exp_home_goals": 1.08,
+      "exp_away_goals": 1.41
+    },
+    {
+      "round": 2,
+      "group": "D",
+      "date": "2026-06-19",
+      "home": "Turkey",
+      "away": "Paraguay",
+      "home_iso": "tr",
+      "away_iso": "py",
+      "home_elo": 1911,
+      "away_elo": 1834,
+      "p_home": 0.3911,
+      "p_draw": 0.2938,
+      "p_away": 0.3151,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1378
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1151
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1052
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1002
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0811
+        }
+      ],
+      "over25": 0.4085,
+      "under25": 0.5915,
+      "btts_yes": 0.474,
+      "btts_no": 0.526,
+      "exp_home_goals": 1.24,
+      "exp_away_goals": 1.08
+    },
+    {
+      "round": 3,
+      "group": "D",
+      "date": "2026-06-25",
+      "home": "United States",
+      "away": "Turkey",
+      "home_iso": "us",
+      "away_iso": "tr",
+      "home_elo": 1726,
+      "away_elo": 1911,
+      "p_home": 0.206,
+      "p_draw": 0.2368,
+      "p_away": 0.5572,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1091
+        },
+        {
+          "score": "0-1",
+          "prob": 0.097
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0963
+        },
+        {
+          "score": "0-2",
+          "prob": 0.0929
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0622
+        }
+      ],
+      "over25": 0.558,
+      "under25": 0.442,
+      "btts_yes": 0.5552,
+      "btts_no": 0.4448,
+      "exp_home_goals": 1.06,
+      "exp_away_goals": 1.87
+    },
+    {
+      "round": 3,
+      "group": "D",
+      "date": "2026-06-25",
+      "home": "Paraguay",
+      "away": "Australia",
+      "home_iso": "py",
+      "away_iso": "au",
+      "home_elo": 1834,
+      "away_elo": 1777,
+      "p_home": 0.3882,
+      "p_draw": 0.3173,
+      "p_away": 0.2945,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1389
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1387
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1367
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1138
+        },
+        {
+          "score": "2-0",
+          "prob": 0.0789
+        }
+      ],
+      "over25": 0.3375,
+      "under25": 0.6625,
+      "btts_yes": 0.414,
+      "btts_no": 0.586,
+      "exp_home_goals": 1.12,
+      "exp_away_goals": 0.94
     },
     {
       "round": 1,
@@ -435,6 +1107,174 @@
       "exp_away_goals": 1.15
     },
     {
+      "round": 2,
+      "group": "E",
+      "date": "2026-06-20",
+      "home": "Germany",
+      "away": "Ivory Coast",
+      "home_iso": "de",
+      "away_iso": "ci",
+      "home_elo": 1932,
+      "away_elo": 1695,
+      "p_home": 0.5454,
+      "p_draw": 0.2668,
+      "p_away": 0.1878,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.141
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1233
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1137
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1019
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0907
+        }
+      ],
+      "over25": 0.4182,
+      "under25": 0.5818,
+      "btts_yes": 0.438,
+      "btts_no": 0.562,
+      "exp_home_goals": 1.56,
+      "exp_away_goals": 0.8
+    },
+    {
+      "round": 2,
+      "group": "E",
+      "date": "2026-06-20",
+      "home": "Ecuador",
+      "away": "Curaçao",
+      "home_iso": "ec",
+      "away_iso": "cw",
+      "home_elo": 1938,
+      "away_elo": 1434,
+      "p_home": 0.8389,
+      "p_draw": 0.1293,
+      "p_away": 0.0318,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.1841
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1516
+        },
+        {
+          "score": "3-0",
+          "prob": 0.1485
+        },
+        {
+          "score": "4-0",
+          "prob": 0.0909
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0674
+        }
+      ],
+      "over25": 0.5268,
+      "under25": 0.4732,
+      "btts_yes": 0.2628,
+      "btts_no": 0.7372,
+      "exp_home_goals": 2.47,
+      "exp_away_goals": 0.34
+    },
+    {
+      "round": 3,
+      "group": "E",
+      "date": "2026-06-25",
+      "home": "Curaçao",
+      "away": "Ivory Coast",
+      "home_iso": "cw",
+      "away_iso": "ci",
+      "home_elo": 1434,
+      "away_elo": 1695,
+      "p_home": 0.0891,
+      "p_draw": 0.1957,
+      "p_away": 0.7152,
+      "top_scores": [
+        {
+          "score": "0-2",
+          "prob": 0.1591
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1536
+        },
+        {
+          "score": "0-3",
+          "prob": 0.1074
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0868
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0826
+        }
+      ],
+      "over25": 0.4678,
+      "under25": 0.5322,
+      "btts_yes": 0.3566,
+      "btts_no": 0.6434,
+      "exp_home_goals": 0.54,
+      "exp_away_goals": 2.0
+    },
+    {
+      "round": 3,
+      "group": "E",
+      "date": "2026-06-25",
+      "home": "Ecuador",
+      "away": "Germany",
+      "home_iso": "ec",
+      "away_iso": "de",
+      "home_elo": 1938,
+      "away_elo": 1932,
+      "p_home": 0.3406,
+      "p_draw": 0.3291,
+      "p_away": 0.3303,
+      "top_scores": [
+        {
+          "score": "0-0",
+          "prob": 0.1538
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1386
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1326
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1299
+        },
+        {
+          "score": "2-0",
+          "prob": 0.0673
+        }
+      ],
+      "over25": 0.3132,
+      "under25": 0.6868,
+      "btts_yes": 0.3951,
+      "btts_no": 0.6049,
+      "exp_home_goals": 0.99,
+      "exp_away_goals": 0.97
+    },
+    {
       "round": 1,
       "group": "F",
       "date": "2026-06-14",
@@ -517,6 +1357,174 @@
       "btts_no": 0.4685,
       "exp_home_goals": 1.58,
       "exp_away_goals": 1.09
+    },
+    {
+      "round": 2,
+      "group": "F",
+      "date": "2026-06-20",
+      "home": "Netherlands",
+      "away": "Sweden",
+      "home_iso": "nl",
+      "away_iso": "se",
+      "home_elo": 1948,
+      "away_elo": 1712,
+      "p_home": 0.6481,
+      "p_draw": 0.2006,
+      "p_away": 0.1513,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.0944
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0923
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0885
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0857
+        },
+        {
+          "score": "3-1",
+          "prob": 0.0699
+        }
+      ],
+      "over25": 0.628,
+      "under25": 0.372,
+      "btts_yes": 0.5715,
+      "btts_no": 0.4285,
+      "exp_home_goals": 2.28,
+      "exp_away_goals": 1.03
+    },
+    {
+      "round": 2,
+      "group": "F",
+      "date": "2026-06-20",
+      "home": "Tunisia",
+      "away": "Japan",
+      "home_iso": "tn",
+      "away_iso": "jp",
+      "home_elo": 1628,
+      "away_elo": 1906,
+      "p_home": 0.0994,
+      "p_draw": 0.2395,
+      "p_away": 0.6611,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.1876
+        },
+        {
+          "score": "0-2",
+          "prob": 0.1587
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1217
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0943
+        },
+        {
+          "score": "0-3",
+          "prob": 0.0882
+        }
+      ],
+      "over25": 0.3757,
+      "under25": 0.6243,
+      "btts_yes": 0.3242,
+      "btts_no": 0.6758,
+      "exp_home_goals": 0.51,
+      "exp_away_goals": 1.69
+    },
+    {
+      "round": 3,
+      "group": "F",
+      "date": "2026-06-25",
+      "home": "Japan",
+      "away": "Sweden",
+      "home_iso": "jp",
+      "away_iso": "se",
+      "home_elo": 1906,
+      "away_elo": 1712,
+      "p_home": 0.6239,
+      "p_draw": 0.2317,
+      "p_away": 0.1444,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1342
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1271
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1089
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0938
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0821
+        }
+      ],
+      "over25": 0.4732,
+      "under25": 0.5268,
+      "btts_yes": 0.4427,
+      "btts_no": 0.5573,
+      "exp_home_goals": 1.82,
+      "exp_away_goals": 0.75
+    },
+    {
+      "round": 3,
+      "group": "F",
+      "date": "2026-06-25",
+      "home": "Tunisia",
+      "away": "Netherlands",
+      "home_iso": "tn",
+      "away_iso": "nl",
+      "home_elo": 1628,
+      "away_elo": 1948,
+      "p_home": 0.1001,
+      "p_draw": 0.1969,
+      "p_away": 0.703,
+      "top_scores": [
+        {
+          "score": "0-2",
+          "prob": 0.141
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1312
+        },
+        {
+          "score": "0-3",
+          "prob": 0.0978
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0926
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0917
+        }
+      ],
+      "over25": 0.5138,
+      "under25": 0.4862,
+      "btts_yes": 0.4228,
+      "btts_no": 0.5772,
+      "exp_home_goals": 0.65,
+      "exp_away_goals": 2.08
     },
     {
       "round": 1,
@@ -603,6 +1611,174 @@
       "exp_away_goals": 0.66
     },
     {
+      "round": 2,
+      "group": "G",
+      "date": "2026-06-21",
+      "home": "Belgium",
+      "away": "Iran",
+      "home_iso": "be",
+      "away_iso": "ir",
+      "home_elo": 1894,
+      "away_elo": 1772,
+      "p_home": 0.5085,
+      "p_draw": 0.2655,
+      "p_away": 0.226,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1259
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1187
+        },
+        {
+          "score": "2-0",
+          "prob": 0.0976
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0939
+        },
+        {
+          "score": "0-0",
+          "prob": 0.086
+        }
+      ],
+      "over25": 0.464,
+      "under25": 0.536,
+      "btts_yes": 0.4948,
+      "btts_no": 0.5052,
+      "exp_home_goals": 1.57,
+      "exp_away_goals": 0.96
+    },
+    {
+      "round": 2,
+      "group": "G",
+      "date": "2026-06-21",
+      "home": "New Zealand",
+      "away": "Egypt",
+      "home_iso": "nz",
+      "away_iso": "eg",
+      "home_elo": 1562,
+      "away_elo": 1696,
+      "p_home": 0.1827,
+      "p_draw": 0.3109,
+      "p_away": 0.5065,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.1831
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1615
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1201
+        },
+        {
+          "score": "0-2",
+          "prob": 0.1161
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0851
+        }
+      ],
+      "over25": 0.3048,
+      "under25": 0.6952,
+      "btts_yes": 0.3474,
+      "btts_no": 0.6526,
+      "exp_home_goals": 0.66,
+      "exp_away_goals": 1.27
+    },
+    {
+      "round": 3,
+      "group": "G",
+      "date": "2026-06-26",
+      "home": "Egypt",
+      "away": "Iran",
+      "home_iso": "eg",
+      "away_iso": "ir",
+      "home_elo": 1696,
+      "away_elo": 1772,
+      "p_home": 0.2716,
+      "p_draw": 0.3255,
+      "p_away": 0.4029,
+      "top_scores": [
+        {
+          "score": "0-0",
+          "prob": 0.1537
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1485
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1361
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1137
+        },
+        {
+          "score": "0-2",
+          "prob": 0.0837
+        }
+      ],
+      "over25": 0.3142,
+      "under25": 0.6858,
+      "btts_yes": 0.3898,
+      "btts_no": 0.6102,
+      "exp_home_goals": 0.86,
+      "exp_away_goals": 1.11
+    },
+    {
+      "round": 3,
+      "group": "G",
+      "date": "2026-06-26",
+      "home": "New Zealand",
+      "away": "Belgium",
+      "home_iso": "nz",
+      "away_iso": "be",
+      "home_elo": 1562,
+      "away_elo": 1894,
+      "p_home": 0.0701,
+      "p_draw": 0.1617,
+      "p_away": 0.7682,
+      "top_scores": [
+        {
+          "score": "0-2",
+          "prob": 0.1504
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1252
+        },
+        {
+          "score": "0-3",
+          "prob": 0.1179
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0828
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0755
+        }
+      ],
+      "over25": 0.5526,
+      "under25": 0.4474,
+      "btts_yes": 0.3851,
+      "btts_no": 0.6149,
+      "exp_home_goals": 0.56,
+      "exp_away_goals": 2.34
+    },
+    {
       "round": 1,
       "group": "H",
       "date": "2026-06-15",
@@ -685,6 +1861,174 @@
       "btts_no": 0.671,
       "exp_home_goals": 0.55,
       "exp_away_goals": 1.52
+    },
+    {
+      "round": 2,
+      "group": "H",
+      "date": "2026-06-21",
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "home_iso": "es",
+      "away_iso": "sa",
+      "home_elo": 2157,
+      "away_elo": 1576,
+      "p_home": 0.8519,
+      "p_draw": 0.1103,
+      "p_away": 0.0378,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.1449
+        },
+        {
+          "score": "3-0",
+          "prob": 0.1371
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1006
+        },
+        {
+          "score": "4-0",
+          "prob": 0.0984
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0688
+        }
+      ],
+      "over25": 0.6436,
+      "under25": 0.3564,
+      "btts_yes": 0.3557,
+      "btts_no": 0.6443,
+      "exp_home_goals": 2.85,
+      "exp_away_goals": 0.47
+    },
+    {
+      "round": 2,
+      "group": "H",
+      "date": "2026-06-21",
+      "home": "Uruguay",
+      "away": "Cape Verde",
+      "home_iso": "uy",
+      "away_iso": "cv",
+      "home_elo": 1892,
+      "away_elo": 1578,
+      "p_home": 0.6512,
+      "p_draw": 0.2434,
+      "p_away": 0.1054,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1806
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1516
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1203
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0985
+        },
+        {
+          "score": "3-0",
+          "prob": 0.0846
+        }
+      ],
+      "over25": 0.3824,
+      "under25": 0.6176,
+      "btts_yes": 0.339,
+      "btts_no": 0.661,
+      "exp_home_goals": 1.7,
+      "exp_away_goals": 0.53
+    },
+    {
+      "round": 3,
+      "group": "H",
+      "date": "2026-06-26",
+      "home": "Cape Verde",
+      "away": "Saudi Arabia",
+      "home_iso": "cv",
+      "away_iso": "sa",
+      "home_elo": 1578,
+      "away_elo": 1576,
+      "p_home": 0.305,
+      "p_draw": 0.3009,
+      "p_away": 0.3941,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1386
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1247
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1161
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1038
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0789
+        }
+      ],
+      "over25": 0.3817,
+      "under25": 0.6183,
+      "btts_yes": 0.4505,
+      "btts_no": 0.5495,
+      "exp_home_goals": 1.02,
+      "exp_away_goals": 1.2
+    },
+    {
+      "round": 3,
+      "group": "H",
+      "date": "2026-06-26",
+      "home": "Uruguay",
+      "away": "Spain",
+      "home_iso": "uy",
+      "away_iso": "es",
+      "home_elo": 1892,
+      "away_elo": 2157,
+      "p_home": 0.1613,
+      "p_draw": 0.2788,
+      "p_away": 0.5599,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.1665
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1297
+        },
+        {
+          "score": "0-2",
+          "prob": 0.1238
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1179
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0823
+        }
+      ],
+      "over25": 0.3623,
+      "under25": 0.6377,
+      "btts_yes": 0.3771,
+      "btts_no": 0.6229,
+      "exp_home_goals": 0.66,
+      "exp_away_goals": 1.49
     },
     {
       "round": 1,
@@ -771,6 +2115,174 @@
       "exp_away_goals": 1.98
     },
     {
+      "round": 2,
+      "group": "I",
+      "date": "2026-06-22",
+      "home": "France",
+      "away": "Iraq",
+      "home_iso": "fr",
+      "away_iso": "iq",
+      "home_elo": 2063,
+      "away_elo": 1607,
+      "p_home": 0.7578,
+      "p_draw": 0.1738,
+      "p_away": 0.0684,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 0.158
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1427
+        },
+        {
+          "score": "3-0",
+          "prob": 0.1158
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0804
+        },
+        {
+          "score": "1-1",
+          "prob": 0.0779
+        }
+      ],
+      "over25": 0.5088,
+      "under25": 0.4912,
+      "btts_yes": 0.3577,
+      "btts_no": 0.6423,
+      "exp_home_goals": 2.21,
+      "exp_away_goals": 0.51
+    },
+    {
+      "round": 2,
+      "group": "I",
+      "date": "2026-06-22",
+      "home": "Norway",
+      "away": "Senegal",
+      "home_iso": "no",
+      "away_iso": "sn",
+      "home_elo": 1914,
+      "away_elo": 1860,
+      "p_home": 0.4697,
+      "p_draw": 0.2733,
+      "p_away": 0.257,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1296
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1147
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0907
+        },
+        {
+          "score": "2-0",
+          "prob": 0.0891
+        },
+        {
+          "score": "0-0",
+          "prob": 0.089
+        }
+      ],
+      "over25": 0.4551,
+      "under25": 0.5449,
+      "btts_yes": 0.4972,
+      "btts_no": 0.5028,
+      "exp_home_goals": 1.48,
+      "exp_away_goals": 1.02
+    },
+    {
+      "round": 3,
+      "group": "I",
+      "date": "2026-06-26",
+      "home": "Norway",
+      "away": "France",
+      "home_iso": "no",
+      "away_iso": "fr",
+      "home_elo": 1914,
+      "away_elo": 2063,
+      "p_home": 0.3228,
+      "p_draw": 0.2686,
+      "p_away": 0.4087,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1271
+        },
+        {
+          "score": "0-1",
+          "prob": 0.0982
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0848
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0807
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0796
+        }
+      ],
+      "over25": 0.4865,
+      "under25": 0.5135,
+      "btts_yes": 0.5271,
+      "btts_no": 0.4729,
+      "exp_home_goals": 1.22,
+      "exp_away_goals": 1.4
+    },
+    {
+      "round": 3,
+      "group": "I",
+      "date": "2026-06-26",
+      "home": "Senegal",
+      "away": "Iraq",
+      "home_iso": "sn",
+      "away_iso": "iq",
+      "home_elo": 1860,
+      "away_elo": 1607,
+      "p_home": 0.6042,
+      "p_draw": 0.2579,
+      "p_away": 0.138,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1666
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1361
+        },
+        {
+          "score": "0-0",
+          "prob": 0.115
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1117
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0855
+        }
+      ],
+      "over25": 0.3882,
+      "under25": 0.6118,
+      "btts_yes": 0.3796,
+      "btts_no": 0.6204,
+      "exp_home_goals": 1.61,
+      "exp_away_goals": 0.63
+    },
+    {
       "round": 1,
       "group": "J",
       "date": "2026-06-16",
@@ -855,6 +2367,174 @@
       "exp_away_goals": 0.79
     },
     {
+      "round": 2,
+      "group": "J",
+      "date": "2026-06-22",
+      "home": "Argentina",
+      "away": "Austria",
+      "home_iso": "ar",
+      "away_iso": "at",
+      "home_elo": 2115,
+      "away_elo": 1830,
+      "p_home": 0.5707,
+      "p_draw": 0.2938,
+      "p_away": 0.1355,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1919
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1638
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1303
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1064
+        },
+        {
+          "score": "0-1",
+          "prob": 0.0722
+        }
+      ],
+      "over25": 0.3156,
+      "under25": 0.6844,
+      "btts_yes": 0.3207,
+      "btts_no": 0.6793,
+      "exp_home_goals": 1.42,
+      "exp_away_goals": 0.55
+    },
+    {
+      "round": 2,
+      "group": "J",
+      "date": "2026-06-22",
+      "home": "Jordan",
+      "away": "Algeria",
+      "home_iso": "jo",
+      "away_iso": "dz",
+      "home_elo": 1680,
+      "away_elo": 1772,
+      "p_home": 0.1669,
+      "p_draw": 0.2255,
+      "p_away": 0.6076,
+      "top_scores": [
+        {
+          "score": "0-1",
+          "prob": 0.1172
+        },
+        {
+          "score": "0-2",
+          "prob": 0.1141
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1068
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0913
+        },
+        {
+          "score": "0-3",
+          "prob": 0.0745
+        }
+      ],
+      "over25": 0.5061,
+      "under25": 0.4939,
+      "btts_yes": 0.4662,
+      "btts_no": 0.5338,
+      "exp_home_goals": 0.83,
+      "exp_away_goals": 1.88
+    },
+    {
+      "round": 3,
+      "group": "J",
+      "date": "2026-06-27",
+      "home": "Algeria",
+      "away": "Austria",
+      "home_iso": "dz",
+      "away_iso": "at",
+      "home_elo": 1772,
+      "away_elo": 1830,
+      "p_home": 0.3248,
+      "p_draw": 0.3223,
+      "p_away": 0.3528,
+      "top_scores": [
+        {
+          "score": "0-0",
+          "prob": 0.1452
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1388
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1296
+        },
+        {
+          "score": "1-0",
+          "prob": 0.1262
+        },
+        {
+          "score": "0-2",
+          "prob": 0.0695
+        }
+      ],
+      "over25": 0.3268,
+      "under25": 0.6732,
+      "btts_yes": 0.4055,
+      "btts_no": 0.5945,
+      "exp_home_goals": 0.98,
+      "exp_away_goals": 1.04
+    },
+    {
+      "round": 3,
+      "group": "J",
+      "date": "2026-06-27",
+      "home": "Jordan",
+      "away": "Argentina",
+      "home_iso": "jo",
+      "away_iso": "ar",
+      "home_elo": 1680,
+      "away_elo": 2115,
+      "p_home": 0.0418,
+      "p_draw": 0.1272,
+      "p_away": 0.831,
+      "top_scores": [
+        {
+          "score": "0-2",
+          "prob": 0.1635
+        },
+        {
+          "score": "0-3",
+          "prob": 0.1408
+        },
+        {
+          "score": "0-1",
+          "prob": 0.124
+        },
+        {
+          "score": "0-4",
+          "prob": 0.091
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0701
+        }
+      ],
+      "over25": 0.5799,
+      "under25": 0.4201,
+      "btts_yes": 0.3265,
+      "btts_no": 0.6735,
+      "exp_home_goals": 0.44,
+      "exp_away_goals": 2.58
+    },
+    {
       "round": 1,
       "group": "K",
       "date": "2026-06-17",
@@ -937,6 +2617,174 @@
       "btts_no": 0.589,
       "exp_home_goals": 0.67,
       "exp_away_goals": 1.77
+    },
+    {
+      "round": 2,
+      "group": "K",
+      "date": "2026-06-23",
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "home_iso": "pt",
+      "away_iso": "uz",
+      "home_elo": 1989,
+      "away_elo": 1714,
+      "p_home": 0.65,
+      "p_draw": 0.2331,
+      "p_away": 0.1169,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.16
+        },
+        {
+          "score": "2-0",
+          "prob": 0.145
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1035
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0989
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0874
+        }
+      ],
+      "over25": 0.4249,
+      "under25": 0.5751,
+      "btts_yes": 0.3826,
+      "btts_no": 0.6174,
+      "exp_home_goals": 1.77,
+      "exp_away_goals": 0.61
+    },
+    {
+      "round": 2,
+      "group": "K",
+      "date": "2026-06-23",
+      "home": "Colombia",
+      "away": "DR Congo",
+      "home_iso": "co",
+      "away_iso": "cd",
+      "home_elo": 1982,
+      "away_elo": 1652,
+      "p_home": 0.5782,
+      "p_draw": 0.2713,
+      "p_away": 0.1505,
+      "top_scores": [
+        {
+          "score": "1-0",
+          "prob": 0.1663
+        },
+        {
+          "score": "0-0",
+          "prob": 0.1302
+        },
+        {
+          "score": "2-0",
+          "prob": 0.1262
+        },
+        {
+          "score": "1-1",
+          "prob": 0.1127
+        },
+        {
+          "score": "2-1",
+          "prob": 0.0798
+        }
+      ],
+      "over25": 0.3686,
+      "under25": 0.6314,
+      "btts_yes": 0.3653,
+      "btts_no": 0.6347,
+      "exp_home_goals": 1.55,
+      "exp_away_goals": 0.63
+    },
+    {
+      "round": 3,
+      "group": "K",
+      "date": "2026-06-27",
+      "home": "Colombia",
+      "away": "Portugal",
+      "home_iso": "co",
+      "away_iso": "pt",
+      "home_elo": 1982,
+      "away_elo": 1989,
+      "p_home": 0.3267,
+      "p_draw": 0.2784,
+      "p_away": 0.3949,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 0.1319
+        },
+        {
+          "score": "0-1",
+          "prob": 0.0981
+        },
+        {
+          "score": "1-0",
+          "prob": 0.0879
+        },
+        {
+          "score": "0-0",
+          "prob": 0.0848
+        },
+        {
+          "score": "1-2",
+          "prob": 0.0847
+        }
+      ],
+      "over25": 0.4706,
+      "under25": 0.5294,
+      "btts_yes": 0.5245,
+      "btts_no": 0.4755,
+      "exp_home_goals": 1.21,
+      "exp_away_goals": 1.35
+    },
+    {
+      "round": 3,
+      "group": "K",
+      "date": "2026-06-27",
+      "home": "DR Congo",
+      "away": "Uzbekistan",
+      "home_iso": "cd",
+      "away_iso": "uz",
+      "home_elo": 1652,
+      "away_elo": 1714,
+      "p_home": 0.3262,
+      "p_draw": 0.3702,
+      "p_away": 0.3036,
+      "top_scores": [
+        {
+          "score": "0-0",
+          "prob": 0.2213
+        },
+        {
+          "score": "1-0",
+          "prob": 0.159
+        },
+        {
+          "score": "0-1",
+          "prob": 0.1348
+        },
+        {
+          "score": "1-1",
+          "prob": 0.122
+        },
+        {
+          "score": "2-0",
+          "prob": 0.0649
+        }
+      ],
+      "over25": 0.2424,
+      "under25": 0.7576,
+      "btts_yes": 0.3175,
+      "btts_no": 0.6825,
+      "exp_home_goals": 0.84,
+      "exp_away_goals": 0.83
     },
     {
       "round": 1,
@@ -1024,930 +2872,6 @@
     },
     {
       "round": 2,
-      "group": "A",
-      "date": "2026-06-18",
-      "home": "Czech Republic",
-      "away": "South Africa",
-      "home_iso": "cz",
-      "away_iso": "za",
-      "home_elo": 1740,
-      "away_elo": 1517,
-      "p_home": 0.5393,
-      "p_draw": 0.2609,
-      "p_away": 0.1998,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1287
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1231
-        },
-        {
-          "score": "2-0",
-          "prob": 0.108
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0937
-        },
-        {
-          "score": "0-0",
-          "prob": 0.09
-        }
-      ],
-      "over25": 0.45,
-      "under25": 0.55,
-      "btts_yes": 0.4692,
-      "btts_no": 0.5308,
-      "exp_home_goals": 1.6,
-      "exp_away_goals": 0.87
-    },
-    {
-      "round": 2,
-      "group": "A",
-      "date": "2026-06-18",
-      "home": "Mexico",
-      "away": "South Korea",
-      "home_iso": "mx",
-      "away_iso": "kr",
-      "home_elo": 1875,
-      "away_elo": 1758,
-      "p_home": 0.4943,
-      "p_draw": 0.2888,
-      "p_away": 0.2169,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1471
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1305
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1177
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1055
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0859
-        }
-      ],
-      "over25": 0.3785,
-      "under25": 0.6215,
-      "btts_yes": 0.425,
-      "btts_no": 0.575,
-      "exp_home_goals": 1.38,
-      "exp_away_goals": 0.82
-    },
-    {
-      "round": 2,
-      "group": "B",
-      "date": "2026-06-18",
-      "home": "Switzerland",
-      "away": "Bosnia and Herzegovina",
-      "home_iso": "ch",
-      "away_iso": "ba",
-      "home_elo": 1891,
-      "away_elo": 1595,
-      "p_home": 0.6838,
-      "p_draw": 0.2057,
-      "p_away": 0.1105,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.1371
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1311
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0969
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0932
-        },
-        {
-          "score": "3-0",
-          "prob": 0.0923
-        }
-      ],
-      "over25": 0.5063,
-      "under25": 0.4937,
-      "btts_yes": 0.4323,
-      "btts_no": 0.5677,
-      "exp_home_goals": 2.02,
-      "exp_away_goals": 0.68
-    },
-    {
-      "round": 2,
-      "group": "B",
-      "date": "2026-06-18",
-      "home": "Canada",
-      "away": "Qatar",
-      "home_iso": "ca",
-      "away_iso": "qa",
-      "home_elo": 1788,
-      "away_elo": 1421,
-      "p_home": 0.7702,
-      "p_draw": 0.1668,
-      "p_away": 0.063,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.1658
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1455
-        },
-        {
-          "score": "3-0",
-          "prob": 0.1229
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0784
-        },
-        {
-          "score": "1-1",
-          "prob": 0.074
-        }
-      ],
-      "over25": 0.5081,
-      "under25": 0.4919,
-      "btts_yes": 0.3428,
-      "btts_no": 0.6572,
-      "exp_home_goals": 2.22,
-      "exp_away_goals": 0.48
-    },
-    {
-      "round": 2,
-      "group": "C",
-      "date": "2026-06-19",
-      "home": "Scotland",
-      "away": "Morocco",
-      "home_iso": "gb-sct",
-      "away_iso": "ma",
-      "home_elo": 1782,
-      "away_elo": 1827,
-      "p_home": 0.226,
-      "p_draw": 0.3062,
-      "p_away": 0.4678,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.163
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1431
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1286
-        },
-        {
-          "score": "0-2",
-          "prob": 0.1044
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0925
-        }
-      ],
-      "over25": 0.3293,
-      "under25": 0.6707,
-      "btts_yes": 0.3829,
-      "btts_no": 0.6171,
-      "exp_home_goals": 0.78,
-      "exp_away_goals": 1.24
-    },
-    {
-      "round": 2,
-      "group": "C",
-      "date": "2026-06-19",
-      "home": "Brazil",
-      "away": "Haiti",
-      "home_iso": "br",
-      "away_iso": "ht",
-      "home_elo": 1991,
-      "away_elo": 1548,
-      "p_home": 0.843,
-      "p_draw": 0.1091,
-      "p_away": 0.0479,
-      "top_scores": [
-        {
-          "score": "3-0",
-          "prob": 0.109
-        },
-        {
-          "score": "2-0",
-          "prob": 0.109
-        },
-        {
-          "score": "4-0",
-          "prob": 0.0841
-        },
-        {
-          "score": "3-1",
-          "prob": 0.0731
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0724
-        }
-      ],
-      "over25": 0.7214,
-      "under25": 0.2786,
-      "btts_yes": 0.472,
-      "btts_no": 0.528,
-      "exp_home_goals": 3.14,
-      "exp_away_goals": 0.68
-    },
-    {
-      "round": 2,
-      "group": "D",
-      "date": "2026-06-19",
-      "home": "United States",
-      "away": "Australia",
-      "home_iso": "us",
-      "away_iso": "au",
-      "home_elo": 1726,
-      "away_elo": 1777,
-      "p_home": 0.2826,
-      "p_draw": 0.279,
-      "p_away": 0.4384,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1324
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1106
-        },
-        {
-          "score": "0-0",
-          "prob": 0.09
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0886
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0839
-        }
-      ],
-      "over25": 0.4524,
-      "under25": 0.5476,
-      "btts_yes": 0.5039,
-      "btts_no": 0.4961,
-      "exp_home_goals": 1.08,
-      "exp_away_goals": 1.41
-    },
-    {
-      "round": 2,
-      "group": "D",
-      "date": "2026-06-19",
-      "home": "Turkey",
-      "away": "Paraguay",
-      "home_iso": "tr",
-      "away_iso": "py",
-      "home_elo": 1911,
-      "away_elo": 1834,
-      "p_home": 0.3911,
-      "p_draw": 0.2938,
-      "p_away": 0.3151,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1378
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1151
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1052
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1002
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0811
-        }
-      ],
-      "over25": 0.4085,
-      "under25": 0.5915,
-      "btts_yes": 0.474,
-      "btts_no": 0.526,
-      "exp_home_goals": 1.24,
-      "exp_away_goals": 1.08
-    },
-    {
-      "round": 2,
-      "group": "E",
-      "date": "2026-06-20",
-      "home": "Germany",
-      "away": "Ivory Coast",
-      "home_iso": "de",
-      "away_iso": "ci",
-      "home_elo": 1932,
-      "away_elo": 1695,
-      "p_home": 0.5454,
-      "p_draw": 0.2668,
-      "p_away": 0.1878,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.141
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1233
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1137
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1019
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0907
-        }
-      ],
-      "over25": 0.4182,
-      "under25": 0.5818,
-      "btts_yes": 0.438,
-      "btts_no": 0.562,
-      "exp_home_goals": 1.56,
-      "exp_away_goals": 0.8
-    },
-    {
-      "round": 2,
-      "group": "E",
-      "date": "2026-06-20",
-      "home": "Ecuador",
-      "away": "Curaçao",
-      "home_iso": "ec",
-      "away_iso": "cw",
-      "home_elo": 1938,
-      "away_elo": 1434,
-      "p_home": 0.8389,
-      "p_draw": 0.1293,
-      "p_away": 0.0318,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.1841
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1516
-        },
-        {
-          "score": "3-0",
-          "prob": 0.1485
-        },
-        {
-          "score": "4-0",
-          "prob": 0.0909
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0674
-        }
-      ],
-      "over25": 0.5268,
-      "under25": 0.4732,
-      "btts_yes": 0.2628,
-      "btts_no": 0.7372,
-      "exp_home_goals": 2.47,
-      "exp_away_goals": 0.34
-    },
-    {
-      "round": 2,
-      "group": "F",
-      "date": "2026-06-20",
-      "home": "Netherlands",
-      "away": "Sweden",
-      "home_iso": "nl",
-      "away_iso": "se",
-      "home_elo": 1948,
-      "away_elo": 1712,
-      "p_home": 0.6481,
-      "p_draw": 0.2006,
-      "p_away": 0.1513,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.0944
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0923
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0885
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0857
-        },
-        {
-          "score": "3-1",
-          "prob": 0.0699
-        }
-      ],
-      "over25": 0.628,
-      "under25": 0.372,
-      "btts_yes": 0.5715,
-      "btts_no": 0.4285,
-      "exp_home_goals": 2.28,
-      "exp_away_goals": 1.03
-    },
-    {
-      "round": 2,
-      "group": "F",
-      "date": "2026-06-20",
-      "home": "Tunisia",
-      "away": "Japan",
-      "home_iso": "tn",
-      "away_iso": "jp",
-      "home_elo": 1628,
-      "away_elo": 1906,
-      "p_home": 0.0994,
-      "p_draw": 0.2395,
-      "p_away": 0.6611,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.1876
-        },
-        {
-          "score": "0-2",
-          "prob": 0.1587
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1217
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0943
-        },
-        {
-          "score": "0-3",
-          "prob": 0.0882
-        }
-      ],
-      "over25": 0.3757,
-      "under25": 0.6243,
-      "btts_yes": 0.3242,
-      "btts_no": 0.6758,
-      "exp_home_goals": 0.51,
-      "exp_away_goals": 1.69
-    },
-    {
-      "round": 2,
-      "group": "G",
-      "date": "2026-06-21",
-      "home": "Belgium",
-      "away": "Iran",
-      "home_iso": "be",
-      "away_iso": "ir",
-      "home_elo": 1894,
-      "away_elo": 1772,
-      "p_home": 0.5085,
-      "p_draw": 0.2655,
-      "p_away": 0.226,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1259
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1187
-        },
-        {
-          "score": "2-0",
-          "prob": 0.0976
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0939
-        },
-        {
-          "score": "0-0",
-          "prob": 0.086
-        }
-      ],
-      "over25": 0.464,
-      "under25": 0.536,
-      "btts_yes": 0.4948,
-      "btts_no": 0.5052,
-      "exp_home_goals": 1.57,
-      "exp_away_goals": 0.96
-    },
-    {
-      "round": 2,
-      "group": "G",
-      "date": "2026-06-21",
-      "home": "New Zealand",
-      "away": "Egypt",
-      "home_iso": "nz",
-      "away_iso": "eg",
-      "home_elo": 1562,
-      "away_elo": 1696,
-      "p_home": 0.1827,
-      "p_draw": 0.3109,
-      "p_away": 0.5065,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.1831
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1615
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1201
-        },
-        {
-          "score": "0-2",
-          "prob": 0.1161
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0851
-        }
-      ],
-      "over25": 0.3048,
-      "under25": 0.6952,
-      "btts_yes": 0.3474,
-      "btts_no": 0.6526,
-      "exp_home_goals": 0.66,
-      "exp_away_goals": 1.27
-    },
-    {
-      "round": 2,
-      "group": "H",
-      "date": "2026-06-21",
-      "home": "Spain",
-      "away": "Saudi Arabia",
-      "home_iso": "es",
-      "away_iso": "sa",
-      "home_elo": 2157,
-      "away_elo": 1576,
-      "p_home": 0.8519,
-      "p_draw": 0.1103,
-      "p_away": 0.0378,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.1449
-        },
-        {
-          "score": "3-0",
-          "prob": 0.1371
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1006
-        },
-        {
-          "score": "4-0",
-          "prob": 0.0984
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0688
-        }
-      ],
-      "over25": 0.6436,
-      "under25": 0.3564,
-      "btts_yes": 0.3557,
-      "btts_no": 0.6443,
-      "exp_home_goals": 2.85,
-      "exp_away_goals": 0.47
-    },
-    {
-      "round": 2,
-      "group": "H",
-      "date": "2026-06-21",
-      "home": "Uruguay",
-      "away": "Cape Verde",
-      "home_iso": "uy",
-      "away_iso": "cv",
-      "home_elo": 1892,
-      "away_elo": 1578,
-      "p_home": 0.6512,
-      "p_draw": 0.2434,
-      "p_away": 0.1054,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1806
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1516
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1203
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0985
-        },
-        {
-          "score": "3-0",
-          "prob": 0.0846
-        }
-      ],
-      "over25": 0.3824,
-      "under25": 0.6176,
-      "btts_yes": 0.339,
-      "btts_no": 0.661,
-      "exp_home_goals": 1.7,
-      "exp_away_goals": 0.53
-    },
-    {
-      "round": 2,
-      "group": "I",
-      "date": "2026-06-22",
-      "home": "France",
-      "away": "Iraq",
-      "home_iso": "fr",
-      "away_iso": "iq",
-      "home_elo": 2063,
-      "away_elo": 1607,
-      "p_home": 0.7578,
-      "p_draw": 0.1738,
-      "p_away": 0.0684,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.158
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1427
-        },
-        {
-          "score": "3-0",
-          "prob": 0.1158
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0804
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0779
-        }
-      ],
-      "over25": 0.5088,
-      "under25": 0.4912,
-      "btts_yes": 0.3577,
-      "btts_no": 0.6423,
-      "exp_home_goals": 2.21,
-      "exp_away_goals": 0.51
-    },
-    {
-      "round": 2,
-      "group": "I",
-      "date": "2026-06-22",
-      "home": "Norway",
-      "away": "Senegal",
-      "home_iso": "no",
-      "away_iso": "sn",
-      "home_elo": 1914,
-      "away_elo": 1860,
-      "p_home": 0.4697,
-      "p_draw": 0.2733,
-      "p_away": 0.257,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1296
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1147
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0907
-        },
-        {
-          "score": "2-0",
-          "prob": 0.0891
-        },
-        {
-          "score": "0-0",
-          "prob": 0.089
-        }
-      ],
-      "over25": 0.4551,
-      "under25": 0.5449,
-      "btts_yes": 0.4972,
-      "btts_no": 0.5028,
-      "exp_home_goals": 1.48,
-      "exp_away_goals": 1.02
-    },
-    {
-      "round": 2,
-      "group": "J",
-      "date": "2026-06-22",
-      "home": "Argentina",
-      "away": "Austria",
-      "home_iso": "ar",
-      "away_iso": "at",
-      "home_elo": 2115,
-      "away_elo": 1830,
-      "p_home": 0.5707,
-      "p_draw": 0.2938,
-      "p_away": 0.1355,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1919
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1638
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1303
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1064
-        },
-        {
-          "score": "0-1",
-          "prob": 0.0722
-        }
-      ],
-      "over25": 0.3156,
-      "under25": 0.6844,
-      "btts_yes": 0.3207,
-      "btts_no": 0.6793,
-      "exp_home_goals": 1.42,
-      "exp_away_goals": 0.55
-    },
-    {
-      "round": 2,
-      "group": "J",
-      "date": "2026-06-22",
-      "home": "Jordan",
-      "away": "Algeria",
-      "home_iso": "jo",
-      "away_iso": "dz",
-      "home_elo": 1680,
-      "away_elo": 1772,
-      "p_home": 0.1669,
-      "p_draw": 0.2255,
-      "p_away": 0.6076,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.1172
-        },
-        {
-          "score": "0-2",
-          "prob": 0.1141
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1068
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0913
-        },
-        {
-          "score": "0-3",
-          "prob": 0.0745
-        }
-      ],
-      "over25": 0.5061,
-      "under25": 0.4939,
-      "btts_yes": 0.4662,
-      "btts_no": 0.5338,
-      "exp_home_goals": 0.83,
-      "exp_away_goals": 1.88
-    },
-    {
-      "round": 2,
-      "group": "K",
-      "date": "2026-06-23",
-      "home": "Portugal",
-      "away": "Uzbekistan",
-      "home_iso": "pt",
-      "away_iso": "uz",
-      "home_elo": 1989,
-      "away_elo": 1714,
-      "p_home": 0.65,
-      "p_draw": 0.2331,
-      "p_away": 0.1169,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.16
-        },
-        {
-          "score": "2-0",
-          "prob": 0.145
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1035
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0989
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0874
-        }
-      ],
-      "over25": 0.4249,
-      "under25": 0.5751,
-      "btts_yes": 0.3826,
-      "btts_no": 0.6174,
-      "exp_home_goals": 1.77,
-      "exp_away_goals": 0.61
-    },
-    {
-      "round": 2,
-      "group": "K",
-      "date": "2026-06-23",
-      "home": "Colombia",
-      "away": "DR Congo",
-      "home_iso": "co",
-      "away_iso": "cd",
-      "home_elo": 1982,
-      "away_elo": 1652,
-      "p_home": 0.5782,
-      "p_draw": 0.2713,
-      "p_away": 0.1505,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1663
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1302
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1262
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1127
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0798
-        }
-      ],
-      "over25": 0.3686,
-      "under25": 0.6314,
-      "btts_yes": 0.3653,
-      "btts_no": 0.6347,
-      "exp_home_goals": 1.55,
-      "exp_away_goals": 0.63
-    },
-    {
-      "round": 2,
       "group": "L",
       "date": "2026-06-23",
       "home": "England",
@@ -2029,930 +2953,6 @@
       "btts_no": 0.5179,
       "exp_home_goals": 0.82,
       "exp_away_goals": 1.97
-    },
-    {
-      "round": 3,
-      "group": "A",
-      "date": "2026-06-24",
-      "home": "Mexico",
-      "away": "Czech Republic",
-      "home_iso": "mx",
-      "away_iso": "cz",
-      "home_elo": 1875,
-      "away_elo": 1740,
-      "p_home": 0.5244,
-      "p_draw": 0.2709,
-      "p_away": 0.2047,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1359
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1265
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1081
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0993
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0916
-        }
-      ],
-      "over25": 0.4231,
-      "under25": 0.5769,
-      "btts_yes": 0.4532,
-      "btts_no": 0.5468,
-      "exp_home_goals": 1.52,
-      "exp_away_goals": 0.85
-    },
-    {
-      "round": 3,
-      "group": "A",
-      "date": "2026-06-24",
-      "home": "South Africa",
-      "away": "South Korea",
-      "home_iso": "za",
-      "away_iso": "kr",
-      "home_elo": 1517,
-      "away_elo": 1758,
-      "p_home": 0.1869,
-      "p_draw": 0.2677,
-      "p_away": 0.5453,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.1424
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1233
-        },
-        {
-          "score": "0-2",
-          "prob": 0.1142
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1036
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0902
-        }
-      ],
-      "over25": 0.4141,
-      "under25": 0.5859,
-      "btts_yes": 0.434,
-      "btts_no": 0.566,
-      "exp_home_goals": 0.79,
-      "exp_away_goals": 1.55
-    },
-    {
-      "round": 3,
-      "group": "B",
-      "date": "2026-06-24",
-      "home": "Canada",
-      "away": "Switzerland",
-      "home_iso": "ca",
-      "away_iso": "ch",
-      "home_elo": 1788,
-      "away_elo": 1891,
-      "p_home": 0.2456,
-      "p_draw": 0.3015,
-      "p_away": 0.4529,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.1436
-        },
-        {
-          "score": "1-1",
-          "prob": 0.135
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1256
-        },
-        {
-          "score": "0-2",
-          "prob": 0.095
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0949
-        }
-      ],
-      "over25": 0.3623,
-      "under25": 0.6377,
-      "btts_yes": 0.4238,
-      "btts_no": 0.5762,
-      "exp_home_goals": 0.87,
-      "exp_away_goals": 1.28
-    },
-    {
-      "round": 3,
-      "group": "B",
-      "date": "2026-06-24",
-      "home": "Bosnia and Herzegovina",
-      "away": "Qatar",
-      "home_iso": "ba",
-      "away_iso": "qa",
-      "home_elo": 1595,
-      "away_elo": 1421,
-      "p_home": 0.6068,
-      "p_draw": 0.2395,
-      "p_away": 0.1537,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1368
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1252
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1122
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0932
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0865
-        }
-      ],
-      "over25": 0.4593,
-      "under25": 0.5407,
-      "btts_yes": 0.4403,
-      "btts_no": 0.5597,
-      "exp_home_goals": 1.76,
-      "exp_away_goals": 0.75
-    },
-    {
-      "round": 3,
-      "group": "C",
-      "date": "2026-06-24",
-      "home": "Scotland",
-      "away": "Brazil",
-      "home_iso": "gb-sct",
-      "away_iso": "br",
-      "home_elo": 1782,
-      "away_elo": 1991,
-      "p_home": 0.1895,
-      "p_draw": 0.2259,
-      "p_away": 0.5846,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1026
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0959
-        },
-        {
-          "score": "0-2",
-          "prob": 0.0939
-        },
-        {
-          "score": "0-1",
-          "prob": 0.0934
-        },
-        {
-          "score": "1-3",
-          "prob": 0.0638
-        }
-      ],
-      "over25": 0.5816,
-      "under25": 0.4184,
-      "btts_yes": 0.5633,
-      "btts_no": 0.4367,
-      "exp_home_goals": 1.06,
-      "exp_away_goals": 1.99
-    },
-    {
-      "round": 3,
-      "group": "C",
-      "date": "2026-06-24",
-      "home": "Morocco",
-      "away": "Haiti",
-      "home_iso": "ma",
-      "away_iso": "ht",
-      "home_elo": 1827,
-      "away_elo": 1548,
-      "p_home": 0.7142,
-      "p_draw": 0.2007,
-      "p_away": 0.0852,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 0.1647
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1647
-        },
-        {
-          "score": "3-0",
-          "prob": 0.1072
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0906
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0859
-        }
-      ],
-      "over25": 0.4447,
-      "under25": 0.5553,
-      "btts_yes": 0.3388,
-      "btts_no": 0.6612,
-      "exp_home_goals": 1.95,
-      "exp_away_goals": 0.51
-    },
-    {
-      "round": 3,
-      "group": "D",
-      "date": "2026-06-25",
-      "home": "United States",
-      "away": "Turkey",
-      "home_iso": "us",
-      "away_iso": "tr",
-      "home_elo": 1726,
-      "away_elo": 1911,
-      "p_home": 0.206,
-      "p_draw": 0.2368,
-      "p_away": 0.5572,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1091
-        },
-        {
-          "score": "0-1",
-          "prob": 0.097
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0963
-        },
-        {
-          "score": "0-2",
-          "prob": 0.0929
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0622
-        }
-      ],
-      "over25": 0.558,
-      "under25": 0.442,
-      "btts_yes": 0.5552,
-      "btts_no": 0.4448,
-      "exp_home_goals": 1.06,
-      "exp_away_goals": 1.87
-    },
-    {
-      "round": 3,
-      "group": "D",
-      "date": "2026-06-25",
-      "home": "Paraguay",
-      "away": "Australia",
-      "home_iso": "py",
-      "away_iso": "au",
-      "home_elo": 1834,
-      "away_elo": 1777,
-      "p_home": 0.3882,
-      "p_draw": 0.3173,
-      "p_away": 0.2945,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1389
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1387
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1367
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1138
-        },
-        {
-          "score": "2-0",
-          "prob": 0.0789
-        }
-      ],
-      "over25": 0.3375,
-      "under25": 0.6625,
-      "btts_yes": 0.414,
-      "btts_no": 0.586,
-      "exp_home_goals": 1.12,
-      "exp_away_goals": 0.94
-    },
-    {
-      "round": 3,
-      "group": "E",
-      "date": "2026-06-25",
-      "home": "Curaçao",
-      "away": "Ivory Coast",
-      "home_iso": "cw",
-      "away_iso": "ci",
-      "home_elo": 1434,
-      "away_elo": 1695,
-      "p_home": 0.0891,
-      "p_draw": 0.1957,
-      "p_away": 0.7152,
-      "top_scores": [
-        {
-          "score": "0-2",
-          "prob": 0.1591
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1536
-        },
-        {
-          "score": "0-3",
-          "prob": 0.1074
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0868
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0826
-        }
-      ],
-      "over25": 0.4678,
-      "under25": 0.5322,
-      "btts_yes": 0.3566,
-      "btts_no": 0.6434,
-      "exp_home_goals": 0.54,
-      "exp_away_goals": 2.0
-    },
-    {
-      "round": 3,
-      "group": "E",
-      "date": "2026-06-25",
-      "home": "Ecuador",
-      "away": "Germany",
-      "home_iso": "ec",
-      "away_iso": "de",
-      "home_elo": 1938,
-      "away_elo": 1932,
-      "p_home": 0.3406,
-      "p_draw": 0.3291,
-      "p_away": 0.3303,
-      "top_scores": [
-        {
-          "score": "0-0",
-          "prob": 0.1538
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1386
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1326
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1299
-        },
-        {
-          "score": "2-0",
-          "prob": 0.0673
-        }
-      ],
-      "over25": 0.3132,
-      "under25": 0.6868,
-      "btts_yes": 0.3951,
-      "btts_no": 0.6049,
-      "exp_home_goals": 0.99,
-      "exp_away_goals": 0.97
-    },
-    {
-      "round": 3,
-      "group": "F",
-      "date": "2026-06-25",
-      "home": "Japan",
-      "away": "Sweden",
-      "home_iso": "jp",
-      "away_iso": "se",
-      "home_elo": 1906,
-      "away_elo": 1712,
-      "p_home": 0.6239,
-      "p_draw": 0.2317,
-      "p_away": 0.1444,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1342
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1271
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1089
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0938
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0821
-        }
-      ],
-      "over25": 0.4732,
-      "under25": 0.5268,
-      "btts_yes": 0.4427,
-      "btts_no": 0.5573,
-      "exp_home_goals": 1.82,
-      "exp_away_goals": 0.75
-    },
-    {
-      "round": 3,
-      "group": "F",
-      "date": "2026-06-25",
-      "home": "Tunisia",
-      "away": "Netherlands",
-      "home_iso": "tn",
-      "away_iso": "nl",
-      "home_elo": 1628,
-      "away_elo": 1948,
-      "p_home": 0.1001,
-      "p_draw": 0.1969,
-      "p_away": 0.703,
-      "top_scores": [
-        {
-          "score": "0-2",
-          "prob": 0.141
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1312
-        },
-        {
-          "score": "0-3",
-          "prob": 0.0978
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0926
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0917
-        }
-      ],
-      "over25": 0.5138,
-      "under25": 0.4862,
-      "btts_yes": 0.4228,
-      "btts_no": 0.5772,
-      "exp_home_goals": 0.65,
-      "exp_away_goals": 2.08
-    },
-    {
-      "round": 3,
-      "group": "G",
-      "date": "2026-06-26",
-      "home": "Egypt",
-      "away": "Iran",
-      "home_iso": "eg",
-      "away_iso": "ir",
-      "home_elo": 1696,
-      "away_elo": 1772,
-      "p_home": 0.2716,
-      "p_draw": 0.3255,
-      "p_away": 0.4029,
-      "top_scores": [
-        {
-          "score": "0-0",
-          "prob": 0.1537
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1485
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1361
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1137
-        },
-        {
-          "score": "0-2",
-          "prob": 0.0837
-        }
-      ],
-      "over25": 0.3142,
-      "under25": 0.6858,
-      "btts_yes": 0.3898,
-      "btts_no": 0.6102,
-      "exp_home_goals": 0.86,
-      "exp_away_goals": 1.11
-    },
-    {
-      "round": 3,
-      "group": "G",
-      "date": "2026-06-26",
-      "home": "New Zealand",
-      "away": "Belgium",
-      "home_iso": "nz",
-      "away_iso": "be",
-      "home_elo": 1562,
-      "away_elo": 1894,
-      "p_home": 0.0701,
-      "p_draw": 0.1617,
-      "p_away": 0.7682,
-      "top_scores": [
-        {
-          "score": "0-2",
-          "prob": 0.1504
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1252
-        },
-        {
-          "score": "0-3",
-          "prob": 0.1179
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0828
-        },
-        {
-          "score": "1-1",
-          "prob": 0.0755
-        }
-      ],
-      "over25": 0.5526,
-      "under25": 0.4474,
-      "btts_yes": 0.3851,
-      "btts_no": 0.6149,
-      "exp_home_goals": 0.56,
-      "exp_away_goals": 2.34
-    },
-    {
-      "round": 3,
-      "group": "H",
-      "date": "2026-06-26",
-      "home": "Cape Verde",
-      "away": "Saudi Arabia",
-      "home_iso": "cv",
-      "away_iso": "sa",
-      "home_elo": 1578,
-      "away_elo": 1576,
-      "p_home": 0.305,
-      "p_draw": 0.3009,
-      "p_away": 0.3941,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1386
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1247
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1161
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1038
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0789
-        }
-      ],
-      "over25": 0.3817,
-      "under25": 0.6183,
-      "btts_yes": 0.4505,
-      "btts_no": 0.5495,
-      "exp_home_goals": 1.02,
-      "exp_away_goals": 1.2
-    },
-    {
-      "round": 3,
-      "group": "H",
-      "date": "2026-06-26",
-      "home": "Uruguay",
-      "away": "Spain",
-      "home_iso": "uy",
-      "away_iso": "es",
-      "home_elo": 1892,
-      "away_elo": 2157,
-      "p_home": 0.1613,
-      "p_draw": 0.2788,
-      "p_away": 0.5599,
-      "top_scores": [
-        {
-          "score": "0-1",
-          "prob": 0.1665
-        },
-        {
-          "score": "0-0",
-          "prob": 0.1297
-        },
-        {
-          "score": "0-2",
-          "prob": 0.1238
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1179
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0823
-        }
-      ],
-      "over25": 0.3623,
-      "under25": 0.6377,
-      "btts_yes": 0.3771,
-      "btts_no": 0.6229,
-      "exp_home_goals": 0.66,
-      "exp_away_goals": 1.49
-    },
-    {
-      "round": 3,
-      "group": "I",
-      "date": "2026-06-26",
-      "home": "Norway",
-      "away": "France",
-      "home_iso": "no",
-      "away_iso": "fr",
-      "home_elo": 1914,
-      "away_elo": 2063,
-      "p_home": 0.3228,
-      "p_draw": 0.2686,
-      "p_away": 0.4087,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1271
-        },
-        {
-          "score": "0-1",
-          "prob": 0.0982
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0848
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0807
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0796
-        }
-      ],
-      "over25": 0.4865,
-      "under25": 0.5135,
-      "btts_yes": 0.5271,
-      "btts_no": 0.4729,
-      "exp_home_goals": 1.22,
-      "exp_away_goals": 1.4
-    },
-    {
-      "round": 3,
-      "group": "I",
-      "date": "2026-06-26",
-      "home": "Senegal",
-      "away": "Iraq",
-      "home_iso": "sn",
-      "away_iso": "iq",
-      "home_elo": 1860,
-      "away_elo": 1607,
-      "p_home": 0.6042,
-      "p_draw": 0.2579,
-      "p_away": 0.138,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 0.1666
-        },
-        {
-          "score": "2-0",
-          "prob": 0.1361
-        },
-        {
-          "score": "0-0",
-          "prob": 0.115
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1117
-        },
-        {
-          "score": "2-1",
-          "prob": 0.0855
-        }
-      ],
-      "over25": 0.3882,
-      "under25": 0.6118,
-      "btts_yes": 0.3796,
-      "btts_no": 0.6204,
-      "exp_home_goals": 1.61,
-      "exp_away_goals": 0.63
-    },
-    {
-      "round": 3,
-      "group": "J",
-      "date": "2026-06-27",
-      "home": "Algeria",
-      "away": "Austria",
-      "home_iso": "dz",
-      "away_iso": "at",
-      "home_elo": 1772,
-      "away_elo": 1830,
-      "p_home": 0.3248,
-      "p_draw": 0.3223,
-      "p_away": 0.3528,
-      "top_scores": [
-        {
-          "score": "0-0",
-          "prob": 0.1452
-        },
-        {
-          "score": "1-1",
-          "prob": 0.1388
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1296
-        },
-        {
-          "score": "1-0",
-          "prob": 0.1262
-        },
-        {
-          "score": "0-2",
-          "prob": 0.0695
-        }
-      ],
-      "over25": 0.3268,
-      "under25": 0.6732,
-      "btts_yes": 0.4055,
-      "btts_no": 0.5945,
-      "exp_home_goals": 0.98,
-      "exp_away_goals": 1.04
-    },
-    {
-      "round": 3,
-      "group": "J",
-      "date": "2026-06-27",
-      "home": "Jordan",
-      "away": "Argentina",
-      "home_iso": "jo",
-      "away_iso": "ar",
-      "home_elo": 1680,
-      "away_elo": 2115,
-      "p_home": 0.0418,
-      "p_draw": 0.1272,
-      "p_away": 0.831,
-      "top_scores": [
-        {
-          "score": "0-2",
-          "prob": 0.1635
-        },
-        {
-          "score": "0-3",
-          "prob": 0.1408
-        },
-        {
-          "score": "0-1",
-          "prob": 0.124
-        },
-        {
-          "score": "0-4",
-          "prob": 0.091
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0701
-        }
-      ],
-      "over25": 0.5799,
-      "under25": 0.4201,
-      "btts_yes": 0.3265,
-      "btts_no": 0.6735,
-      "exp_home_goals": 0.44,
-      "exp_away_goals": 2.58
-    },
-    {
-      "round": 3,
-      "group": "K",
-      "date": "2026-06-27",
-      "home": "Colombia",
-      "away": "Portugal",
-      "home_iso": "co",
-      "away_iso": "pt",
-      "home_elo": 1982,
-      "away_elo": 1989,
-      "p_home": 0.3267,
-      "p_draw": 0.2784,
-      "p_away": 0.3949,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 0.1319
-        },
-        {
-          "score": "0-1",
-          "prob": 0.0981
-        },
-        {
-          "score": "1-0",
-          "prob": 0.0879
-        },
-        {
-          "score": "0-0",
-          "prob": 0.0848
-        },
-        {
-          "score": "1-2",
-          "prob": 0.0847
-        }
-      ],
-      "over25": 0.4706,
-      "under25": 0.5294,
-      "btts_yes": 0.5245,
-      "btts_no": 0.4755,
-      "exp_home_goals": 1.21,
-      "exp_away_goals": 1.35
-    },
-    {
-      "round": 3,
-      "group": "K",
-      "date": "2026-06-27",
-      "home": "DR Congo",
-      "away": "Uzbekistan",
-      "home_iso": "cd",
-      "away_iso": "uz",
-      "home_elo": 1652,
-      "away_elo": 1714,
-      "p_home": 0.3262,
-      "p_draw": 0.3702,
-      "p_away": 0.3036,
-      "top_scores": [
-        {
-          "score": "0-0",
-          "prob": 0.2213
-        },
-        {
-          "score": "1-0",
-          "prob": 0.159
-        },
-        {
-          "score": "0-1",
-          "prob": 0.1348
-        },
-        {
-          "score": "1-1",
-          "prob": 0.122
-        },
-        {
-          "score": "2-0",
-          "prob": 0.0649
-        }
-      ],
-      "over25": 0.2424,
-      "under25": 0.7576,
-      "btts_yes": 0.3175,
-      "btts_no": 0.6825,
-      "exp_home_goals": 0.84,
-      "exp_away_goals": 0.83
     },
     {
       "round": 3,
@@ -3046,17 +3046,17 @@
         "iso2": "mx",
         "confederation": "CONCACAF",
         "elo": 1875,
-        "exp_pts": 5.86,
-        "exp_gd": 2.49,
+        "exp_pts": 5.87,
+        "exp_gd": 2.5,
         "exp_gf": 4.73,
-        "p_win_group": 52.9,
-        "p_top2": 80.3,
-        "p_qualify": 91.8,
+        "p_win_group": 53.2,
+        "p_top2": 80.5,
+        "p_qualify": 92.1,
         "p_finish": [
-          52.9,
-          27.4,
+          53.2,
+          27.2,
           14.2,
-          5.5
+          5.4
         ],
         "proj_pos": 1
       },
@@ -3065,17 +3065,17 @@
         "iso2": "kr",
         "confederation": "AFC",
         "elo": 1758,
-        "exp_pts": 4.25,
+        "exp_pts": 4.24,
         "exp_gd": 0.27,
         "exp_gf": 3.7,
-        "p_win_group": 22.3,
-        "p_top2": 53.4,
-        "p_qualify": 74.2,
+        "p_win_group": 21.9,
+        "p_top2": 52.8,
+        "p_qualify": 73.8,
         "p_finish": [
-          22.3,
-          31.1,
-          28.9,
-          17.7
+          21.9,
+          30.9,
+          29.4,
+          17.8
         ],
         "proj_pos": 2
       },
@@ -3087,14 +3087,14 @@
         "exp_pts": 4.08,
         "exp_gd": -0.01,
         "exp_gf": 3.69,
-        "p_win_group": 20.0,
-        "p_top2": 49.3,
-        "p_qualify": 71.4,
+        "p_win_group": 20.1,
+        "p_top2": 49.7,
+        "p_qualify": 71.6,
         "p_finish": [
-          20.0,
-          29.3,
-          31.1,
-          19.6
+          20.1,
+          29.7,
+          30.8,
+          19.5
         ],
         "proj_pos": 3
       },
@@ -3103,17 +3103,17 @@
         "iso2": "za",
         "confederation": "CAF",
         "elo": 1517,
-        "exp_pts": 2.22,
-        "exp_gd": -2.75,
-        "exp_gf": 2.23,
-        "p_win_group": 4.8,
+        "exp_pts": 2.21,
+        "exp_gd": -2.76,
+        "exp_gf": 2.22,
+        "p_win_group": 4.7,
         "p_top2": 17.0,
-        "p_qualify": 32.6,
+        "p_qualify": 32.4,
         "p_finish": [
-          4.8,
+          4.7,
           12.2,
           25.7,
-          57.2
+          57.3
         ],
         "proj_pos": 4
       }
@@ -3124,17 +3124,17 @@
         "iso2": "ch",
         "confederation": "UEFA",
         "elo": 1891,
-        "exp_pts": 6.67,
+        "exp_pts": 6.68,
         "exp_gd": 4.64,
-        "exp_gf": 6.66,
-        "p_win_group": 63.2,
-        "p_top2": 90.7,
-        "p_qualify": 98.0,
+        "exp_gf": 6.67,
+        "p_win_group": 63.6,
+        "p_top2": 90.4,
+        "p_qualify": 98.1,
         "p_finish": [
-          63.2,
-          27.5,
-          8.3,
-          1.0
+          63.6,
+          26.8,
+          8.7,
+          0.9
         ],
         "proj_pos": 1
       },
@@ -3143,17 +3143,17 @@
         "iso2": "ca",
         "confederation": "CONCACAF",
         "elo": 1788,
-        "exp_pts": 5.39,
-        "exp_gd": 2.0,
-        "exp_gf": 4.46,
-        "p_win_group": 29.2,
-        "p_top2": 75.2,
-        "p_qualify": 91.2,
+        "exp_pts": 5.38,
+        "exp_gd": 1.99,
+        "exp_gf": 4.44,
+        "p_win_group": 28.6,
+        "p_top2": 75.3,
+        "p_qualify": 91.4,
         "p_finish": [
-          29.2,
-          46.0,
+          28.6,
+          46.7,
           20.7,
-          4.2
+          4.0
         ],
         "proj_pos": 2
       },
@@ -3162,17 +3162,17 @@
         "iso2": "ba",
         "confederation": "UEFA",
         "elo": 1595,
-        "exp_pts": 3.42,
-        "exp_gd": -1.01,
-        "exp_gf": 3.14,
-        "p_win_group": 7.0,
-        "p_top2": 29.7,
+        "exp_pts": 3.44,
+        "exp_gd": -0.99,
+        "exp_gf": 3.13,
+        "p_win_group": 7.2,
+        "p_top2": 30.0,
         "p_qualify": 64.0,
         "p_finish": [
-          7.0,
+          7.2,
           22.7,
-          52.0,
-          18.3
+          52.2,
+          17.9
         ],
         "proj_pos": 3
       },
@@ -3181,17 +3181,17 @@
         "iso2": "qa",
         "confederation": "AFC",
         "elo": 1421,
-        "exp_pts": 1.24,
+        "exp_pts": 1.21,
         "exp_gd": -5.63,
-        "exp_gf": 1.73,
-        "p_win_group": 0.6,
-        "p_top2": 4.4,
-        "p_qualify": 12.9,
+        "exp_gf": 1.72,
+        "p_win_group": 0.5,
+        "p_top2": 4.3,
+        "p_qualify": 12.2,
         "p_finish": [
-          0.6,
+          0.5,
           3.8,
-          19.0,
-          76.6
+          18.4,
+          77.2
         ],
         "proj_pos": 4
       }
@@ -3202,16 +3202,16 @@
         "iso2": "br",
         "confederation": "CONMEBOL",
         "elo": 1991,
-        "exp_pts": 6.11,
-        "exp_gd": 3.6,
-        "exp_gf": 6.32,
-        "p_win_group": 53.2,
-        "p_top2": 83.0,
-        "p_qualify": 95.5,
+        "exp_pts": 6.08,
+        "exp_gd": 3.52,
+        "exp_gf": 6.26,
+        "p_win_group": 52.7,
+        "p_top2": 82.8,
+        "p_qualify": 95.4,
         "p_finish": [
-          53.2,
-          29.8,
-          14.3,
+          52.7,
+          30.1,
+          14.6,
           2.6
         ],
         "proj_pos": 1
@@ -3221,17 +3221,17 @@
         "iso2": "ma",
         "confederation": "CAF",
         "elo": 1827,
-        "exp_pts": 5.28,
-        "exp_gd": 1.69,
-        "exp_gf": 4.14,
-        "p_win_group": 31.7,
-        "p_top2": 70.0,
-        "p_qualify": 89.2,
+        "exp_pts": 5.29,
+        "exp_gd": 1.73,
+        "exp_gf": 4.17,
+        "p_win_group": 31.9,
+        "p_top2": 70.5,
+        "p_qualify": 89.1,
         "p_finish": [
-          31.7,
-          38.4,
-          24.3,
-          5.7
+          31.9,
+          38.6,
+          24.0,
+          5.5
         ],
         "proj_pos": 2
       },
@@ -3240,17 +3240,17 @@
         "iso2": "gb-sct",
         "confederation": "UEFA",
         "elo": 1782,
-        "exp_pts": 3.93,
-        "exp_gd": -0.18,
-        "exp_gf": 3.9,
-        "p_win_group": 14.0,
+        "exp_pts": 3.94,
+        "exp_gd": -0.14,
+        "exp_gf": 3.92,
+        "p_win_group": 14.3,
         "p_top2": 41.0,
-        "p_qualify": 72.6,
+        "p_qualify": 72.4,
         "p_finish": [
-          14.0,
-          27.0,
-          44.0,
-          15.0
+          14.3,
+          26.6,
+          43.9,
+          15.1
         ],
         "proj_pos": 3
       },
@@ -3259,17 +3259,17 @@
         "iso2": "ht",
         "confederation": "CONCACAF",
         "elo": 1548,
-        "exp_pts": 1.33,
-        "exp_gd": -5.12,
-        "exp_gf": 2.02,
+        "exp_pts": 1.34,
+        "exp_gd": -5.11,
+        "exp_gf": 2.05,
         "p_win_group": 1.1,
-        "p_top2": 5.9,
-        "p_qualify": 14.6,
+        "p_top2": 5.7,
+        "p_qualify": 14.7,
         "p_finish": [
           1.1,
-          4.8,
-          17.4,
-          76.7
+          4.6,
+          17.5,
+          76.8
         ],
         "proj_pos": 4
       }
@@ -3280,17 +3280,17 @@
         "iso2": "tr",
         "confederation": "UEFA",
         "elo": 1911,
-        "exp_pts": 4.99,
-        "exp_gd": 1.32,
-        "exp_gf": 4.48,
-        "p_win_group": 38.8,
-        "p_top2": 67.0,
-        "p_qualify": 82.5,
+        "exp_pts": 5.01,
+        "exp_gd": 1.35,
+        "exp_gf": 4.47,
+        "p_win_group": 39.5,
+        "p_top2": 66.5,
+        "p_qualify": 82.8,
         "p_finish": [
-          38.8,
-          28.3,
-          19.8,
-          13.1
+          39.5,
+          27.0,
+          20.2,
+          13.2
         ],
         "proj_pos": 1
       },
@@ -3300,16 +3300,16 @@
         "confederation": "CONMEBOL",
         "elo": 1834,
         "exp_pts": 4.46,
-        "exp_gd": 0.55,
+        "exp_gd": 0.58,
         "exp_gf": 3.72,
-        "p_win_group": 29.1,
-        "p_top2": 56.8,
-        "p_qualify": 75.4,
+        "p_win_group": 28.6,
+        "p_top2": 57.7,
+        "p_qualify": 76.1,
         "p_finish": [
+          28.6,
           29.1,
-          27.7,
           24.7,
-          18.5
+          17.6
         ],
         "proj_pos": 2
       },
@@ -3318,17 +3318,17 @@
         "iso2": "au",
         "confederation": "AFC",
         "elo": 1777,
-        "exp_pts": 3.9,
-        "exp_gd": -0.19,
-        "exp_gf": 3.36,
-        "p_win_group": 20.5,
-        "p_top2": 46.6,
-        "p_qualify": 67.4,
+        "exp_pts": 3.86,
+        "exp_gd": -0.25,
+        "exp_gf": 3.31,
+        "p_win_group": 20.0,
+        "p_top2": 45.9,
+        "p_qualify": 66.6,
         "p_finish": [
-          20.5,
-          26.1,
-          28.5,
-          24.9
+          20.0,
+          25.8,
+          28.6,
+          25.5
         ],
         "proj_pos": 3
       },
@@ -3338,16 +3338,16 @@
         "confederation": "CONCACAF",
         "elo": 1726,
         "exp_pts": 2.97,
-        "exp_gd": -1.67,
-        "exp_gf": 3.14,
-        "p_win_group": 11.7,
-        "p_top2": 29.6,
+        "exp_gd": -1.68,
+        "exp_gf": 3.11,
+        "p_win_group": 11.8,
+        "p_top2": 29.9,
         "p_qualify": 47.9,
         "p_finish": [
-          11.7,
-          17.9,
-          26.9,
-          43.4
+          11.8,
+          18.1,
+          26.4,
+          43.6
         ],
         "proj_pos": 4
       }
@@ -3358,17 +3358,17 @@
         "iso2": "de",
         "confederation": "UEFA",
         "elo": 1932,
-        "exp_pts": 6.0,
-        "exp_gd": 3.92,
-        "exp_gf": 6.22,
-        "p_win_group": 48.1,
-        "p_top2": 81.9,
-        "p_qualify": 96.9,
+        "exp_pts": 6.01,
+        "exp_gd": 3.95,
+        "exp_gf": 6.23,
+        "p_win_group": 48.2,
+        "p_top2": 81.8,
+        "p_qualify": 97.1,
         "p_finish": [
-          48.1,
-          33.8,
-          16.8,
-          1.4
+          48.2,
+          33.6,
+          16.9,
+          1.3
         ],
         "proj_pos": 1
       },
@@ -3377,17 +3377,17 @@
         "iso2": "ec",
         "confederation": "CONMEBOL",
         "elo": 1938,
-        "exp_pts": 5.81,
-        "exp_gd": 2.77,
-        "exp_gf": 4.62,
-        "p_win_group": 39.6,
-        "p_top2": 78.4,
+        "exp_pts": 5.79,
+        "exp_gd": 2.75,
+        "exp_gf": 4.63,
+        "p_win_group": 39.4,
+        "p_top2": 78.6,
         "p_qualify": 95.2,
         "p_finish": [
-          39.6,
-          38.8,
-          19.9,
-          1.7
+          39.4,
+          39.2,
+          19.6,
+          1.9
         ],
         "proj_pos": 2
       },
@@ -3396,17 +3396,17 @@
         "iso2": "ci",
         "confederation": "CAF",
         "elo": 1695,
-        "exp_pts": 4.01,
-        "exp_gd": 0.1,
+        "exp_pts": 4.04,
+        "exp_gd": 0.11,
         "exp_gf": 3.36,
-        "p_win_group": 12.0,
-        "p_top2": 38.1,
-        "p_qualify": 76.8,
+        "p_win_group": 12.2,
+        "p_top2": 37.8,
+        "p_qualify": 77.2,
         "p_finish": [
-          12.0,
-          26.1,
-          52.5,
-          9.4
+          12.2,
+          25.6,
+          53.0,
+          9.2
         ],
         "proj_pos": 3
       },
@@ -3415,17 +3415,17 @@
         "iso2": "cw",
         "confederation": "CONCACAF",
         "elo": 1434,
-        "exp_pts": 0.83,
-        "exp_gd": -6.8,
+        "exp_pts": 0.82,
+        "exp_gd": -6.81,
         "exp_gf": 1.37,
-        "p_win_group": 0.3,
-        "p_top2": 1.6,
+        "p_win_group": 0.2,
+        "p_top2": 1.8,
         "p_qualify": 6.3,
         "p_finish": [
-          0.3,
-          1.3,
-          10.9,
-          87.5
+          0.2,
+          1.6,
+          10.6,
+          87.6
         ],
         "proj_pos": 4
       }
@@ -3436,17 +3436,17 @@
         "iso2": "nl",
         "confederation": "UEFA",
         "elo": 1948,
-        "exp_pts": 5.75,
+        "exp_pts": 5.74,
         "exp_gd": 2.63,
-        "exp_gf": 5.39,
+        "exp_gf": 5.37,
         "p_win_group": 45.5,
-        "p_top2": 80.5,
-        "p_qualify": 92.2,
+        "p_top2": 80.4,
+        "p_qualify": 91.9,
         "p_finish": [
           45.5,
-          35.1,
-          14.6,
-          4.9
+          35.0,
+          14.5,
+          5.1
         ],
         "proj_pos": 1
       },
@@ -3455,17 +3455,17 @@
         "iso2": "jp",
         "confederation": "AFC",
         "elo": 1906,
-        "exp_pts": 5.73,
-        "exp_gd": 2.33,
-        "exp_gf": 4.59,
+        "exp_pts": 5.74,
+        "exp_gd": 2.34,
+        "exp_gf": 4.6,
         "p_win_group": 43.2,
-        "p_top2": 79.4,
-        "p_qualify": 91.9,
+        "p_top2": 80.1,
+        "p_qualify": 91.8,
         "p_finish": [
           43.2,
-          36.2,
-          15.7,
-          4.8
+          36.9,
+          15.2,
+          4.7
         ],
         "proj_pos": 2
       },
@@ -3475,16 +3475,16 @@
         "confederation": "UEFA",
         "elo": 1712,
         "exp_pts": 3.01,
-        "exp_gd": -1.85,
-        "exp_gf": 3.36,
-        "p_win_group": 8.2,
-        "p_top2": 26.4,
-        "p_qualify": 51.4,
+        "exp_gd": -1.87,
+        "exp_gf": 3.34,
+        "p_win_group": 7.9,
+        "p_top2": 26.1,
+        "p_qualify": 51.6,
         "p_finish": [
-          8.2,
+          7.9,
           18.2,
-          39.8,
-          33.8
+          40.4,
+          33.5
         ],
         "proj_pos": 3
       },
@@ -3494,16 +3494,16 @@
         "confederation": "CAF",
         "elo": 1628,
         "exp_pts": 2.07,
-        "exp_gd": -3.11,
-        "exp_gf": 2.25,
-        "p_win_group": 3.1,
-        "p_top2": 13.6,
-        "p_qualify": 30.2,
+        "exp_gd": -3.1,
+        "exp_gf": 2.24,
+        "p_win_group": 3.4,
+        "p_top2": 13.4,
+        "p_qualify": 30.3,
         "p_finish": [
-          3.1,
-          10.5,
+          3.4,
+          10.0,
           29.9,
-          56.5
+          56.7
         ],
         "proj_pos": 4
       }
@@ -3515,15 +3515,15 @@
         "confederation": "UEFA",
         "elo": 1894,
         "exp_pts": 6.2,
-        "exp_gd": 3.18,
-        "exp_gf": 5.41,
-        "p_win_group": 59.1,
-        "p_top2": 85.2,
+        "exp_gd": 3.2,
+        "exp_gf": 5.44,
+        "p_win_group": 60.0,
+        "p_top2": 85.1,
         "p_qualify": 94.7,
         "p_finish": [
-          59.1,
-          26.0,
-          11.4,
+          60.0,
+          25.0,
+          11.6,
           3.4
         ],
         "proj_pos": 1
@@ -3533,17 +3533,17 @@
         "iso2": "ir",
         "confederation": "AFC",
         "elo": 1772,
-        "exp_pts": 4.56,
+        "exp_pts": 4.57,
         "exp_gd": 0.67,
-        "exp_gf": 3.75,
-        "p_win_group": 24.0,
-        "p_top2": 60.1,
-        "p_qualify": 79.9,
+        "exp_gf": 3.77,
+        "p_win_group": 23.7,
+        "p_top2": 60.3,
+        "p_qualify": 80.0,
         "p_finish": [
-          24.0,
-          36.1,
-          27.7,
-          12.2
+          23.7,
+          36.6,
+          27.4,
+          12.4
         ],
         "proj_pos": 2
       },
@@ -3552,17 +3552,17 @@
         "iso2": "eg",
         "confederation": "CAF",
         "elo": 1696,
-        "exp_pts": 3.77,
-        "exp_gd": -0.41,
-        "exp_gf": 2.86,
-        "p_win_group": 14.1,
+        "exp_pts": 3.76,
+        "exp_gd": -0.42,
+        "exp_gf": 2.87,
+        "p_win_group": 13.7,
         "p_top2": 42.2,
-        "p_qualify": 66.5,
+        "p_qualify": 66.6,
         "p_finish": [
-          14.1,
-          28.1,
-          37.1,
-          20.8
+          13.7,
+          28.6,
+          37.2,
+          20.6
         ],
         "proj_pos": 3
       },
@@ -3571,17 +3571,17 @@
         "iso2": "nz",
         "confederation": "OFC",
         "elo": 1562,
-        "exp_pts": 1.89,
-        "exp_gd": -3.43,
-        "exp_gf": 1.87,
-        "p_win_group": 2.7,
-        "p_top2": 12.6,
-        "p_qualify": 25.2,
+        "exp_pts": 1.9,
+        "exp_gd": -3.44,
+        "exp_gf": 1.9,
+        "p_win_group": 2.6,
+        "p_top2": 12.5,
+        "p_qualify": 25.3,
         "p_finish": [
-          2.7,
+          2.6,
           9.8,
-          23.8,
-          63.6
+          23.9,
+          63.7
         ],
         "proj_pos": 4
       }
@@ -3592,16 +3592,16 @@
         "iso2": "es",
         "confederation": "UEFA",
         "elo": 2157,
-        "exp_pts": 7.4,
-        "exp_gd": 5.99,
+        "exp_pts": 7.38,
+        "exp_gd": 5.98,
         "exp_gf": 7.57,
-        "p_win_group": 78.9,
-        "p_top2": 97.1,
-        "p_qualify": 99.4,
+        "p_win_group": 79.1,
+        "p_top2": 97.0,
+        "p_qualify": 99.3,
         "p_finish": [
-          78.9,
-          18.2,
-          2.5,
+          79.1,
+          17.9,
+          2.6,
           0.4
         ],
         "proj_pos": 1
@@ -3612,16 +3612,16 @@
         "confederation": "CONMEBOL",
         "elo": 1892,
         "exp_pts": 5.03,
-        "exp_gd": 1.34,
-        "exp_gf": 3.9,
+        "exp_gd": 1.32,
+        "exp_gf": 3.88,
         "p_win_group": 18.2,
-        "p_top2": 76.5,
-        "p_qualify": 88.1,
+        "p_top2": 76.4,
+        "p_qualify": 88.0,
         "p_finish": [
           18.2,
-          58.3,
+          58.2,
           18.0,
-          5.5
+          5.6
         ],
         "proj_pos": 2
       },
@@ -3630,17 +3630,17 @@
         "iso2": "sa",
         "confederation": "AFC",
         "elo": 1576,
-        "exp_pts": 2.35,
-        "exp_gd": -3.19,
+        "exp_pts": 2.36,
+        "exp_gd": -3.18,
         "exp_gf": 2.21,
-        "p_win_group": 1.8,
+        "p_win_group": 1.7,
         "p_top2": 15.7,
-        "p_qualify": 36.2,
+        "p_qualify": 36.4,
         "p_finish": [
-          1.8,
-          13.9,
-          43.7,
-          40.6
+          1.7,
+          14.0,
+          44.0,
+          40.3
         ],
         "proj_pos": 3
       },
@@ -3650,16 +3650,16 @@
         "confederation": "CAF",
         "elo": 1578,
         "exp_pts": 1.93,
-        "exp_gd": -4.15,
+        "exp_gd": -4.12,
         "exp_gf": 2.01,
-        "p_win_group": 1.1,
-        "p_top2": 10.7,
-        "p_qualify": 26.1,
+        "p_win_group": 1.0,
+        "p_top2": 10.9,
+        "p_qualify": 26.4,
         "p_finish": [
-          1.1,
-          9.6,
-          35.8,
-          53.5
+          1.0,
+          9.9,
+          35.4,
+          53.7
         ],
         "proj_pos": 4
       }
@@ -3671,16 +3671,16 @@
         "confederation": "UEFA",
         "elo": 2063,
         "exp_pts": 5.77,
-        "exp_gd": 2.54,
-        "exp_gf": 5.24,
-        "p_win_group": 46.8,
-        "p_top2": 77.8,
-        "p_qualify": 92.0,
+        "exp_gd": 2.53,
+        "exp_gf": 5.25,
+        "p_win_group": 46.9,
+        "p_top2": 77.4,
+        "p_qualify": 92.3,
         "p_finish": [
-          46.8,
-          31.1,
-          17.8,
-          4.4
+          46.9,
+          30.5,
+          17.9,
+          4.6
         ],
         "proj_pos": 1
       },
@@ -3690,16 +3690,16 @@
         "confederation": "UEFA",
         "elo": 1914,
         "exp_pts": 5.23,
-        "exp_gd": 1.68,
-        "exp_gf": 4.67,
-        "p_win_group": 34.7,
-        "p_top2": 70.0,
-        "p_qualify": 87.7,
+        "exp_gd": 1.69,
+        "exp_gf": 4.68,
+        "p_win_group": 35.1,
+        "p_top2": 70.2,
+        "p_qualify": 87.6,
         "p_finish": [
-          34.7,
-          35.3,
-          23.0,
-          7.0
+          35.1,
+          35.1,
+          22.7,
+          7.1
         ],
         "proj_pos": 2
       },
@@ -3708,17 +3708,17 @@
         "iso2": "sn",
         "confederation": "CAF",
         "elo": 1860,
-        "exp_pts": 4.04,
-        "exp_gd": -0.13,
-        "exp_gf": 3.61,
-        "p_win_group": 16.8,
-        "p_top2": 44.4,
-        "p_qualify": 72.6,
+        "exp_pts": 4.03,
+        "exp_gd": -0.16,
+        "exp_gf": 3.59,
+        "p_win_group": 16.4,
+        "p_top2": 44.6,
+        "p_qualify": 72.0,
         "p_finish": [
-          16.8,
-          27.5,
-          40.2,
-          15.5
+          16.4,
+          28.2,
+          39.3,
+          16.1
         ],
         "proj_pos": 3
       },
@@ -3728,16 +3728,16 @@
         "confederation": "AFC",
         "elo": 1607,
         "exp_pts": 1.54,
-        "exp_gd": -4.1,
+        "exp_gd": -4.07,
         "exp_gf": 1.7,
-        "p_win_group": 1.7,
-        "p_top2": 7.8,
-        "p_qualify": 18.1,
+        "p_win_group": 1.6,
+        "p_top2": 7.7,
+        "p_qualify": 18.4,
         "p_finish": [
-          1.7,
-          6.0,
-          19.1,
-          73.2
+          1.6,
+          6.1,
+          20.1,
+          72.3
         ],
         "proj_pos": 4
       }
@@ -3748,17 +3748,17 @@
         "iso2": "ar",
         "confederation": "CONMEBOL",
         "elo": 2115,
-        "exp_pts": 6.69,
-        "exp_gd": 4.0,
-        "exp_gf": 5.53,
-        "p_win_group": 68.4,
-        "p_top2": 90.5,
+        "exp_pts": 6.68,
+        "exp_gd": 4.02,
+        "exp_gf": 5.54,
+        "p_win_group": 68.5,
+        "p_top2": 90.6,
         "p_qualify": 97.4,
         "p_finish": [
-          68.4,
-          22.1,
-          8.0,
-          1.5
+          68.5,
+          22.2,
+          7.8,
+          1.6
         ],
         "proj_pos": 1
       },
@@ -3767,17 +3767,17 @@
         "iso2": "at",
         "confederation": "UEFA",
         "elo": 1830,
-        "exp_pts": 4.17,
-        "exp_gd": 0.26,
-        "exp_gf": 3.43,
-        "p_win_group": 15.4,
-        "p_top2": 51.3,
-        "p_qualify": 75.8,
+        "exp_pts": 4.16,
+        "exp_gd": 0.23,
+        "exp_gf": 3.42,
+        "p_win_group": 15.5,
+        "p_top2": 51.5,
+        "p_qualify": 75.9,
         "p_finish": [
-          15.4,
-          35.9,
-          34.7,
-          14.0
+          15.5,
+          36.0,
+          34.3,
+          14.2
         ],
         "proj_pos": 2
       },
@@ -3786,17 +3786,17 @@
         "iso2": "dz",
         "confederation": "CAF",
         "elo": 1772,
-        "exp_pts": 3.99,
-        "exp_gd": 0.0,
-        "exp_gf": 3.39,
-        "p_win_group": 14.3,
-        "p_top2": 47.9,
-        "p_qualify": 72.7,
+        "exp_pts": 4.01,
+        "exp_gd": 0.02,
+        "exp_gf": 3.4,
+        "p_win_group": 14.2,
+        "p_top2": 47.8,
+        "p_qualify": 73.3,
         "p_finish": [
-          14.3,
-          33.6,
-          35.4,
-          16.7
+          14.2,
+          33.5,
+          36.3,
+          15.9
         ],
         "proj_pos": 3
       },
@@ -3805,17 +3805,17 @@
         "iso2": "jo",
         "confederation": "AFC",
         "elo": 1680,
-        "exp_pts": 1.68,
+        "exp_pts": 1.66,
         "exp_gd": -4.27,
-        "exp_gf": 2.06,
-        "p_win_group": 1.9,
-        "p_top2": 10.3,
-        "p_qualify": 21.7,
+        "exp_gf": 2.05,
+        "p_win_group": 1.8,
+        "p_top2": 10.1,
+        "p_qualify": 21.2,
         "p_finish": [
-          1.9,
-          8.4,
-          22.0,
-          67.7
+          1.8,
+          8.3,
+          21.6,
+          68.3
         ],
         "proj_pos": 4
       }
@@ -3826,16 +3826,16 @@
         "iso2": "pt",
         "confederation": "UEFA",
         "elo": 1989,
-        "exp_pts": 5.69,
-        "exp_gd": 2.27,
-        "exp_gf": 4.65,
-        "p_win_group": 47.3,
-        "p_top2": 80.5,
-        "p_qualify": 91.3,
+        "exp_pts": 5.72,
+        "exp_gd": 2.3,
+        "exp_gf": 4.68,
+        "p_win_group": 47.9,
+        "p_top2": 80.8,
+        "p_qualify": 91.2,
         "p_finish": [
-          47.3,
-          33.2,
-          13.8,
+          47.9,
+          32.9,
+          13.5,
           5.7
         ],
         "proj_pos": 1
@@ -3845,17 +3845,17 @@
         "iso2": "co",
         "confederation": "CONMEBOL",
         "elo": 1982,
-        "exp_pts": 5.41,
-        "exp_gd": 1.9,
-        "exp_gf": 4.53,
-        "p_win_group": 40.8,
-        "p_top2": 76.5,
+        "exp_pts": 5.39,
+        "exp_gd": 1.87,
+        "exp_gf": 4.52,
+        "p_win_group": 40.4,
+        "p_top2": 76.3,
         "p_qualify": 88.8,
         "p_finish": [
-          40.8,
-          35.8,
-          16.3,
-          7.2
+          40.4,
+          35.9,
+          16.6,
+          7.1
         ],
         "proj_pos": 2
       },
@@ -3864,17 +3864,17 @@
         "iso2": "cd",
         "confederation": "CAF",
         "elo": 1652,
-        "exp_pts": 2.75,
-        "exp_gd": -1.9,
+        "exp_pts": 2.74,
+        "exp_gd": -1.89,
         "exp_gf": 2.04,
-        "p_win_group": 6.3,
-        "p_top2": 22.8,
+        "p_win_group": 6.4,
+        "p_top2": 23.2,
         "p_qualify": 44.1,
         "p_finish": [
-          6.3,
-          16.5,
-          37.0,
-          40.3
+          6.4,
+          16.8,
+          35.9,
+          40.9
         ],
         "proj_pos": 3
       },
@@ -3884,16 +3884,16 @@
         "confederation": "AFC",
         "elo": 1714,
         "exp_pts": 2.49,
-        "exp_gd": -2.28,
+        "exp_gd": -2.27,
         "exp_gf": 2.11,
-        "p_win_group": 5.6,
-        "p_top2": 20.2,
-        "p_qualify": 38.7,
+        "p_win_group": 5.3,
+        "p_top2": 19.7,
+        "p_qualify": 38.4,
         "p_finish": [
-          5.6,
-          14.6,
-          33.0,
-          46.8
+          5.3,
+          14.4,
+          34.0,
+          46.3
         ],
         "proj_pos": 4
       }
@@ -3904,17 +3904,17 @@
         "iso2": "gb-eng",
         "confederation": "UEFA",
         "elo": 2024,
-        "exp_pts": 6.66,
+        "exp_pts": 6.67,
         "exp_gd": 4.01,
         "exp_gf": 5.8,
-        "p_win_group": 63.8,
-        "p_top2": 91.4,
+        "p_win_group": 63.6,
+        "p_top2": 91.3,
         "p_qualify": 97.3,
         "p_finish": [
-          63.8,
-          27.6,
-          6.9,
-          1.7
+          63.6,
+          27.7,
+          7.1,
+          1.6
         ],
         "proj_pos": 1
       },
@@ -3923,17 +3923,17 @@
         "iso2": "hr",
         "confederation": "UEFA",
         "elo": 1912,
-        "exp_pts": 5.28,
-        "exp_gd": 1.91,
-        "exp_gf": 4.74,
-        "p_win_group": 29.7,
-        "p_top2": 76.2,
-        "p_qualify": 89.5,
+        "exp_pts": 5.25,
+        "exp_gd": 1.88,
+        "exp_gf": 4.72,
+        "p_win_group": 29.4,
+        "p_top2": 75.9,
+        "p_qualify": 89.1,
         "p_finish": [
-          29.7,
+          29.4,
           46.5,
-          17.8,
-          6.0
+          17.7,
+          6.4
         ],
         "proj_pos": 2
       },
@@ -3942,17 +3942,17 @@
         "iso2": "pa",
         "confederation": "CONCACAF",
         "elo": 1730,
-        "exp_pts": 2.61,
-        "exp_gd": -2.55,
-        "exp_gf": 2.74,
-        "p_win_group": 4.1,
-        "p_top2": 19.4,
-        "p_qualify": 43.2,
+        "exp_pts": 2.63,
+        "exp_gd": -2.53,
+        "exp_gf": 2.77,
+        "p_win_group": 4.5,
+        "p_top2": 19.8,
+        "p_qualify": 43.1,
         "p_finish": [
-          4.1,
-          15.4,
-          41.3,
-          39.3
+          4.5,
+          15.2,
+          40.8,
+          39.4
         ],
         "proj_pos": 3
       },
@@ -3961,17 +3961,17 @@
         "iso2": "gh",
         "confederation": "CAF",
         "elo": 1510,
-        "exp_pts": 2.1,
-        "exp_gd": -3.38,
-        "exp_gf": 2.21,
-        "p_win_group": 2.4,
-        "p_top2": 12.9,
-        "p_qualify": 30.8,
+        "exp_pts": 2.11,
+        "exp_gd": -3.36,
+        "exp_gf": 2.24,
+        "p_win_group": 2.5,
+        "p_top2": 13.0,
+        "p_qualify": 31.2,
         "p_finish": [
-          2.4,
-          10.5,
-          34.0,
-          53.1
+          2.5,
+          10.6,
+          34.4,
+          52.5
         ],
         "proj_pos": 4
       }

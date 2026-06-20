@@ -9,6 +9,7 @@ export interface Team {
   iso2: string;
   group: string;
   confederation: string;
+  pot: number;
   elo: number;
   attack: number;
   defense: number;
