@@ -4,7 +4,7 @@
   "train_cutoff": "2026-06-11",
   "train_matches": 48235,
   "n_sims": 20000,
-  "predicts": "All 72 group-stage matches",
+  "predicts": "All 72 group-stage matches + full knockout bracket",
   "model": {
     "ensemble": {
       "A_weight": 0.4,
@@ -3054,8 +3054,8 @@
         "p_qualify": 92.1,
         "p_finish": [
           53.2,
-          27.2,
-          14.2,
+          27.3,
+          14.1,
           5.4
         ],
         "proj_pos": 1
@@ -3069,13 +3069,13 @@
         "exp_gd": 0.27,
         "exp_gf": 3.7,
         "p_win_group": 21.9,
-        "p_top2": 52.8,
+        "p_top2": 52.9,
         "p_qualify": 73.8,
         "p_finish": [
           21.9,
           30.9,
-          29.4,
-          17.8
+          29.3,
+          17.9
         ],
         "proj_pos": 2
       },
@@ -3092,7 +3092,7 @@
         "p_qualify": 71.6,
         "p_finish": [
           20.1,
-          29.7,
+          29.6,
           30.8,
           19.5
         ],
@@ -3107,12 +3107,12 @@
         "exp_gd": -2.76,
         "exp_gf": 2.22,
         "p_win_group": 4.7,
-        "p_top2": 17.0,
+        "p_top2": 16.9,
         "p_qualify": 32.4,
         "p_finish": [
           4.7,
           12.2,
-          25.7,
+          25.8,
           57.3
         ],
         "proj_pos": 4
@@ -3132,7 +3132,7 @@
         "p_qualify": 98.1,
         "p_finish": [
           63.6,
-          26.8,
+          26.7,
           8.7,
           0.9
         ],
@@ -3151,7 +3151,7 @@
         "p_qualify": 91.4,
         "p_finish": [
           28.6,
-          46.7,
+          46.8,
           20.7,
           4.0
         ],
@@ -3165,13 +3165,13 @@
         "exp_pts": 3.44,
         "exp_gd": -0.99,
         "exp_gf": 3.13,
-        "p_win_group": 7.2,
+        "p_win_group": 7.3,
         "p_top2": 30.0,
         "p_qualify": 64.0,
         "p_finish": [
-          7.2,
+          7.3,
           22.7,
-          52.2,
+          52.1,
           17.9
         ],
         "proj_pos": 3
@@ -3190,7 +3190,7 @@
         "p_finish": [
           0.5,
           3.8,
-          18.4,
+          18.5,
           77.2
         ],
         "proj_pos": 4
@@ -3206,11 +3206,11 @@
         "exp_gd": 3.52,
         "exp_gf": 6.26,
         "p_win_group": 52.7,
-        "p_top2": 82.8,
-        "p_qualify": 95.4,
+        "p_top2": 82.9,
+        "p_qualify": 95.5,
         "p_finish": [
           52.7,
-          30.1,
+          30.2,
           14.6,
           2.6
         ],
@@ -3224,12 +3224,12 @@
         "exp_pts": 5.29,
         "exp_gd": 1.73,
         "exp_gf": 4.17,
-        "p_win_group": 31.9,
+        "p_win_group": 31.8,
         "p_top2": 70.5,
         "p_qualify": 89.1,
         "p_finish": [
-          31.9,
-          38.6,
+          31.8,
+          38.7,
           24.0,
           5.5
         ],
@@ -3243,14 +3243,14 @@
         "exp_pts": 3.94,
         "exp_gd": -0.14,
         "exp_gf": 3.92,
-        "p_win_group": 14.3,
-        "p_top2": 41.0,
-        "p_qualify": 72.4,
+        "p_win_group": 14.4,
+        "p_top2": 40.9,
+        "p_qualify": 72.3,
         "p_finish": [
-          14.3,
+          14.4,
           26.6,
           43.9,
-          15.1
+          15.2
         ],
         "proj_pos": 3
       },
@@ -3284,13 +3284,13 @@
         "exp_gd": 1.35,
         "exp_gf": 4.47,
         "p_win_group": 39.5,
-        "p_top2": 66.5,
+        "p_top2": 66.4,
         "p_qualify": 82.8,
         "p_finish": [
           39.5,
-          27.0,
-          20.2,
-          13.2
+          26.9,
+          20.3,
+          13.3
         ],
         "proj_pos": 1
       },
@@ -3302,12 +3302,12 @@
         "exp_pts": 4.46,
         "exp_gd": 0.58,
         "exp_gf": 3.72,
-        "p_win_group": 28.6,
+        "p_win_group": 28.7,
         "p_top2": 57.7,
         "p_qualify": 76.1,
         "p_finish": [
-          28.6,
-          29.1,
+          28.7,
+          29.0,
           24.7,
           17.6
         ],
@@ -3323,10 +3323,10 @@
         "exp_gf": 3.31,
         "p_win_group": 20.0,
         "p_top2": 45.9,
-        "p_qualify": 66.6,
+        "p_qualify": 66.5,
         "p_finish": [
           20.0,
-          25.8,
+          25.9,
           28.6,
           25.5
         ],
@@ -3361,12 +3361,12 @@
         "exp_pts": 6.01,
         "exp_gd": 3.95,
         "exp_gf": 6.23,
-        "p_win_group": 48.2,
+        "p_win_group": 48.3,
         "p_top2": 81.8,
         "p_qualify": 97.1,
         "p_finish": [
-          48.2,
-          33.6,
+          48.3,
+          33.5,
           16.9,
           1.3
         ],
@@ -3380,12 +3380,12 @@
         "exp_pts": 5.79,
         "exp_gd": 2.75,
         "exp_gf": 4.63,
-        "p_win_group": 39.4,
+        "p_win_group": 39.3,
         "p_top2": 78.6,
         "p_qualify": 95.2,
         "p_finish": [
-          39.4,
-          39.2,
+          39.3,
+          39.3,
           19.6,
           1.9
         ],
@@ -3439,14 +3439,14 @@
         "exp_pts": 5.74,
         "exp_gd": 2.63,
         "exp_gf": 5.37,
-        "p_win_group": 45.5,
+        "p_win_group": 45.4,
         "p_top2": 80.4,
         "p_qualify": 91.9,
         "p_finish": [
-          45.5,
+          45.4,
           35.0,
-          14.5,
-          5.1
+          14.6,
+          5.0
         ],
         "proj_pos": 1
       },
@@ -3458,12 +3458,12 @@
         "exp_pts": 5.74,
         "exp_gd": 2.34,
         "exp_gf": 4.6,
-        "p_win_group": 43.2,
+        "p_win_group": 43.3,
         "p_top2": 80.1,
         "p_qualify": 91.8,
         "p_finish": [
-          43.2,
-          36.9,
+          43.3,
+          36.8,
           15.2,
           4.7
         ],
@@ -3479,7 +3479,7 @@
         "exp_gf": 3.34,
         "p_win_group": 7.9,
         "p_top2": 26.1,
-        "p_qualify": 51.6,
+        "p_qualify": 51.5,
         "p_finish": [
           7.9,
           18.2,
@@ -3502,8 +3502,8 @@
         "p_finish": [
           3.4,
           10.0,
-          29.9,
-          56.7
+          29.8,
+          56.8
         ],
         "proj_pos": 4
       }
@@ -3522,9 +3522,9 @@
         "p_qualify": 94.7,
         "p_finish": [
           60.0,
-          25.0,
+          25.1,
           11.6,
-          3.4
+          3.3
         ],
         "proj_pos": 1
       },
@@ -3542,7 +3542,7 @@
         "p_finish": [
           23.7,
           36.6,
-          27.4,
+          27.3,
           12.4
         ],
         "proj_pos": 2
@@ -3560,8 +3560,8 @@
         "p_qualify": 66.6,
         "p_finish": [
           13.7,
-          28.6,
-          37.2,
+          28.5,
+          37.1,
           20.6
         ],
         "proj_pos": 3
@@ -3575,13 +3575,13 @@
         "exp_gd": -3.44,
         "exp_gf": 1.9,
         "p_win_group": 2.6,
-        "p_top2": 12.5,
-        "p_qualify": 25.3,
+        "p_top2": 12.4,
+        "p_qualify": 25.2,
         "p_finish": [
           2.6,
           9.8,
           23.9,
-          63.7
+          63.6
         ],
         "proj_pos": 4
       }
@@ -3616,12 +3616,12 @@
         "exp_gf": 3.88,
         "p_win_group": 18.2,
         "p_top2": 76.4,
-        "p_qualify": 88.0,
+        "p_qualify": 88.1,
         "p_finish": [
           18.2,
           58.2,
           18.0,
-          5.6
+          5.5
         ],
         "proj_pos": 2
       },
@@ -3634,13 +3634,13 @@
         "exp_gd": -3.18,
         "exp_gf": 2.21,
         "p_win_group": 1.7,
-        "p_top2": 15.7,
+        "p_top2": 15.8,
         "p_qualify": 36.4,
         "p_finish": [
           1.7,
-          14.0,
-          44.0,
-          40.3
+          14.1,
+          43.9,
+          40.4
         ],
         "proj_pos": 3
       },
@@ -3657,7 +3657,7 @@
         "p_qualify": 26.4,
         "p_finish": [
           1.0,
-          9.9,
+          9.8,
           35.4,
           53.7
         ],
@@ -3674,11 +3674,11 @@
         "exp_gd": 2.53,
         "exp_gf": 5.25,
         "p_win_group": 46.9,
-        "p_top2": 77.4,
+        "p_top2": 77.5,
         "p_qualify": 92.3,
         "p_finish": [
           46.9,
-          30.5,
+          30.6,
           17.9,
           4.6
         ],
@@ -3711,11 +3711,11 @@
         "exp_pts": 4.03,
         "exp_gd": -0.16,
         "exp_gf": 3.59,
-        "p_win_group": 16.4,
+        "p_win_group": 16.5,
         "p_top2": 44.6,
         "p_qualify": 72.0,
         "p_finish": [
-          16.4,
+          16.5,
           28.2,
           39.3,
           16.1
@@ -3730,12 +3730,12 @@
         "exp_pts": 1.54,
         "exp_gd": -4.07,
         "exp_gf": 1.7,
-        "p_win_group": 1.6,
+        "p_win_group": 1.5,
         "p_top2": 7.7,
         "p_qualify": 18.4,
         "p_finish": [
-          1.6,
-          6.1,
+          1.5,
+          6.2,
           20.1,
           72.3
         ],
@@ -3791,10 +3791,10 @@
         "exp_gf": 3.4,
         "p_win_group": 14.2,
         "p_top2": 47.8,
-        "p_qualify": 73.3,
+        "p_qualify": 73.2,
         "p_finish": [
           14.2,
-          33.5,
+          33.6,
           36.3,
           15.9
         ],
@@ -3810,7 +3810,7 @@
         "exp_gf": 2.05,
         "p_win_group": 1.8,
         "p_top2": 10.1,
-        "p_qualify": 21.2,
+        "p_qualify": 21.3,
         "p_finish": [
           1.8,
           8.3,
@@ -3829,12 +3829,12 @@
         "exp_pts": 5.72,
         "exp_gd": 2.3,
         "exp_gf": 4.68,
-        "p_win_group": 47.9,
+        "p_win_group": 48.0,
         "p_top2": 80.8,
         "p_qualify": 91.2,
         "p_finish": [
-          47.9,
-          32.9,
+          48.0,
+          32.8,
           13.5,
           5.7
         ],
@@ -3848,12 +3848,12 @@
         "exp_pts": 5.39,
         "exp_gd": 1.87,
         "exp_gf": 4.52,
-        "p_win_group": 40.4,
+        "p_win_group": 40.3,
         "p_top2": 76.3,
         "p_qualify": 88.8,
         "p_finish": [
-          40.4,
-          35.9,
+          40.3,
+          36.0,
           16.6,
           7.1
         ],
@@ -3886,11 +3886,11 @@
         "exp_pts": 2.49,
         "exp_gd": -2.27,
         "exp_gf": 2.11,
-        "p_win_group": 5.3,
+        "p_win_group": 5.2,
         "p_top2": 19.7,
         "p_qualify": 38.4,
         "p_finish": [
-          5.3,
+          5.2,
           14.4,
           34.0,
           46.3
@@ -3908,11 +3908,11 @@
         "exp_gd": 4.01,
         "exp_gf": 5.8,
         "p_win_group": 63.6,
-        "p_top2": 91.3,
-        "p_qualify": 97.3,
+        "p_top2": 91.2,
+        "p_qualify": 97.4,
         "p_finish": [
           63.6,
-          27.7,
+          27.6,
           7.1,
           1.6
         ],
@@ -3950,8 +3950,8 @@
         "p_qualify": 43.1,
         "p_finish": [
           4.5,
-          15.2,
-          40.8,
+          15.3,
+          40.7,
           39.4
         ],
         "proj_pos": 3
@@ -3966,15 +3966,1155 @@
         "exp_gf": 2.24,
         "p_win_group": 2.5,
         "p_top2": 13.0,
-        "p_qualify": 31.2,
+        "p_qualify": 31.1,
         "p_finish": [
           2.5,
           10.6,
           34.4,
-          52.5
+          52.6
         ],
         "proj_pos": 4
       }
     ]
-  }
+  },
+  "ko_probs": {
+    "Mexico": {
+      "p_ro32": 92.1,
+      "p_ro16": 53.2,
+      "p_qf": 25.6,
+      "p_sf": 11.2,
+      "p_final": 4.8,
+      "p_champion": 2.0
+    },
+    "South Korea": {
+      "p_ro32": 73.8,
+      "p_ro16": 31.8,
+      "p_qf": 10.8,
+      "p_sf": 3.3,
+      "p_final": 0.9,
+      "p_champion": 0.2
+    },
+    "South Africa": {
+      "p_ro32": 32.4,
+      "p_ro16": 8.5,
+      "p_qf": 1.8,
+      "p_sf": 0.3,
+      "p_final": 0.1,
+      "p_champion": 0.0
+    },
+    "Czech Republic": {
+      "p_ro32": 71.6,
+      "p_ro16": 29.7,
+      "p_qf": 9.4,
+      "p_sf": 2.6,
+      "p_final": 0.8,
+      "p_champion": 0.2
+    },
+    "Canada": {
+      "p_ro32": 91.4,
+      "p_ro16": 48.4,
+      "p_qf": 20.0,
+      "p_sf": 7.6,
+      "p_final": 2.9,
+      "p_champion": 0.9
+    },
+    "Switzerland": {
+      "p_ro32": 98.1,
+      "p_ro16": 62.7,
+      "p_qf": 32.4,
+      "p_sf": 14.9,
+      "p_final": 7.2,
+      "p_champion": 3.3
+    },
+    "Qatar": {
+      "p_ro32": 12.2,
+      "p_ro16": 1.5,
+      "p_qf": 0.2,
+      "p_sf": 0.0,
+      "p_final": 0.0,
+      "p_champion": 0.0
+    },
+    "Bosnia and Herzegovina": {
+      "p_ro32": 64.0,
+      "p_ro16": 21.1,
+      "p_qf": 5.6,
+      "p_sf": 1.2,
+      "p_final": 0.3,
+      "p_champion": 0.1
+    },
+    "Brazil": {
+      "p_ro32": 95.5,
+      "p_ro16": 54.9,
+      "p_qf": 32.1,
+      "p_sf": 18.1,
+      "p_final": 9.4,
+      "p_champion": 4.8
+    },
+    "Morocco": {
+      "p_ro32": 89.1,
+      "p_ro16": 46.2,
+      "p_qf": 25.3,
+      "p_sf": 13.0,
+      "p_final": 6.3,
+      "p_champion": 2.8
+    },
+    "Scotland": {
+      "p_ro32": 72.3,
+      "p_ro16": 28.9,
+      "p_qf": 12.2,
+      "p_sf": 4.4,
+      "p_final": 1.6,
+      "p_champion": 0.5
+    },
+    "Haiti": {
+      "p_ro32": 14.7,
+      "p_ro16": 2.7,
+      "p_qf": 0.5,
+      "p_sf": 0.1,
+      "p_final": 0.0,
+      "p_champion": 0.0
+    },
+    "United States": {
+      "p_ro32": 47.9,
+      "p_ro16": 18.6,
+      "p_qf": 5.7,
+      "p_sf": 1.5,
+      "p_final": 0.4,
+      "p_champion": 0.1
+    },
+    "Australia": {
+      "p_ro32": 66.5,
+      "p_ro16": 31.5,
+      "p_qf": 12.1,
+      "p_sf": 4.3,
+      "p_final": 1.5,
+      "p_champion": 0.5
+    },
+    "Paraguay": {
+      "p_ro32": 76.1,
+      "p_ro16": 40.9,
+      "p_qf": 17.8,
+      "p_sf": 7.2,
+      "p_final": 3.0,
+      "p_champion": 1.2
+    },
+    "Turkey": {
+      "p_ro32": 82.8,
+      "p_ro16": 48.3,
+      "p_qf": 23.2,
+      "p_sf": 10.0,
+      "p_final": 4.3,
+      "p_champion": 1.6
+    },
+    "Germany": {
+      "p_ro32": 97.1,
+      "p_ro16": 58.3,
+      "p_qf": 31.5,
+      "p_sf": 17.4,
+      "p_final": 8.6,
+      "p_champion": 4.4
+    },
+    "Ecuador": {
+      "p_ro32": 95.2,
+      "p_ro16": 55.7,
+      "p_qf": 29.6,
+      "p_sf": 16.1,
+      "p_final": 8.0,
+      "p_champion": 3.9
+    },
+    "Ivory Coast": {
+      "p_ro32": 77.2,
+      "p_ro16": 32.0,
+      "p_qf": 12.2,
+      "p_sf": 4.3,
+      "p_final": 1.5,
+      "p_champion": 0.6
+    },
+    "Curaçao": {
+      "p_ro32": 6.3,
+      "p_ro16": 0.7,
+      "p_qf": 0.1,
+      "p_sf": 0.0,
+      "p_final": 0.0,
+      "p_champion": 0.0
+    },
+    "Netherlands": {
+      "p_ro32": 91.9,
+      "p_ro16": 49.5,
+      "p_qf": 29.4,
+      "p_sf": 15.8,
+      "p_final": 7.8,
+      "p_champion": 3.7
+    },
+    "Japan": {
+      "p_ro32": 91.8,
+      "p_ro16": 51.1,
+      "p_qf": 30.5,
+      "p_sf": 16.6,
+      "p_final": 8.6,
+      "p_champion": 4.4
+    },
+    "Tunisia": {
+      "p_ro32": 30.3,
+      "p_ro16": 6.5,
+      "p_qf": 1.6,
+      "p_sf": 0.5,
+      "p_final": 0.1,
+      "p_champion": 0.0
+    },
+    "Sweden": {
+      "p_ro32": 51.5,
+      "p_ro16": 14.6,
+      "p_qf": 4.7,
+      "p_sf": 1.5,
+      "p_final": 0.5,
+      "p_champion": 0.1
+    },
+    "Belgium": {
+      "p_ro32": 94.7,
+      "p_ro16": 61.8,
+      "p_qf": 34.2,
+      "p_sf": 15.8,
+      "p_final": 7.6,
+      "p_champion": 3.5
+    },
+    "Iran": {
+      "p_ro32": 80.0,
+      "p_ro16": 38.5,
+      "p_qf": 14.5,
+      "p_sf": 5.0,
+      "p_final": 1.8,
+      "p_champion": 0.6
+    },
+    "Egypt": {
+      "p_ro32": 66.6,
+      "p_ro16": 27.1,
+      "p_qf": 8.9,
+      "p_sf": 2.9,
+      "p_final": 0.9,
+      "p_champion": 0.3
+    },
+    "New Zealand": {
+      "p_ro32": 25.2,
+      "p_ro16": 5.6,
+      "p_qf": 0.9,
+      "p_sf": 0.2,
+      "p_final": 0.0,
+      "p_champion": 0.0
+    },
+    "Spain": {
+      "p_ro32": 99.3,
+      "p_ro16": 63.2,
+      "p_qf": 43.1,
+      "p_sf": 30.3,
+      "p_final": 19.2,
+      "p_champion": 11.5
+    },
+    "Uruguay": {
+      "p_ro32": 88.1,
+      "p_ro16": 34.9,
+      "p_qf": 17.5,
+      "p_sf": 8.0,
+      "p_final": 3.3,
+      "p_champion": 1.3
+    },
+    "Saudi Arabia": {
+      "p_ro32": 36.4,
+      "p_ro16": 7.7,
+      "p_qf": 1.7,
+      "p_sf": 0.3,
+      "p_final": 0.1,
+      "p_champion": 0.0
+    },
+    "Cape Verde": {
+      "p_ro32": 26.4,
+      "p_ro16": 4.8,
+      "p_qf": 0.9,
+      "p_sf": 0.1,
+      "p_final": 0.0,
+      "p_champion": 0.0
+    },
+    "France": {
+      "p_ro32": 92.3,
+      "p_ro16": 60.2,
+      "p_qf": 36.0,
+      "p_sf": 21.3,
+      "p_final": 11.6,
+      "p_champion": 6.2
+    },
+    "Senegal": {
+      "p_ro32": 72.0,
+      "p_ro16": 33.6,
+      "p_qf": 15.8,
+      "p_sf": 6.8,
+      "p_final": 2.6,
+      "p_champion": 1.1
+    },
+    "Norway": {
+      "p_ro32": 87.6,
+      "p_ro16": 52.1,
+      "p_qf": 28.8,
+      "p_sf": 15.3,
+      "p_final": 7.6,
+      "p_champion": 3.7
+    },
+    "Iraq": {
+      "p_ro32": 18.4,
+      "p_ro16": 4.4,
+      "p_qf": 1.1,
+      "p_sf": 0.3,
+      "p_final": 0.0,
+      "p_champion": 0.0
+    },
+    "Argentina": {
+      "p_ro32": 97.4,
+      "p_ro16": 68.4,
+      "p_qf": 51.1,
+      "p_sf": 36.0,
+      "p_final": 24.2,
+      "p_champion": 16.0
+    },
+    "Austria": {
+      "p_ro32": 75.9,
+      "p_ro16": 33.7,
+      "p_qf": 17.2,
+      "p_sf": 7.9,
+      "p_final": 3.4,
+      "p_champion": 1.4
+    },
+    "Algeria": {
+      "p_ro32": 73.2,
+      "p_ro16": 31.3,
+      "p_qf": 15.3,
+      "p_sf": 7.0,
+      "p_final": 3.2,
+      "p_champion": 1.2
+    },
+    "Jordan": {
+      "p_ro32": 21.3,
+      "p_ro16": 4.9,
+      "p_qf": 1.3,
+      "p_sf": 0.3,
+      "p_final": 0.1,
+      "p_champion": 0.0
+    },
+    "Portugal": {
+      "p_ro32": 91.2,
+      "p_ro16": 60.7,
+      "p_qf": 34.8,
+      "p_sf": 19.4,
+      "p_final": 10.6,
+      "p_champion": 5.6
+    },
+    "Colombia": {
+      "p_ro32": 88.8,
+      "p_ro16": 56.3,
+      "p_qf": 29.8,
+      "p_sf": 15.8,
+      "p_final": 7.9,
+      "p_champion": 3.8
+    },
+    "DR Congo": {
+      "p_ro32": 44.1,
+      "p_ro16": 16.1,
+      "p_qf": 5.6,
+      "p_sf": 1.8,
+      "p_final": 0.5,
+      "p_champion": 0.1
+    },
+    "Uzbekistan": {
+      "p_ro32": 38.4,
+      "p_ro16": 13.0,
+      "p_qf": 3.8,
+      "p_sf": 1.2,
+      "p_final": 0.4,
+      "p_champion": 0.1
+    },
+    "England": {
+      "p_ro32": 97.4,
+      "p_ro16": 63.0,
+      "p_qf": 39.3,
+      "p_sf": 22.7,
+      "p_final": 12.6,
+      "p_champion": 6.8
+    },
+    "Croatia": {
+      "p_ro32": 89.1,
+      "p_ro16": 43.7,
+      "p_qf": 20.1,
+      "p_sf": 8.7,
+      "p_final": 3.7,
+      "p_champion": 1.4
+    },
+    "Panama": {
+      "p_ro32": 43.1,
+      "p_ro16": 11.0,
+      "p_qf": 2.5,
+      "p_sf": 0.6,
+      "p_final": 0.1,
+      "p_champion": 0.0
+    },
+    "Ghana": {
+      "p_ro32": 31.1,
+      "p_ro16": 6.5,
+      "p_qf": 1.4,
+      "p_sf": 0.3,
+      "p_final": 0.1,
+      "p_champion": 0.0
+    }
+  },
+  "r32_bracket": [
+    {
+      "id": "R32_01",
+      "date": "2026-06-28",
+      "venue": "Inglewood",
+      "home_slot": {
+        "type": "runner_up",
+        "group": "A"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "B"
+      },
+      "home_candidates": [
+        {
+          "team": "South Korea",
+          "iso2": "kr",
+          "prob": 30.9
+        },
+        {
+          "team": "Czech Republic",
+          "iso2": "cz",
+          "prob": 29.6
+        },
+        {
+          "team": "Mexico",
+          "iso2": "mx",
+          "prob": 27.3
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Canada",
+          "iso2": "ca",
+          "prob": 46.8
+        },
+        {
+          "team": "Switzerland",
+          "iso2": "ch",
+          "prob": 26.7
+        },
+        {
+          "team": "Bosnia and Herzegovina",
+          "iso2": "ba",
+          "prob": 22.7
+        }
+      ]
+    },
+    {
+      "id": "R32_02",
+      "date": "2026-06-29",
+      "venue": "Foxborough",
+      "home_slot": {
+        "type": "winner",
+        "group": "E"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1E"
+      },
+      "home_candidates": [
+        {
+          "team": "Germany",
+          "iso2": "de",
+          "prob": 48.3
+        },
+        {
+          "team": "Ecuador",
+          "iso2": "ec",
+          "prob": 39.3
+        },
+        {
+          "team": "Ivory Coast",
+          "iso2": "ci",
+          "prob": 12.2
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Scotland",
+          "iso2": "gb-sct",
+          "prob": 20.0
+        },
+        {
+          "team": "Australia",
+          "iso2": "au",
+          "prob": 13.1
+        },
+        {
+          "team": "Paraguay",
+          "iso2": "py",
+          "prob": 11.8
+        }
+      ]
+    },
+    {
+      "id": "R32_03",
+      "date": "2026-06-29",
+      "venue": "Guadalupe",
+      "home_slot": {
+        "type": "winner",
+        "group": "F"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "C"
+      },
+      "home_candidates": [
+        {
+          "team": "Netherlands",
+          "iso2": "nl",
+          "prob": 45.4
+        },
+        {
+          "team": "Japan",
+          "iso2": "jp",
+          "prob": 43.3
+        },
+        {
+          "team": "Sweden",
+          "iso2": "se",
+          "prob": 7.9
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Morocco",
+          "iso2": "ma",
+          "prob": 38.7
+        },
+        {
+          "team": "Brazil",
+          "iso2": "br",
+          "prob": 30.2
+        },
+        {
+          "team": "Scotland",
+          "iso2": "gb-sct",
+          "prob": 26.6
+        }
+      ]
+    },
+    {
+      "id": "R32_04",
+      "date": "2026-06-29",
+      "venue": "Houston",
+      "home_slot": {
+        "type": "winner",
+        "group": "C"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "F"
+      },
+      "home_candidates": [
+        {
+          "team": "Brazil",
+          "iso2": "br",
+          "prob": 52.7
+        },
+        {
+          "team": "Morocco",
+          "iso2": "ma",
+          "prob": 31.8
+        },
+        {
+          "team": "Scotland",
+          "iso2": "gb-sct",
+          "prob": 14.4
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Japan",
+          "iso2": "jp",
+          "prob": 36.8
+        },
+        {
+          "team": "Netherlands",
+          "iso2": "nl",
+          "prob": 35.0
+        },
+        {
+          "team": "Sweden",
+          "iso2": "se",
+          "prob": 18.2
+        }
+      ]
+    },
+    {
+      "id": "R32_05",
+      "date": "2026-06-30",
+      "venue": "East Rutherford",
+      "home_slot": {
+        "type": "winner",
+        "group": "I"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1I"
+      },
+      "home_candidates": [
+        {
+          "team": "France",
+          "iso2": "fr",
+          "prob": 46.9
+        },
+        {
+          "team": "Norway",
+          "iso2": "no",
+          "prob": 35.1
+        },
+        {
+          "team": "Senegal",
+          "iso2": "sn",
+          "prob": 16.5
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Sweden",
+          "iso2": "se",
+          "prob": 22.5
+        },
+        {
+          "team": "Tunisia",
+          "iso2": "tn",
+          "prob": 15.0
+        },
+        {
+          "team": "Japan",
+          "iso2": "jp",
+          "prob": 10.4
+        }
+      ]
+    },
+    {
+      "id": "R32_06",
+      "date": "2026-06-30",
+      "venue": "Arlington",
+      "home_slot": {
+        "type": "runner_up",
+        "group": "E"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "I"
+      },
+      "home_candidates": [
+        {
+          "team": "Ecuador",
+          "iso2": "ec",
+          "prob": 39.3
+        },
+        {
+          "team": "Germany",
+          "iso2": "de",
+          "prob": 33.5
+        },
+        {
+          "team": "Ivory Coast",
+          "iso2": "ci",
+          "prob": 25.6
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Norway",
+          "iso2": "no",
+          "prob": 35.1
+        },
+        {
+          "team": "France",
+          "iso2": "fr",
+          "prob": 30.6
+        },
+        {
+          "team": "Senegal",
+          "iso2": "sn",
+          "prob": 28.2
+        }
+      ]
+    },
+    {
+      "id": "R32_07",
+      "date": "2026-06-30",
+      "venue": "Mexico City",
+      "home_slot": {
+        "type": "winner",
+        "group": "A"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1A"
+      },
+      "home_candidates": [
+        {
+          "team": "Mexico",
+          "iso2": "mx",
+          "prob": 53.2
+        },
+        {
+          "team": "South Korea",
+          "iso2": "kr",
+          "prob": 21.9
+        },
+        {
+          "team": "Czech Republic",
+          "iso2": "cz",
+          "prob": 20.1
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Ivory Coast",
+          "iso2": "ci",
+          "prob": 20.8
+        },
+        {
+          "team": "Saudi Arabia",
+          "iso2": "sa",
+          "prob": 12.5
+        },
+        {
+          "team": "Scotland",
+          "iso2": "gb-sct",
+          "prob": 11.2
+        }
+      ]
+    },
+    {
+      "id": "R32_08",
+      "date": "2026-07-01",
+      "venue": "Santa Clara",
+      "home_slot": {
+        "type": "winner",
+        "group": "D"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1D"
+      },
+      "home_candidates": [
+        {
+          "team": "Turkey",
+          "iso2": "tr",
+          "prob": 39.5
+        },
+        {
+          "team": "Paraguay",
+          "iso2": "py",
+          "prob": 28.7
+        },
+        {
+          "team": "Australia",
+          "iso2": "au",
+          "prob": 20.0
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Bosnia and Herzegovina",
+          "iso2": "ba",
+          "prob": 33.9
+        },
+        {
+          "team": "Canada",
+          "iso2": "ca",
+          "prob": 16.1
+        },
+        {
+          "team": "Qatar",
+          "iso2": "qa",
+          "prob": 7.9
+        }
+      ]
+    },
+    {
+      "id": "R32_09",
+      "date": "2026-07-01",
+      "venue": "Seattle",
+      "home_slot": {
+        "type": "winner",
+        "group": "G"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1G"
+      },
+      "home_candidates": [
+        {
+          "team": "Belgium",
+          "iso2": "be",
+          "prob": 60.0
+        },
+        {
+          "team": "Iran",
+          "iso2": "ir",
+          "prob": 23.7
+        },
+        {
+          "team": "Egypt",
+          "iso2": "eg",
+          "prob": 13.7
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Czech Republic",
+          "iso2": "cz",
+          "prob": 21.0
+        },
+        {
+          "team": "South Korea",
+          "iso2": "kr",
+          "prob": 19.9
+        },
+        {
+          "team": "South Africa",
+          "iso2": "za",
+          "prob": 14.7
+        }
+      ]
+    },
+    {
+      "id": "R32_10",
+      "date": "2026-07-01",
+      "venue": "Atlanta",
+      "home_slot": {
+        "type": "winner",
+        "group": "L"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1L"
+      },
+      "home_candidates": [
+        {
+          "team": "England",
+          "iso2": "gb-eng",
+          "prob": 63.6
+        },
+        {
+          "team": "Croatia",
+          "iso2": "hr",
+          "prob": 29.4
+        },
+        {
+          "team": "Panama",
+          "iso2": "pa",
+          "prob": 4.5
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "DR Congo",
+          "iso2": "cd",
+          "prob": 21.1
+        },
+        {
+          "team": "Uzbekistan",
+          "iso2": "uz",
+          "prob": 18.9
+        },
+        {
+          "team": "Colombia",
+          "iso2": "co",
+          "prob": 12.6
+        }
+      ]
+    },
+    {
+      "id": "R32_11",
+      "date": "2026-07-02",
+      "venue": "Toronto",
+      "home_slot": {
+        "type": "runner_up",
+        "group": "K"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "L"
+      },
+      "home_candidates": [
+        {
+          "team": "Colombia",
+          "iso2": "co",
+          "prob": 36.0
+        },
+        {
+          "team": "Portugal",
+          "iso2": "pt",
+          "prob": 32.8
+        },
+        {
+          "team": "DR Congo",
+          "iso2": "cd",
+          "prob": 16.8
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Croatia",
+          "iso2": "hr",
+          "prob": 46.5
+        },
+        {
+          "team": "England",
+          "iso2": "gb-eng",
+          "prob": 27.6
+        },
+        {
+          "team": "Panama",
+          "iso2": "pa",
+          "prob": 15.3
+        }
+      ]
+    },
+    {
+      "id": "R32_12",
+      "date": "2026-07-02",
+      "venue": "Inglewood",
+      "home_slot": {
+        "type": "winner",
+        "group": "H"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "J"
+      },
+      "home_candidates": [
+        {
+          "team": "Spain",
+          "iso2": "es",
+          "prob": 79.1
+        },
+        {
+          "team": "Uruguay",
+          "iso2": "uy",
+          "prob": 18.2
+        },
+        {
+          "team": "Saudi Arabia",
+          "iso2": "sa",
+          "prob": 1.7
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Austria",
+          "iso2": "at",
+          "prob": 36.0
+        },
+        {
+          "team": "Algeria",
+          "iso2": "dz",
+          "prob": 33.6
+        },
+        {
+          "team": "Argentina",
+          "iso2": "ar",
+          "prob": 22.2
+        }
+      ]
+    },
+    {
+      "id": "R32_13",
+      "date": "2026-07-02",
+      "venue": "Vancouver",
+      "home_slot": {
+        "type": "winner",
+        "group": "B"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1B"
+      },
+      "home_candidates": [
+        {
+          "team": "Switzerland",
+          "iso2": "ch",
+          "prob": 63.6
+        },
+        {
+          "team": "Canada",
+          "iso2": "ca",
+          "prob": 28.6
+        },
+        {
+          "team": "Bosnia and Herzegovina",
+          "iso2": "ba",
+          "prob": 7.3
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Egypt",
+          "iso2": "eg",
+          "prob": 19.9
+        },
+        {
+          "team": "Iran",
+          "iso2": "ir",
+          "prob": 15.9
+        },
+        {
+          "team": "Algeria",
+          "iso2": "dz",
+          "prob": 13.9
+        }
+      ]
+    },
+    {
+      "id": "R32_14",
+      "date": "2026-07-03",
+      "venue": "Miami Gardens",
+      "home_slot": {
+        "type": "winner",
+        "group": "J"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "H"
+      },
+      "home_candidates": [
+        {
+          "team": "Argentina",
+          "iso2": "ar",
+          "prob": 68.5
+        },
+        {
+          "team": "Austria",
+          "iso2": "at",
+          "prob": 15.5
+        },
+        {
+          "team": "Algeria",
+          "iso2": "dz",
+          "prob": 14.2
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Uruguay",
+          "iso2": "uy",
+          "prob": 58.2
+        },
+        {
+          "team": "Spain",
+          "iso2": "es",
+          "prob": 17.9
+        },
+        {
+          "team": "Saudi Arabia",
+          "iso2": "sa",
+          "prob": 14.1
+        }
+      ]
+    },
+    {
+      "id": "R32_15",
+      "date": "2026-07-03",
+      "venue": "Arlington",
+      "home_slot": {
+        "type": "runner_up",
+        "group": "D"
+      },
+      "away_slot": {
+        "type": "runner_up",
+        "group": "G"
+      },
+      "home_candidates": [
+        {
+          "team": "Paraguay",
+          "iso2": "py",
+          "prob": 29.0
+        },
+        {
+          "team": "Turkey",
+          "iso2": "tr",
+          "prob": 26.9
+        },
+        {
+          "team": "Australia",
+          "iso2": "au",
+          "prob": 25.9
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Iran",
+          "iso2": "ir",
+          "prob": 36.6
+        },
+        {
+          "team": "Egypt",
+          "iso2": "eg",
+          "prob": 28.5
+        },
+        {
+          "team": "Belgium",
+          "iso2": "be",
+          "prob": 25.1
+        }
+      ]
+    },
+    {
+      "id": "R32_16",
+      "date": "2026-07-03",
+      "venue": "Kansas City",
+      "home_slot": {
+        "type": "winner",
+        "group": "K"
+      },
+      "away_slot": {
+        "type": "third",
+        "slot": "1K"
+      },
+      "home_candidates": [
+        {
+          "team": "Portugal",
+          "iso2": "pt",
+          "prob": 48.0
+        },
+        {
+          "team": "Colombia",
+          "iso2": "co",
+          "prob": 40.3
+        },
+        {
+          "team": "DR Congo",
+          "iso2": "cd",
+          "prob": 6.4
+        }
+      ],
+      "away_candidates": [
+        {
+          "team": "Panama",
+          "iso2": "pa",
+          "prob": 25.5
+        },
+        {
+          "team": "Ghana",
+          "iso2": "gh",
+          "prob": 20.2
+        },
+        {
+          "team": "Croatia",
+          "iso2": "hr",
+          "prob": 13.8
+        }
+      ]
+    }
+  ]
 }

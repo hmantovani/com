@@ -1,4 +1,4 @@
-// Bilingual UI copy for the Copa 2026 project pages.
+﻿// Bilingual UI copy for the Copa 2026 project pages.
 // Match data (probabilities, Elo, etc.) stays language-agnostic in the JSON;
 // only display strings and country names are localized here.
 
@@ -51,6 +51,16 @@ export interface CopaCopy {
   colGd: string;
   colQual: string;
   momentFootnote: (a: number, b: number) => string;
+
+  // moment-1 · knockout sections
+  championTitle: string;
+  championSubtitle: (sims: string) => string;
+  koRound: { ro32: string; ro16: string; qf: string; sf: string; final: string; champ: string };
+  r32Title: string;
+  r32Subtitle: string;
+  slotWinner: string;
+  slotRunnerUp: string;
+  slotThird: string;
 }
 
 const HOW_CARDS_EN = [
@@ -64,7 +74,7 @@ const HOW_CARDS_EN = [
   },
   {
     t: 'Simulated 20,000 times',
-    d: 'The full group stage is Monte-Carlo simulated 20,000 times to estimate every team’s chance of winning its group, finishing top two, and qualifying for the knockouts.',
+    d: 'The entire tournament — group stage through the final — is Monte-Carlo simulated 20,000 times. Each run resolves the bracket using the official FIFA seeding rules for third-place teams.',
   },
 ];
 
@@ -79,7 +89,7 @@ const HOW_CARDS_PT = [
   },
   {
     t: 'Simulado 20.000 vezes',
-    d: 'Toda a fase de grupos é simulada via Monte Carlo 20.000 vezes para estimar a chance de cada seleção vencer seu grupo, terminar entre os dois primeiros e se classificar ao mata-mata.',
+    d: 'O torneio inteiro — da fase de grupos à final — é simulado via Monte Carlo 20.000 vezes. Cada rodada resolve o chaveamento usando as regras oficiais da FIFA para seleções em terceiro.',
   },
 ];
 
@@ -130,7 +140,7 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     moments: MOMENTS_EN,
     nationsTitle: 'The 48 nations',
     nationsSubtitle:
-      'Twelve groups of four. Each row shows the team’s current Elo rating and its rank among all 48 qualified nations.',
+      "Twelve groups of four. Each row shows the team's current Elo rating and its rank among all 48 qualified nations.",
     topSeed: 'Top seed',
     groupWord: 'Group',
     homeFootnote: (cutoff) =>
@@ -161,6 +171,16 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     colQual: 'Qual',
     momentFootnote: (a, b) =>
       `Ensemble: ${a}% Poisson+Elo / ${b}% Poisson GLM. Probabilistic model for analysis, not betting advice.`,
+
+    championTitle: 'Champion odds',
+    championSubtitle: (sims) =>
+      `Each team's probability of advancing through every knockout round, across ${sims} simulations.`,
+    koRound: { ro32: 'RO32', ro16: 'RO16', qf: 'QF', sf: 'SF', final: 'Final', champ: 'Champion' },
+    r32Title: 'Expected Round of 32',
+    r32Subtitle: 'Most likely team in each bracket slot, based on projected group-stage outcomes.',
+    slotWinner: 'Winner',
+    slotRunnerUp: 'Runner-up',
+    slotThird: '3rd place',
   },
 
   pt: {
@@ -218,6 +238,16 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     colQual: 'Class',
     momentFootnote: (a, b) =>
       `Ensemble: ${a}% Poisson+Elo / ${b}% GLM de Poisson. Modelo probabilístico para análise, não recomendação de apostas.`,
+
+    championTitle: 'Odds de campeão',
+    championSubtitle: (sims) =>
+      `Probabilidade de cada seleção avançar em cada fase do mata-mata, em ${sims} simulações.`,
+    koRound: { ro32: 'Oitavas 32', ro16: 'Oitavas 16', qf: 'Quartas', sf: 'Semis', final: 'Final', champ: 'Campeão' },
+    r32Title: 'Oitavas de final esperadas (32)',
+    r32Subtitle: 'A seleção mais provável em cada vaga do chaveamento, com base na fase de grupos projetada.',
+    slotWinner: '1º',
+    slotRunnerUp: '2º',
+    slotThird: '3º lugar',
   },
 };
 

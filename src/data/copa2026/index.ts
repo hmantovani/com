@@ -64,6 +64,31 @@ export interface StandingRow {
   proj_pos: number;
 }
 
+export interface KoProbs {
+  p_ro32: number;
+  p_ro16: number;
+  p_qf: number;
+  p_sf: number;
+  p_final: number;
+  p_champion: number;
+}
+
+export interface R32Candidate {
+  team: string;
+  iso2: string;
+  prob: number;
+}
+
+export interface R32BracketMatch {
+  id: string;
+  date: string;
+  venue: string;
+  home_slot: { type: string; group?: string; slot?: string };
+  away_slot: { type: string; group?: string; slot?: string };
+  home_candidates: R32Candidate[];
+  away_candidates: R32Candidate[];
+}
+
 export interface Moment1Data {
   moment: number;
   label: string;
@@ -78,6 +103,8 @@ export interface Moment1Data {
   };
   matches: MatchPrediction[];
   standings: Record<string, StandingRow[]>;
+  ko_probs: Record<string, KoProbs>;
+  r32_bracket: R32BracketMatch[];
 }
 
 export const teamsData = teamsRaw as TeamsData;

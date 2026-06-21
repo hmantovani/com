@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Flag from '@/components/copa2026/Flag';
 import OutcomeBar from '@/components/copa2026/OutcomeBar';
 import { useLanguage } from '@/context/LanguageContext';
-import { moment1, type MatchPrediction, type StandingRow } from '@/data/copa2026';
+import { moment1, type MatchPrediction, type StandingRow, type R32BracketMatch } from '@/data/copa2026';
 import { copaCopy, teamName, type CopaCopy } from '@/data/copa2026/copy';
 import type { Lang } from '@/data/content';
 
@@ -63,6 +63,138 @@ function MatchCard({ m, c, lang }: { m: MatchPrediction; c: CopaCopy; lang: Lang
         <Stat label={c.statXg} value={`${m.exp_home_goals}–${m.exp_away_goals}`} />
         <Stat label={c.statOver} value={pctStr(m.over25)} />
         <Stat label={c.statBtts} value={pctStr(m.btts_yes)} />
+      </div>
+    </div>
+  );
+}
+
+// ── Champion odds table ────────────────────────────────────────────────────
+
+const KO_COLS: Array<{ key: 'p_ro32' | 'p_ro16' | 'p_qf' | 'p_sf' | 'p_final' | 'p_champion'; label: string; hide?: string }> = [
+  { key: 'p_ro32',     label: 'RO32',     hide: 'hidden sm:table-cell' },
+  { key: 'p_ro16',     label: 'RO16',     hide: 'hidden sm:table-cell' },
+  { key: 'p_qf',       label: 'QF' },
+  { key: 'p_sf',       label: 'SF' },
+  { key: 'p_final',    label: 'Final',    hide: 'hidden sm:table-cell' },
+  { key: 'p_champion', label: '🏆' },
+];
+
+function ChampionTable({ c, lang }: { c: CopaCopy; lang: Lang }) {
+  const sorted = Object.entries(moment1.ko_probs)
+    .sort((a, b) => b[1].p_champion - a[1].p_champion);
+
+  const cols = KO_COLS.map((col) => ({ ...col, label: col.key === 'p_champion' ? '🏆' : c.koRound[col.key.replace('p_', '') as keyof typeof c.koRound] }));
+
+  return (
+    <div className="rounded-xl border overflow-hidden" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="text-[10px] uppercase tracking-wider text-[#475569] border-b" style={{ borderColor: '#1e1e3f' }}>
+            <th className="text-left font-medium px-3 py-2 w-6">#</th>
+            <th className="text-left font-medium py-2">{c.colTeam}</th>
+            {cols.map((col) => (
+              <th key={col.key} className={`text-right font-medium px-3 py-2 ${col.hide ?? ''}`}>
+                {col.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map(([team, kp], i) => {
+            const iso2 = moment1.standings[Object.keys(moment1.standings)[0]]
+              ? Object.values(moment1.standings).flat().find((r) => r.team === team)?.iso2 ?? ''
+              : '';
+            const champ = kp.p_champion;
+            return (
+              <tr
+                key={team}
+                className="border-b last:border-0"
+                style={{ borderColor: '#1a1a33', background: champ >= 5 ? 'rgba(13,148,136,0.04)' : 'transparent' }}
+              >
+                <td className="px-3 py-2 font-mono text-xs text-[#475569]">{i + 1}</td>
+                <td className="py-2 pr-2">
+                  <div className="flex items-center gap-2">
+                    <Flag iso2={iso2} size={16} title={team} />
+                    <span className="text-[#f1f5f9] text-xs truncate">{teamName(team, lang)}</span>
+                  </div>
+                </td>
+                {cols.map((col) => {
+                  const val = kp[col.key];
+                  const isChamp = col.key === 'p_champion';
+                  return (
+                    <td
+                      key={col.key}
+                      className={`px-3 py-2 text-right font-mono text-xs ${col.hide ?? ''}`}
+                      style={{ color: isChamp ? (val >= 5 ? ACCENT : '#94a3b8') : '#94a3b8', fontWeight: isChamp ? 700 : 400 }}
+                    >
+                      {val.toFixed(1)}%
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+// ── R32 Bracket card ───────────────────────────────────────────────────────
+
+function slotLabel(slot: R32BracketMatch['home_slot'], c: CopaCopy): string {
+  if (slot.type === 'winner')    return `${c.slotWinner} Gr. ${slot.group}`;
+  if (slot.type === 'runner_up') return `${c.slotRunnerUp} Gr. ${slot.group}`;
+  return `${c.slotThird} · ${slot.slot}`;
+}
+
+function R32Card({ m, c, lang }: { m: R32BracketMatch; c: CopaCopy; lang: Lang }) {
+  const home = m.home_candidates[0];
+  const away = m.away_candidates[0];
+  return (
+    <div className="rounded-xl border p-4" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[10px] font-mono text-[#475569]">{m.date.slice(5)} · {m.venue}</span>
+        <span className="text-[10px] font-mono text-[#475569]">{m.id.replace('_', ' ')}</span>
+      </div>
+      <div className="flex items-center gap-2">
+        {/* Home */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1">
+            {home && <Flag iso2={home.iso2} size={20} title={home.team} />}
+            <span className="text-sm font-semibold text-[#f1f5f9] truncate">
+              {home ? teamName(home.team, lang) : '?'}
+            </span>
+            {home && (
+              <span className="text-[10px] font-mono ml-auto shrink-0" style={{ color: ACCENT }}>
+                {home.prob.toFixed(0)}%
+              </span>
+            )}
+          </div>
+          <div className="text-[9px] uppercase tracking-wide text-[#475569]">
+            {slotLabel(m.home_slot, c)}
+          </div>
+        </div>
+
+        <div className="text-xs font-bold text-[#475569] shrink-0 px-1">vs</div>
+
+        {/* Away */}
+        <div className="flex-1 min-w-0 text-right">
+          <div className="flex items-center gap-2 mb-1 justify-end">
+            {away && (
+              <span className="text-[10px] font-mono mr-auto shrink-0" style={{ color: ACCENT }}>
+                {away.prob.toFixed(0)}%
+              </span>
+            )}
+            <span className="text-sm font-semibold text-[#f1f5f9] truncate">
+              {away ? teamName(away.team, lang) : '?'}
+            </span>
+            {away && <Flag iso2={away.iso2} size={20} title={away.team} />}
+          </div>
+          <div className="text-[9px] uppercase tracking-wide text-[#475569]">
+            {slotLabel(m.away_slot, c)}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -245,6 +377,32 @@ export default function Moment1Page() {
                 c={c}
                 lang={lang}
               />
+            ))}
+          </div>
+        </section>
+
+        {/* ── Champion odds ─────────────────────────────────── */}
+        <section className="mt-16">
+          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
+            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
+            {c.championTitle}
+          </h2>
+          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">
+            {c.championSubtitle(moment1.n_sims.toLocaleString())}
+          </p>
+          <ChampionTable c={c} lang={lang} />
+        </section>
+
+        {/* ── R32 bracket ───────────────────────────────────── */}
+        <section className="mt-16">
+          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
+            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
+            {c.r32Title}
+          </h2>
+          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">{c.r32Subtitle}</p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {moment1.r32_bracket.map((m) => (
+              <R32Card key={m.id} m={m} c={c} lang={lang} />
             ))}
           </div>
         </section>

@@ -38,7 +38,8 @@ warnings.filterwarnings("ignore")
 # ----------------------------------------------------------------------------
 HERE = Path(__file__).resolve().parent
 DATA_PARQUET = HERE / "matches.parquet"
-GROUPS_JSON = HERE / "groups.json"
+GROUPS_JSON  = HERE / "groups.json"
+KNOCKOUT_JSON = HERE / "knockout.json"
 OUT_DIR = HERE.parent.parent / "src" / "data" / "copa2026"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -69,6 +70,16 @@ FIXTURES = cfg["fixtures"]   # explicit r1/r2/r3 per group
 TEAM_META = cfg["team_meta"]
 TEAM_TO_GROUP = {t: g for g, teams in GROUPS.items() for t in teams}
 COPA_TEAMS = list(TEAM_META.keys())
+
+with open(KNOCKOUT_JSON, encoding="utf-8") as f:
+    ko_cfg = json.load(f)
+
+KO_R32    = ko_cfg["ro32"]["matches"]
+KO_COMBOS = ko_cfg["ro32"]["combinations"]
+KO_R16    = ko_cfg["ro16"]["matches"]
+KO_QF     = ko_cfg["qf"]["matches"]
+KO_SF     = ko_cfg["sf"]["matches"]
+KO_FINAL  = next(m for m in ko_cfg["final"]["matches"] if m["id"] == "F_01")
 
 df = pd.read_parquet(DATA_PARQUET)
 df["date"] = pd.to_datetime(df["date"])
@@ -322,6 +333,43 @@ for g, rounds in FIXTURES.items():
             })
 
 # ----------------------------------------------------------------------------
+# Precompute KO scoreline matrices for all team pairs (C(48,2) = 1,128 pairs)
+# ----------------------------------------------------------------------------
+print("Precomputing knockout scoreline matrices...")
+ko_flat = {}   # (home, away) -> (flat_prob_array, n_cols)
+for i, t1 in enumerate(COPA_TEAMS):
+    for t2 in COPA_TEAMS[i + 1:]:
+        mat = predict_match(t1, t2)
+        p1 = mat.ravel(); p1 = p1 / p1.sum()
+        ko_flat[(t1, t2)] = (p1, mat.shape[1])
+        p2 = mat.T.ravel(); p2 = p2 / p2.sum()
+        ko_flat[(t2, t1)] = (p2, mat.shape[1])
+
+
+def sim_ko_winner(home, away):
+    """Simulate a KO match (neutral venue). Draw → 50-50 penalty coin."""
+    p, ncols = ko_flat[(home, away)]
+    idx = int(RNG.choice(len(p), p=p))
+    hg, ag = divmod(idx, ncols)
+    if hg > ag:
+        return home
+    elif ag > hg:
+        return away
+    else:
+        return home if RNG.random() < 0.5 else away
+
+
+def resolve_slot(slot_def, winner_of, runner_up_of, third_slot_assign):
+    t = slot_def["type"]
+    if t == "winner":
+        return winner_of[slot_def["group"]]
+    elif t == "runner_up":
+        return runner_up_of[slot_def["group"]]
+    else:  # third
+        return third_slot_assign[slot_def["slot"]]
+
+
+# ----------------------------------------------------------------------------
 # Monte Carlo — final group standings + advancement
 # ----------------------------------------------------------------------------
 print(f"Running Monte Carlo ({N_SIMS:,} sims)...")
@@ -338,16 +386,25 @@ group_fixtures = {g: [] for g in GROUPS}
 for (h, a) in fixture_list:
     group_fixtures[TEAM_TO_GROUP[h]].append((h, a))
 
-# Accumulators
-adv_top2 = {t: 0 for t in COPA_TEAMS}     # finished 1st or 2nd
-adv_third = {t: 0 for t in COPA_TEAMS}    # finished 3rd
-win_group = {t: 0 for t in COPA_TEAMS}
-pts_sum = {t: 0.0 for t in COPA_TEAMS}
-gd_sum = {t: 0.0 for t in COPA_TEAMS}
-gf_sum = {t: 0.0 for t in COPA_TEAMS}
-rank_counts = {t: [0, 0, 0, 0] for t in COPA_TEAMS}  # P(finish 1st..4th)
-# qualify = top2 OR best-third advancing
-qualify = {t: 0 for t in COPA_TEAMS}
+# Accumulators — group stage
+adv_top2   = {t: 0 for t in COPA_TEAMS}
+adv_third  = {t: 0 for t in COPA_TEAMS}
+win_group  = {t: 0 for t in COPA_TEAMS}
+pts_sum    = {t: 0.0 for t in COPA_TEAMS}
+gd_sum     = {t: 0.0 for t in COPA_TEAMS}
+gf_sum     = {t: 0.0 for t in COPA_TEAMS}
+rank_counts = {t: [0, 0, 0, 0] for t in COPA_TEAMS}
+qualify    = {t: 0 for t in COPA_TEAMS}   # qualified for RO32
+
+# Accumulators — knockout rounds
+ro16_reach  = {t: 0 for t in COPA_TEAMS}  # won RO32 match
+qf_reach    = {t: 0 for t in COPA_TEAMS}
+sf_reach    = {t: 0 for t in COPA_TEAMS}
+final_reach = {t: 0 for t in COPA_TEAMS}
+champion    = {t: 0 for t in COPA_TEAMS}
+
+# Track which teams appear in each R32 slot (for bracket visualization)
+r32_slot_counts = {m["id"]: {"home": {}, "away": {}} for m in KO_R32}
 
 # Pre-draw all match outcomes for all sims at once per fixture
 draws = {}
@@ -357,6 +414,10 @@ for (h, a), (p, ncols) in flat.items():
 
 for s in range(N_SIMS):
     third_place = []  # (group, team, pts, gd, gf) for best-third comparison
+    winner_of    = {}
+    runner_up_of = {}
+    third_of     = {}
+
     for g, fixtures in group_fixtures.items():
         tbl = {t: {"pts": 0, "gf": 0, "ga": 0} for t in GROUPS[g]}
         for (h, a) in fixtures:
@@ -370,7 +431,6 @@ for s in range(N_SIMS):
                 tbl[a]["pts"] += 3
             else:
                 tbl[h]["pts"] += 1; tbl[a]["pts"] += 1
-        # Rank within group: pts, gd, gf, random tiebreak
         ranked = sorted(
             GROUPS[g],
             key=lambda t: (tbl[t]["pts"], tbl[t]["gf"] - tbl[t]["ga"], tbl[t]["gf"], RNG.random()),
@@ -381,26 +441,123 @@ for s in range(N_SIMS):
             pts_sum[t] += tbl[t]["pts"]
             gd_sum[t] += tbl[t]["gf"] - tbl[t]["ga"]
             gf_sum[t] += tbl[t]["gf"]
+        winner_of[g]    = ranked[0]
+        runner_up_of[g] = ranked[1]
+        third_of[g]     = ranked[2]
         win_group[ranked[0]] += 1
         adv_top2[ranked[0]] += 1
         adv_top2[ranked[1]] += 1
-        third = ranked[2]
-        adv_third[third] += 1
+        adv_third[ranked[2]] += 1
         qualify[ranked[0]] += 1
         qualify[ranked[1]] += 1
-        third_place.append((g, third, tbl[third]["pts"], tbl[third]["gf"] - tbl[third]["ga"], tbl[third]["gf"]))
+        third_place.append((g, ranked[2], tbl[ranked[2]]["pts"],
+                            tbl[ranked[2]]["gf"] - tbl[ranked[2]]["ga"],
+                            tbl[ranked[2]]["gf"]))
+
     # Best 8 of 12 third-placed teams advance
     third_place.sort(key=lambda x: (x[2], x[3], x[4], RNG.random()), reverse=True)
     for entry in third_place[:8]:
         qualify[entry[1]] += 1
 
+    # ── Knockout bracket ─────────────────────────────────────────────────────
+    # Determine which 8 groups' thirds advanced and look up slot assignments
+    advancing_groups = sorted(e[0] for e in third_place[:8])
+    combo_key = "".join(advancing_groups)
+    slot_groups = KO_COMBOS.get(combo_key, {})   # {"1A": "E", ...}
+    third_slot_assign = {slot: third_of[g] for slot, g in slot_groups.items()}
+
+    # Fill R32 match teams
+    r32_teams = {}
+    for m in KO_R32:
+        mid = m["id"]
+        h = resolve_slot(m["home"], winner_of, runner_up_of, third_slot_assign)
+        a = resolve_slot(m["away"], winner_of, runner_up_of, third_slot_assign)
+        r32_teams[mid] = (h, a)
+        r32_slot_counts[mid]["home"][h] = r32_slot_counts[mid]["home"].get(h, 0) + 1
+        r32_slot_counts[mid]["away"][a] = r32_slot_counts[mid]["away"].get(a, 0) + 1
+
+    # R32 → 16 winners
+    r32_winners = {}
+    for m in KO_R32:
+        mid = m["id"]
+        h, a = r32_teams[mid]
+        w = sim_ko_winner(h, a)
+        r32_winners[mid] = w
+        ro16_reach[w] += 1
+
+    # R16 → 8 winners
+    r16_winners = {}
+    for m in KO_R16:
+        h = r32_winners[m["home_from"]]
+        a = r32_winners[m["away_from"]]
+        w = sim_ko_winner(h, a)
+        r16_winners[m["id"]] = w
+        qf_reach[w] += 1
+
+    # QF → 4 winners
+    qf_winners = {}
+    for m in KO_QF:
+        h = r16_winners[m["home_from"]]
+        a = r16_winners[m["away_from"]]
+        w = sim_ko_winner(h, a)
+        qf_winners[m["id"]] = w
+        sf_reach[w] += 1
+
+    # SF → 2 winners + 2 losers
+    sf_winners = {}
+    sf_losers  = {}
+    for m in KO_SF:
+        h = qf_winners[m["home_from"]]
+        a = qf_winners[m["away_from"]]
+        w = sim_ko_winner(h, a)
+        sf_winners[m["id"]] = w
+        sf_losers[m["id"]]  = a if w == h else h
+        final_reach[w] += 1
+
+    # Final → champion
+    h = sf_winners[KO_FINAL["home_from"]]
+    a = sf_winners[KO_FINAL["away_from"]]
+    champion[sim_ko_winner(h, a)] += 1
+
 # ----------------------------------------------------------------------------
-# Assemble standings (ordered by qualification probability within group)
+# Assemble KO probabilities per team
 # ----------------------------------------------------------------------------
 def pct(n):
     return round(100.0 * n / N_SIMS, 1)
 
+ko_probs = {}
+for t in COPA_TEAMS:
+    ko_probs[t] = {
+        "p_ro32":    pct(qualify[t]),
+        "p_ro16":    pct(ro16_reach[t]),
+        "p_qf":      pct(qf_reach[t]),
+        "p_sf":      pct(sf_reach[t]),
+        "p_final":   pct(final_reach[t]),
+        "p_champion": pct(champion[t]),
+    }
 
+# R32 bracket slot candidates (top-3 most likely teams per slot side)
+r32_bracket = []
+for m in KO_R32:
+    mid = m["id"]
+    def top_cands(counts, n=3):
+        return [
+            {"team": t, "iso2": TEAM_META[t]["iso2"], "prob": pct(c)}
+            for t, c in sorted(counts.items(), key=lambda x: -x[1])[:n]
+        ]
+    r32_bracket.append({
+        "id":    mid,
+        "date":  m["date"],
+        "venue": m["venue"],
+        "home_slot": m["home"],
+        "away_slot": m["away"],
+        "home_candidates": top_cands(r32_slot_counts[mid]["home"]),
+        "away_candidates": top_cands(r32_slot_counts[mid]["away"]),
+    })
+
+# ----------------------------------------------------------------------------
+# Assemble standings (ordered by qualification probability within group)
+# ----------------------------------------------------------------------------
 standings = {}
 for g in GROUPS:
     rows = []
@@ -458,7 +615,7 @@ moment1 = {
     "train_cutoff": TRAIN_CUTOFF,
     "train_matches": int(len(train)),
     "n_sims": N_SIMS,
-    "predicts": "All 72 group-stage matches",
+    "predicts": "All 72 group-stage matches + full knockout bracket",
     "model": {
         "ensemble": {"A_weight": W_A, "B_weight": W_B},
         "model_a": "Poisson + Elo regression (full history, time-decayed)",
@@ -466,6 +623,8 @@ moment1 = {
     },
     "matches": matches,
     "standings": standings,
+    "ko_probs": ko_probs,
+    "r32_bracket": r32_bracket,
 }
 with open(OUT_DIR / "moment1.json", "w", encoding="utf-8") as f:
     json.dump(moment1, f, ensure_ascii=False, indent=2)
@@ -479,3 +638,11 @@ for t in teams_out[:10]:
 print("\nGroup A projected standings:")
 for r in standings["A"]:
     print(f"  {r['proj_pos']}. {r['team']:22s} qual={r['p_qualify']}%  top2={r['p_top2']}%  pts={r['exp_pts']}")
+
+print("\nTop-10 champion odds:")
+champ_sorted = sorted(COPA_TEAMS, key=lambda t: -champion[t])
+for t in champ_sorted[:10]:
+    kp = ko_probs[t]
+    print(f"  {t:24s} RO32={kp['p_ro32']:5.1f}%  RO16={kp['p_ro16']:5.1f}%  "
+          f"QF={kp['p_qf']:5.1f}%  SF={kp['p_sf']:5.1f}%  "
+          f"Final={kp['p_final']:5.1f}%  Champion={kp['p_champion']:5.1f}%")
