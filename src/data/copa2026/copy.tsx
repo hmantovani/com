@@ -61,6 +61,12 @@ export interface CopaCopy {
   slotWinner: string;
   slotRunnerUp: string;
   slotThird: string;
+
+  // moments 5-7 (post-group-stage)
+  koForecastTitle: string;
+  koForecastLead: (matches: string, cutoff: string, sims: string) => ReactNode;
+  standingsBadgeFinal: string;
+  preMatchOdds: string;
 }
 
 const HOW_CARDS_EN = [
@@ -181,6 +187,17 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     slotWinner: 'Winner',
     slotRunnerUp: 'Runner-up',
     slotThird: '3rd place',
+
+    koForecastTitle: 'Knockout Stage Forecast',
+    koForecastLead: (matches, cutoff, sims) => (
+      <>
+        Group stage complete. With all 32 qualifiers locked in, we simulate the remaining knockout
+        rounds across <strong className="text-[#f1f5f9]">{sims}</strong> Monte Carlo runs — trained
+        on <strong className="text-[#f1f5f9]">{matches}</strong> international matches up to {cutoff}.
+      </>
+    ),
+    standingsBadgeFinal: 'Final',
+    preMatchOdds: 'Pre-match prediction',
   },
 
   pt: {
@@ -248,6 +265,17 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     slotWinner: '1º',
     slotRunnerUp: '2º',
     slotThird: '3º lugar',
+
+    koForecastTitle: 'Previsão do Mata-Mata',
+    koForecastLead: (matches, cutoff, sims) => (
+      <>
+        Fase de grupos encerrada. Com os 32 classificados definidos, simulamos as fases eliminatórias
+        em <strong className="text-[#f1f5f9]">{sims}</strong> rodadas de Monte Carlo — treinado
+        em <strong className="text-[#f1f5f9]">{matches}</strong> partidas internacionais até {cutoff}.
+      </>
+    ),
+    standingsBadgeFinal: 'Final',
+    preMatchOdds: 'Previsão pré-jogo',
   },
 };
 

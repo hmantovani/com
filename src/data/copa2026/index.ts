@@ -3,6 +3,12 @@
 
 import teamsRaw from './teams.json';
 import moment1Raw from './moment1.json';
+import moment2Raw from './moment2.json';
+import moment3Raw from './moment3.json';
+import moment4Raw from './moment4.json';
+import moment5Raw from './moment5.json';
+import moment6Raw from './moment6.json';
+import moment7Raw from './moment7.json';
 
 export interface Team {
   team: string;
@@ -47,6 +53,8 @@ export interface MatchPrediction {
   btts_no: number;
   exp_home_goals: number;
   exp_away_goals: number;
+  actual_home?: number;
+  actual_away?: number;
 }
 
 export interface StandingRow {
@@ -89,13 +97,15 @@ export interface R32BracketMatch {
   away_candidates: R32Candidate[];
 }
 
-export interface Moment1Data {
+export interface MomentData {
   moment: number;
   label: string;
   train_cutoff: string;
   train_matches: number;
   n_sims: number;
   predicts: string;
+  known_rounds: number[];
+  known_ko_rounds: string[];
   model: {
     ensemble: { A_weight: number; B_weight: number };
     model_a: string;
@@ -107,8 +117,19 @@ export interface Moment1Data {
   r32_bracket: R32BracketMatch[];
 }
 
+// backwards compat alias
+export type Moment1Data = MomentData;
+
 export const teamsData = teamsRaw as TeamsData;
-export const moment1 = moment1Raw as Moment1Data;
+export const moment1 = moment1Raw as MomentData;
+export const moment2 = moment2Raw as MomentData;
+export const moment3 = moment3Raw as MomentData;
+export const moment4 = moment4Raw as MomentData;
+export const moment5 = moment5Raw as MomentData;
+export const moment6 = moment6Raw as MomentData;
+export const moment7 = moment7Raw as MomentData;
+
+export const ALL_MOMENTS: MomentData[] = [moment1, moment2, moment3, moment4, moment5, moment6, moment7];
 
 export const GROUP_LETTERS = Object.keys(teamsData.groups);
 
