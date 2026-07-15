@@ -314,7 +314,6 @@ export default function MomentPage({ data }: { data: MomentData }) {
 
   const matches = data.matches.filter((m) => m.round === round);
   const isFinalStandings = data.known_rounds.length === 3;
-  const isKoMoment = data.moment >= 5;
 
   const thirds = Object.values(data.standings)
     .map((rows) => rows.find((r) => r.proj_pos === 3)!)
@@ -348,20 +347,14 @@ export default function MomentPage({ data }: { data: MomentData }) {
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] leading-tight mb-4">
-            {isKoMoment ? c.koForecastTitle : c.forecastTitle}
+            {c.stageTitles[data.moment - 1]}
           </h1>
           <p className="text-[#94a3b8] leading-relaxed max-w-2xl">
-            {isKoMoment
-              ? c.koForecastLead(
-                  data.train_matches.toLocaleString(),
-                  data.train_cutoff,
-                  data.n_sims.toLocaleString()
-                )
-              : c.forecastLead(
-                  data.train_matches.toLocaleString(),
-                  data.train_cutoff,
-                  data.n_sims.toLocaleString()
-                )}
+            {c.stageLeads[data.moment - 1](
+              data.train_matches.toLocaleString(),
+              data.train_cutoff,
+              data.n_sims.toLocaleString()
+            )}
           </p>
         </header>
 

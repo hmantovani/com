@@ -31,10 +31,9 @@ export interface CopaCopy {
 
   homeFootnote: (cutoff: string) => string;
 
-  // moment-1
-  stageLabel: string;
-  forecastTitle: string;
-  forecastLead: (matches: string, cutoff: string, sims: string) => ReactNode;
+  // per-moment stage header (index 0 = moment 1 … index 6 = moment 7)
+  stageTitles: string[];
+  stageLeads: Array<(matches: string, cutoff: string, sims: string) => ReactNode>;
   matchPredictions: string;
   roundWord: string;
   standingsTitle: string;
@@ -62,9 +61,6 @@ export interface CopaCopy {
   bracketProjected: string;
   bracketPens: string;
 
-  // moments 5-7 (post-group-stage)
-  koForecastTitle: string;
-  koForecastLead: (matches: string, cutoff: string, sims: string) => ReactNode;
   standingsBadgeFinal: string;
   preMatchOdds: string;
 }
@@ -121,6 +117,133 @@ const MOMENTS_PT = [
   { label: 'Após as semis', predicts: 'Final + 3º lugar' },
 ];
 
+const STAGE_TITLES_EN = [
+  'Group Stage Forecast',
+  'Group Stage Forecast',
+  'Group Stage Forecast',
+  'Knockout Stage Forecast',
+  'Knockout Stage Forecast',
+  'Knockout Stage Forecast',
+  'Knockout Stage Forecast',
+];
+
+const STAGE_LEADS_EN: Array<(matches: string, cutoff: string, sims: string) => ReactNode> = [
+  (matches, cutoff, sims) => (
+    <>
+      Nothing has kicked off yet — every group match and the full knockout bracket, all the way to the
+      champion, is predicted from scratch, using <strong className="text-[#f1f5f9]">{matches}</strong>{' '}
+      international matches up to {cutoff} and <strong className="text-[#f1f5f9]">{sims}</strong> Monte
+      Carlo simulations.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Matchday 1 results are real. Matchdays 2–3 and the full knockout bracket are predicted, using{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff} and{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Matchdays 1–2 results are real. Matchday 3 and the full knockout bracket are predicted, using{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff} and{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      The group stage is complete — all 72 results are real. The entire knockout bracket, from the Round
+      of 32 to the champion, is predicted using <strong className="text-[#f1f5f9]">{sims}</strong>{' '}
+      simulations trained on <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Group stage and Round of 32 results are real. From the Round of 16 onward the bracket is predicted,
+      using <strong className="text-[#f1f5f9]">{sims}</strong> simulations trained on{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Everything through the Round of 16 is real. Simulation starts at the Quarter-Finals, using{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> runs trained on{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Everything through the Quarter-Finals is real. Only the Semi-Finals, the third-place match and the
+      Final are predicted, using <strong className="text-[#f1f5f9]">{sims}</strong> simulations trained on{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+    </>
+  ),
+];
+
+const STAGE_TITLES_PT = [
+  'Previsão da Fase de Grupos',
+  'Previsão da Fase de Grupos',
+  'Previsão da Fase de Grupos',
+  'Previsão do Mata-Mata',
+  'Previsão do Mata-Mata',
+  'Previsão do Mata-Mata',
+  'Previsão do Mata-Mata',
+];
+
+const STAGE_LEADS_PT: Array<(matches: string, cutoff: string, sims: string) => ReactNode> = [
+  (matches, cutoff, sims) => (
+    <>
+      Nada começou ainda — cada partida da fase de grupos e o chaveamento completo do mata-mata, até o
+      campeão, são previstos do zero, usando <strong className="text-[#f1f5f9]">{matches}</strong>{' '}
+      partidas internacionais até {cutoff} e <strong className="text-[#f1f5f9]">{sims}</strong> simulações
+      de Monte Carlo.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Os resultados da Rodada 1 já são reais. As Rodadas 2–3 e o chaveamento completo do mata-mata são
+      previstos, usando <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff} e{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Os resultados das Rodadas 1–2 já são reais. A Rodada 3 e o chaveamento completo do mata-mata são
+      previstos, usando <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff} e{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      A fase de grupos terminou — os 72 resultados já são reais. Todo o chaveamento do mata-mata, das
+      oitavas (32) ao campeão, é previsto usando <strong className="text-[#f1f5f9]">{sims}</strong>{' '}
+      simulações treinadas em <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Fase de grupos e oitavas (32) já são reais. A partir das oitavas (16) o chaveamento é previsto,
+      usando <strong className="text-[#f1f5f9]">{sims}</strong> simulações treinadas em{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Tudo até as oitavas (16) já é real. A simulação começa nas quartas de final, usando{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> rodadas treinadas em{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
+    </>
+  ),
+  (matches, cutoff, sims) => (
+    <>
+      Tudo até as quartas de final já é real. Só a semifinal, a disputa de 3º lugar e a final são
+      previstas, usando{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> simulações treinadas em{' '}
+      <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
+    </>
+  ),
+];
+
 export const copaCopy: Record<Lang, CopaCopy> = {
   en: {
     back: 'Back to Portfolio',
@@ -151,15 +274,8 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     groupWord: 'Group',
     homeFootnote: (cutoff) =>
       `Elo ratings sourced pre-tournament. This is a probabilistic model for analysis and entertainment, not betting advice. Methodology snapshot: trained on data up to ${cutoff}.`,
-    stageLabel: 'Stage 1 · Pre-tournament',
-    forecastTitle: 'Group Stage Forecast',
-    forecastLead: (matches, cutoff, sims) => (
-      <>
-        Every group-stage match predicted before a ball is kicked, using all{' '}
-        <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}. Final standings come from{' '}
-        <strong className="text-[#f1f5f9]">{sims}</strong> Monte-Carlo simulations of the whole group phase.
-      </>
-    ),
+    stageTitles: STAGE_TITLES_EN,
+    stageLeads: STAGE_LEADS_EN,
     matchPredictions: 'Match predictions',
     roundWord: 'Round',
     standingsTitle: 'Projected final standings',
@@ -189,14 +305,6 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     bracketProjected: 'Projected',
     bracketPens: 'Penalties',
 
-    koForecastTitle: 'Knockout Stage Forecast',
-    koForecastLead: (matches, cutoff, sims) => (
-      <>
-        Group stage complete. With all 32 qualifiers locked in, we simulate the remaining knockout
-        rounds across <strong className="text-[#f1f5f9]">{sims}</strong> Monte Carlo runs — trained
-        on <strong className="text-[#f1f5f9]">{matches}</strong> international matches up to {cutoff}.
-      </>
-    ),
     standingsBadgeFinal: 'Final',
     preMatchOdds: 'Pre-match prediction',
   },
@@ -230,15 +338,8 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     groupWord: 'Grupo',
     homeFootnote: (cutoff) =>
       `Ratings Elo obtidos antes do torneio. Este é um modelo probabilístico para análise e entretenimento, não recomendação de apostas. Instantâneo da metodologia: treinado com dados até ${cutoff}.`,
-    stageLabel: 'Etapa 1 · Pré-torneio',
-    forecastTitle: 'Previsão da Fase de Grupos',
-    forecastLead: (matches, cutoff, sims) => (
-      <>
-        Cada partida da fase de grupos prevista antes da bola rolar, usando todas as{' '}
-        <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}. As classificações finais vêm de{' '}
-        <strong className="text-[#f1f5f9]">{sims}</strong> simulações de Monte Carlo de toda a fase de grupos.
-      </>
-    ),
+    stageTitles: STAGE_TITLES_PT,
+    stageLeads: STAGE_LEADS_PT,
     matchPredictions: 'Previsões das partidas',
     roundWord: 'Rodada',
     standingsTitle: 'Classificação final projetada',
@@ -268,14 +369,6 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     bracketProjected: 'Projetado',
     bracketPens: 'Pênaltis',
 
-    koForecastTitle: 'Previsão do Mata-Mata',
-    koForecastLead: (matches, cutoff, sims) => (
-      <>
-        Fase de grupos encerrada. Com os 32 classificados definidos, simulamos as fases eliminatórias
-        em <strong className="text-[#f1f5f9]">{sims}</strong> rodadas de Monte Carlo — treinado
-        em <strong className="text-[#f1f5f9]">{matches}</strong> partidas internacionais até {cutoff}.
-      </>
-    ),
     standingsBadgeFinal: 'Final',
     preMatchOdds: 'Previsão pré-jogo',
   },
