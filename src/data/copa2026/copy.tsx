@@ -33,7 +33,7 @@ export interface CopaCopy {
 
   // per-moment stage header (index 0 = moment 1 … index 6 = moment 7)
   stageTitles: string[];
-  stageLeads: Array<(matches: string, cutoff: string, sims: string) => ReactNode>;
+  stageLeads: Array<(sims: string) => ReactNode>;
   matchPredictions: string;
   roundWord: string;
   standingsTitle: string;
@@ -127,55 +127,49 @@ const STAGE_TITLES_EN = [
   'Knockout Stage Forecast',
 ];
 
-const STAGE_LEADS_EN: Array<(matches: string, cutoff: string, sims: string) => ReactNode> = [
-  (matches, cutoff, sims) => (
+const STAGE_LEADS_EN: Array<(sims: string) => ReactNode> = [
+  (sims) => (
     <>
       Nothing has kicked off yet — every group match and the full knockout bracket, all the way to the
-      champion, is predicted from scratch, using <strong className="text-[#f1f5f9]">{matches}</strong>{' '}
-      international matches up to {cutoff} and <strong className="text-[#f1f5f9]">{sims}</strong> Monte
+      champion, is predicted from scratch, across <strong className="text-[#f1f5f9]">{sims}</strong> Monte
       Carlo simulations.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
-      Matchday 1 results are real. Matchdays 2–3 and the full knockout bracket are predicted, using{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff} and{' '}
+      Matchday 1 results are real. Matchdays 2–3 and the full knockout bracket are predicted, across{' '}
       <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
-      Matchdays 1–2 results are real. Matchday 3 and the full knockout bracket are predicted, using{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff} and{' '}
+      Matchdays 1–2 results are real. Matchday 3 and the full knockout bracket are predicted, across{' '}
       <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
       The group stage is complete — all 72 results are real. The entire knockout bracket, from the Round
-      of 32 to the champion, is predicted using <strong className="text-[#f1f5f9]">{sims}</strong>{' '}
-      simulations trained on <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+      of 32 to the champion, is predicted across <strong className="text-[#f1f5f9]">{sims}</strong>{' '}
+      simulations.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
       Group stage and Round of 32 results are real. From the Round of 16 onward the bracket is predicted,
-      using <strong className="text-[#f1f5f9]">{sims}</strong> simulations trained on{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+      across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
-      Everything through the Round of 16 is real. Simulation starts at the Quarter-Finals, using{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> runs trained on{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+      Everything through the Round of 16 is real. Simulation starts at the Quarter-Finals, across{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> runs.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
       Everything through the Quarter-Finals is real. Only the Semi-Finals, the third-place match and the
-      Final are predicted, using <strong className="text-[#f1f5f9]">{sims}</strong> simulations trained on{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> matches up to {cutoff}.
+      Final are predicted, across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
     </>
   ),
 ];
@@ -190,56 +184,48 @@ const STAGE_TITLES_PT = [
   'Previsão do Mata-Mata',
 ];
 
-const STAGE_LEADS_PT: Array<(matches: string, cutoff: string, sims: string) => ReactNode> = [
-  (matches, cutoff, sims) => (
+const STAGE_LEADS_PT: Array<(sims: string) => ReactNode> = [
+  (sims) => (
     <>
       Nada começou ainda — cada partida da fase de grupos e o chaveamento completo do mata-mata, até o
-      campeão, são previstos do zero, usando <strong className="text-[#f1f5f9]">{matches}</strong>{' '}
-      partidas internacionais até {cutoff} e <strong className="text-[#f1f5f9]">{sims}</strong> simulações
-      de Monte Carlo.
+      campeão, são previstos do zero, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações de
+      Monte Carlo.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
       Os resultados da Rodada 1 já são reais. As Rodadas 2–3 e o chaveamento completo do mata-mata são
-      previstos, usando <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff} e{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      previstos, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
       Os resultados das Rodadas 1–2 já são reais. A Rodada 3 e o chaveamento completo do mata-mata são
-      previstos, usando <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff} e{' '}
+      previstos, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+    </>
+  ),
+  (sims) => (
+    <>
+      A fase de grupos terminou — os 72 resultados já são reais. Todo o chaveamento do mata-mata, das
+      oitavas (32) ao campeão, é previsto em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+    </>
+  ),
+  (sims) => (
+    <>
+      Fase de grupos e oitavas (32) já são reais. A partir das oitavas (16) o chaveamento é previsto, em{' '}
       <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
     </>
   ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
-      A fase de grupos terminou — os 72 resultados já são reais. Todo o chaveamento do mata-mata, das
-      oitavas (32) ao campeão, é previsto usando <strong className="text-[#f1f5f9]">{sims}</strong>{' '}
-      simulações treinadas em <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
+      Tudo até as oitavas (16) já é real. A simulação começa nas quartas de final, em{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> rodadas.
     </>
   ),
-  (matches, cutoff, sims) => (
-    <>
-      Fase de grupos e oitavas (32) já são reais. A partir das oitavas (16) o chaveamento é previsto,
-      usando <strong className="text-[#f1f5f9]">{sims}</strong> simulações treinadas em{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
-    </>
-  ),
-  (matches, cutoff, sims) => (
-    <>
-      Tudo até as oitavas (16) já é real. A simulação começa nas quartas de final, usando{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> rodadas treinadas em{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
-    </>
-  ),
-  (matches, cutoff, sims) => (
+  (sims) => (
     <>
       Tudo até as quartas de final já é real. Só a semifinal, a disputa de 3º lugar e a final são
-      previstas, usando{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> simulações treinadas em{' '}
-      <strong className="text-[#f1f5f9]">{matches}</strong> partidas até {cutoff}.
+      previstas, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
     </>
   ),
 ];

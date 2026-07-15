@@ -350,11 +350,7 @@ export default function MomentPage({ data }: { data: MomentData }) {
             {c.stageTitles[data.moment - 1]}
           </h1>
           <p className="text-[#94a3b8] leading-relaxed max-w-2xl">
-            {c.stageLeads[data.moment - 1](
-              data.train_matches.toLocaleString(),
-              data.train_cutoff,
-              data.n_sims.toLocaleString()
-            )}
+            {c.stageLeads[data.moment - 1](data.n_sims.toLocaleString())}
           </p>
         </header>
 
