@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Flag from '@/components/copa2026/Flag';
 import OutcomeBar from '@/components/copa2026/OutcomeBar';
 import { useLanguage } from '@/context/LanguageContext';
-import type { MomentData, MatchPrediction, StandingRow, R32BracketMatch } from '@/data/copa2026';
+import type { MomentData, MatchPrediction, StandingRow, BracketMatch, Bracket } from '@/data/copa2026';
 import { copaCopy, teamName, type CopaCopy } from '@/data/copa2026/copy';
 import type { Lang } from '@/data/content';
 
@@ -156,62 +156,85 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
   );
 }
 
-// ── R32 Bracket card ─────────────────────────────────────────────────────────
+// ── Full bracket (actual results + single most-likely path onward) ──────────
 
-function slotLabel(slot: R32BracketMatch['home_slot'], c: CopaCopy): string {
-  if (slot.type === 'winner')    return `${c.slotWinner} Gr. ${slot.group}`;
-  if (slot.type === 'runner_up') return `${c.slotRunnerUp} Gr. ${slot.group}`;
-  return `${c.slotThird} · ${slot.slot}`;
+const BRACKET_ROUNDS: Array<{ key: keyof Bracket; labelKey: keyof CopaCopy['koRound'] }> = [
+  { key: 'r32',   labelKey: 'ro32' },
+  { key: 'r16',   labelKey: 'ro16' },
+  { key: 'qf',    labelKey: 'qf' },
+  { key: 'sf',    labelKey: 'sf' },
+  { key: 'final', labelKey: 'final' },
+];
+
+function BracketTeamRow({
+  team,
+  iso2,
+  isWinner,
+  score,
+  lang,
+}: {
+  team: string;
+  iso2: string;
+  isWinner: boolean;
+  score?: number;
+  lang: Lang;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <Flag iso2={iso2} size={18} title={team} />
+      <span className={`text-sm flex-1 truncate ${isWinner ? 'font-bold text-[#f1f5f9]' : 'text-[#94a3b8]'}`}>
+        {teamName(team, lang)}
+      </span>
+      {score !== undefined && (
+        <span className="text-xs font-mono tabular-nums" style={{ color: isWinner ? ACCENT : '#64748b' }}>
+          {score}
+        </span>
+      )}
+    </div>
+  );
 }
 
-function R32Card({ m, c, lang }: { m: R32BracketMatch; c: CopaCopy; lang: Lang }) {
-  const home = m.home_candidates[0];
-  const away = m.away_candidates[0];
+function BracketMatchCard({ m, c, lang }: { m: BracketMatch; c: CopaCopy; lang: Lang }) {
+  const isActual = m.status === 'actual';
   return (
-    <div className="rounded-xl border p-4" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
+    <div
+      className="rounded-xl border p-4"
+      style={{ background: '#0d0d1f', borderColor: isActual ? ACCENT_BORDER : '#1e1e3f' }}
+    >
       <div className="flex items-center justify-between mb-3">
         <span className="text-[10px] font-mono text-[#475569]">{m.date.slice(5)} · {m.venue}</span>
-        <span className="text-[10px] font-mono text-[#475569]">{m.id.replace('_', ' ')}</span>
+        <span
+          className="text-[9px] uppercase tracking-widest font-semibold px-2 py-0.5 rounded-full shrink-0"
+          style={{
+            background: isActual ? ACCENT_DIM : 'rgba(148,163,184,0.08)',
+            color: isActual ? ACCENT : '#64748b',
+            border: `1px solid ${isActual ? ACCENT_BORDER : 'rgba(148,163,184,0.2)'}`,
+          }}
+        >
+          {isActual ? c.bracketActual : c.bracketProjected}
+        </span>
       </div>
-      <div className="flex items-center gap-2">
-        {/* Home */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            {home && <Flag iso2={home.iso2} size={20} title={home.team} />}
-            <span className="text-sm font-semibold text-[#f1f5f9] truncate">
-              {home ? teamName(home.team, lang) : '?'}
-            </span>
-            {home && home.prob < 100 && (
-              <span className="text-[10px] font-mono ml-auto shrink-0" style={{ color: ACCENT }}>
-                {home.prob.toFixed(0)}%
-              </span>
-            )}
-          </div>
-          <div className="text-[9px] uppercase tracking-wide text-[#475569]">
-            {slotLabel(m.home_slot, c)}
-          </div>
-        </div>
-
-        <div className="text-xs font-bold text-[#475569] shrink-0 px-1">vs</div>
-
-        {/* Away */}
-        <div className="flex-1 min-w-0 text-right">
-          <div className="flex items-center gap-2 mb-1 justify-end">
-            {away && away.prob < 100 && (
-              <span className="text-[10px] font-mono mr-auto shrink-0" style={{ color: ACCENT }}>
-                {away.prob.toFixed(0)}%
-              </span>
-            )}
-            <span className="text-sm font-semibold text-[#f1f5f9] truncate">
-              {away ? teamName(away.team, lang) : '?'}
-            </span>
-            {away && <Flag iso2={away.iso2} size={20} title={away.team} />}
-          </div>
-          <div className="text-[9px] uppercase tracking-wide text-[#475569]">
-            {slotLabel(m.away_slot, c)}
-          </div>
-        </div>
+      <div className="space-y-1.5">
+        <BracketTeamRow
+          team={m.home}
+          iso2={m.home_iso}
+          isWinner={m.winner === m.home}
+          score={isActual ? m.home_score : undefined}
+          lang={lang}
+        />
+        <BracketTeamRow
+          team={m.away}
+          iso2={m.away_iso}
+          isWinner={m.winner === m.away}
+          score={isActual ? m.away_score : undefined}
+          lang={lang}
+        />
       </div>
+      {isActual && m.duration === 'AP' && (
+        <div className="text-[10px] text-[#475569] mt-2">
+          {c.bracketPens} {m.home_pens}–{m.away_pens}
+        </div>
+      )}
     </div>
   );
 }
@@ -428,16 +451,25 @@ export default function MomentPage({ data }: { data: MomentData }) {
           <ChampionTable data={data} c={c} lang={lang} />
         </section>
 
-        {/* ── R32 bracket ───────────────────────────────────── */}
+        {/* ── Bracket ────────────────────────────────────────── */}
         <section className="mt-16">
           <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
             <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.r32Title}
+            {c.bracketTitle}
           </h2>
-          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">{c.r32Subtitle}</p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {data.r32_bracket.map((m) => (
-              <R32Card key={m.id} m={m} c={c} lang={lang} />
+          <p className="text-sm text-[#94a3b8] mb-6 max-w-2xl">{c.bracketSubtitle}</p>
+          <div className="space-y-8">
+            {BRACKET_ROUNDS.map(({ key, labelKey }) => (
+              <div key={key}>
+                <h3 className="text-xs font-bold text-[#94a3b8] uppercase tracking-wider mb-3">
+                  {c.koRound[labelKey]}
+                </h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {data.bracket[key].map((m) => (
+                    <BracketMatchCard key={m.id} m={m} c={c} lang={lang} />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>

@@ -81,20 +81,31 @@ export interface KoProbs {
   p_champion: number;
 }
 
-export interface R32Candidate {
-  team: string;
-  iso2: string;
-  prob: number;
-}
-
-export interface R32BracketMatch {
+export interface BracketMatch {
   id: string;
+  round: 'R32' | 'R16' | 'QF' | 'SF' | 'F';
   date: string;
   venue: string;
-  home_slot: { type: string; group?: string; slot?: string };
-  away_slot: { type: string; group?: string; slot?: string };
-  home_candidates: R32Candidate[];
-  away_candidates: R32Candidate[];
+  home: string;
+  away: string;
+  home_iso: string;
+  away_iso: string;
+  winner: string;
+  winner_iso: string;
+  status: 'actual' | 'projected';
+  home_score?: number;
+  away_score?: number;
+  duration?: string;
+  home_pens?: number | null;
+  away_pens?: number | null;
+}
+
+export interface Bracket {
+  r32: BracketMatch[];
+  r16: BracketMatch[];
+  qf: BracketMatch[];
+  sf: BracketMatch[];
+  final: BracketMatch[];
 }
 
 export interface MomentData {
@@ -114,7 +125,7 @@ export interface MomentData {
   matches: MatchPrediction[];
   standings: Record<string, StandingRow[]>;
   ko_probs: Record<string, KoProbs>;
-  r32_bracket: R32BracketMatch[];
+  bracket: Bracket;
 }
 
 // backwards compat alias

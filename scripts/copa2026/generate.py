@@ -23,6 +23,7 @@ import argparse
 import json
 import sys
 import warnings
+from itertools import groupby
 from pathlib import Path
 
 try:
@@ -95,11 +96,11 @@ XI_B      = 0.0030
 GLM_FROM  = "2010-01-01"
 MIN_WEIGHT = 0.01
 
-W_A, W_B  = 0.40, 0.60
+W_A, W_B  = 0.60, 0.40
 MAX_GOALS = 10
 N_SIMS    = 20000
 RNG       = np.random.default_rng(42)
-RHO       = -0.05
+RHO       = -0.0558
 
 # ----------------------------------------------------------------------------
 # Host-nation venue sets (for home-advantage logic in KO rounds)
@@ -122,6 +123,53 @@ def venue_is_home(home_team: str, away_team: str, venue: str) -> float:
     if venue in HOST_VENUES.get(away_team, set()):
         return -1.0
     return 0.0
+
+
+# ----------------------------------------------------------------------------
+# Dynamic Elo — World Football Elo rating system (eloratings.net formula)
+# ----------------------------------------------------------------------------
+K_WORLD_CUP = 60.0
+
+
+def elo_expected(home_elo: float, away_elo: float, is_home: float) -> float:
+    dr = (home_elo - away_elo) + 100.0 * is_home
+    return 1.0 / (10.0 ** (-dr / 400.0) + 1.0)
+
+
+def elo_goal_multiplier(goal_diff: int) -> float:
+    gd = abs(goal_diff)
+    if gd <= 1:
+        return 1.0
+    if gd == 2:
+        return 1.5
+    return (11.0 + gd) / 8.0
+
+
+def apply_elo_updates(elo: dict, results: list) -> None:
+    """Replay real match results chronologically, updating `elo` in place.
+
+    Matches on the same date are batched: every game that day is scored off
+    that day's pre-match ratings and the resulting deltas are applied all at
+    once afterward, so same-day results can't affect each other — matching
+    the eloratings.net convention.
+
+    Each result dict needs: date, home, away, home_goals, away_goals,
+    is_home (+1/0/-1 from the home team's perspective), win (1.0/0.5/0.0 —
+    the actual W used for the update, which for penalty shoot-outs is the
+    shoot-out winner, not the 0.5 implied by the drawn scoreline).
+    """
+    results = sorted(results, key=lambda r: r["date"])
+    for _, day_matches in groupby(results, key=lambda r: r["date"]):
+        deltas = {}
+        for r in day_matches:
+            h, a = r["home"], r["away"]
+            we = elo_expected(elo[h], elo[a], r["is_home"])
+            g  = elo_goal_multiplier(r["home_goals"] - r["away_goals"])
+            delta = K_WORLD_CUP * g * (r["win"] - we)
+            deltas[h] = deltas.get(h, 0.0) + delta
+            deltas[a] = deltas.get(a, 0.0) - delta
+        for t, d in deltas.items():
+            elo[t] += d
 
 
 # ----------------------------------------------------------------------------
@@ -214,27 +262,39 @@ for g, rounds in FIXTURES.items():
 # Load real group-stage results (moments 2-7)
 # ----------------------------------------------------------------------------
 known_scores = {}
+known_group_results = []
 if KNOWN_ROUNDS:
     if not WC_GROUP_CSV.exists():
         raise SystemExit(f"Real-results file not found: {WC_GROUP_CSV}")
     gs_df = pd.read_csv(WC_GROUP_CSV, encoding="utf-8")
+    gs_df["date"] = pd.to_datetime(gs_df["date"])
     for _, row in gs_df.iterrows():
         h, a = row["home_team"], row["away_team"]
         rnd = fixture_round.get((h, a))
         if rnd is None or rnd not in KNOWN_ROUNDS:
             continue
         if pd.notna(row["home_score"]) and pd.notna(row["away_score"]):
-            known_scores[(h, a)] = (int(row["home_score"]), int(row["away_score"]))
+            hg, ag = int(row["home_score"]), int(row["away_score"])
+            known_scores[(h, a)] = (hg, ag)
+            known_group_results.append({
+                "date": row["date"], "home": h, "away": a,
+                "home_goals": hg, "away_goals": ag,
+                "is_home": 1.0 - float(row["neutral"]),
+                "win": 1.0 if hg > ag else (0.0 if hg < ag else 0.5),
+            })
     print(f"  real group results loaded: {len(known_scores)} matches (rounds {sorted(KNOWN_ROUNDS)})")
 
 # ----------------------------------------------------------------------------
 # Load real KO results (moments 5-7)
 # ----------------------------------------------------------------------------
 ko_result_override = {}   # match_id -> winning team name
+ko_actual_detail   = {}   # match_id -> score/duration detail for display
+known_ko_results = []
 if KNOWN_KO_ROUNDS:
     if not WC_KO_CSV.exists():
         raise SystemExit(f"KO results file not found: {WC_KO_CSV}")
     ko_df = pd.read_csv(WC_KO_CSV, encoding="utf-8-sig")
+    ko_df["date"] = pd.to_datetime(ko_df["date"])
     for _, row in ko_df.iterrows():
         if row["round"] not in KNOWN_KO_ROUNDS:
             continue
@@ -243,12 +303,39 @@ if KNOWN_KO_ROUNDS:
         hg, ag   = int(row["home_score"]), int(row["away_score"])
         duration = str(row.get("duration", "FT")).strip()
         if duration == "AP":
-            hp, ap = int(row["home_pens"]), int(row["away_pens"])
-            winner = row["home_team"] if hp > ap else row["away_team"]
+            # Penalty shoot-outs: the drawn scoreline stands for the goal-diff
+            # multiplier (weight index 1), but the shoot-out winner gets W=1
+            # (not the 0.5 a real draw would give) — eloratings.net convention.
+            hp, ap    = int(row["home_pens"]), int(row["away_pens"])
+            winner    = row["home_team"] if hp > ap else row["away_team"]
+            win_value = 1.0 if hp > ap else 0.0
         else:
-            winner = row["home_team"] if hg > ag else row["away_team"]
+            winner    = row["home_team"] if hg > ag else row["away_team"]
+            win_value = 1.0 if hg > ag else (0.0 if hg < ag else 0.5)
         ko_result_override[row["match_id"]] = winner
+        ko_actual_detail[row["match_id"]] = {
+            "home_score": hg, "away_score": ag, "duration": duration,
+            "home_pens": (int(row["home_pens"]) if duration == "AP" else None),
+            "away_pens": (int(row["away_pens"]) if duration == "AP" else None),
+        }
+        known_ko_results.append({
+            "date": row["date"], "home": row["home_team"], "away": row["away_team"],
+            "home_goals": hg, "away_goals": ag,
+            "is_home": 1.0 - float(row["neutral"]),
+            "win": win_value,
+        })
     print(f"  real KO results loaded: {len(ko_result_override)} matches (rounds {KNOWN_KO_ROUNDS})")
+
+# ----------------------------------------------------------------------------
+# Replay real Copa 2026 results through the Elo formula (chronological,
+# same-day batched) so every prediction from here on uses ratings updated
+# with what has actually happened in the tournament so far.
+# ----------------------------------------------------------------------------
+_known_results = known_group_results + known_ko_results
+if _known_results:
+    apply_elo_updates(elo_now, _known_results)
+    print(f"  dynamic Elo: replayed {len(_known_results)} real results "
+          f"({len(known_group_results)} group + {len(known_ko_results)} KO)")
 
 # ----------------------------------------------------------------------------
 # Model A — Poisson + Elo regression
@@ -471,6 +558,22 @@ def sim_ko_winner(home, away, venue=""):
     if hg > ag:   return home
     elif ag > hg: return away
     else:         return home if RNG.random() < 0.5 else away
+
+
+def most_likely_ko_winner(home, away, venue=""):
+    """Deterministic counterpart to sim_ko_winner: picks the side with the
+    higher win probability instead of sampling (draws split 50/50, as a
+    penalty shoot-out would be a coin flip on aggregate)."""
+    ih = venue_is_home(home, away, venue)
+    if ih == 0.0:
+        p, ncols = ko_flat[(home, away)]
+    else:
+        mat  = predict_match(home, away, is_home=ih)
+        p    = mat.ravel(); p = p / p.sum()
+        ncols = mat.shape[1]
+    mat2 = p.reshape(-1, ncols)
+    p_home = np.tril(mat2, -1).sum() + 0.5 * np.trace(mat2)
+    return home if p_home >= 0.5 else away
 
 
 def resolve_slot(slot_def, winner_of, runner_up_of, third_slot_assign):
@@ -756,6 +859,105 @@ for g in GROUPS:
     standings[g] = rows
 
 # ----------------------------------------------------------------------------
+# Full bracket — actual results where already played, most-likely pick
+# (single coherent path, not marginal probabilities) for everything after.
+# ----------------------------------------------------------------------------
+print("Building full bracket (actual + most-likely)...")
+
+
+def resolve_bracket_group_stage():
+    """(winner_of, runner_up_of, third_of, third_slot_assign) seeding the R32.
+    Uses the real table once the group stage is finished (moment 4+);
+    otherwise the most-likely (aggregate projection) outcome from `standings`.
+    """
+    winner_of, runner_up_of, third_of = {}, {}, {}
+    third_rows = []
+    if len(KNOWN_ROUNDS) == 3:
+        for g, fixtures in group_fixtures.items():
+            tbl = {t: {"pts": 0, "gf": 0, "ga": 0} for t in GROUPS[g]}
+            for (h, a) in fixtures:
+                hg, ag = known_scores[(h, a)]
+                tbl[h]["gf"] += hg; tbl[h]["ga"] += ag
+                tbl[a]["gf"] += ag; tbl[a]["ga"] += hg
+                if hg > ag:   tbl[h]["pts"] += 3
+                elif ag > hg: tbl[a]["pts"] += 3
+                else:         tbl[h]["pts"] += 1; tbl[a]["pts"] += 1
+            ranked = sorted(GROUPS[g],
+                             key=lambda t: (tbl[t]["pts"], tbl[t]["gf"] - tbl[t]["ga"], tbl[t]["gf"]),
+                             reverse=True)
+            winner_of[g], runner_up_of[g], third_of[g] = ranked[0], ranked[1], ranked[2]
+            t3 = ranked[2]
+            third_rows.append((g, t3, tbl[t3]["pts"], tbl[t3]["gf"] - tbl[t3]["ga"], tbl[t3]["gf"]))
+    else:
+        for g in GROUPS:
+            rows = sorted(standings[g], key=lambda r: r["proj_pos"])
+            winner_of[g], runner_up_of[g] = rows[0]["team"], rows[1]["team"]
+            t3row = rows[2]
+            third_of[g] = t3row["team"]
+            third_rows.append((g, t3row["team"], t3row["exp_pts"], t3row["exp_gd"], t3row["exp_gf"]))
+
+    third_rows.sort(key=lambda x: (x[2], x[3], x[4]), reverse=True)
+    adv_groups = sorted(e[0] for e in third_rows[:8])
+    combo = KO_COMBOS.get("".join(adv_groups), {})
+    third_slot_assign = {slot: third_of[g] for slot, g in combo.items()}
+    return winner_of, runner_up_of, third_of, third_slot_assign
+
+
+_bw, _bru, _bt, _bslots = resolve_bracket_group_stage()
+bracket_r32_teams = {}
+for m in KO_R32:
+    bracket_r32_teams[m["id"]] = (
+        resolve_slot(m["home"], _bw, _bru, _bslots),
+        resolve_slot(m["away"], _bw, _bru, _bslots),
+    )
+
+bracket_winners = {}
+
+
+def bracket_match(mid, home, away, venue, date, round_label):
+    actual = ko_result_override.get(mid)
+    if actual is not None:
+        winner, status = actual, "actual"
+    else:
+        winner, status = most_likely_ko_winner(home, away, venue), "projected"
+    bracket_winners[mid] = winner
+    entry = {
+        "id": mid, "round": round_label, "date": date, "venue": venue,
+        "home": home, "away": away,
+        "home_iso": TEAM_META[home]["iso2"], "away_iso": TEAM_META[away]["iso2"],
+        "winner": winner, "winner_iso": TEAM_META[winner]["iso2"],
+        "status": status,
+    }
+    if status == "actual":
+        entry.update(ko_actual_detail.get(mid, {}))
+    return entry
+
+
+bracket = {
+    "r32": [bracket_match(m["id"], *bracket_r32_teams[m["id"]], m["venue"], m["date"], "R32") for m in KO_R32],
+}
+bracket["r16"] = [
+    bracket_match(m["id"], bracket_winners[m["home_from"]], bracket_winners[m["away_from"]],
+                  m["venue"], m["date"], "R16")
+    for m in KO_R16
+]
+bracket["qf"] = [
+    bracket_match(m["id"], bracket_winners[m["home_from"]], bracket_winners[m["away_from"]],
+                  m["venue"], m["date"], "QF")
+    for m in KO_QF
+]
+bracket["sf"] = [
+    bracket_match(m["id"], bracket_winners[m["home_from"]], bracket_winners[m["away_from"]],
+                  m["venue"], m["date"], "SF")
+    for m in KO_SF
+]
+bracket["final"] = [
+    bracket_match(KO_FINAL["id"], bracket_winners[KO_FINAL["home_from"]], bracket_winners[KO_FINAL["away_from"]],
+                  KO_FINAL["venue"], KO_FINAL["date"], "F")
+]
+print(f"  most-likely champion: {bracket['final'][0]['winner']}")
+
+# ----------------------------------------------------------------------------
 # Export
 # ----------------------------------------------------------------------------
 print("Writing JSON...")
@@ -800,6 +1002,7 @@ moment_out = {
     "standings":  standings,
     "ko_probs":   ko_probs,
     "r32_bracket": r32_bracket,
+    "bracket":    bracket,
 }
 with open(out_file, "w", encoding="utf-8") as f:
     json.dump(moment_out, f, ensure_ascii=False, indent=2)

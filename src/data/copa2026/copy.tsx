@@ -56,11 +56,11 @@ export interface CopaCopy {
   championTitle: string;
   championSubtitle: (sims: string) => string;
   koRound: { ro32: string; ro16: string; qf: string; sf: string; final: string; champ: string };
-  r32Title: string;
-  r32Subtitle: string;
-  slotWinner: string;
-  slotRunnerUp: string;
-  slotThird: string;
+  bracketTitle: string;
+  bracketSubtitle: string;
+  bracketActual: string;
+  bracketProjected: string;
+  bracketPens: string;
 
   // moments 5-7 (post-group-stage)
   koForecastTitle: string;
@@ -182,11 +182,12 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     championSubtitle: (sims) =>
       `Each team's probability of advancing through every knockout round, across ${sims} simulations.`,
     koRound: { ro32: 'RO32', ro16: 'RO16', qf: 'QF', sf: 'SF', final: 'Final', champ: 'Champion' },
-    r32Title: 'Expected Round of 32',
-    r32Subtitle: 'Most likely team in each bracket slot, based on projected group-stage outcomes.',
-    slotWinner: 'Winner',
-    slotRunnerUp: 'Runner-up',
-    slotThird: '3rd place',
+    bracketTitle: 'The bracket',
+    bracketSubtitle:
+      'Actual results where they exist; the single most likely outcome — not just a probability — for everything still to be played.',
+    bracketActual: 'Played',
+    bracketProjected: 'Projected',
+    bracketPens: 'Penalties',
 
     koForecastTitle: 'Knockout Stage Forecast',
     koForecastLead: (matches, cutoff, sims) => (
@@ -260,11 +261,12 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     championSubtitle: (sims) =>
       `Probabilidade de cada seleção avançar em cada fase do mata-mata, em ${sims} simulações.`,
     koRound: { ro32: 'Oitavas 32', ro16: 'Oitavas 16', qf: 'Quartas', sf: 'Semis', final: 'Final', champ: 'Campeão' },
-    r32Title: 'Oitavas de final esperadas (32)',
-    r32Subtitle: 'A seleção mais provável em cada vaga do chaveamento, com base na fase de grupos projetada.',
-    slotWinner: '1º',
-    slotRunnerUp: '2º',
-    slotThird: '3º lugar',
+    bracketTitle: 'O chaveamento',
+    bracketSubtitle:
+      'Resultados reais onde já existem; o resultado mais provável — não apenas uma probabilidade — para tudo o que falta jogar.',
+    bracketActual: 'Jogado',
+    bracketProjected: 'Projetado',
+    bracketPens: 'Pênaltis',
 
     koForecastTitle: 'Previsão do Mata-Mata',
     koForecastLead: (matches, cutoff, sims) => (
