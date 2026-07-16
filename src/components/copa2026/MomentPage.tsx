@@ -159,11 +159,12 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
 // ── Full bracket (actual results + single most-likely path onward) ──────────
 
 const BRACKET_ROUNDS: Array<{ key: keyof Bracket; labelKey: keyof CopaCopy['koRound'] }> = [
-  { key: 'r32',   labelKey: 'ro32' },
-  { key: 'r16',   labelKey: 'ro16' },
-  { key: 'qf',    labelKey: 'qf' },
-  { key: 'sf',    labelKey: 'sf' },
-  { key: 'final', labelKey: 'final' },
+  { key: 'r32',         labelKey: 'ro32' },
+  { key: 'r16',         labelKey: 'ro16' },
+  { key: 'qf',          labelKey: 'qf' },
+  { key: 'sf',          labelKey: 'sf' },
+  { key: 'third_place', labelKey: 'third' },
+  { key: 'final',       labelKey: 'final' },
 ];
 
 function BracketTeamRow({

@@ -5518,6 +5518,21 @@
         "status": "projected"
       }
     ],
+    "third_place": [
+      {
+        "id": "TPM_01",
+        "round": "3rd",
+        "date": "2026-07-18",
+        "venue": "Miami Gardens",
+        "home": "France",
+        "away": "England",
+        "home_iso": "fr",
+        "away_iso": "gb-eng",
+        "winner": "France",
+        "winner_iso": "fr",
+        "status": "projected"
+      }
+    ],
     "final": [
       {
         "id": "F_01",

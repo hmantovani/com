@@ -9,6 +9,7 @@ Run with --moment N to generate the corresponding snapshot:
   5 — After Round of 32:     group + R32 locked in, R16 → Final simulated
   6 — After Round of 16:     group + R32 + R16 locked in, QF → Final simulated
   7 — After Quarter-Finals:  group + R32 + R16 + QF locked in, SF + Final simulated
+  8 — After Semi-Finals:     group + R32 + R16 + QF + SF locked in, 3rd place + Final simulated
 
 Model = ensemble of:
   A) Poisson + Elo regression  (full history, time-decayed)        weight 0.40
@@ -43,26 +44,27 @@ warnings.filterwarnings("ignore")
 # CLI
 # ----------------------------------------------------------------------------
 parser = argparse.ArgumentParser(description="Copa 2026 prediction pipeline")
-parser.add_argument("--moment", type=int, default=1, choices=range(1, 8),
-                    help="Which snapshot to produce (1=pre-tournament … 7=post-QF)")
+parser.add_argument("--moment", type=int, default=1, choices=range(1, 9),
+                    help="Which snapshot to produce (1=pre-tournament … 8=post-SF)")
 args = parser.parse_args()
 MOMENT = args.moment
 
 KNOWN_ROUNDS = {
     1: set(), 2: {1}, 3: {1, 2},
-    4: {1, 2, 3}, 5: {1, 2, 3}, 6: {1, 2, 3}, 7: {1, 2, 3},
+    4: {1, 2, 3}, 5: {1, 2, 3}, 6: {1, 2, 3}, 7: {1, 2, 3}, 8: {1, 2, 3},
 }[MOMENT]
 
 KNOWN_KO_ROUNDS = {
     1: set(), 2: set(), 3: set(), 4: set(),
     5: {"R32"}, 6: {"R32", "R16"}, 7: {"R32", "R16", "QF"},
+    8: {"R32", "R16", "QF", "SF"},
 }[MOMENT]
 
 MOMENT_LABELS = {
     1: "Pre-tournament",      2: "After Matchday 1",
     3: "After Matchday 2",    4: "After Group Stage",
     5: "After Round of 32",   6: "After Round of 16",
-    7: "After Quarter-Finals",
+    7: "After Quarter-Finals", 8: "After Semi-Finals",
 }
 MOMENT_PREDICTS = {
     1: "All 72 group-stage matches + full knockout bracket",
@@ -72,6 +74,7 @@ MOMENT_PREDICTS = {
     5: "Round of 16 → Final",
     6: "Quarter-Finals → Final",
     7: "Semi-Finals + 3rd place + Final",
+    8: "3rd place match + Final",
 }
 
 print(f"=== Moment {MOMENT}: {MOMENT_LABELS[MOMENT]} ===")
@@ -83,8 +86,8 @@ HERE          = Path(__file__).resolve().parent
 DATA_PARQUET  = HERE / "matches.parquet"
 GROUPS_JSON   = HERE / "groups.json"
 KNOCKOUT_JSON = HERE / "knockout.json"
-WC_GROUP_CSV  = HERE.parent.parent.parent / "world-cup" / "data" / "wc_group_stage.csv"
-WC_KO_CSV     = HERE.parent.parent.parent / "world-cup" / "data" / "wc_knockout.csv"
+WC_GROUP_CSV  = HERE / "wc_group_stage.csv"
+WC_KO_CSV     = HERE / "wc_knockout.csv"
 OUT_DIR       = HERE.parent.parent / "src" / "data" / "copa2026"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -194,6 +197,7 @@ KO_R16    = ko_cfg["ro16"]["matches"]
 KO_QF     = ko_cfg["qf"]["matches"]
 KO_SF     = ko_cfg["sf"]["matches"]
 KO_FINAL  = next(m for m in ko_cfg["final"]["matches"] if m["id"] == "F_01")
+KO_TPM    = next(m for m in ko_cfg["final"]["matches"] if m["id"] == "TPM_01")
 
 # ----------------------------------------------------------------------------
 # Load training data
@@ -793,7 +797,7 @@ for s in range(N_SIMS):
     for m in KO_SF:
         h = qf_winners[m["home_from"]]
         a = qf_winners[m["away_from"]]
-        w = sim_ko_winner(h, a, m["venue"])
+        w = ko_result_override.get(m["id"]) or sim_ko_winner(h, a, m["venue"])
         sf_winners[m["id"]] = w
         sf_losers[m["id"]]  = a if w == h else h
         final_reach[w] += 1
@@ -912,6 +916,15 @@ for m in KO_R32:
     )
 
 bracket_winners = {}
+bracket_losers  = {}
+
+
+def resolve_bracket_from(ref):
+    """Resolve a home_from/away_from reference: either a match id (winner)
+    or '<match id>_loser' (the team knocked out of that match)."""
+    if ref.endswith("_loser"):
+        return bracket_losers[ref[:-len("_loser")]]
+    return bracket_winners[ref]
 
 
 def bracket_match(mid, home, away, venue, date, round_label):
@@ -921,6 +934,7 @@ def bracket_match(mid, home, away, venue, date, round_label):
     else:
         winner, status = most_likely_ko_winner(home, away, venue), "projected"
     bracket_winners[mid] = winner
+    bracket_losers[mid]  = away if winner == home else home
     entry = {
         "id": mid, "round": round_label, "date": date, "venue": venue,
         "home": home, "away": away,
@@ -937,22 +951,26 @@ bracket = {
     "r32": [bracket_match(m["id"], *bracket_r32_teams[m["id"]], m["venue"], m["date"], "R32") for m in KO_R32],
 }
 bracket["r16"] = [
-    bracket_match(m["id"], bracket_winners[m["home_from"]], bracket_winners[m["away_from"]],
+    bracket_match(m["id"], resolve_bracket_from(m["home_from"]), resolve_bracket_from(m["away_from"]),
                   m["venue"], m["date"], "R16")
     for m in KO_R16
 ]
 bracket["qf"] = [
-    bracket_match(m["id"], bracket_winners[m["home_from"]], bracket_winners[m["away_from"]],
+    bracket_match(m["id"], resolve_bracket_from(m["home_from"]), resolve_bracket_from(m["away_from"]),
                   m["venue"], m["date"], "QF")
     for m in KO_QF
 ]
 bracket["sf"] = [
-    bracket_match(m["id"], bracket_winners[m["home_from"]], bracket_winners[m["away_from"]],
+    bracket_match(m["id"], resolve_bracket_from(m["home_from"]), resolve_bracket_from(m["away_from"]),
                   m["venue"], m["date"], "SF")
     for m in KO_SF
 ]
+bracket["third_place"] = [
+    bracket_match(KO_TPM["id"], resolve_bracket_from(KO_TPM["home_from"]), resolve_bracket_from(KO_TPM["away_from"]),
+                  KO_TPM["venue"], KO_TPM["date"], "3rd")
+]
 bracket["final"] = [
-    bracket_match(KO_FINAL["id"], bracket_winners[KO_FINAL["home_from"]], bracket_winners[KO_FINAL["away_from"]],
+    bracket_match(KO_FINAL["id"], resolve_bracket_from(KO_FINAL["home_from"]), resolve_bracket_from(KO_FINAL["away_from"]),
                   KO_FINAL["venue"], KO_FINAL["date"], "F")
 ]
 print(f"  most-likely champion: {bracket['final'][0]['winner']}")

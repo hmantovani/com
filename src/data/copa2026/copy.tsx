@@ -54,7 +54,7 @@ export interface CopaCopy {
   // moment-1 · knockout sections
   championTitle: string;
   championSubtitle: (sims: string) => string;
-  koRound: { ro32: string; ro16: string; qf: string; sf: string; final: string; champ: string };
+  koRound: { ro32: string; ro16: string; qf: string; sf: string; third: string; final: string; champ: string };
   bracketTitle: string;
   bracketSubtitle: string;
   bracketActual: string;
@@ -125,6 +125,7 @@ const STAGE_TITLES_EN = [
   'Knockout Stage Forecast',
   'Knockout Stage Forecast',
   'Knockout Stage Forecast',
+  'Knockout Stage Forecast',
 ];
 
 const STAGE_LEADS_EN: Array<(sims: string) => ReactNode> = [
@@ -172,12 +173,19 @@ const STAGE_LEADS_EN: Array<(sims: string) => ReactNode> = [
       Final are predicted, across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
     </>
   ),
+  (sims) => (
+    <>
+      Everything through the Semi-Finals is real. Only the third-place match and the Final remain —
+      predicted across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+    </>
+  ),
 ];
 
 const STAGE_TITLES_PT = [
   'Previsão da Fase de Grupos',
   'Previsão da Fase de Grupos',
   'Previsão da Fase de Grupos',
+  'Previsão do Mata-Mata',
   'Previsão do Mata-Mata',
   'Previsão do Mata-Mata',
   'Previsão do Mata-Mata',
@@ -226,6 +234,12 @@ const STAGE_LEADS_PT: Array<(sims: string) => ReactNode> = [
     <>
       Tudo até as quartas de final já é real. Só a semifinal, a disputa de 3º lugar e a final são
       previstas, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+    </>
+  ),
+  (sims) => (
+    <>
+      Tudo até as semifinais já é real. Só restam a disputa de 3º lugar e a final — previstas em{' '}
+      <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
     </>
   ),
 ];
@@ -283,7 +297,7 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     championTitle: 'Champion odds',
     championSubtitle: (sims) =>
       `Each team's probability of advancing through every knockout round, across ${sims} simulations.`,
-    koRound: { ro32: 'RO32', ro16: 'RO16', qf: 'QF', sf: 'SF', final: 'Final', champ: 'Champion' },
+    koRound: { ro32: 'RO32', ro16: 'RO16', qf: 'QF', sf: 'SF', third: '3rd Place', final: 'Final', champ: 'Champion' },
     bracketTitle: 'The bracket',
     bracketSubtitle:
       'Actual results where they exist; the single most likely outcome — not just a probability — for everything still to be played.',
@@ -347,7 +361,7 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     championTitle: 'Odds de campeão',
     championSubtitle: (sims) =>
       `Probabilidade de cada seleção avançar em cada fase do mata-mata, em ${sims} simulações.`,
-    koRound: { ro32: 'Oitavas 32', ro16: 'Oitavas 16', qf: 'Quartas', sf: 'Semis', final: 'Final', champ: 'Campeão' },
+    koRound: { ro32: 'Oitavas 32', ro16: 'Oitavas 16', qf: 'Quartas', sf: 'Semis', third: '3º Lugar', final: 'Final', champ: 'Campeão' },
     bracketTitle: 'O chaveamento',
     bracketSubtitle:
       'Resultados reais onde já existem; o resultado mais provável — não apenas uma probabilidade — para tudo o que falta jogar.',

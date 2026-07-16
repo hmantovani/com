@@ -9,6 +9,7 @@ import moment4Raw from './moment4.json';
 import moment5Raw from './moment5.json';
 import moment6Raw from './moment6.json';
 import moment7Raw from './moment7.json';
+import moment8Raw from './moment8.json';
 
 export interface Team {
   team: string;
@@ -83,7 +84,7 @@ export interface KoProbs {
 
 export interface BracketMatch {
   id: string;
-  round: 'R32' | 'R16' | 'QF' | 'SF' | 'F';
+  round: 'R32' | 'R16' | 'QF' | 'SF' | '3rd' | 'F';
   date: string;
   venue: string;
   home: string;
@@ -105,6 +106,7 @@ export interface Bracket {
   r16: BracketMatch[];
   qf: BracketMatch[];
   sf: BracketMatch[];
+  third_place: BracketMatch[];
   final: BracketMatch[];
 }
 
@@ -139,8 +141,11 @@ export const moment4 = moment4Raw as MomentData;
 export const moment5 = moment5Raw as MomentData;
 export const moment6 = moment6Raw as MomentData;
 export const moment7 = moment7Raw as MomentData;
+export const moment8 = moment8Raw as MomentData;
 
-export const ALL_MOMENTS: MomentData[] = [moment1, moment2, moment3, moment4, moment5, moment6, moment7];
+export const ALL_MOMENTS: MomentData[] = [
+  moment1, moment2, moment3, moment4, moment5, moment6, moment7, moment8,
+];
 
 export const GROUP_LETTERS = Object.keys(teamsData.groups);
 
