@@ -163,6 +163,47 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── SERVICES ─────────────────────────────────────────────────── */}
+      <section id="services" className="py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-2xl mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2dd4bf] mb-3">
+              {lang === 'en' ? 'How I can help' : 'Como posso ajudar'}
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] mb-3">
+              {lang === 'en' ? 'Less manual work. More useful data.' : 'Menos trabalho manual. Mais valor nos dados.'}
+            </h2>
+            <p className="text-[#94a3b8] leading-relaxed">
+              {lang === 'en'
+                ? <>Practical data services for teams that need reliable<br className="hidden sm:block" /> answers without adding unnecessary complexity.</>
+                : <>Serviços de dados práticos para equipes que precisam de respostas confiáveis<br className="hidden sm:block" /> sem adicionar complexidade desnecessária.</>}
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {(lang === 'en'
+              ? [
+                  { n: '01', t: 'Automate recurring work', d: 'Replace repetitive exports, spreadsheet updates, and manual checks with dependable workflows.' },
+                  { n: '02', t: 'Connect systems and data', d: 'Bring ERP, APIs, and files into a consistent data layer your team can trust and reuse.' },
+                  { n: '03', t: 'Make reporting actionable', d: 'Turn scattered numbers into clear dashboards and analysis tied to day-to-day decisions.' },
+                ]
+              : [
+                  { n: '01', t: 'Automatizar tarefas recorrentes', d: 'Substitua exportações repetitivas, atualizações de planilhas e conferências manuais por fluxos confiáveis.' },
+                  { n: '02', t: 'Conectar sistemas e dados', d: 'Reúna ERP, APIs e arquivos em uma base consistente, confiável e reutilizável.' },
+                  { n: '03', t: 'Transformar relatórios em ação', d: 'Converta números dispersos em painéis e análises ligados às decisões do dia a dia.' },
+                ]).map((item) => (
+              <article key={item.n} className="rounded-xl border p-6" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
+                <span className="text-base font-mono font-semibold text-[#2dd4bf]">{item.n}</span>
+                <h3 className="text-lg font-semibold text-[#f1f5f9] mt-5 mb-2">{item.t}</h3>
+                <p className="text-sm text-[#94a3b8] leading-relaxed">{item.d}</p>
+              </article>
+            ))}
+          </div>
+          <a href="#contact" className="inline-flex items-center gap-2 mt-7 text-sm font-semibold text-[#2dd4bf] hover:text-white transition-colors">
+            {lang === 'en' ? 'Tell me what you need' : 'Conte o que você precisa'} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
       {/* ── REAL CASES ───────────────────────────────────────────────── */}
       <section id="real-cases" className="py-24">
         <div className="max-w-6xl mx-auto px-6">
@@ -171,14 +212,16 @@ export default function HomePage() {
           </h2>
           <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.realCases.subtitle}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {c.realCases.map((project) => (
+            {[...c.realCases]
+              .sort((a, b) => (a.slug === 'erp-data-platform' ? -1 : b.slug === 'erp-data-platform' ? 1 : 0))
+              .map((project) => (
               <ProjectCard
                 key={project.slug}
                 project={project}
                 variant="real"
                 badge={c.projectPage.realCaseBadge}
               />
-            ))}
+              ))}
           </div>
         </div>
       </section>
@@ -222,19 +265,16 @@ export default function HomePage() {
               <div className="text-xs text-[#64748b] mt-1">{c.contact.or} hq.mantovani@gmail.com</div>
             </a>
 
-            <div
-              className="p-6 rounded-xl border relative overflow-hidden"
-              style={{ background: '#13132b', borderColor: '#2a2a50', borderStyle: 'dashed' }}
-            >
+            <div className="p-6 rounded-xl border" style={{ background: '#13132b', borderColor: '#2a2a50' }}>
               <div className="text-2xl mb-3">📄</div>
               <div className="text-sm font-semibold text-[#f1f5f9] mb-1">{c.contact.downloadCV}</div>
-              <div className="text-xs text-[#64748b]">{c.contact.cvNote}</div>
-              <span
-                className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-medium"
-                style={{ background: 'rgba(196,161,53,0.2)', color: '#d4b44a' }}
-              >
-                Soon
-              </span>
+              <div className="text-xs text-[#64748b] mb-4">
+                {lang === 'en' ? 'Choose your preferred language.' : 'Escolha o idioma de sua preferência.'}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <a href="/cv/henrique-mantovani-cv-pt-br.pdf" download className="text-xs font-semibold px-3 py-2 rounded-lg border hover:border-[#8b5cf6] transition-colors" style={{ borderColor: '#2a2a50', color: '#cbd5e1' }}>PT-BR ↓</a>
+                <a href="/cv/henrique-mantovani-cv-en-us.pdf" download className="text-xs font-semibold px-3 py-2 rounded-lg border hover:border-[#8b5cf6] transition-colors" style={{ borderColor: '#2a2a50', color: '#cbd5e1' }}>EN-US ↓</a>
+              </div>
             </div>
 
             <div

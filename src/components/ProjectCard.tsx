@@ -51,6 +51,14 @@ export default function ProjectCard({ project, variant, badge }: ProjectCardProp
           >
             {project.category}
           </span>
+          {project.status && (
+            <span
+              className="text-xs font-semibold px-2.5 py-1 rounded-full"
+              style={{ background: 'rgba(196,161,53,0.12)', color: '#d4b44a' }}
+            >
+              {project.status}
+            </span>
+          )}
           {badge && project.isReal && (
             <span
               className="text-xs font-semibold px-2.5 py-1 rounded-full"

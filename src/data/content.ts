@@ -14,10 +14,12 @@ export interface ProjectData {
   githubUrl?: string;
   linkedinUrl?: string;
   image?: string;
+  screenshots?: { src: string; caption: string }[];
+  status?: string;
 }
 
 export interface SiteContent {
-  nav: { home: string; realCases: string; projects: string; contact: string };
+  nav: { home: string; services: string; realCases: string; projects: string; contact: string };
   hero: { title: string; bio: string; ctaWork: string; ctaContact: string; available: string };
   sections: {
     realCases: { title: string; subtitle: string };
@@ -46,12 +48,13 @@ export interface SiteContent {
     linkedin: string;
     comingSoon: string;
     realCaseBadge: string;
+    screenshots: string;
   };
 }
 
 export const content: Record<Lang, SiteContent> = {
   en: {
-    nav: { home: 'Home', realCases: 'Real cases', projects: 'Projects', contact: 'Contact' },
+    nav: { home: 'Home', services: 'Services', realCases: 'Real cases', projects: 'Projects', contact: 'Let’s talk' },
     hero: {
       title: 'Data Professional | Engineering · Science · Analytics',
       bio: 'I combine an appreciation for efficiency from Production Engineering (PUC-SP) with the analytical depth of Data Science (PUC-RS). I used both sides to translate complex operations into information ecosystems in three experiences at leading global companies in their sectors: IBM, Keyence and Thermo Fisher Scientific.\n\nMy pillars are building ETL pipelines, data modeling for analytical process automation, and developing predictive analyses and models — structuring raw data into reliable databases with a focus on consistency, scalability and measurability.',
@@ -62,11 +65,12 @@ export const content: Record<Lang, SiteContent> = {
     sections: {
       realCases: {
         title: 'Real cases',
-        subtitle: 'Production-grade solutions implemented at global companies.',
+        subtitle: 'Real-world data automation and reporting solutions built for business operations.',
       },
       projects: {
         title: 'Projects',
-        subtitle: 'Showcase of end-to-end data, AI and analytics solutions. Architecture, automation, machine learning and business intelligence.',},
+        subtitle: 'A live World Cup forecast and the next independent data projects in the pipeline.',
+      },
       contact: {
         title: 'Get in touch',
         subtitle: 'Available for opportunities, freelance projects and collaboration.',
@@ -83,11 +87,11 @@ export const content: Record<Lang, SiteContent> = {
     realCases: [
       {
         slug: 'sap-pipeline-automation',
-        title: 'Automated SAP data warehouse without native API',
+        title: 'SAP BusinessObjects extraction pipeline automation',
         category: 'Data Engineering & BI',
         tags: ['Python', 'Selenium', 'PyAutoGUI', 'ETL', 'SAP', 'Automation', 'Data Governance'],
         cardDescription:
-          'A Python-based framework that automated 40 SAP reporting workflows without API dependency to unify company data into a select number of extractions from SAP inside a centralized and auditable Data Warehouse.',
+          'A Python-based framework that automated 40 SAP BusinessObjects report extraction workflows without API dependency, consolidating the outputs into a centralized and auditable data warehouse.',
         overview:
           'Engineered a complete data ecosystem to automate 40 complex SAP extraction loops, transitioning the organization from fragmented, manual Excel-based reporting to an automated, auditable infrastructure that feeds real-time BI and executive dashboards.',
         challenge:
@@ -99,20 +103,20 @@ export const content: Record<Lang, SiteContent> = {
         isReal: true,
       },
       {
-        slug: 'market-intelligence',
-        title: 'Market intelligence with lead scoring',
-        category: 'Data Science & Strategy',
-        tags: ['Python', 'Machine Learning', 'Predictive Modeling', 'Lead Scoring', 'Classification'],
+        slug: 'erp-data-platform',
+        title: 'Data platform for a São Paulo distributor, built on Omie ERP',
+        category: 'Data Engineering & Automation',
+        tags: ['Python', 'Omie API', 'Parquet', 'Streamlit', 'Background Jobs', 'ETL'],
         cardDescription:
-          'A classification model prioritizing companies within the active customer base, integrating sales activity, purchase history, geographic variables and inputs from sales leadership to optimize field team deployment and targeted marketing campaigns',
+          'A full internal data platform on top of Omie ERP — scheduled multi-entity extraction into a Parquet warehouse, and Streamlit apps for pipeline management and self-service reporting, including automated overdue-invoice processing.',
         overview:
-          'Designed and implemented a machine learning classification model to score and rank companies within the active customer base. By combining data-driven behavioral patterns with strategic human inputs, the model defined "target companies" to align field sales resources and marketing efforts for conversions',
+          'Built an end-to-end data platform for a São Paulo-based distributor running entirely on Omie, a Brazilian cloud ERP with no data layer of its own — every report meant exporting spreadsheets by hand, screen by screen, with no history and no automation.',
         challenge:
-          'The sales team had a large active customer base with no systematic method for prioritizing outreach. Account selection relied on individual intuition, causing high-potential accounts to be overlooked and low-potential ones to consume disproportionate time, leading to missed opportunities and inefficient resource allocation.',
+          'Turn a set of manual, error-prone spreadsheet exports into a reliable, auditable data platform — without introducing a database server or ongoing infrastructure the small internal team would have to maintain.',
         solution:
-          'Integrated data from sales activity logs, purchase history, geographic variables and human input to build a feature-rich dataset. The model featured a mechanism allowing us to intentionally weight metrics based on sales leaders command, aligning the algorithm with their specific business strategies A supervised classification model was trained to score each account based on that and the output was a ranked list focused on the accounts with the highest conversion and upsell potential.',
+          'Built an internal Python library that extracts every relevant entity from the Omie API (sales orders, receivables, clients, products, sellers, categories) on a scheduled cadence into a two-layer Parquet warehouse: a raw layer mirroring the API, and a treated layer with typed, cleaned data. On top of it, two Streamlit apps: one to trigger and monitor extraction pipelines, with jobs running in a background worker that survives closing the browser tab; another for self-service management reports (cash flow, aging, stalled orders) exportable straight to Excel. One report goes beyond reading — it processes overdue invoices end-to-end: detecting and fixing missing tax codes, updating billing dates, and issuing the invoice back through the API, with a clear pending-items export for anything that needs a human.',
         results:
-          "Systematic, data-driven account prioritization replacing ad-hoc intuition. Improved alignment between field deployment and revenue opportunity. The model was embedded into the team's regular planning cycle, creating a feedback loop for continuous refinement.",
+          'Reports that used to take hours of manual spreadsheet work now run in minutes and are self-service for finance and sales — no dependency on IT to pull a number. Overdue-invoice handling went from a fully manual finance task to a supervised, automated run with a clear audit trail per order.',
         isReal: true,
       },
     ],
@@ -136,68 +140,59 @@ export const content: Record<Lang, SiteContent> = {
         isReal: false,
       },
       {
-        slug: 'sql-sales-analytics',
-        title: 'SQL Sales Analytics Dashboard',
-        category: 'Data Analytics & SQL',
-        tags: ['PostgreSQL', 'SQL', 'Window Functions', 'CTEs', 'Data Modeling', 'Analytics'],
-        cardDescription:
-          'End-to-end SQL analytics on a synthetic sales dataset — business KPIs, cohort analysis, ranking windows, and executive reporting without a single line of Python.',
-        overview:
-          'A comprehensive SQL-only analytics project demonstrating mastery of relational database querying, from basic aggregations to advanced window functions and cohort analysis on a structured sales dataset.',
-        challenge:
-          'Translate business questions — revenue trends, customer retention, product performance, and regional breakdowns — into clean, efficient SQL queries that a stakeholder can read, audit, and extend without Python or BI tooling.',
-        solution:
-          'Designed a normalized relational schema for the sales domain. Used CTEs for query modularity, window functions for rankings and running totals, and conditional aggregations for pivot-style reporting. Built a suite of analytical queries covering KPIs, cohorts, and performance rankings.',
-        results:
-          'A fully documented SQL analytical suite ready for integration with any BI tool (Tableau, Power BI, Metabase). Demonstrates the ability to deliver insights through pure SQL — the most universally required data skill in corporate environments.',
+        slug: 'finance-sales-cockpit',
+        title: 'Small-Business Finance & Sales Cockpit',
+        category: 'Analytics & BI', status: 'Planned',
+        tags: ['Python', 'SQL', 'Data Modeling', 'Dashboard'],
+        cardDescription: 'A demo operating dashboard for sales, cash collection, overdue invoices, and stalled orders, built with clearly labeled synthetic or public data.',
+        overview: 'A client-oriented dashboard concept that brings orders, customers, and receivables into one useful operating view.',
+        challenge: 'Small teams often rely on disconnected spreadsheets and manual reporting to answer basic finance and sales questions.',
+        solution: 'Planned work: create a documented sample dataset, define auditable KPIs, build a clean reporting model, and present the results in an interactive dashboard.',
+        results: 'Planned portfolio deliverable. No client outcomes or measured business impact are claimed.',
       },
       {
-        slug: 'rest-api-pipeline',
-        title: 'REST API Data Pipeline',
-        category: 'Data Engineering & APIs',
-        tags: ['Python', 'REST API', 'JSON', 'PostgreSQL', 'ETL', 'Scheduling', 'Error Handling'],
-        cardDescription:
-          'Automated pipeline fetching, transforming, and storing data from a public REST API on a recurring schedule — with pagination, error handling, and structured database storage.',
-        overview:
-          'A production-pattern data pipeline that consumes a public REST API, handles pagination, rate limiting, and error recovery, then loads the cleaned data into a structured relational database on an automated schedule.',
-        challenge:
-          'API data requires defensive engineering — handling failures gracefully, managing pagination, transforming nested JSON into flat relational structures, and ensuring idempotent loads that can run repeatedly without duplicating data.',
-        solution:
-          'Built a modular Python pipeline with separated extract, transform, and load layers. Implemented retry logic and exponential backoff for API resilience. JSON responses are flattened and validated before insertion into PostgreSQL. A scheduler ensures the pipeline runs on a defined cadence with full observability logging.',
-        results:
-          'A fully operational, repeatable data pipeline demonstrating real-world engineering standards. Directly applicable to freelance data engineering work where API integrations are among the most requested services on Upwork.',
+        slug: 'spreadsheet-automation-kit',
+        title: 'Spreadsheet Cleanup & Reporting Automation Kit',
+        category: 'Data Automation', status: 'Planned',
+        tags: ['Python', 'Data Quality', 'Validation', 'Automation'],
+        cardDescription: 'A reusable workflow to standardize recurring spreadsheets, flag exceptions, and create clean, auditable report outputs.',
+        overview: 'A small automation tool for teams that repeatedly combine inconsistent spreadsheets by hand.',
+        challenge: 'Column names, formats, missing values, and duplicates vary between files, making recurring reports fragile and slow.',
+        solution: 'Planned work: accept sample files, validate against a documented schema, normalize records, and produce clean output plus a human-readable exception log.',
+        results: 'Planned portfolio deliverable. The demo will show row-count reconciliation and exception handling using sample data.',
       },
       {
-        slug: 'eda-predictive-model',
-        title: 'EDA + Predictive Model',
-        category: 'Data Science & Machine Learning',
-        tags: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn', 'Feature Engineering', 'SHAP'],
-        cardDescription:
-          'Full data science workflow on a classification problem — exploratory analysis, feature engineering, model training, hyperparameter tuning, and interpretable evaluation reporting.',
-        overview:
-          'A complete, narrative-driven data science project taking a raw dataset from first look to a trained model — emphasizing storytelling, visual analysis, and interpretable results alongside technical rigor.',
-        challenge:
-          'Data science projects often fail not from bad models but from poor problem framing, weak feature engineering, or uninterpretable outputs. The challenge is to build something rigorous that a non-technical stakeholder can also understand and trust.',
-        solution:
-          'Started with a thorough exploratory phase — distributions, correlations, outlier analysis, and class imbalance checks. Engineered domain-relevant features before modeling. Trained and compared multiple classifiers with cross-validated hyperparameter search. Produced a full evaluation report with confusion matrix, ROC curves, and SHAP-based feature importance.',
-        results:
-          'A reproducible, well-documented data science notebook demonstrating the full ML workflow. A model with strong validation metrics and interpretable output — the kind of deliverable that builds client trust on Upwork and in corporate settings alike.',
+        slug: 'api-to-reporting-pipeline',
+        title: 'API-to-Reporting Data Pipeline',
+        category: 'Data Engineering', status: 'Planned',
+        tags: ['Python', 'REST API', 'ETL', 'SQL', 'Observability'],
+        cardDescription: 'A scheduled public-API pipeline with incremental loads, validation, failure recovery, and a small downstream report.',
+        overview: 'An end-to-end data flow from a public API to an understandable report, with operational behavior made visible.',
+        challenge: 'A useful API integration must handle pagination, rate limits, retries, repeat runs, and changing records without silent data loss.',
+        solution: 'Planned work: select an appropriate public API, build an idempotent extraction and transformation flow, retain history, and expose freshness and quality checks.',
+        results: 'Planned portfolio deliverable. Documentation will distinguish observed data from sample values and state API limitations.',
       },
       {
-        slug: 'interactive-data-app',
-        title: 'Interactive Data App',
-        category: 'Data Visualization & Deployment',
-        tags: ['Python', 'Streamlit', 'Plotly', 'Data Visualization', 'Deployment', 'Dashboards'],
-        cardDescription:
-          'A fully deployed interactive web application for data exploration and visualization — built with Streamlit and accessible to non-technical stakeholders through a public URL.',
-        overview:
-          'A data application that turns a static dataset into a live, interactive experience — allowing any user to filter, explore, and visualize data through a browser without writing code. Deployed on Streamlit Cloud.',
-        challenge:
-          'The gap between a data analysis and a deliverable a client can actually use is enormous. Most analyses live in notebooks only the analyst can run. The challenge is closing that gap without introducing engineering complexity.',
-        solution:
-          'Built a Streamlit application with dynamic filtering (dropdowns, sliders, multi-select), multiple visualization layers (bar charts, scatter plots, time series), and a clean responsive layout. Stateless and deployable to Streamlit Cloud in one command — making sharing trivial.',
-        results:
-          'A publicly accessible data application available via URL — the most impressive artifact in a portfolio for non-technical clients. Demonstrates the ability to go from raw data to a polished, shareable product.',
+        slug: 'world-cup-model-validation',
+        title: 'World Cup Forecast: Validation & Uncertainty',
+        category: 'Data Science', status: 'Planned',
+        tags: ['Backtesting', 'Calibration', 'Brier Score', 'Statistics'],
+        cardDescription: 'An evaluation extension to the World Cup model: historical backtests, calibration, uncertainty, and comparisons with simple baselines.',
+        overview: 'A planned companion to the existing FIFA World Cup forecast focused on measuring forecast quality and communicating uncertainty.',
+        challenge: 'A prediction is only useful when its probabilities are evaluated fairly and its limitations are clear.',
+        solution: 'Planned work: use time-aware historical holdouts, report proper scoring rules and calibration, and preserve dated forecasts for later comparison.',
+        results: 'Planned portfolio deliverable. Historical results will not be presented as a guarantee of future accuracy.',
+      },
+      {
+        slug: 'customer-retention-analysis',
+        title: 'Customer Retention & Revenue Analysis',
+        category: 'Analytics & SQL', status: 'Planned',
+        tags: ['SQL', 'Cohort Analysis', 'Segmentation', 'Data Storytelling'],
+        cardDescription: 'A business-focused analysis of repeat purchasing, customer cohorts, time to second purchase, and revenue concentration.',
+        overview: 'A decision-oriented analysis of customer activity using a documented public or synthetic transaction dataset.',
+        challenge: 'Retention measures can mislead when transaction history is incomplete or cohorts have not had equal time to mature.',
+        solution: 'Planned work: define transparent metrics, build cohort and segmentation queries, and present findings with limits and follow-up questions.',
+        results: 'Planned portfolio deliverable. The analysis will separate observed patterns from causal claims.',
       },
     ],
     footer: { rights: '© 2025 Henrique Mantovani. All rights reserved.' },
@@ -212,11 +207,12 @@ export const content: Record<Lang, SiteContent> = {
       linkedin: 'LinkedIn Post',
       comingSoon: 'Coming Soon',
       realCaseBadge: 'Real Case',
+      screenshots: 'Screenshots',
     },
   },
 
   pt: {
-    nav: { home: 'Início', realCases: 'Casos Reais', projects: 'Projetos', contact: 'Contato' },
+    nav: { home: 'Início', services: 'Serviços', realCases: 'Casos Reais', projects: 'Projetos', contact: 'Vamos conversar' },
     hero: {
       title: 'Data Professional | Engineering · Science · Analytics',
       bio: 'Combino o apreço pela eficiência da Engenharia de Produção (PUC-SP) com a profundidade analítica da Ciência de Dados (PUC-RS). Utilizei essa combinação para traduzir operações complexas em ecossistemas de informação em três experiências em empresas líderes globais de seus setores: IBM, Keyence e Thermo Fisher Scientific.\n\nMeus pilares são a construção de pipelines de ETL, a modelagem de dados para automação de processos analíticos e o desenvolvimento de análises e modelos preditivos — estruturando dados brutos em bases confiáveis com foco em consistência, escalabilidade e mensurabilidade.',
@@ -227,11 +223,11 @@ export const content: Record<Lang, SiteContent> = {
     sections: {
       realCases: {
         title: 'Casos Reais',
-        subtitle: 'Soluções de nível produtivo entregues em ambientes corporativos em líderes globais de mercado.',
+        subtitle: 'Soluções reais de automação de dados e relatórios para operações empresariais.',
       },
       projects: {
         title: 'Projetos',
-        subtitle: 'Portfólio curado demonstrando a amplitude completa de um stack moderno de dados.',
+        subtitle: 'Uma previsão ativa da Copa do Mundo e os próximos projetos independentes de dados.',
       },
       contact: {
         title: 'Entrar em Contato',
@@ -249,11 +245,11 @@ export const content: Record<Lang, SiteContent> = {
     realCases: [
       {
         slug: 'sap-pipeline-automation',
-        title: 'Pipeline de Automação com Data Warehouse',
+        title: 'Automação de pipeline de extração do SAP BusinessObjects',
         category: 'Engenharia de Dados & BI',
         tags: ['Python', 'Selenium', 'PyAutoGUI', 'ETL', 'Parquet', 'BI', 'Automação'],
         cardDescription:
-          'Pipeline Python automatizando 40 processos de extração no SAP, construindo um Data Warehouse em Parquet com versionamento histórico e habilitando dashboards de BI em tempo real.',
+          'Pipeline Python automatizando 40 processos de extração de relatórios do SAP BusinessObjects, consolidando os resultados em um Data Warehouse auditável.',
         overview:
           'Desenvolvimento de um pipeline completo para automatizar 40 processos individuais de extração do SAP ERP, eliminando esforço manual e habilitando infraestrutura de dados consistente e auditável para relatórios de business intelligence.',
         challenge:
@@ -265,20 +261,20 @@ export const content: Record<Lang, SiteContent> = {
         isReal: true,
       },
       {
-        slug: 'market-intelligence',
-        title: 'Inteligência de Mercado com Lead Scoring',
-        category: 'Ciência de Dados & Estratégia',
-        tags: ['Python', 'Machine Learning', 'Modelagem Preditiva', 'Lead Scoring', 'Classificação'],
+        slug: 'erp-data-platform',
+        title: 'Plataforma de dados para distribuidora de São Paulo, sobre o ERP Omie',
+        category: 'Engenharia de Dados & Automação',
+        tags: ['Python', 'API Omie', 'Parquet', 'Streamlit', 'Jobs em Background', 'ETL'],
         cardDescription:
-          'Modelo de classificação para priorização de empresas na base ativa de clientes, integrando atividade de vendas, histórico de compras e variáveis geográficas para otimizar o desdobramento do time de campo.',
+          'Plataforma de dados interna construída sobre o ERP Omie — extração agendada multi-entidade num Data Warehouse em Parquet, e apps Streamlit para gerenciamento de pipelines e relatórios self-service, incluindo processamento automatizado de faturamento atrasado.',
         overview:
-          'Concepção e implementação de um modelo de classificação em machine learning para pontuar e ranquear empresas na base ativa de clientes pela probabilidade de conversão e profundidade de relacionamento — habilitando alocação estratégica dos recursos de vendas em campo.',
+          'Construção de uma plataforma de dados completa para uma distribuidora sediada em São Paulo que operava inteiramente sobre a Omie, um ERP brasileiro em nuvem sem camada de dados própria — todo relatório significava exportar planilhas manualmente, tela por tela, sem histórico e sem automação.',
         challenge:
-          'O time de vendas possuía uma grande base de clientes ativos sem método sistemático para priorizar abordagens. A seleção de contas dependia de intuição individual, fazendo com que contas de alto potencial fossem ignoradas e as de baixo potencial consumissem tempo desproporcional.',
+          'Transformar um processo de exportação manual e sujeito a erro numa plataforma de dados confiável e auditável — sem introduzir um servidor de banco de dados ou infraestrutura contínua que o pequeno time interno de TI precisasse manter.',
         solution:
-          'Integração de dados de logs de atividade de vendas, histórico de compras e variáveis geográficas para construir um dataset rico em features. Um modelo de classificação supervisionada foi treinado para pontuar cada conta com base em padrões comportamentais e sinais estratégicos da gestão. O resultado foi uma lista ranqueada focada nas contas com maior potencial de conversão e upsell.',
+          'Construção de uma biblioteca Python interna que extrai cada entidade relevante da API da Omie (pedidos de venda, títulos, clientes, produtos, vendedores, categorias) em cadência agendada para um Data Warehouse em Parquet de duas camadas: uma camada bruta espelhando a API, e uma camada tratada com dados tipados e limpos. Por cima, dois apps Streamlit: um para disparar e monitorar pipelines de extração, com jobs rodando num worker em background que sobrevive a fechar a aba do navegador; outro para relatórios gerenciais self-service (fluxo de caixa, aging, pedidos parados) exportáveis direto pra Excel. Um dos relatórios vai além da leitura — processa pedidos com faturamento atrasado de ponta a ponta: detecta e corrige CFOP faltante, atualiza a previsão de faturamento e emite a nota fiscal de volta pela API, com uma exportação clara de pendências pra tudo que precisa de intervenção humana.',
         results:
-          'Priorização de contas sistemática e orientada a dados, substituindo a intuição ad-hoc. Maior alinhamento entre o desdobramento de campo e a oportunidade de receita. O modelo foi incorporado ao ciclo regular de planejamento da equipe, criando um loop de retroalimentação para refinamento contínuo.',
+          'Relatórios que antes levavam horas de trabalho manual em planilha agora rodam em minutos e são self-service para financeiro e vendas — sem depender de TI pra tirar um número. O tratamento de faturamento atrasado passou de uma tarefa totalmente manual do financeiro para uma execução automatizada e supervisionada, com trilha de auditoria clara por pedido.',
         isReal: true,
       },
     ],
@@ -302,68 +298,59 @@ export const content: Record<Lang, SiteContent> = {
         isReal: false,
       },
       {
-        slug: 'sql-sales-analytics',
-        title: 'SQL Sales Analytics Dashboard',
-        category: 'Analytics de Dados & SQL',
-        tags: ['PostgreSQL', 'SQL', 'Window Functions', 'CTEs', 'Modelagem de Dados', 'Analytics'],
-        cardDescription:
-          'Analytics SQL ponta a ponta em dataset sintético de vendas — KPIs de negócio, análise de coorte, window functions de ranking e relatórios executivos sem uma linha de Python.',
-        overview:
-          'Projeto de analytics exclusivamente em SQL demonstrando domínio de consultas em banco de dados relacional, de agregações básicas a window functions avançadas e análise de coorte em um dataset de vendas estruturado.',
-        challenge:
-          'Traduzir perguntas de negócio — tendências de receita, retenção de clientes, performance de produtos e breakdowns regionais — em queries SQL limpas e eficientes que um stakeholder possa ler, auditar e estender sem Python ou ferramentas de BI.',
-        solution:
-          'Concepção de schema relacional normalizado para o domínio de vendas. Uso de CTEs para modularidade, window functions para rankings e totais acumulados, e agregações condicionais para relatórios no estilo pivot. Construção de queries analíticas cobrindo KPIs, coortes e rankings de performance.',
-        results:
-          'Conjunto analítico SQL totalmente documentado, pronto para integração com qualquer ferramenta de BI (Tableau, Power BI, Metabase). Demonstra a capacidade de entregar insights via SQL puro — a habilidade de dados mais universalmente exigida em ambientes corporativos.',
+        slug: 'finance-sales-cockpit',
+        title: 'Painel Financeiro e Comercial para Pequenas Empresas',
+        category: 'Analytics & BI', status: 'Planejado',
+        tags: ['Python', 'SQL', 'Modelagem de Dados', 'Dashboard'],
+        cardDescription: 'Painel demonstrativo de vendas, recebimentos, títulos vencidos e pedidos parados, com dados públicos ou sintéticos claramente identificados.',
+        overview: 'Conceito de dashboard voltado a clientes que reúne pedidos, clientes e contas a receber em uma visão operacional útil.',
+        challenge: 'Pequenas equipes dependem de planilhas desconectadas e relatórios manuais para responder perguntas básicas de finanças e vendas.',
+        solution: 'Projeto planejado: criar uma base de exemplo documentada, definir KPIs auditáveis, construir um modelo de relatórios e apresentar os resultados em um dashboard interativo.',
+        results: 'Entregável de portfólio planejado. Nenhum resultado de cliente ou impacto mensurado é alegado.',
       },
       {
-        slug: 'rest-api-pipeline',
-        title: 'Pipeline de Dados via REST API',
-        category: 'Engenharia de Dados & APIs',
-        tags: ['Python', 'REST API', 'JSON', 'PostgreSQL', 'ETL', 'Agendamento', 'Tratamento de Erros'],
-        cardDescription:
-          'Pipeline automatizado coletando, transformando e armazenando dados de uma API REST pública em agendamento recorrente — com paginação, tratamento de erros e armazenamento estruturado em banco de dados.',
-        overview:
-          'Pipeline de dados em padrão produtivo que consome uma API REST pública, gerencia paginação, rate limiting e recuperação de erros, então carrega os dados limpos em banco relacional estruturado em agendamento automatizado.',
-        challenge:
-          'Dados de API exigem engenharia defensiva — tratamento gracioso de falhas, gerenciamento de paginação, transformação de JSON aninhado em estruturas relacionais planas e garantia de cargas idempotentes que possam rodar repetidamente sem duplicar dados.',
-        solution:
-          'Construção de pipeline Python modular com camadas separadas de extração, transformação e carga. Implementação de retry logic e exponential backoff para resiliência da API. Respostas JSON são achatadas e validadas antes da inserção no PostgreSQL. Agendador garante execução em cadência definida com logging completo.',
-        results:
-          'Pipeline de dados totalmente operacional e repetível demonstrando padrões de engenharia do mundo real. Diretamente aplicável a trabalhos freelance de engenharia de dados onde integrações com APIs estão entre os serviços mais solicitados no Upwork.',
+        slug: 'spreadsheet-automation-kit',
+        title: 'Kit de Automação e Padronização de Planilhas',
+        category: 'Automação de Dados', status: 'Planejado',
+        tags: ['Python', 'Qualidade de Dados', 'Validação', 'Automação'],
+        cardDescription: 'Fluxo reutilizável para padronizar planilhas recorrentes, sinalizar exceções e gerar relatórios limpos e auditáveis.',
+        overview: 'Ferramenta de automação para equipes que combinam manualmente planilhas inconsistentes com frequência.',
+        challenge: 'Nomes de colunas, formatos, valores ausentes e duplicidades variam entre arquivos, tornando relatórios recorrentes lentos e frágeis.',
+        solution: 'Projeto planejado: receber arquivos de exemplo, validar um schema documentado, normalizar registros e gerar um resultado limpo com log de exceções legível.',
+        results: 'Entregável de portfólio planejado. A demonstração incluirá reconciliação de linhas e tratamento de exceções em dados de exemplo.',
       },
       {
-        slug: 'eda-predictive-model',
-        title: 'EDA + Modelo Preditivo',
-        category: 'Ciência de Dados & Machine Learning',
-        tags: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn', 'Feature Engineering', 'SHAP'],
-        cardDescription:
-          'Fluxo completo de ciência de dados em problema de classificação — análise exploratória, engenharia de features, treinamento, ajuste de hiperparâmetros e relatório de avaliação interpretável.',
-        overview:
-          'Projeto completo de ciência de dados orientado a narrativa, levando um dataset bruto da primeira análise ao modelo final — com ênfase em storytelling, análise visual e resultados interpretáveis ao lado do rigor técnico.',
-        challenge:
-          'Projetos de ciência de dados frequentemente falham não por modelos ruins, mas por enquadramento fraco do problema, engenharia de features deficiente ou resultados não interpretáveis. O desafio é construir algo rigoroso que um stakeholder não técnico também consiga entender e confiar.',
-        solution:
-          'Início com fase exploratória completa — distribuições, correlações, análise de outliers e verificação de desequilíbrio de classes. Engenharia de features relevantes ao domínio antes da modelagem. Treinamento e comparação de múltiplos classificadores com busca de hiperparâmetros via validação cruzada. Relatório de avaliação completo com matriz de confusão, curvas ROC e importância de features via SHAP.',
-        results:
-          'Notebook de ciência de dados reproduzível e bem documentado demonstrando o fluxo completo de ML. Modelo com fortes métricas de validação e output interpretável — o tipo de entregável que constrói confiança com clientes no Upwork e em ambientes corporativos.',
+        slug: 'api-to-reporting-pipeline',
+        title: 'Pipeline de Dados de API para Relatórios',
+        category: 'Engenharia de Dados', status: 'Planejado',
+        tags: ['Python', 'REST API', 'ETL', 'SQL', 'Observabilidade'],
+        cardDescription: 'Pipeline agendado com API pública, cargas incrementais, validação, recuperação de falhas e um relatório de consumo.',
+        overview: 'Fluxo de ponta a ponta que transforma dados de uma API pública em um relatório compreensível e observável.',
+        challenge: 'Uma integração útil precisa lidar com paginação, limites de requisição, tentativas, execuções repetidas e alterações nos dados sem perdas silenciosas.',
+        solution: 'Projeto planejado: selecionar uma API pública adequada, construir extração idempotente e transformação, manter histórico e expor verificações de atualização e qualidade.',
+        results: 'Entregável de portfólio planejado. A documentação distinguirá dados observados de valores de exemplo e descreverá limites da API.',
       },
       {
-        slug: 'interactive-data-app',
-        title: 'App Interativo de Dados',
-        category: 'Visualização de Dados & Deploy',
-        tags: ['Python', 'Streamlit', 'Plotly', 'Visualização de Dados', 'Deploy', 'Dashboards'],
-        cardDescription:
-          'Aplicação web interativa para exploração e visualização de dados — construída com Streamlit e acessível a stakeholders não técnicos por URL público.',
-        overview:
-          'Aplicação de dados que transforma um dataset estático em uma experiência ao vivo e interativa — permitindo que qualquer usuário filtre, explore e visualize dados pelo navegador sem escrever código. Implantada no Streamlit Cloud.',
-        challenge:
-          'O abismo entre uma análise de dados e um entregável que um cliente possa realmente usar é enorme. A maioria das análises vive em notebooks que só o analista consegue executar. O desafio é fechar essa lacuna sem introduzir complexidade de engenharia.',
-        solution:
-          'Construção de aplicação Streamlit com filtros dinâmicos (dropdowns, sliders, multi-select), múltiplas camadas de visualização (gráficos de barras, scatter plots, séries temporais) e layout limpo e responsivo. Stateless e implantável no Streamlit Cloud em um comando.',
-        results:
-          'Aplicação de dados publicamente acessível via URL — o artefato mais impressionante em um portfólio para clientes não técnicos. Demonstra capacidade de ir do dado bruto a um produto polido e compartilhável.',
+        slug: 'world-cup-model-validation',
+        title: 'Previsão da Copa: Validação e Incerteza',
+        category: 'Ciência de Dados', status: 'Planejado',
+        tags: ['Backtesting', 'Calibração', 'Brier Score', 'Estatística'],
+        cardDescription: 'Extensão de avaliação do modelo da Copa: backtests históricos, calibração, incerteza e comparação com baselines simples.',
+        overview: 'Projeto complementar planejado para a previsão da Copa do Mundo, com foco em medir a qualidade das previsões e comunicar incertezas.',
+        challenge: 'Uma previsão só é útil quando suas probabilidades são avaliadas com rigor e suas limitações são claras.',
+        solution: 'Projeto planejado: usar validação histórica temporal, reportar métricas de probabilidade e calibração e guardar previsões datadas para comparação posterior.',
+        results: 'Entregável de portfólio planejado. Resultados históricos não serão apresentados como garantia de precisão futura.',
+      },
+      {
+        slug: 'customer-retention-analysis',
+        title: 'Análise de Retenção e Receita de Clientes',
+        category: 'Analytics & SQL', status: 'Planejado',
+        tags: ['SQL', 'Análise de Coortes', 'Segmentação', 'Storytelling'],
+        cardDescription: 'Análise orientada ao negócio de recompra, coortes de clientes, tempo até a segunda compra e concentração de receita.',
+        overview: 'Análise voltada à decisão com dados transacionais públicos ou sintéticos e documentação das premissas.',
+        challenge: 'Métricas de retenção podem enganar quando o histórico é incompleto ou as coortes tiveram tempos diferentes para amadurecer.',
+        solution: 'Projeto planejado: definir métricas transparentes, criar consultas de coorte e segmentação e apresentar achados, limites e perguntas para investigação.',
+        results: 'Entregável de portfólio planejado. A análise separará padrões observados de afirmações causais.',
       },
     ],
     footer: { rights: '© 2025 Henrique Mantovani. Todos os direitos reservados.' },
@@ -378,6 +365,7 @@ export const content: Record<Lang, SiteContent> = {
       linkedin: 'Post no LinkedIn',
       comingSoon: 'Em Breve',
       realCaseBadge: 'Caso Real',
+      screenshots: 'Capturas de tela',
     },
   },
 };

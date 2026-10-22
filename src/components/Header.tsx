@@ -20,6 +20,7 @@ export default function Header() {
 
   const navLinks = [
     { label: c.home, href: '/' },
+    { label: c.services, href: '/#services' },
     { label: c.realCases, href: '/#real-cases' },
     { label: c.projects, href: '/#projects' },
     { label: c.contact, href: '/#contact' },
@@ -38,12 +39,16 @@ export default function Header() {
         <Logo />
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-[#94a3b8] hover:text-[#f1f5f9] transition-colors duration-200"
+              className={`text-sm font-medium transition-colors duration-200 ${
+                link.href === '/#contact'
+                  ? 'px-4 py-2 rounded-lg border border-[#6241a4] bg-[#8b5cf622] text-[#c4b5fd] hover:bg-[#8b5cf644]'
+                  : 'text-[#94a3b8] hover:text-[#f1f5f9]'
+              }`}
             >
               {link.label}
             </Link>
