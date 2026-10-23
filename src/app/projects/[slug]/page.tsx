@@ -4,16 +4,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { content, ProjectData } from '@/data/content';
+import { getProjectShowcase } from '@/data/projectShowcases';
 import { use } from 'react';
-
-const ALL_SLUGS = [
-  'sap-pipeline-automation',
-  'market-intelligence',
-  'sql-sales-analytics',
-  'rest-api-pipeline',
-  'eda-predictive-model',
-  'interactive-data-app',
-];
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -44,12 +36,10 @@ export default function ProjectPage({ params }: Props) {
   const { slug } = use(params);
   const { lang } = useLanguage();
   const c = content[lang];
-
-  if (!ALL_SLUGS.includes(slug)) notFound();
-
   const found = findProject(slug, lang);
   if (!found) notFound();
   const { project, isReal } = found;
+  const showcase = getProjectShowcase(slug, lang);
 
   const accent = isReal ? '#8b5cf6' : '#0d9488';
   const accentDim = isReal ? 'rgba(139,92,246,0.1)' : 'rgba(13,148,136,0.1)';
@@ -60,7 +50,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Top gradient bar */}
       <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
 
-      <div className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+      <div className="max-w-5xl mx-auto px-6 pt-24 pb-20">
         {/* Back link */}
         <Link
           href="/"
@@ -71,7 +61,7 @@ export default function ProjectPage({ params }: Props) {
         </Link>
 
         {/* Header */}
-        <header className="mb-14">
+        <header className="mb-12 max-w-3xl">
           <div className="flex flex-wrap items-center gap-2 mb-5">
             <span
               className="text-xs font-semibold px-2.5 py-1 rounded-full"
@@ -97,6 +87,10 @@ export default function ProjectPage({ params }: Props) {
             {project.title}
           </h1>
 
+          {showcase && (
+            <p className="text-lg sm:text-xl text-[#cbd5e1] leading-relaxed mb-7">{showcase.lead}</p>
+          )}
+
           {/* Tech tags */}
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -109,27 +103,129 @@ export default function ProjectPage({ params }: Props) {
               </span>
             ))}
           </div>
+
+          {showcase && (
+            <div className="flex flex-wrap gap-3 mt-7">
+              {showcase.demoUrl && (
+                <a href={showcase.demoUrl} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#0d9488] hover:bg-[#0f766e] text-white text-sm font-semibold px-5 py-3 transition-colors">
+                  {showcase.demoLabel}
+                </a>
+              )}
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-[#2a2a50] hover:border-[#2dd4bf] text-[#cbd5e1] hover:text-white text-sm font-semibold px-5 py-3 transition-colors">
+                  {showcase.sourceLabel}
+                </a>
+              )}
+            </div>
+          )}
         </header>
+
+        {showcase && (
+          <div className="mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+              {showcase.metrics.map((metric) => (
+                <div key={metric.label} className="rounded-xl border border-[#1e1e3f] bg-[#0d0d1f] px-5 py-5">
+                  <div className="text-2xl sm:text-3xl font-bold text-[#2dd4bf]">{metric.value}</div>
+                  <div className="text-sm text-[#94a3b8] mt-1">{metric.label}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm leading-relaxed text-[#94a3b8] border-l-2 border-[#d4b44a] pl-4 max-w-3xl">{showcase.note}</p>
+          </div>
+        )}
 
         {/* Divider */}
         <div className="h-px mb-14" style={{ background: '#1e1e3f' }} />
 
         {/* Content sections */}
-        <Section title={c.projectPage.overview} accent={accent}>
-          <p>{project.overview}</p>
-        </Section>
+        <div className="max-w-3xl">
+          <Section title={c.projectPage.overview} accent={accent}>
+            <p>{project.overview}</p>
+          </Section>
+        </div>
 
-        <Section title={c.projectPage.challenge} accent={accent}>
-          <p>{project.challenge}</p>
-        </Section>
+        {showcase && (
+          <section className="mb-14" aria-label={showcase.screenshotsHeading}>
+            <h2 className="text-xl font-bold text-[#f1f5f9] mb-5">{showcase.screenshotsHeading}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {showcase.screenshots.map((shot, index) => (
+                <figure key={shot.src} className="rounded-xl overflow-hidden border border-[#1e1e3f] bg-[#0d0d1f]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={shot.src} alt={shot.alt} loading={index === 0 ? 'eager' : 'lazy'} className="w-full aspect-[16/10] object-cover" style={{ objectPosition: index === 0 ? 'center top' : 'center 75%' }} />
+                  <figcaption className="px-5 py-4 text-sm leading-relaxed text-[#94a3b8]">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
-        <Section title={c.projectPage.solution} accent={accent}>
-          <p>{project.solution}</p>
-        </Section>
+        <div className="max-w-3xl">
+          <Section title={c.projectPage.challenge} accent={accent}>
+            <p>{project.challenge}</p>
+          </Section>
 
-        <Section title={c.projectPage.results} accent={accent}>
-          <p>{project.results}</p>
-        </Section>
+          <Section title={c.projectPage.solution} accent={accent}>
+            <p>{project.solution}</p>
+          </Section>
+        </div>
+
+        {showcase && (
+          <section className="mb-14" aria-label={showcase.stepsHeading}>
+            <h2 className="text-xl font-bold text-[#f1f5f9] mb-5">{showcase.stepsHeading}</h2>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {showcase.steps.map((step, index) => (
+                <li key={step.title} className="rounded-xl border border-[#1e1e3f] bg-[#0d0d1f] p-6">
+                  <span className="text-lg font-mono font-semibold text-[#2dd4bf]">{String(index + 1).padStart(2, '0')}</span>
+                  <h3 className="text-base font-semibold text-[#f1f5f9] mt-4 mb-2">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-[#94a3b8]">{step.detail}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        <div className="max-w-3xl">
+          <Section title={c.projectPage.results} accent={accent}>
+            <p>{project.results}</p>
+          </Section>
+        </div>
+
+        {showcase && (
+          <section className="mb-14" aria-label={showcase.benefitsHeading}>
+            <h2 className="text-xl font-bold text-[#f1f5f9] mb-5">{showcase.benefitsHeading}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {showcase.benefits.map((benefit) => (
+                <article key={benefit.title} className="rounded-xl border border-[#1e1e3f] bg-[#0d0d1f] p-5">
+                  <h3 className="text-base font-semibold text-[#f1f5f9] mb-2">{benefit.title}</h3>
+                  <p className="text-sm leading-relaxed text-[#94a3b8]">{benefit.detail}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Screenshots */}
+        {!showcase && project.screenshots && project.screenshots.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-xl font-bold text-[#f1f5f9] mb-4 flex items-center gap-3">
+              <span className="w-1 h-6 rounded-full shrink-0 inline-block" style={{ background: accent }} />
+              {c.projectPage.screenshots}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.screenshots.map((shot) => (
+                <figure
+                  key={shot.src}
+                  className="rounded-xl overflow-hidden border"
+                  style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={shot.src} alt={shot.caption} loading="lazy" className="w-full h-auto block" />
+                  <figcaption className="text-xs px-4 py-3 text-[#94a3b8]">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Stack */}
         <div className="mb-12">
@@ -149,6 +245,22 @@ export default function ProjectPage({ params }: Props) {
             ))}
           </div>
         </div>
+
+        {showcase && (
+          <div className="mb-12 rounded-xl border border-[#1e1e3f] bg-[#0d0d1f] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <div>
+              <h2 className="text-lg font-semibold text-[#f1f5f9] mb-1">
+                {lang === 'en' ? 'Have a similar data problem?' : 'Tem um desafio de dados parecido?'}
+              </h2>
+              <p className="text-sm text-[#94a3b8]">
+                {lang === 'en' ? 'Tell me about the workflow or reporting decision you want to improve.' : 'Conte qual fluxo ou decisão baseada em relatórios você quer melhorar.'}
+              </p>
+            </div>
+            <Link href="/#contact" className="shrink-0 rounded-lg border border-[#0d9488] px-5 py-3 text-sm font-semibold text-[#2dd4bf] hover:bg-[#0d9488] hover:text-white transition-colors">
+              {lang === 'en' ? 'Let’s talk →' : 'Vamos conversar →'}
+            </Link>
+          </div>
+        )}
 
         {/* Divider */}
         <div className="h-px mb-10" style={{ background: '#1e1e3f' }} />
