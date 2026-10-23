@@ -6,7 +6,7 @@ export interface ProjectShowcase {
   metrics: { value: string; label: string }[];
   steps: { title: string; detail: string }[];
   benefits: { title: string; detail: string }[];
-  screenshots: { src: string; alt: string; caption: string }[];
+  screenshots: { src: string; alt: string; caption: string; focus?: string }[];
   demoUrl?: string;
   demoLabel?: string;
   sourceLabel: string;
@@ -71,7 +71,7 @@ const showcases: Record<Lang, Record<string, ProjectShowcase>> = {
       ],
       screenshots: [
         { src: '/projects/spreadsheet-automation-kit/report.png', alt: 'Generated spreadsheet report with synthetic row reconciliation and monthly chart', caption: 'Generated report: 360 source rows, 348 accepted, 12 for review, and monthly accepted amount.' },
-        { src: '/projects/spreadsheet-automation-kit/exceptions.png', alt: 'Full report with review reasons and source rows for exceptions', caption: 'Review reasons and source rows make each rejected record actionable.' },
+        { src: '/projects/spreadsheet-automation-kit/exceptions.png', alt: 'Full report with review reasons and source rows for exceptions', caption: 'Review reasons and source rows make each rejected record actionable.', focus: 'center bottom' },
       ],
       sourceLabel: 'Get the CLI and sample files ↗',
     },
@@ -131,7 +131,7 @@ const showcases: Record<Lang, Record<string, ProjectShowcase>> = {
       ],
       screenshots: [
         { src: '/projects/spreadsheet-automation-kit/report.png', alt: 'Relatório gerado com reconciliação sintética e gráfico mensal', caption: 'Relatório gerado: 360 linhas de origem, 348 aceitas, 12 para revisão e valores mensais aceitos.' },
-        { src: '/projects/spreadsheet-automation-kit/exceptions.png', alt: 'Relatório completo com motivos de revisão e linhas de origem das exceções', caption: 'Motivos e linhas de origem tornam cada registro rejeitado revisável.' },
+        { src: '/projects/spreadsheet-automation-kit/exceptions.png', alt: 'Relatório completo com motivos de revisão e linhas de origem das exceções', caption: 'Motivos e linhas de origem tornam cada registro rejeitado revisável.', focus: 'center bottom' },
       ],
       sourceLabel: 'Obter o CLI e arquivos de exemplo ↗',
     },

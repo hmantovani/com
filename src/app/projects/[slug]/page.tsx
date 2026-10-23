@@ -151,7 +151,7 @@ export default function ProjectPage({ params }: Props) {
               {showcase.screenshots.map((shot, index) => (
                 <figure key={shot.src} className="rounded-xl overflow-hidden border border-[#1e1e3f] bg-[#0d0d1f]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={shot.src} alt={shot.alt} loading={index === 0 ? 'eager' : 'lazy'} className="w-full aspect-[16/10] object-cover" style={{ objectPosition: index === 0 ? 'center top' : 'center 75%' }} />
+                  <img src={shot.src} alt={shot.alt} loading={index === 0 ? 'eager' : 'lazy'} className="w-full aspect-[16/10] object-cover" style={{ objectPosition: shot.focus ?? (index === 0 ? 'center top' : 'center 75%') }} />
                   <figcaption className="px-5 py-4 text-sm leading-relaxed text-[#94a3b8]">{shot.caption}</figcaption>
                 </figure>
               ))}
