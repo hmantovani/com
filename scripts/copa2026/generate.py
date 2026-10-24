@@ -484,6 +484,34 @@ def over_under(mat, line=2.5):
     return float(over), float(1 - over)
 
 
+GRID_N = 6  # exported scoreline grid covers 0..5 goals per side
+
+
+def score_grid(mat, n=GRID_N):
+    """Top-left n x n block of the scoreline matrix (rows = home goals,
+    cols = away goals), rounded for compact JSON."""
+    return [[round(float(mat[i, j]), 4) for j in range(n)] for i in range(n)]
+
+
+def match_pred(mat, home, away):
+    """Full prediction block for one match from its scoreline matrix."""
+    ph, pdr, pa       = outcome_probs(mat)
+    ou_over, ou_under = over_under(mat)
+    by, bn            = btts(mat)
+    return {
+        "home_elo": round(elo_now[home]), "away_elo": round(elo_now[away]),
+        "p_home": round(ph, 4), "p_draw": round(pdr, 4), "p_away": round(pa, 4),
+        # knockout tie-break rule used by the simulation: draws are a coin flip
+        "p_adv_home": round(ph + 0.5 * pdr, 4),
+        "top_scores": top_scorelines(mat),
+        "over25": round(ou_over, 4), "under25": round(ou_under, 4),
+        "btts_yes": round(by, 4), "btts_no": round(bn, 4),
+        "exp_home_goals": round(float((mat.sum(axis=1) * np.arange(MAX_GOALS + 1)).sum()), 2),
+        "exp_away_goals": round(float((mat.sum(axis=0) * np.arange(MAX_GOALS + 1)).sum()), 2),
+        "grid": score_grid(mat),
+    }
+
+
 def btts(mat):
     yes = mat[1:, 1:].sum()
     return float(yes), float(1 - yes)
@@ -522,6 +550,7 @@ for g, rounds in FIXTURES.items():
                 "btts_yes": round(by, 4),    "btts_no":  round(bn, 4),
                 "exp_home_goals": round(float((mat.sum(axis=1) * np.arange(MAX_GOALS + 1)).sum()), 2),
                 "exp_away_goals": round(float((mat.sum(axis=0) * np.arange(MAX_GOALS + 1)).sum()), 2),
+                "grid": score_grid(mat),
             }
             if (home, away) in known_scores:
                 hg, ag = known_scores[(home, away)]
@@ -944,6 +973,9 @@ def bracket_match(mid, home, away, venue, date, round_label):
     }
     if status == "actual":
         entry.update(ko_actual_detail.get(mid, {}))
+    # Model prediction for this tie with the ratings in force at this moment
+    # (host-nation venue advantage included, same rule the simulation uses).
+    entry["pred"] = match_pred(predict_match(home, away, is_home=venue_is_home(home, away, venue)), home, away)
     return entry
 
 
