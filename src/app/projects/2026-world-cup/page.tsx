@@ -12,9 +12,7 @@ import { teamsData, moment1, story, type Team } from '@/data/copa2026';
 import { copaCopy, teamName } from '@/data/copa2026/copy';
 import { storyCopy } from '@/data/copa2026/storyCopy';
 
-const ACCENT = '#2dd4bf';
-const ACCENT_DIM = 'rgba(13,148,136,0.12)';
-const ACCENT_BORDER = 'rgba(13,148,136,0.3)';
+const ACCENT = 'var(--accent)';
 
 const STACK = ['Python', 'pandas', 'statsmodels', 'NumPy', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'];
 
@@ -22,9 +20,9 @@ function TeamRow({ t, name }: { t: Team; name: string }) {
   return (
     <div className="flex items-center gap-3 py-2">
       <Flag iso2={t.iso2} size={20} title={name} />
-      <span className="text-sm text-[#f1f5f9] flex-1 leading-tight">{name}</span>
-      <span className="text-xs font-mono text-[#94a3b8] w-10 text-right shrink-0">{t.elo}</span>
-      <span className="text-[10px] font-mono text-[#475569] w-8 text-right shrink-0">#{t.elo_rank}</span>
+      <span className="text-sm text-ink flex-1 leading-tight">{name}</span>
+      <span className="text-xs font-mono text-ink-2 w-10 text-right shrink-0">{t.elo}</span>
+      <span className="text-[10px] font-mono text-ink-3 w-8 text-right shrink-0">#{t.elo_rank}</span>
     </div>
   );
 }
@@ -41,67 +39,47 @@ export default function WorldCup2026Home() {
 
   return (
     <div className="min-h-screen">
-      <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${ACCENT}, transparent)` }} />
 
-      <div className="max-w-5xl mx-auto px-6 pt-24 pb-20">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 pt-28 sm:pt-36 pb-20">
         {/* Back link */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-[#475569] hover:text-[#94a3b8] transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm text-ink-3 hover:text-ink-2 transition-colors mb-10 group"
         >
-          <span className="transition-transform duration-200 group-hover:-translate-x-1">←</span>
+          <span className="transition-transform duration-500 ease-out-soft group-hover:-translate-x-1">←</span>
           {c.back}
         </Link>
 
         {/* ── Hero ─────────────────────────────────────────── */}
         <header className="mb-16">
-          <span
-            className="text-xs font-semibold px-2.5 py-1 rounded-full"
-            style={{ background: ACCENT_DIM, color: ACCENT, border: `1px solid ${ACCENT_BORDER}` }}
-          >
-            {c.heroBadge}
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#f1f5f9] leading-tight mt-5 mb-5">
+          <p className="eyebrow enter" style={{ ['--d' as string]: '60ms' }}>{c.heroBadge}</p>
+          <h1 className="display mt-6 text-[clamp(2.4rem,1.4rem+4vw,4.8rem)] text-ink enter" style={{ ['--d' as string]: '130ms' }}>
             {c.heroTitle}
-            <span className="block text-2xl sm:text-3xl mt-2 gradient-purple-teal">{c.heroSubtitle}</span>
+            <span className="block italic text-ink-3 text-[0.55em] mt-3 leading-tight">{c.heroSubtitle}</span>
           </h1>
-          <p className="text-[#94a3b8] leading-relaxed text-lg max-w-2xl">
+          <p className="mt-7 text-ink-2 leading-relaxed text-[1.1rem] max-w-[58ch] enter" style={{ ['--d' as string]: '230ms' }}>
             {c.heroLead(moment1.train_matches.toLocaleString(), moment1.train_cutoff)}
           </p>
-          <div className="flex flex-wrap gap-2 mt-6">
-            {STACK.map((s) => (
-              <span
-                key={s}
-                className="text-xs px-3 py-1 rounded-full font-mono"
-                style={{ background: '#0d0d1f', color: '#94a3b8', border: '1px solid #1e1e3f' }}
-              >
-                {s}
-              </span>
-            ))}
-          </div>
+          <p className="mt-6 font-mono text-[0.75rem] text-ink-3 enter" style={{ ['--d' as string]: '320ms' }}>
+            {STACK.join(' · ')}
+          </p>
         </header>
 
         <ResultBanner story={story} />
         <KeyNumbers story={story} />
 
         {/* ── Title-odds trajectory ─────────────────────────── */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {sc.trajTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">{sc.trajSubtitle}</p>
+        <section className="mb-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{sc.trajTitle}</h2>
+          <p className="text-sm text-ink-2 mb-5 max-w-2xl">{sc.trajSubtitle}</p>
           <ChampionTrajectory story={story} />
         </section>
 
         {/* ── The eight snapshots ──────────────────────────── */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.stagesTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">{c.stagesSubtitle}</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <section className="mb-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{c.stagesTitle}</h2>
+          <p className="text-sm text-ink-2 mb-5 max-w-2xl">{c.stagesSubtitle}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line border border-line">
             {MOMENTS.map((m) => {
               const row = story.moments[m.n - 1];
               const fav = row.favorites[0];
@@ -109,22 +87,21 @@ export default function WorldCup2026Home() {
                 <Link
                   key={m.n}
                   href={`/projects/2026-world-cup/moment-${m.n}`}
-                  className="rounded-xl p-4 border card-transition hover-glow-teal block"
-                  style={{ background: '#0d0d1f', borderColor: ACCENT_BORDER, borderLeft: `3px solid ${ACCENT}` }}
+                  className="group p-4 sm:p-5 block bg-bg transition-colors hover:bg-bg-soft"
                 >
-                  <div className="text-xs font-mono text-[#475569] mb-2">
+                  <div className="text-xs font-mono text-ink-3 mb-2">
                     {c.stageWord} {m.n}
                   </div>
-                  <div className="text-sm font-semibold text-[#f1f5f9]">{m.label}</div>
-                  <div className="text-xs text-[#94a3b8] mt-1">{m.predicts}</div>
-                  <div className="mt-3 pt-3 border-t" style={{ borderColor: '#1a1a33' }}>
-                    <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1">{sc.momentsFavorite}</div>
-                    <div className="flex items-center gap-1.5 text-xs text-[#f1f5f9]">
+                  <div className="text-sm font-semibold text-ink">{m.label}</div>
+                  <div className="text-xs text-ink-2 mt-1">{m.predicts}</div>
+                  <div className="mt-3 pt-3 border-t" style={{ borderColor: 'var(--line)' }}>
+                    <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1">{sc.momentsFavorite}</div>
+                    <div className="flex items-center gap-1.5 text-xs text-ink">
                       <Flag iso2={fav.iso2} size={12} title={fav.team} />
                       <span className="truncate">{teamName(fav.team, lang)}</span>
-                      <span className="font-mono tabular-nums text-[#94a3b8] ml-auto">{pctPoints(fav.p)}</span>
+                      <span className="font-mono tabular-nums text-ink-2 ml-auto">{pctPoints(fav.p)}</span>
                     </div>
-                    <div className="text-[10px] text-[#64748b] mt-1.5 flex items-center gap-1">
+                    <div className="text-[10px] text-ink-3 mt-1.5 flex items-center gap-1">
                       <span style={{ color: ACCENT }}>★</span>
                       {sc.momentsChampion(
                         teamName(story.champion, lang),
@@ -140,40 +117,31 @@ export default function WorldCup2026Home() {
         </section>
 
         {/* ── Scorecard ─────────────────────────────────────── */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {sc.scoreTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">{sc.scoreSubtitle}</p>
+        <section className="mb-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{sc.scoreTitle}</h2>
+          <p className="text-sm text-ink-2 mb-5 max-w-2xl">{sc.scoreSubtitle}</p>
           <Scorecard story={story} />
         </section>
 
         {/* ── Surprises ─────────────────────────────────────── */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {sc.surprisesTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">{sc.surprisesSubtitle}</p>
+        <section className="mb-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{sc.surprisesTitle}</h2>
+          <p className="text-sm text-ink-2 mb-5 max-w-2xl">{sc.surprisesSubtitle}</p>
           <Surprises story={story} />
         </section>
 
         {/* ── How it works ─────────────────────────────────── */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-5 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.howTitle}
-          </h2>
+        <section className="mb-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-5">{c.howTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {c.howCards.map((card) => (
               <div
                 key={card.t}
-                className="rounded-xl p-5 border"
-                style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}
+                className="rounded-[3px] p-5 border"
+                style={{ background: 'var(--surface)', borderColor: 'var(--line)' }}
               >
-                <h3 className="text-sm font-semibold text-[#f1f5f9] mb-2">{card.t}</h3>
-                <p className="text-xs text-[#94a3b8] leading-relaxed">{card.d}</p>
+                <h3 className="text-sm font-semibold text-ink mb-2">{card.t}</h3>
+                <p className="text-xs text-ink-2 leading-relaxed">{card.d}</p>
               </div>
             ))}
           </div>
@@ -181,11 +149,8 @@ export default function WorldCup2026Home() {
 
         {/* ── The 48 nations by group ──────────────────────── */}
         <section>
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.nationsTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-6 max-w-2xl">{c.nationsSubtitle}</p>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{c.nationsTitle}</h2>
+          <p className="text-sm text-ink-2 mb-6 max-w-2xl">{c.nationsSubtitle}</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.keys(teamsData.groups).map((g) => {
               const teams = byGroup(g);
@@ -193,18 +158,18 @@ export default function WorldCup2026Home() {
               return (
                 <div
                   key={g}
-                  className="rounded-xl border p-5"
-                  style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}
+                  className="rounded-[3px] border p-5"
+                  style={{ background: 'var(--surface)', borderColor: 'var(--line)' }}
                 >
                   <div className="flex items-center justify-between mb-3 gap-2">
-                    <h3 className="text-sm font-bold text-[#f1f5f9] tracking-wide shrink-0">
+                    <h3 className="text-sm font-bold text-ink tracking-wide shrink-0">
                       {c.groupWord} {g}
                     </h3>
-                    <span className="text-[10px] text-[#475569] uppercase tracking-widest truncate">
+                    <span className="text-[10px] text-ink-3 uppercase tracking-widest truncate">
                       {c.topSeed} · {teamName(fav.team, lang)}
                     </span>
                   </div>
-                  <div className="divide-y" style={{ borderColor: '#1a1a33' }}>
+                  <div className="divide-y" style={{ borderColor: 'var(--line)' }}>
                     {teams.map((t) => (
                       <TeamRow key={t.team} t={t} name={teamName(t.team, lang)} />
                     ))}
@@ -216,7 +181,7 @@ export default function WorldCup2026Home() {
         </section>
 
         {/* Footnote */}
-        <p className="text-xs text-[#475569] mt-12 leading-relaxed">{c.homeFootnote(moment1.train_cutoff)}</p>
+        <p className="text-xs text-ink-3 mt-12 leading-relaxed">{c.homeFootnote(moment1.train_cutoff)}</p>
       </div>
     </div>
   );

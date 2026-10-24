@@ -140,51 +140,51 @@ const STAGE_LEADS_EN: Array<(sims: string) => ReactNode> = [
   (sims) => (
     <>
       Nothing has kicked off yet — every group match and the full knockout bracket, all the way to the
-      champion, is predicted from scratch, across <strong className="text-[#f1f5f9]">{sims}</strong> Monte
+      champion, is predicted from scratch, across <strong className="text-ink">{sims}</strong> Monte
       Carlo simulations.
     </>
   ),
   (sims) => (
     <>
       Matchday 1 results are real. Matchdays 2–3 and the full knockout bracket are predicted, across{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+      <strong className="text-ink">{sims}</strong> simulations.
     </>
   ),
   (sims) => (
     <>
       Matchdays 1–2 results are real. Matchday 3 and the full knockout bracket are predicted, across{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+      <strong className="text-ink">{sims}</strong> simulations.
     </>
   ),
   (sims) => (
     <>
       The group stage is complete — all 72 results are real. The entire knockout bracket, from the Round
-      of 32 to the champion, is predicted across <strong className="text-[#f1f5f9]">{sims}</strong>{' '}
+      of 32 to the champion, is predicted across <strong className="text-ink">{sims}</strong>{' '}
       simulations.
     </>
   ),
   (sims) => (
     <>
       Group stage and Round of 32 results are real. From the Round of 16 onward the bracket is predicted,
-      across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+      across <strong className="text-ink">{sims}</strong> simulations.
     </>
   ),
   (sims) => (
     <>
       Everything through the Round of 16 is real. Simulation starts at the Quarter-Finals, across{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> runs.
+      <strong className="text-ink">{sims}</strong> runs.
     </>
   ),
   (sims) => (
     <>
       Everything through the Quarter-Finals is real. Only the Semi-Finals, the third-place match and the
-      Final are predicted, across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+      Final are predicted, across <strong className="text-ink">{sims}</strong> simulations.
     </>
   ),
   (sims) => (
     <>
       Everything through the Semi-Finals is real. Only the third-place match and the Final remain —
-      predicted across <strong className="text-[#f1f5f9]">{sims}</strong> simulations.
+      predicted across <strong className="text-ink">{sims}</strong> simulations.
     </>
   ),
 ];
@@ -204,50 +204,50 @@ const STAGE_LEADS_PT: Array<(sims: string) => ReactNode> = [
   (sims) => (
     <>
       Nada começou ainda — cada partida da fase de grupos e o chaveamento completo do mata-mata, até o
-      campeão, são previstos do zero, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações de
+      campeão, são previstos do zero, em <strong className="text-ink">{sims}</strong> simulações de
       Monte Carlo.
     </>
   ),
   (sims) => (
     <>
       Os resultados da Rodada 1 já são reais. As Rodadas 2–3 e o chaveamento completo do mata-mata são
-      previstos, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      previstos, em <strong className="text-ink">{sims}</strong> simulações.
     </>
   ),
   (sims) => (
     <>
       Os resultados das Rodadas 1–2 já são reais. A Rodada 3 e o chaveamento completo do mata-mata são
-      previstos, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      previstos, em <strong className="text-ink">{sims}</strong> simulações.
     </>
   ),
   (sims) => (
     <>
       A fase de grupos terminou — os 72 resultados já são reais. Todo o chaveamento do mata-mata, das
-      oitavas (32) ao campeão, é previsto em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      oitavas (32) ao campeão, é previsto em <strong className="text-ink">{sims}</strong> simulações.
     </>
   ),
   (sims) => (
     <>
       Fase de grupos e oitavas (32) já são reais. A partir das oitavas (16) o chaveamento é previsto, em{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      <strong className="text-ink">{sims}</strong> simulações.
     </>
   ),
   (sims) => (
     <>
       Tudo até as oitavas (16) já é real. A simulação começa nas quartas de final, em{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> rodadas.
+      <strong className="text-ink">{sims}</strong> rodadas.
     </>
   ),
   (sims) => (
     <>
       Tudo até as quartas de final já é real. Só a semifinal, a disputa de 3º lugar e a final são
-      previstas, em <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      previstas, em <strong className="text-ink">{sims}</strong> simulações.
     </>
   ),
   (sims) => (
     <>
       Tudo até as semifinais já é real. Só restam a disputa de 3º lugar e a final — previstas em{' '}
-      <strong className="text-[#f1f5f9]">{sims}</strong> simulações.
+      <strong className="text-ink">{sims}</strong> simulações.
     </>
   ),
 ];
@@ -262,7 +262,7 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     heroLead: (matches, cutoff) => (
       <>
         A statistical model that forecast the 2026 World Cup one stage at a time. It is trained on{' '}
-        <strong className="text-[#f1f5f9]">{matches}</strong> international matches; after every stage the real results
+        <strong className="text-ink">{matches}</strong> international matches; after every stage the real results
         were fed back in and the whole tournament was re-simulated. Walk through the eight snapshots to see what the
         model thought, when it thought it, and how it turned out.
       </>
@@ -327,7 +327,7 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     heroLead: (matches, cutoff) => (
       <>
         Um modelo estatístico que previu a Copa do Mundo de 2026 etapa por etapa. É treinado em{' '}
-        <strong className="text-[#f1f5f9]">{matches}</strong> partidas internacionais; após cada fase os resultados
+        <strong className="text-ink">{matches}</strong> partidas internacionais; após cada fase os resultados
         reais foram incorporados e o torneio inteiro foi simulado de novo. Percorra os oito instantâneos para ver o que
         o modelo pensava, quando pensava e como terminou.
       </>

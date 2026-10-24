@@ -19,15 +19,15 @@ export default function MomentTimeline({ current }: { current: number }) {
     n ? (
       <Link
         href={`${BASE}/moment-${n}`}
-        className="text-xs font-semibold px-3 py-1.5 rounded-md transition-colors hover:text-[#2dd4bf]"
-        style={{ color: '#94a3b8', border: `1px solid ${CARD_BORDER}`, background: CARD }}
+        className="text-xs font-semibold px-3 py-1.5 rounded-md transition-colors hover:text-accent"
+        style={{ color: 'var(--ink-2)', border: `1px solid ${CARD_BORDER}`, background: CARD }}
       >
         {dir === 'prev' ? `← ${label}` : `${label} →`}
       </Link>
     ) : (
       <span
         className="text-xs font-semibold px-3 py-1.5 rounded-md opacity-30"
-        style={{ color: '#94a3b8', border: `1px solid ${CARD_BORDER}`, background: CARD }}
+        style={{ color: 'var(--ink-2)', border: `1px solid ${CARD_BORDER}`, background: CARD }}
       >
         {dir === 'prev' ? `← ${label}` : `${label} →`}
       </span>
@@ -37,7 +37,7 @@ export default function MomentTimeline({ current }: { current: number }) {
     <nav aria-label={c.navAll} className="mb-10">
       <div className="flex items-center justify-between gap-3 mb-4">
         {navLink(prev, c.navPrev, 'prev')}
-        <span className="text-[11px] uppercase tracking-widest text-[#475569] text-center">{c.navStep(current)}</span>
+        <span className="text-[11px] uppercase tracking-widest text-ink-3 text-center">{c.navStep(current)}</span>
         {navLink(next, c.navNext, 'next')}
       </div>
       <ol className="flex items-start">
@@ -58,8 +58,8 @@ export default function MomentTimeline({ current }: { current: number }) {
                 aria-current={active ? 'step' : undefined}
                 className="relative z-10 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-transform hover:scale-110"
                 style={{
-                  background: active ? ACCENT : past ? 'rgba(13,148,136,0.25)' : CARD,
-                  color: active ? '#08080f' : past ? ACCENT : '#64748b',
+                  background: active ? ACCENT : past ? 'color-mix(in srgb, var(--accent) 25%, transparent)' : CARD,
+                  color: active ? 'var(--bg)' : past ? ACCENT : 'var(--ink-3)',
                   border: `1px solid ${active || past ? ACCENT : CARD_BORDER}`,
                 }}
               >
@@ -67,7 +67,7 @@ export default function MomentTimeline({ current }: { current: number }) {
               </Link>
               <span
                 className="mt-1.5 text-[10px] text-center leading-tight px-0.5 truncate max-w-full"
-                style={{ color: active ? '#f1f5f9' : '#475569', fontWeight: active ? 600 : 400 }}
+                style={{ color: active ? 'var(--ink)' : 'var(--ink-3)', fontWeight: active ? 600 : 400 }}
               >
                 {c.momentShort[n - 1]}
               </span>

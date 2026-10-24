@@ -164,7 +164,7 @@ const SHORT_PT: StageNames = {
   G1: 'Rod. 1', G2: 'Rod. 2', G3: 'Rod. 3', R32: '32', R16: '16', QF: 'Quartas', SF: 'Semis', '3RD': '3º', F: 'Final',
 };
 
-const strong = (x: ReactNode) => <strong className="text-[#f1f5f9]">{x}</strong>;
+const strong = (x: ReactNode) => <strong className="text-ink">{x}</strong>;
 
 export const storyCopy: Record<Lang, StoryCopy> = {
   en: {

@@ -2,14 +2,14 @@
 
 import type { MatchPred, ScoreGrid, StoryMatch } from '@/data/copa2026';
 
-export const ACCENT = '#2dd4bf';
-export const ACCENT_DIM = 'rgba(13,148,136,0.12)';
-export const ACCENT_BORDER = 'rgba(13,148,136,0.3)';
-export const PURPLE = '#8b5cf6';
-export const GOOD = '#4ade80';
-export const BAD = '#f87171';
-export const CARD = '#0d0d1f';
-export const CARD_BORDER = '#1e1e3f';
+export const ACCENT = 'var(--accent)';
+export const ACCENT_DIM = 'color-mix(in srgb, var(--accent) 12%, transparent)';
+export const ACCENT_BORDER = 'color-mix(in srgb, var(--accent) 30%, transparent)';
+export const PURPLE = 'var(--accent)';
+export const GOOD = 'var(--pos)';
+export const BAD = 'var(--neg)';
+export const CARD = 'var(--surface)';
+export const CARD_BORDER = 'var(--line)';
 
 /** 0.7722 -> "77%" (or "77.2%" with decimals) */
 export function pct(p: number, decimals = 0): string {
@@ -63,23 +63,24 @@ export function scoreText(m: StoryMatch): string {
   return base;
 }
 
-// Categorical palette for the title-odds chart (distinct on the dark background).
-const PALETTE = ['#60a5fa', '#f87171', '#a78bfa', '#e2e8f0', '#facc15', '#fb923c', '#34d399', '#f472b6', '#22d3ee', '#a3e635'];
+// Categorical palette for the title-odds chart: mid-tone hues that hold
+// contrast on both the light paper and the dark graphite backgrounds.
+const PALETTE = ['#4e79a7', '#e15759', '#f28e2b', '#59a14f', '#b07aa1', '#76b7b2', '#9c755f', '#d37295', '#8cd17d', '#bab0ac'];
 const FIXED: Record<string, string> = {
-  Argentina: '#60a5fa',
-  Spain: '#f87171',
-  France: '#a78bfa',
-  England: '#e2e8f0',
-  Brazil: '#facc15',
-  Portugal: '#fb923c',
-  Germany: '#94a3b8',
-  Netherlands: '#f97316',
-  Morocco: '#34d399',
-  Belgium: '#f472b6',
-  Colombia: '#fde047',
-  Norway: '#22d3ee',
-  Switzerland: '#fca5a5',
-  Croatia: '#c084fc',
+  Argentina: '#5b9bd5',
+  Spain: '#e15759',
+  France: '#4e79a7',
+  England: '#9c755f',
+  Brazil: '#d4a017',
+  Portugal: '#f28e2b',
+  Germany: '#8a8a8a',
+  Netherlands: '#e8833a',
+  Morocco: '#59a14f',
+  Belgium: '#d37295',
+  Colombia: '#c9b037',
+  Norway: '#76b7b2',
+  Switzerland: '#b6403f',
+  Croatia: '#b07aa1',
 };
 
 export function teamColor(team: string, index: number): string {

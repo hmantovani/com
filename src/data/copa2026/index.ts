@@ -181,8 +181,8 @@ export const CONF_COLOR: Record<string, string> = {
   CONMEBOL: '#f28e2b',
   CONCACAF: '#e15759',
   CAF: '#59a14f',
-  AFC: '#8b5cf6',
-  OFC: '#2dd4bf',
+  AFC: '#b07aa1',
+  OFC: '#76b7b2',
 };
 
 // ── Story data (scripts/copa2026/story.py) ──────────────────────────────────

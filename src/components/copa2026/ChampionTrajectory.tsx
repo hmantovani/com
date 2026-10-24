@@ -67,13 +67,13 @@ export default function ChampionTrajectory({ story, current }: { story: Story; c
   const ticks = Array.from({ length: yMax / 10 + 1 }, (_, i) => i * 10);
 
   return (
-    <div className="rounded-xl border p-4 sm:p-5" style={{ background: CARD, borderColor: CARD_BORDER }}>
+    <div className="rounded-[3px] border p-4 sm:p-5" style={{ background: CARD, borderColor: CARD_BORDER }}>
       <div className="overflow-x-auto">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto min-w-[620px]" role="img" aria-label={c.trajAxis}>
         {ticks.map((tk) => (
           <g key={tk}>
-            <line x1={M.l} x2={W - M.r} y1={y(tk)} y2={y(tk)} stroke="#1e1e3f" strokeWidth={1} />
-            <text x={M.l - 8} y={y(tk) + 3} textAnchor="end" fontSize={10} fill="#475569" fontFamily="monospace">
+            <line x1={M.l} x2={W - M.r} y1={y(tk)} y2={y(tk)} stroke="var(--line)" strokeWidth={1} />
+            <text x={M.l - 8} y={y(tk) + 3} textAnchor="end" fontSize={10} fill="var(--ink-3)" fontFamily="monospace">
               {tk}%
             </text>
           </g>
@@ -115,12 +115,12 @@ export default function ChampionTrajectory({ story, current }: { story: Story; c
               y={H - M.b + 16}
               textAnchor="middle"
               fontSize={10}
-              fill={sel === m.moment ? '#f1f5f9' : '#64748b'}
+              fill={sel === m.moment ? 'var(--ink)' : 'var(--ink-3)'}
               fontWeight={sel === m.moment ? 700 : 400}
             >
               {c.momentShort[i]}
             </text>
-            <text x={x(i)} y={H - M.b + 29} textAnchor="middle" fontSize={9} fill="#334155" fontFamily="monospace">
+            <text x={x(i)} y={H - M.b + 29} textAnchor="middle" fontSize={9} fill="var(--ink-4)" fontFamily="monospace">
               #{m.moment}
             </text>
             {/* wide transparent hit area for tap / hover */}
@@ -139,7 +139,7 @@ export default function ChampionTrajectory({ story, current }: { story: Story; c
       </svg>
       </div>
 
-      <p className="text-[11px] text-[#475569] mt-1 mb-4">{c.trajHint}</p>
+      <p className="text-[11px] text-ink-3 mt-1 mb-4">{c.trajHint}</p>
 
       <div className="flex flex-wrap gap-2 mb-5">
         {teams.map((t, idx) => {
@@ -151,7 +151,7 @@ export default function ChampionTrajectory({ story, current }: { story: Story; c
               onClick={() => toggle(t)}
               aria-pressed={!off}
               className="flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded-full transition-opacity"
-              style={{ border: `1px solid ${off ? CARD_BORDER : col}`, color: off ? '#475569' : '#f1f5f9', opacity: off ? 0.55 : 1, background: '#0a0a16' }}
+              style={{ border: `1px solid ${off ? CARD_BORDER : col}`, color: off ? 'var(--ink-3)' : 'var(--ink)', opacity: off ? 0.55 : 1, background: 'var(--bg)' }}
             >
               <span className="w-2 h-2 rounded-full" style={{ background: col, opacity: off ? 0.3 : 1 }} />
               <Flag iso2={iso[t] ?? ''} size={11} title={t} />
@@ -162,22 +162,22 @@ export default function ChampionTrajectory({ story, current }: { story: Story; c
         })}
       </div>
 
-      <div className="rounded-lg p-3" style={{ background: '#0a0a16' }}>
-        <div className="text-[10px] uppercase tracking-widest text-[#64748b] mb-2">
+      <div className="rounded-[3px] p-3" style={{ background: 'var(--bg)' }}>
+        <div className="text-[10px] uppercase tracking-widest text-ink-3 mb-2">
           #{selRow.moment} · {copaCopy[lang].moments[selRow.moment - 1].label}
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1">
           {selTeams.map((t) => (
             <div key={t} className="flex items-center justify-between text-xs gap-2">
-              <span className="truncate text-[#94a3b8]">
+              <span className="truncate text-ink-2">
                 {teamName(t, lang)}
                 {t === story.champion ? ' ★' : ''}
               </span>
-              <span className="font-mono tabular-nums text-[#f1f5f9]">{pctPoints(selRow.p_champion[t] ?? 0)}</span>
+              <span className="font-mono tabular-nums text-ink">{pctPoints(selRow.p_champion[t] ?? 0)}</span>
             </div>
           ))}
         </div>
-        <div className="text-[10px] text-[#475569] mt-2">★ {c.trajWent}</div>
+        <div className="text-[10px] text-ink-3 mt-2">★ {c.trajWent}</div>
       </div>
     </div>
   );

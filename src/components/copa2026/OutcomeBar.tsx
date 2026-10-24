@@ -11,9 +11,9 @@ interface OutcomeBarProps {
   twoWay?: boolean;
 }
 
-const HOME = '#2dd4bf'; // teal
-const DRAW = '#475569'; // slate
-const AWAY = '#8b5cf6'; // purple
+const HOME = 'var(--accent)'; // teal
+const DRAW = 'var(--ink-3)'; // slate
+const AWAY = 'var(--accent)'; // purple
 
 export default function OutcomeBar({
   pHome,
@@ -24,7 +24,7 @@ export default function OutcomeBar({
   awayLabel = 'Win',
   twoWay = false,
 }: OutcomeBarProps) {
-  const seg = (p: number, color: string, textColor = '#08080f') =>
+  const seg = (p: number, color: string, textColor = 'var(--bg)') =>
     p > 0.001 ? (
       <div
         className="h-full flex items-center justify-center text-[10px] font-semibold overflow-hidden"
@@ -36,9 +36,9 @@ export default function OutcomeBar({
 
   return (
     <div className="w-full">
-      <div className="flex h-5 rounded-md overflow-hidden" style={{ background: '#0a0a16' }}>
+      <div className="flex h-5 rounded-md overflow-hidden" style={{ background: 'var(--bg)' }}>
         {seg(pHome, HOME)}
-        {!twoWay && seg(pDraw, DRAW, '#f1f5f9')}
+        {!twoWay && seg(pDraw, DRAW, 'var(--ink)')}
         {seg(pAway, AWAY)}
       </div>
       <div className="flex justify-between gap-2 mt-1.5 text-[10px] font-medium">
@@ -46,7 +46,7 @@ export default function OutcomeBar({
           {homeLabel} {Math.round(pHome * 100)}%
         </span>
         {!twoWay && (
-          <span className="text-[#94a3b8] shrink-0">
+          <span className="text-ink-2 shrink-0">
             {drawLabel} {Math.round(pDraw * 100)}%
           </span>
         )}

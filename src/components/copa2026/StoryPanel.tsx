@@ -13,10 +13,10 @@ function MoverChip({ r, up, lang }: { r: MoverRow; up: boolean; lang: 'en' | 'pt
   return (
     <span
       className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded-full"
-      style={{ background: '#0a0a16', border: `1px solid ${up ? 'rgba(74,222,128,0.35)' : 'rgba(248,113,113,0.35)'}` }}
+      style={{ background: 'var(--bg)', border: `1px solid ${up ? 'color-mix(in srgb, var(--pos) 35%, transparent)' : 'color-mix(in srgb, var(--neg) 35%, transparent)'}` }}
     >
       <Flag iso2={r.iso2} size={11} title={r.team} />
-      <span className="text-[#f1f5f9]">{teamName(r.team, lang)}</span>
+      <span className="text-ink">{teamName(r.team, lang)}</span>
       <span className="font-mono tabular-nums" style={{ color: up ? GOOD : BAD }}>
         {r.from.toFixed(1)}% → {r.to.toFixed(1)}%
       </span>
@@ -75,16 +75,16 @@ export default function StoryPanel({ data, story }: { data: MomentData; story: S
   }
 
   return (
-    <section className="mb-14 rounded-xl border p-5 sm:p-6" style={{ background: ACCENT_DIM, borderColor: ACCENT_BORDER }}>
+    <section className="mb-14 rounded-[3px] border p-5 sm:p-6" style={{ background: ACCENT_DIM, borderColor: ACCENT_BORDER }}>
       <h2 className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: ACCENT }}>
         {c.panelTitle}
       </h2>
-      <p className="text-sm text-[#94a3b8] leading-relaxed max-w-3xl">{lead}</p>
+      <p className="text-sm text-ink-2 leading-relaxed max-w-3xl">{lead}</p>
       {mv && (mv.up.length > 0 || mv.down.length > 0) && (
         <div className="mt-4 space-y-2">
           {mv.up.length > 0 && (
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] uppercase tracking-wider text-[#64748b] w-full sm:w-auto">{c.panelUp}</span>
+              <span className="text-[10px] uppercase tracking-wider text-ink-3 w-full sm:w-auto">{c.panelUp}</span>
               {mv.up.map((r) => (
                 <MoverChip key={r.team} r={r} up lang={lang} />
               ))}
@@ -92,7 +92,7 @@ export default function StoryPanel({ data, story }: { data: MomentData; story: S
           )}
           {mv.down.length > 0 && (
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] uppercase tracking-wider text-[#64748b] w-full sm:w-auto">{c.panelDown}</span>
+              <span className="text-[10px] uppercase tracking-wider text-ink-3 w-full sm:w-auto">{c.panelDown}</span>
               {mv.down.map((r) => (
                 <MoverChip key={r.team} r={r} up={false} lang={lang} />
               ))}
@@ -100,12 +100,12 @@ export default function StoryPanel({ data, story }: { data: MomentData; story: S
           )}
         </div>
       )}
-      <p className="text-sm text-[#94a3b8] leading-relaxed max-w-3xl mt-4">
+      <p className="text-sm text-ink-2 leading-relaxed max-w-3xl mt-4">
         {c.panelFavorite(tn(fav.team), pctPoints(fav.p))}{' '}
         {n > 1 && fav.team !== story.champion && c.panelChampion(tn(story.champion), pctPoints(row.p_champion[story.champion] ?? 0), row.champion_rank)}
       </p>
-      {endLine && <p className="text-sm text-[#94a3b8] leading-relaxed max-w-3xl mt-2">{endLine}</p>}
-      <p className="text-[11px] text-[#475569] mt-4 max-w-3xl">{c.panelHindsight}</p>
+      {endLine && <p className="text-sm text-ink-2 leading-relaxed max-w-3xl mt-2">{endLine}</p>}
+      <p className="text-[11px] text-ink-3 mt-4 max-w-3xl">{c.panelHindsight}</p>
     </section>
   );
 }

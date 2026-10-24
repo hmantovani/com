@@ -12,13 +12,13 @@ import { ACCENT, ACCENT_BORDER, ACCENT_DIM, CARD, CARD_BORDER, pct, pctPoints } 
 function Podium({ label, team, iso, big = false }: { label: string; team: string; iso: string; big?: boolean }) {
   return (
     <div
-      className="rounded-xl border p-4 flex items-center gap-3"
+      className="rounded-[3px] border p-4 flex items-center gap-3"
       style={{ background: big ? ACCENT_DIM : CARD, borderColor: big ? ACCENT_BORDER : CARD_BORDER }}
     >
       <Flag iso2={iso} size={big ? 30 : 22} title={team} />
       <div className="min-w-0">
-        <div className="text-[10px] uppercase tracking-widest text-[#64748b]">{label}</div>
-        <div className={`${big ? 'text-lg' : 'text-sm'} font-bold text-[#f1f5f9] truncate`}>{team}</div>
+        <div className="text-[10px] uppercase tracking-widest text-ink-3">{label}</div>
+        <div className={`${big ? 'text-lg' : 'text-sm'} font-bold text-ink truncate`}>{team}</div>
       </div>
     </div>
   );
@@ -34,11 +34,8 @@ export function ResultBanner({ story }: { story: Story }) {
   const last = story.moments[7].p_champion;
 
   return (
-    <section className="mb-16">
-      <h2 className="text-xl font-bold text-[#f1f5f9] mb-5 flex items-center gap-3">
-        <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-        {c.endedTitle}
-      </h2>
+    <section className="mb-16 border-t border-line pt-10" data-reveal>
+      <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-5">{c.endedTitle}</h2>
       <div className="grid sm:grid-cols-5 gap-3 mb-4">
         <div className="sm:col-span-2">
           <Podium big label={`🏆 ${c.championWord}`} team={tn(story.champion)} iso={story.champion_iso} />
@@ -47,7 +44,7 @@ export function ResultBanner({ story }: { story: Story }) {
         <Podium label={c.thirdWord} team={tn(story.third)} iso={story.third_iso} />
         <Podium label={c.fourthWord} team={tn(fourth)} iso={story.fourth_iso} />
       </div>
-      <p className="text-sm text-[#94a3b8] leading-relaxed max-w-3xl">
+      <p className="text-sm text-ink-2 leading-relaxed max-w-3xl">
         {c.finalSentence(tn(f.home), tn(f.away), `${f.hs}–${f.as}`, suffix)}{' '}
         {c.lastSnapshotSentence(
           tn(story.champion),
@@ -62,12 +59,12 @@ export function ResultBanner({ story }: { story: Story }) {
 
 function Tile({ label, value, note }: { label: string; value: string; note: string }) {
   return (
-    <div className="rounded-xl border p-5" style={{ background: CARD, borderColor: CARD_BORDER }}>
-      <div className="text-[10px] uppercase tracking-widest text-[#64748b] mb-2">{label}</div>
+    <div className="rounded-[3px] border p-5" style={{ background: CARD, borderColor: CARD_BORDER }}>
+      <div className="text-[10px] uppercase tracking-widest text-ink-3 mb-2">{label}</div>
       <div className="text-2xl font-bold" style={{ color: ACCENT }}>
         {value}
       </div>
-      <p className="text-[11px] text-[#94a3b8] leading-relaxed mt-2">{note}</p>
+      <p className="text-[11px] text-ink-2 leading-relaxed mt-2">{note}</p>
     </div>
   );
 }
@@ -83,11 +80,8 @@ export function KeyNumbers({ story }: { story: Story }) {
   const kK = Math.round((k.adv_accuracy ?? 0) * k.n);
 
   return (
-    <section className="mb-16">
-      <h2 className="text-xl font-bold text-[#f1f5f9] mb-5 flex items-center gap-3">
-        <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-        {c.keyTitle}
-      </h2>
+    <section className="mb-16 border-t border-line pt-10" data-reveal>
+      <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-5">{c.keyTitle}</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Tile
           label={c.keyChampionOdds}

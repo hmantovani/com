@@ -103,18 +103,18 @@ function Bars({ values, labels, mark, color = ACCENT }: { values: number[]; labe
     <div className="flex items-end gap-1.5 h-16">
       {values.map((v, i) => (
         <div key={labels[i]} className="flex-1 flex flex-col items-center justify-end h-full min-w-0">
-          <span className="text-[9px] font-mono text-[#94a3b8] mb-0.5">{Math.round(v * 100)}</span>
+          <span className="text-[9px] font-mono text-ink-2 mb-0.5">{Math.round(v * 100)}</span>
           <div
             className="w-full rounded-t-[3px]"
             style={{
               height: `${Math.max(2, (v / max) * 100) * 0.62}%`,
               background: color,
               opacity: mark === i ? 1 : 0.55,
-              outline: mark === i ? '2px solid #f1f5f9' : 'none',
+              outline: mark === i ? '2px solid var(--ink)' : 'none',
               outlineOffset: '1px',
             }}
           />
-          <span className="text-[9px] font-mono mt-0.5" style={{ color: mark === i ? '#f1f5f9' : '#475569', fontWeight: mark === i ? 700 : 400 }}>
+          <span className="text-[9px] font-mono mt-0.5" style={{ color: mark === i ? 'var(--ink)' : 'var(--ink-3)', fontWeight: mark === i ? 700 : 400 }}>
             {labels[i]}
           </span>
         </div>
@@ -126,7 +126,7 @@ function Bars({ values, labels, mark, color = ACCENT }: { values: number[]; labe
 function Split({ label, a, b, labelA, labelB }: { label: string; a: number; b: number; labelA: string; labelB: string }) {
   return (
     <div>
-      <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1">{label}</div>
+      <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1">{label}</div>
       <OutcomeBar pHome={a} pDraw={0} pAway={b} homeLabel={labelA} awayLabel={labelB} twoWay />
     </div>
   );
@@ -136,7 +136,7 @@ function ActualStrip({ item, c, lang }: { item: Item; c: StoryCopy; lang: Lang }
   const sm = item.actual;
   if (item.mismatch) {
     return (
-      <div className="mt-3 rounded-lg p-3 text-[11px] leading-relaxed text-[#94a3b8]" style={{ background: '#0a0a16', border: '1px dashed #2a2a55' }}>
+      <div className="mt-3 rounded-[3px] p-3 text-[11px] leading-relaxed text-ink-2" style={{ background: 'var(--bg)', border: '1px dashed var(--line-strong)' }}>
         {c.mismatchNote(teamName(item.mismatch.home, lang), teamName(item.mismatch.away, lang))}
       </div>
     );
@@ -148,21 +148,21 @@ function ActualStrip({ item, c, lang }: { item: Item; c: StoryCopy; lang: Lang }
   const winnerName = teamName(sm.winner, lang);
   return (
     <div
-      className="mt-3 rounded-lg p-3"
-      style={{ background: '#0a0a16', border: `1px solid ${ok ? 'rgba(74,222,128,0.35)' : 'rgba(248,113,113,0.35)'}` }}
+      className="mt-3 rounded-[3px] p-3"
+      style={{ background: 'var(--bg)', border: `1px solid ${ok ? 'color-mix(in srgb, var(--pos) 35%, transparent)' : 'color-mix(in srgb, var(--neg) 35%, transparent)'}` }}
     >
       <div className="flex items-center justify-between gap-2 flex-wrap">
-        <span className="text-[10px] uppercase tracking-widest text-[#64748b]">
+        <span className="text-[10px] uppercase tracking-widest text-ink-3">
           {item.locked ? c.actualNow : c.actualLater}
         </span>
         <span className="flex items-center gap-2">
-          <span className="text-sm font-bold tabular-nums text-[#f1f5f9]">{scoreText(sm)}</span>
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ color: ok ? GOOD : BAD, background: ok ? 'rgba(74,222,128,0.12)' : 'rgba(248,113,113,0.12)' }}>
+          <span className="text-sm font-bold tabular-nums text-ink">{scoreText(sm)}</span>
+          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ color: ok ? GOOD : BAD, background: ok ? 'color-mix(in srgb, var(--pos) 12%, transparent)' : 'color-mix(in srgb, var(--neg) 12%, transparent)' }}>
             {label}
           </span>
         </span>
       </div>
-      <p className="text-[11px] text-[#94a3b8] mt-1.5 leading-relaxed">
+      <p className="text-[11px] text-ink-2 mt-1.5 leading-relaxed">
         {isGroup
           ? c.gaveResult(pct(sm.p_result ?? 0))
           : c.gaveAdv(winnerName, pct(sm.p_winner_adv ?? 0))}
@@ -188,9 +188,9 @@ function ExplorerCard({ item, view, c, lang }: { item: Item; view: View; c: Stor
   const totalMark = sm && sm.ninety ? Math.min(sm.total_goals ?? 0, 6) : null;
 
   return (
-    <div className="rounded-xl border p-4" style={{ background: CARD, borderColor: item.locked ? ACCENT_BORDER : CARD_BORDER }}>
+    <div className="rounded-[3px] border p-4" style={{ background: CARD, borderColor: item.locked ? ACCENT_BORDER : CARD_BORDER }}>
       <div className="flex items-center justify-between mb-1.5 gap-2">
-        <span className="text-[10px] font-mono text-[#475569] truncate">
+        <span className="text-[10px] font-mono text-ink-3 truncate">
           {item.date.slice(5)}
           {item.group ? ` · ${copaCopy[lang].groupWord} ${item.group}` : ''}
           {item.venue ? ` · ${item.venue}` : ''}
@@ -198,9 +198,9 @@ function ExplorerCard({ item, view, c, lang }: { item: Item; view: View; c: Stor
         <span
           className="text-[9px] uppercase tracking-widest font-semibold px-2 py-0.5 rounded-full shrink-0"
           style={{
-            background: item.locked ? ACCENT_DIM : 'rgba(148,163,184,0.08)',
-            color: item.locked ? ACCENT : '#64748b',
-            border: `1px solid ${item.locked ? ACCENT_BORDER : 'rgba(148,163,184,0.2)'}`,
+            background: item.locked ? ACCENT_DIM : 'color-mix(in srgb, var(--ink-3) 8%, transparent)',
+            color: item.locked ? ACCENT : 'var(--ink-3)',
+            border: `1px solid ${item.locked ? ACCENT_BORDER : 'color-mix(in srgb, var(--ink-3) 20%, transparent)'}`,
           }}
         >
           {item.locked ? c.badgePlayed : c.badgePredicted}
@@ -211,8 +211,8 @@ function ExplorerCard({ item, view, c, lang }: { item: Item; view: View; c: Stor
         <div className="flex items-center gap-2 flex-1 min-w-0">
           <Flag iso2={item.homeIso} size={22} title={hName} />
           <div className="min-w-0">
-            <div className="text-sm font-semibold text-[#f1f5f9] leading-tight truncate">{hName}</div>
-            <div className="text-[10px] font-mono text-[#475569]">Elo {pred.home_elo}</div>
+            <div className="text-sm font-semibold text-ink leading-tight truncate">{hName}</div>
+            <div className="text-[10px] font-mono text-ink-3">Elo {pred.home_elo}</div>
           </div>
         </div>
         <div className="px-3 text-center shrink-0">
@@ -221,30 +221,30 @@ function ExplorerCard({ item, view, c, lang }: { item: Item; view: View; c: Stor
               {sm!.home_score} – {sm!.away_score}
             </div>
           ) : (
-            <div className="text-xs font-bold text-[#94a3b8]">vs</div>
+            <div className="text-xs font-bold text-ink-2">vs</div>
           )}
           {showScore && sm!.duration !== 'FT' && (
-            <div className="text-[9px] text-[#475569]">
+            <div className="text-[9px] text-ink-3">
               {sm!.duration === 'AP' ? `${sm!.home_pens}–${sm!.away_pens} ${c.pens}` : c.extraTime}
             </div>
           )}
         </div>
         <div className="flex items-center gap-2 flex-1 min-w-0 justify-end">
           <div className="min-w-0 text-right">
-            <div className="text-sm font-semibold text-[#f1f5f9] leading-tight truncate">{aName}</div>
-            <div className="text-[10px] font-mono text-[#475569]">Elo {pred.away_elo}</div>
+            <div className="text-sm font-semibold text-ink leading-tight truncate">{aName}</div>
+            <div className="text-[10px] font-mono text-ink-3">Elo {pred.away_elo}</div>
           </div>
           <Flag iso2={item.awayIso} size={22} title={aName} />
         </div>
       </div>
 
-      {item.locked && <div className="text-[9px] uppercase tracking-widest text-[#475569] mb-2">{c.oddsFrom(item.predMoment)}</div>}
+      {item.locked && <div className="text-[9px] uppercase tracking-widest text-ink-3 mb-2">{c.oddsFrom(item.predMoment)}</div>}
 
       {/* ── Result ─────────────────────────────────────────────── */}
       {view === 'result' && (
         <div className="space-y-3">
           <div>
-            {item.isKo && <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1">{c.ninetyMin}</div>}
+            {item.isKo && <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1">{c.ninetyMin}</div>}
             <OutcomeBar pHome={pred.p_home} pDraw={pred.p_draw} pAway={pred.p_away} homeLabel={hName} awayLabel={aName} drawLabel={c.draw} />
           </div>
           {item.isKo && pred.p_adv_home !== undefined && (
@@ -257,31 +257,31 @@ function ExplorerCard({ item, view, c, lang }: { item: Item; view: View; c: Stor
       {view === 'score' && (
         <div className="grid grid-cols-5 gap-4">
           <div className="col-span-5 sm:col-span-2">
-            <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1.5">{c.topScorelines}</div>
+            <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1.5">{c.topScorelines}</div>
             <ul className="space-y-1">
               {pred.top_scores.map((s, i) => {
                 const isAct = !!actualGrid && s.score === `${actualGrid.home}-${actualGrid.away}`;
                 return (
                   <li key={s.score} className="flex items-center gap-2 text-xs">
-                    <span className="w-8 font-mono tabular-nums" style={{ color: isAct ? '#f1f5f9' : '#94a3b8', fontWeight: isAct ? 800 : 500 }}>
+                    <span className="w-8 font-mono tabular-nums" style={{ color: isAct ? 'var(--ink)' : 'var(--ink-2)', fontWeight: isAct ? 800 : 500 }}>
                       {s.score.replace('-', '–')}
                     </span>
-                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: '#0a0a16' }}>
+                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'var(--bg)' }}>
                       <div className="h-full rounded-full" style={{ width: `${Math.min(100, (s.prob / pred.top_scores[0].prob) * 100)}%`, background: ACCENT, opacity: i === 0 ? 1 : 0.55 }} />
                     </div>
-                    <span className="w-9 text-right font-mono tabular-nums text-[#94a3b8]">{pct(s.prob, 1)}</span>
+                    <span className="w-9 text-right font-mono tabular-nums text-ink-2">{pct(s.prob, 1)}</span>
                   </li>
                 );
               })}
             </ul>
           </div>
           <div className="col-span-5 sm:col-span-3">
-            <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1.5">{c.heatmapTitle}</div>
+            <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1.5">{c.heatmapTitle}</div>
             <ScoreHeatmap grid={pred.grid} actual={actualGrid} homeLabel={hName} awayLabel={aName} />
-            <div className="text-[9px] text-[#475569] mt-1.5 leading-snug">
+            <div className="text-[9px] text-ink-3 mt-1.5 leading-snug">
               {c.heatmapNote}
               {actualGrid && actualGrid.home < 6 && actualGrid.away < 6 && (
-                <> · <span className="text-[#f1f5f9]">▢ {c.actualCell}</span></>
+                <> · <span className="text-ink">▢ {c.actualCell}</span></>
               )}
             </div>
           </div>
@@ -292,32 +292,32 @@ function ExplorerCard({ item, view, c, lang }: { item: Item; view: View; c: Stor
       {view === 'goals' && (
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-2 text-center">
-            <div className="rounded-md py-1.5" style={{ background: '#0a0a16' }}>
-              <div className="text-[9px] uppercase tracking-wider text-[#475569]">{c.expGoals}</div>
-              <div className="text-sm font-semibold text-[#f1f5f9] tabular-nums">
+            <div className="rounded-md py-1.5" style={{ background: 'var(--bg)' }}>
+              <div className="text-[9px] uppercase tracking-wider text-ink-3">{c.expGoals}</div>
+              <div className="text-sm font-semibold text-ink tabular-nums">
                 {pred.exp_home_goals.toFixed(2)} – {pred.exp_away_goals.toFixed(2)}
               </div>
             </div>
-            <div className="rounded-md py-1.5" style={{ background: '#0a0a16' }}>
-              <div className="text-[9px] uppercase tracking-wider text-[#475569]">{c.totalGoals}</div>
-              <div className="text-sm font-semibold text-[#f1f5f9] tabular-nums">{(pred.exp_home_goals + pred.exp_away_goals).toFixed(2)}</div>
+            <div className="rounded-md py-1.5" style={{ background: 'var(--bg)' }}>
+              <div className="text-[9px] uppercase tracking-wider text-ink-3">{c.totalGoals}</div>
+              <div className="text-sm font-semibold text-ink tabular-nums">{(pred.exp_home_goals + pred.exp_away_goals).toFixed(2)}</div>
             </div>
-            <div className="rounded-md py-1.5" style={{ background: '#0a0a16' }}>
-              <div className="text-[9px] uppercase tracking-wider text-[#475569]">{c.btts}</div>
-              <div className="text-sm font-semibold text-[#f1f5f9] tabular-nums">{pct(pred.btts_yes)}</div>
+            <div className="rounded-md py-1.5" style={{ background: 'var(--bg)' }}>
+              <div className="text-[9px] uppercase tracking-wider text-ink-3">{c.btts}</div>
+              <div className="text-sm font-semibold text-ink tabular-nums">{pct(pred.btts_yes)}</div>
             </div>
           </div>
           <div>
-            <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1">{c.totalGoals} (%)</div>
+            <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1">{c.totalGoals} (%)</div>
             <Bars values={total} labels={['0', '1', '2', '3', '4', '5', '6+']} mark={totalMark} />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1 truncate">{c.goalsOf(hName)} (%)</div>
+              <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1 truncate">{c.goalsOf(hName)} (%)</div>
               <Bars values={homeDist} labels={['0', '1', '2', '3', '4+']} mark={actualGrid ? Math.min(actualGrid.home, 4) : null} />
             </div>
             <div>
-              <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1 truncate">{c.goalsOf(aName)} (%)</div>
+              <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1 truncate">{c.goalsOf(aName)} (%)</div>
               <Bars values={awayDist} labels={['0', '1', '2', '3', '4+']} mark={actualGrid ? Math.min(actualGrid.away, 4) : null} color={PURPLE} />
             </div>
           </div>
@@ -359,7 +359,7 @@ export default function MatchExplorer({ data, story }: { data: MomentData; story
         key={s}
         onClick={() => setStage(s)}
         className="px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1"
-        style={{ background: active ? ACCENT : 'transparent', color: active ? '#08080f' : done ? '#64748b' : '#94a3b8' }}
+        style={{ background: active ? ACCENT : 'transparent', color: active ? 'var(--bg)' : done ? 'var(--ink-3)' : 'var(--ink-2)' }}
       >
         {done && !active && <span className="text-[10px]">✓</span>}
         {c.stageShort[s]}
@@ -372,7 +372,7 @@ export default function MatchExplorer({ data, story }: { data: MomentData; story
       key={v}
       onClick={() => setView(v)}
       className="px-3.5 py-1.5 rounded-md text-xs font-semibold transition-all"
-      style={{ background: view === v ? PURPLE : 'transparent', color: view === v ? '#f8fafc' : '#94a3b8' }}
+      style={{ background: view === v ? PURPLE : 'transparent', color: view === v ? 'var(--ink)' : 'var(--ink-2)' }}
     >
       {label}
     </button>
@@ -380,23 +380,23 @@ export default function MatchExplorer({ data, story }: { data: MomentData; story
 
   return (
     <div>
-      <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl leading-relaxed">{c.explorerSubtitle}</p>
+      <p className="text-sm text-ink-2 mb-5 max-w-2xl leading-relaxed">{c.explorerSubtitle}</p>
 
       <div className="flex flex-wrap items-end gap-x-6 gap-y-3 mb-6">
         <div>
-          <div className="text-[9px] uppercase tracking-widest text-[#475569] mb-1">{c.groupTabs}</div>
-          <div className="inline-flex rounded-lg p-1 gap-1" style={{ background: CARD, border: `1px solid ${CARD_BORDER}` }}>
+          <div className="text-[9px] uppercase tracking-widest text-ink-3 mb-1">{c.groupTabs}</div>
+          <div className="inline-flex rounded-[3px] p-1 gap-1" style={{ background: CARD, border: `1px solid ${CARD_BORDER}` }}>
             {GROUP_STAGES.map(tab)}
           </div>
         </div>
         <div>
-          <div className="text-[9px] uppercase tracking-widest text-[#475569] mb-1">{c.koTabs}</div>
-          <div className="inline-flex flex-wrap rounded-lg p-1 gap-1" style={{ background: CARD, border: `1px solid ${CARD_BORDER}` }}>
+          <div className="text-[9px] uppercase tracking-widest text-ink-3 mb-1">{c.koTabs}</div>
+          <div className="inline-flex flex-wrap rounded-[3px] p-1 gap-1" style={{ background: CARD, border: `1px solid ${CARD_BORDER}` }}>
             {KO_STAGES.map(tab)}
           </div>
         </div>
         <div className="sm:ml-auto">
-          <div className="inline-flex rounded-lg p-1 gap-1" style={{ background: CARD, border: `1px solid ${CARD_BORDER}` }}>
+          <div className="inline-flex rounded-[3px] p-1 gap-1" style={{ background: CARD, border: `1px solid ${CARD_BORDER}` }}>
             {viewBtn('result', c.viewResult)}
             {viewBtn('score', c.viewScore)}
             {viewBtn('goals', c.viewGoals)}

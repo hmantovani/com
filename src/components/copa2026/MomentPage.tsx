@@ -12,13 +12,13 @@ import { copaCopy, teamName, type CopaCopy } from '@/data/copa2026/copy';
 import { storyCopy } from '@/data/copa2026/storyCopy';
 import type { Lang } from '@/data/content';
 
-const ACCENT = '#2dd4bf';
-const ACCENT_DIM = 'rgba(13,148,136,0.12)';
-const ACCENT_BORDER = 'rgba(13,148,136,0.3)';
-const GREEN = 'rgba(74,222,128,0.13)';
-const GREEN_BD = 'rgba(74,222,128,0.45)';
-const BLUE = 'rgba(96,165,250,0.13)';
-const BLUE_BD = 'rgba(96,165,250,0.45)';
+const ACCENT = 'var(--accent)';
+const ACCENT_DIM = 'color-mix(in srgb, var(--accent) 12%, transparent)';
+const ACCENT_BORDER = 'color-mix(in srgb, var(--accent) 30%, transparent)';
+const GREEN = 'color-mix(in srgb, var(--pos) 13%, transparent)';
+const GREEN_BD = 'color-mix(in srgb, var(--pos) 45%, transparent)';
+const BLUE = 'color-mix(in srgb, var(--info) 13%, transparent)';
+const BLUE_BD = 'color-mix(in srgb, var(--info) 45%, transparent)';
 
 // ── Champion odds table ──────────────────────────────────────────────────────
 
@@ -47,10 +47,10 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
   }));
 
   return (
-    <div className="rounded-xl border overflow-hidden" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
+    <div className="rounded-[3px] border overflow-hidden" style={{ background: 'var(--surface)', borderColor: 'var(--line)' }}>
       <table className="w-full text-sm">
         <thead>
-          <tr className="text-[10px] uppercase tracking-wider text-[#475569] border-b" style={{ borderColor: '#1e1e3f' }}>
+          <tr className="text-[10px] uppercase tracking-wider text-ink-3 border-b" style={{ borderColor: 'var(--line)' }}>
             <th className="text-left font-medium px-3 py-2 w-6">#</th>
             <th className="text-left font-medium py-2">{c.colTeam}</th>
             {cols.map((col) => (
@@ -69,13 +69,13 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
               <tr
                 key={team}
                 className="border-b last:border-0"
-                style={{ borderColor: '#1a1a33', background: champ >= 5 ? 'rgba(13,148,136,0.04)' : 'transparent' }}
+                style={{ borderColor: 'var(--line)', background: champ >= 5 ? 'color-mix(in srgb, var(--accent) 4%, transparent)' : 'transparent' }}
               >
-                <td className="px-3 py-2 font-mono text-xs text-[#475569]">{i + 1}</td>
+                <td className="px-3 py-2 font-mono text-xs text-ink-3">{i + 1}</td>
                 <td className="py-2 pr-2">
                   <div className="flex items-center gap-2">
                     <Flag iso2={iso2} size={16} title={team} />
-                    <span className="text-[#f1f5f9] text-xs truncate">{teamName(team, lang)}</span>
+                    <span className="text-ink text-xs truncate">{teamName(team, lang)}</span>
                     {team === story.champion && (
                       <span className="text-[10px]" title={sc.champWent} aria-label={sc.champWent} style={{ color: ACCENT }}>
                         ★
@@ -90,7 +90,7 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
                     <td
                       key={col.key}
                       className={`px-3 py-2 text-right font-mono text-xs ${col.hide ?? ''}`}
-                      style={{ color: isChamp ? (val >= 5 ? ACCENT : '#94a3b8') : '#94a3b8', fontWeight: isChamp ? 700 : 400 }}
+                      style={{ color: isChamp ? (val >= 5 ? ACCENT : 'var(--ink-2)') : 'var(--ink-2)', fontWeight: isChamp ? 700 : 400 }}
                     >
                       {val.toFixed(1)}%
                     </td>
@@ -99,7 +99,7 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
                 {prev && (
                   <td
                     className="px-3 py-2 text-right font-mono text-xs"
-                    style={{ color: kp.p_champion - (prev[team] ?? 0) >= 0.05 ? '#4ade80' : kp.p_champion - (prev[team] ?? 0) <= -0.05 ? '#f87171' : '#475569' }}
+                    style={{ color: kp.p_champion - (prev[team] ?? 0) >= 0.05 ? 'var(--pos)' : kp.p_champion - (prev[team] ?? 0) <= -0.05 ? 'var(--neg)' : 'var(--ink-3)' }}
                   >
                     {kp.p_champion - (prev[team] ?? 0) > 0 ? '+' : ''}
                     {(kp.p_champion - (prev[team] ?? 0)).toFixed(1)}
@@ -141,11 +141,11 @@ function BracketTeamRow({
   return (
     <div className="flex items-center gap-2">
       <Flag iso2={iso2} size={18} title={team} />
-      <span className={`text-sm flex-1 truncate ${isWinner ? 'font-bold text-[#f1f5f9]' : 'text-[#94a3b8]'}`}>
+      <span className={`text-sm flex-1 truncate ${isWinner ? 'font-bold text-ink' : 'text-ink-2'}`}>
         {teamName(team, lang)}
       </span>
       {score !== undefined && (
-        <span className="text-xs font-mono tabular-nums" style={{ color: isWinner ? ACCENT : '#64748b' }}>
+        <span className="text-xs font-mono tabular-nums" style={{ color: isWinner ? ACCENT : 'var(--ink-3)' }}>
           {score}
         </span>
       )}
@@ -162,17 +162,17 @@ function BracketMatchCard({ m, c, lang }: { m: BracketMatch; c: CopaCopy; lang: 
   const advHome = isActual && real ? real.pred.p_adv_home ?? m.pred.p_adv_home : m.pred.p_adv_home;
   return (
     <div
-      className="rounded-xl border p-4"
-      style={{ background: '#0d0d1f', borderColor: isActual ? ACCENT_BORDER : '#1e1e3f' }}
+      className="rounded-[3px] border p-4"
+      style={{ background: 'var(--surface)', borderColor: isActual ? ACCENT_BORDER : 'var(--line)' }}
     >
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[10px] font-mono text-[#475569]">{m.date.slice(5)} · {m.venue}</span>
+        <span className="text-[10px] font-mono text-ink-3">{m.date.slice(5)} · {m.venue}</span>
         <span
           className="text-[9px] uppercase tracking-widest font-semibold px-2 py-0.5 rounded-full shrink-0"
           style={{
-            background: isActual ? ACCENT_DIM : 'rgba(148,163,184,0.08)',
-            color: isActual ? ACCENT : '#64748b',
-            border: `1px solid ${isActual ? ACCENT_BORDER : 'rgba(148,163,184,0.2)'}`,
+            background: isActual ? ACCENT_DIM : 'color-mix(in srgb, var(--ink-3) 8%, transparent)',
+            color: isActual ? ACCENT : 'var(--ink-3)',
+            border: `1px solid ${isActual ? ACCENT_BORDER : 'color-mix(in srgb, var(--ink-3) 20%, transparent)'}`,
           }}
         >
           {isActual ? c.bracketActual : c.bracketProjected}
@@ -195,13 +195,13 @@ function BracketMatchCard({ m, c, lang }: { m: BracketMatch; c: CopaCopy; lang: 
         />
       </div>
       {isActual && m.duration === 'AP' && (
-        <div className="text-[10px] text-[#475569] mt-2">
+        <div className="text-[10px] text-ink-3 mt-2">
           {c.bracketPens} {m.home_pens}–{m.away_pens}
         </div>
       )}
       {advHome !== undefined && (
         <div className="mt-3">
-          <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1">{sc.advProb}</div>
+          <div className="text-[9px] uppercase tracking-wider text-ink-3 mb-1">{sc.advProb}</div>
           <OutcomeBar
             pHome={advHome}
             pDraw={0}
@@ -213,10 +213,10 @@ function BracketMatchCard({ m, c, lang }: { m: BracketMatch; c: CopaCopy; lang: 
         </div>
       )}
       {!isActual && real && (
-        <div className="mt-3 text-[11px] leading-relaxed rounded-md p-2" style={{ background: '#0a0a16', border: '1px dashed #2a2a55', color: '#94a3b8' }}>
+        <div className="mt-3 text-[11px] leading-relaxed rounded-md p-2" style={{ background: 'var(--bg)', border: '1px dashed var(--line-strong)', color: 'var(--ink-2)' }}>
           {samePair ? (
             <>
-              <span className="text-[#f1f5f9] font-semibold">{sc.actualLater}: </span>
+              <span className="text-ink font-semibold">{sc.actualLater}: </span>
               {real.home_score}–{real.away_score}
               {real.duration === 'AET' ? ` (${sc.extraTime})` : real.duration === 'AP' ? ` (${real.home_pens}–${real.away_pens} ${sc.pens})` : ''}
               {' · '}
@@ -249,18 +249,18 @@ function StandingsTable({
   lang: Lang;
 }) {
   return (
-    <div className="rounded-xl border overflow-hidden" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
-      <div className="px-4 py-2.5 border-b flex items-center justify-between" style={{ borderColor: '#1e1e3f' }}>
-        <h3 className="text-sm font-bold text-[#f1f5f9] tracking-wide">
+    <div className="rounded-[3px] border overflow-hidden" style={{ background: 'var(--surface)', borderColor: 'var(--line)' }}>
+      <div className="px-4 py-2.5 border-b flex items-center justify-between" style={{ borderColor: 'var(--line)' }}>
+        <h3 className="text-sm font-bold text-ink tracking-wide">
           {c.groupWord} {group}
         </h3>
-        <span className="text-[10px] text-[#475569] uppercase tracking-widest">
+        <span className="text-[10px] text-ink-3 uppercase tracking-widest">
           {isFinal ? c.standingsBadgeFinal : c.standingsBadge}
         </span>
       </div>
       <table className="w-full text-sm">
         <thead>
-          <tr className="text-[10px] uppercase tracking-wider text-[#475569]">
+          <tr className="text-[10px] uppercase tracking-wider text-ink-3">
             <th className="text-left font-medium px-3 py-2 w-6">#</th>
             <th className="text-left font-medium py-2">{c.colTeam}</th>
             <th className="text-right font-medium px-1.5 py-2">{c.colPts}</th>
@@ -276,18 +276,18 @@ function StandingsTable({
             const bd = top2 ? GREEN_BD : third ? BLUE_BD : 'transparent';
             return (
               <tr key={r.team} style={{ background: bg, borderLeft: `3px solid ${bd}` }}>
-                <td className="px-3 py-2 font-mono text-xs text-[#94a3b8]">{r.proj_pos}</td>
+                <td className="px-3 py-2 font-mono text-xs text-ink-2">{r.proj_pos}</td>
                 <td className="py-2">
                   <div className="flex items-center gap-2">
                     <Flag iso2={r.iso2} size={16} title={r.team} />
-                    <span className="text-[#f1f5f9] truncate">{teamName(r.team, lang)}</span>
+                    <span className="text-ink truncate">{teamName(r.team, lang)}</span>
                   </div>
                 </td>
-                <td className="px-1.5 py-2 text-right font-mono text-[#94a3b8]">{r.exp_pts.toFixed(1)}</td>
-                <td className="px-1.5 py-2 text-right font-mono text-[#94a3b8] hidden sm:table-cell">
+                <td className="px-1.5 py-2 text-right font-mono text-ink-2">{r.exp_pts.toFixed(1)}</td>
+                <td className="px-1.5 py-2 text-right font-mono text-ink-2 hidden sm:table-cell">
                   {r.exp_gd > 0 ? '+' : ''}{r.exp_gd.toFixed(1)}
                 </td>
-                <td className="px-3 py-2 text-right font-mono font-semibold text-[#f1f5f9]">{r.p_qualify}%</td>
+                <td className="px-3 py-2 text-right font-mono font-semibold text-ink">{r.p_qualify}%</td>
               </tr>
             );
           })}
@@ -316,14 +316,13 @@ export default function MomentPage({ data }: { data: MomentData }) {
 
   return (
     <div className="min-h-screen">
-      <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${ACCENT}, transparent)` }} />
 
-      <div className="max-w-5xl mx-auto px-6 pt-24 pb-20">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 pt-28 sm:pt-36 pb-20">
         <Link
           href="/projects/2026-world-cup"
-          className="inline-flex items-center gap-2 text-sm text-[#475569] hover:text-[#94a3b8] transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-sm text-ink-3 hover:text-ink-2 transition-colors mb-8 group"
         >
-          <span className="transition-transform duration-200 group-hover:-translate-x-1">←</span>
+          <span className="transition-transform duration-500 ease-out-soft group-hover:-translate-x-1">←</span>
           {c.backOverview}
         </Link>
 
@@ -331,18 +330,11 @@ export default function MomentPage({ data }: { data: MomentData }) {
 
         {/* Header */}
         <header className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <span
-              className="text-xs font-semibold px-2.5 py-1 rounded-full"
-              style={{ background: ACCENT_DIM, color: ACCENT, border: `1px solid ${ACCENT_BORDER}` }}
-            >
-              {stageLabel}
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] leading-tight mb-4">
+          <p className="eyebrow mb-5">{stageLabel}</p>
+          <h1 className="display text-[clamp(2.2rem,1.4rem+3.2vw,4rem)] text-ink mb-6">
             {c.stageTitles[data.moment - 1]}
           </h1>
-          <p className="text-[#94a3b8] leading-relaxed max-w-2xl">
+          <p className="text-ink-2 leading-relaxed text-[1.05rem] max-w-[60ch]">
             {c.stageLeads[data.moment - 1](data.n_sims.toLocaleString())}
           </p>
         </header>
@@ -350,32 +342,26 @@ export default function MomentPage({ data }: { data: MomentData }) {
         <StoryPanel data={data} story={story} />
 
         {/* ── Match explorer ─────────────────────────────────── */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-4 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {sc.explorerTitle}
-          </h2>
+        <section className="mb-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-4">{sc.explorerTitle}</h2>
           <MatchExplorer data={data} story={story} />
         </section>
 
         {/* ── Final standings ───────────────────────────────── */}
         <section>
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.standingsTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-4 max-w-2xl">
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{c.standingsTitle}</h2>
+          <p className="text-sm text-ink-2 mb-4 max-w-2xl">
             {c.standingsSubtitle(data.n_sims.toLocaleString())}
           </p>
 
           <div className="flex flex-wrap gap-4 mb-6 text-xs">
             <span className="flex items-center gap-2">
               <span className="w-4 h-3 rounded-sm inline-block" style={{ background: GREEN, border: `1px solid ${GREEN_BD}` }} />
-              <span className="text-[#94a3b8]">{c.legendTop2}</span>
+              <span className="text-ink-2">{c.legendTop2}</span>
             </span>
             <span className="flex items-center gap-2">
               <span className="w-4 h-3 rounded-sm inline-block" style={{ background: BLUE, border: `1px solid ${BLUE_BD}` }} />
-              <span className="text-[#94a3b8]">{c.legendThird}</span>
+              <span className="text-ink-2">{c.legendThird}</span>
             </span>
           </div>
 
@@ -395,28 +381,22 @@ export default function MomentPage({ data }: { data: MomentData }) {
         </section>
 
         {/* ── Champion odds ─────────────────────────────────── */}
-        <section className="mt-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.championTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-5 max-w-2xl">
+        <section className="mt-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{c.championTitle}</h2>
+          <p className="text-sm text-ink-2 mb-5 max-w-2xl">
             {c.championSubtitle(data.n_sims.toLocaleString())}
           </p>
           <ChampionTable data={data} c={c} lang={lang} />
         </section>
 
         {/* ── Bracket ────────────────────────────────────────── */}
-        <section className="mt-16">
-          <h2 className="text-xl font-bold text-[#f1f5f9] mb-2 flex items-center gap-3">
-            <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.bracketTitle}
-          </h2>
-          <p className="text-sm text-[#94a3b8] mb-6 max-w-2xl">{c.bracketSubtitle}</p>
+        <section className="mt-16 border-t border-line pt-10" data-reveal>
+          <h2 className="font-serif text-[clamp(1.7rem,1.3rem+1.2vw,2.2rem)] leading-tight tracking-[-0.015em] text-ink mb-2">{c.bracketTitle}</h2>
+          <p className="text-sm text-ink-2 mb-6 max-w-2xl">{c.bracketSubtitle}</p>
           <div className="space-y-8">
             {BRACKET_ROUNDS.map(({ key, labelKey }) => (
               <div key={key}>
-                <h3 className="text-xs font-bold text-[#94a3b8] uppercase tracking-wider mb-3">
+                <h3 className="text-xs font-bold text-ink-2 uppercase tracking-wider mb-3">
                   {c.koRound[labelKey]}
                 </h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -433,7 +413,7 @@ export default function MomentPage({ data }: { data: MomentData }) {
           <MomentTimeline current={data.moment} />
         </div>
 
-        <p className="text-xs text-[#475569] mt-4 leading-relaxed">
+        <p className="text-xs text-ink-3 mt-4 leading-relaxed">
           {c.momentFootnote(
             Math.round(data.model.ensemble.A_weight * 100),
             Math.round(data.model.ensemble.B_weight * 100)
