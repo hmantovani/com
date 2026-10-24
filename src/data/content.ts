@@ -128,15 +128,15 @@ export const content: Record<Lang, SiteContent> = {
         category: 'Data Science & Sports Modeling',
         tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
         cardDescription:
-          'A living statistical model forecasting the 2026 World Cup one stage at a time — a Poisson + Elo ensemble trained on 48,000+ international matches and re-run after every round, with full group-stage simulation.',
+          'A statistical model that forecast the 2026 World Cup one stage at a time — a Poisson + Elo ensemble trained on 48,000+ international matches and re-simulated after every stage, published as eight snapshots with scoreline-level predictions and an honest audit of how it did.',
         overview:
-          'An end-to-end sports-prediction project: a two-model ensemble (Poisson + Elo regression blended with a Poisson GLM of per-team attack/defense strengths) that predicts every match and Monte-Carlo simulates the tournament to produce qualification odds. Re-run as results come in, publishing a fresh forecast for each remaining stage.',
+          'An end-to-end sports-prediction project: a two-model ensemble (Poisson + Elo regression blended with a Poisson GLM of per-team attack/defense strengths) that predicts every match and Monte-Carlo simulates the tournament to produce qualification odds. After each stage the real results were locked in and a fresh forecast was published for everything that remained — eight snapshots, from before kickoff to the Final.',
         challenge:
           'International football spans 150 years of uneven data, neutral-venue tournaments, and wildly varying opponent quality. The model must weight recent form, respect venue neutrality, and turn raw goal expectations into calibrated match and tournament probabilities.',
         solution:
-          'Time-decayed training on 48k+ matches, a numerically-stabilized Poisson GLM with team fixed effects, a Dixon-Coles low-score correction, and a 20,000-run Monte-Carlo simulation of the full group stage. Results are exported as JSON and rendered into interactive prediction pages.',
+          'Time-decayed training on 48k+ matches, a numerically-stabilized Poisson GLM with team fixed effects, a Dixon-Coles low-score correction, and a 20,000-run Monte-Carlo simulation of the whole tournament, including FIFA’s official third-place seeding table. Team Elo is updated with the real results after each stage, and every played match keeps the odds the model had before kickoff. Results are exported as JSON and rendered into interactive pages.',
         results:
-          'A self-updating forecast with per-match outcome probabilities, scorelines, over/under and BTTS markets, plus projected group standings and qualification odds for all 48 nations.',
+          'Eight published snapshots with per-match result, scoreline and goal probabilities, projected standings, title odds and a full bracket — plus a scorecard that audits every prediction against what happened: 60% of group results called (33% by chance), and the favoured team advanced in 25 of 32 knockout ties.',
         isReal: false,
       },
       {
@@ -179,13 +179,13 @@ export const content: Record<Lang, SiteContent> = {
       {
         slug: 'world-cup-model-validation',
         title: 'World Cup Forecast: Validation & Uncertainty',
-        category: 'Data Science', status: 'Planned',
-        tags: ['Backtesting', 'Calibration', 'Brier Score', 'Statistics'],
-        cardDescription: 'An evaluation extension to the World Cup model: historical backtests, calibration, uncertainty, and comparisons with simple baselines.',
-        overview: 'A planned companion to the existing FIFA World Cup forecast focused on measuring forecast quality and communicating uncertainty.',
-        challenge: 'A prediction is only useful when its probabilities are evaluated fairly and its limitations are clear.',
-        solution: 'Planned work: use time-aware historical holdouts, report proper scoring rules and calibration, and preserve dated forecasts for later comparison.',
-        results: 'Planned portfolio deliverable. Historical results will not be presented as a guarantee of future accuracy.',
+        category: 'Data Science', status: 'Complete',
+        tags: ['Log Loss', 'Brier Score', 'Backtesting', 'Baselines', 'Statistics'],
+        cardDescription: 'How good was the World Cup forecast? Every one of the 104 matches scored against the odds the model had before kickoff, with simple baselines and a backtested blend weight.',
+        overview: 'The evaluation companion to the FIFA World Cup 2026 forecast: it measures forecast quality and communicates uncertainty instead of only showing predictions. It lives as the scorecard on the World Cup project page.',
+        challenge: 'A prediction is only useful when its probabilities are evaluated fairly and its limitations are clear. Re-scoring a played match with ratings that already contain the tournament would flatter the model.',
+        solution: 'The ensemble weight and the Dixon-Coles correction were fitted by time-aware backtesting on the 2014, 2018 and 2022 World Cups (ranked probability score). During the tournament each match was scored against the odds from the last snapshot before kickoff, never against odds recomputed with hindsight, using log loss and Brier score against a one-third-each or coin-flip baseline, plus a test of whether updating Elo mid-tournament helped.',
+        results: 'Group results were called 60% of the time (33% by chance), with a log loss of 0.87 against 1.10 for the baseline; the favoured team advanced in 25 of 32 knockout ties. Matchday 1 was the hardest stage, and updating Elo helped on matchday 2 but not on matchday 3. With 24 matches per matchday or fewer, stage-to-stage differences are treated as mostly noise, and none of this is a guarantee of future accuracy.',
       },
       {
         slug: 'customer-retention-analysis',
@@ -290,15 +290,15 @@ export const content: Record<Lang, SiteContent> = {
         category: 'Ciência de Dados & Modelagem Esportiva',
         tags: ['Python', 'statsmodels', 'Poisson GLM', 'Elo', 'Monte Carlo', 'Next.js'],
         cardDescription:
-          'Um modelo estatístico vivo que prevê a Copa do Mundo de 2026 etapa por etapa — um ensemble Poisson + Elo treinado em mais de 48.000 partidas internacionais e reexecutado a cada rodada, com simulação completa da fase de grupos.',
+          'Um modelo estatístico que previu a Copa do Mundo de 2026 etapa por etapa — um ensemble Poisson + Elo treinado em mais de 48.000 partidas internacionais e re-simulado após cada fase, publicado em oito instantâneos com previsões por placar e uma auditoria honesta do desempenho.',
         overview:
-          'Projeto completo de previsão esportiva: um ensemble de dois modelos (regressão Poisson + Elo combinada com um GLM de Poisson de força de ataque/defesa por seleção) que prevê cada partida e simula o torneio via Monte Carlo para gerar probabilidades de classificação. Reexecutado conforme os resultados saem, publicando uma nova previsão para cada etapa restante.',
+          'Projeto completo de previsão esportiva: um ensemble de dois modelos (regressão Poisson + Elo combinada com um GLM de Poisson de força de ataque/defesa por seleção) que prevê cada partida e simula o torneio via Monte Carlo para gerar probabilidades de classificação. Após cada fase os resultados reais foram travados e uma nova previsão foi publicada para tudo o que restava — oito instantâneos, de antes do apito inicial até a final.',
         challenge:
           'O futebol internacional abrange 150 anos de dados irregulares, torneios em campo neutro e qualidade de adversários muito variável. O modelo precisa ponderar a forma recente, respeitar a neutralidade do mando de campo e transformar expectativas de gols em probabilidades calibradas.',
         solution:
-          'Treinamento com decaimento temporal em mais de 48 mil partidas, um GLM de Poisson com efeitos fixos por seleção numericamente estabilizado, correção de Dixon-Coles para placares baixos e uma simulação de Monte Carlo de 20.000 execuções de toda a fase de grupos. Os resultados são exportados em JSON e renderizados em páginas interativas.',
+          'Treinamento com decaimento temporal em mais de 48 mil partidas, um GLM de Poisson com efeitos fixos por seleção numericamente estabilizado, correção de Dixon-Coles para placares baixos e uma simulação de Monte Carlo de 20.000 execuções de todo o torneio, incluindo a tabela oficial da FIFA para os terceiros colocados. O Elo das seleções é atualizado com os resultados reais após cada fase, e cada partida jogada mantém as probabilidades que o modelo tinha antes do apito. Os resultados são exportados em JSON e renderizados em páginas interativas.',
         results:
-          'Uma previsão autoatualizável com probabilidades de resultado por partida, placares, mercados de over/under e ambas marcam, além das classificações projetadas e odds de avanço para todas as 48 seleções.',
+          'Oito instantâneos publicados com probabilidades de resultado, placar e gols por partida, classificações projetadas, chances de título e chaveamento completo — mais um placar que audita cada previsão contra o que aconteceu: 60% dos resultados de grupo acertados (33% ao acaso) e o favorito avançou em 25 de 32 confrontos do mata-mata.',
         isReal: false,
       },
       {
@@ -341,13 +341,13 @@ export const content: Record<Lang, SiteContent> = {
       {
         slug: 'world-cup-model-validation',
         title: 'Previsão da Copa: Validação e Incerteza',
-        category: 'Ciência de Dados', status: 'Planejado',
-        tags: ['Backtesting', 'Calibração', 'Brier Score', 'Estatística'],
-        cardDescription: 'Extensão de avaliação do modelo da Copa: backtests históricos, calibração, incerteza e comparação com baselines simples.',
-        overview: 'Projeto complementar planejado para a previsão da Copa do Mundo, com foco em medir a qualidade das previsões e comunicar incertezas.',
-        challenge: 'Uma previsão só é útil quando suas probabilidades são avaliadas com rigor e suas limitações são claras.',
-        solution: 'Projeto planejado: usar validação histórica temporal, reportar métricas de probabilidade e calibração e guardar previsões datadas para comparação posterior.',
-        results: 'Entregável de portfólio planejado. Resultados históricos não serão apresentados como garantia de precisão futura.',
+        category: 'Ciência de Dados', status: 'Concluído',
+        tags: ['Log Loss', 'Brier Score', 'Backtesting', 'Baselines', 'Estatística'],
+        cardDescription: 'Quão boa foi a previsão da Copa? Cada uma das 104 partidas avaliada com as probabilidades que o modelo tinha antes do apito, com baselines simples e um peso de combinação validado por backtest.',
+        overview: 'O complemento de avaliação da previsão da Copa do Mundo 2026: mede a qualidade das previsões e comunica a incerteza, em vez de só mostrar previsões. Está no placar do modelo da página do projeto da Copa.',
+        challenge: 'Uma previsão só é útil quando suas probabilidades são avaliadas com rigor e suas limitações são claras. Reavaliar uma partida já jogada com ratings que já contêm o torneio favoreceria o modelo.',
+        solution: 'O peso do ensemble e a correção de Dixon-Coles foram ajustados por backtesting temporal nas Copas de 2014, 2018 e 2022 (ranked probability score). Durante o torneio cada partida foi avaliada com as probabilidades do último instantâneo antes do apito, nunca com probabilidades recalculadas com retrospecto, usando log loss e Brier score contra uma referência de um terço para cada ou cara ou coroa, além de um teste de se atualizar o Elo durante o torneio ajudou.',
+        results: 'Os resultados de grupo foram acertados em 60% dos jogos (33% ao acaso), com log loss de 0,87 contra 1,10 da referência; o favorito avançou em 25 de 32 confrontos do mata-mata. A rodada 1 foi a mais difícil, e atualizar o Elo ajudou na rodada 2, mas não na rodada 3. Com 24 jogos por rodada ou menos, as diferenças entre fases são tratadas como em boa parte ruído, e nada disso é garantia de precisão futura.',
       },
       {
         slug: 'customer-retention-analysis',
