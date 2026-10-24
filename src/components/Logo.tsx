@@ -1,25 +1,21 @@
-'use client';
-
 import Link from 'next/link';
-import Image from 'next/image';
 
-export default function Logo() {
+// Typographic wordmark. The HMV badge stays as the favicon.
+export default function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <Link href="/" className="flex items-center gap-2 group select-none">
-      <Image
-        src="/hmv.png"
-        alt="HMV"
-        width={48}
-        height={36}
-        className="shrink-0"
-      />
-      <span className="font-mono text-base font-semibold tracking-tight">
-        <span style={{ color: '#8b5cf6' }}>h</span>
-        <span style={{ color: '#56a0c8' }}>m</span>
-        <span style={{ color: '#ffffff' }}>anto</span>
-        <span style={{ color: '#2dd4bf' }}>v</span>
-        <span style={{ color: '#ffffff' }}>ani</span>
+    <Link
+      href="/"
+      onClick={onClick}
+      className="group inline-flex items-baseline gap-2 select-none text-ink"
+      aria-label="Henrique Mantovani, home"
+    >
+      <span className="font-serif text-[1.15rem] leading-none tracking-[-0.01em]">
+        Henrique Mantovani
       </span>
+      <span
+        aria-hidden="true"
+        className="h-1.5 w-1.5 rounded-full bg-accent translate-y-[-1px] transition-transform duration-500 ease-out-soft group-hover:scale-150"
+      />
     </Link>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useSyncExternalStore, ReactNode } from 'react';
 
 export type Lang = 'en' | 'pt';
 
@@ -11,28 +11,26 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
+// The chosen language is kept in localStorage; React reads it as an external store.
+const listeners = new Set<() => void>();
+function subscribe(onChange: () => void) {
+  listeners.add(onChange);
+  return () => listeners.delete(onChange);
+}
+function getSnapshot(): Lang {
+  try { return localStorage.getItem('hm-lang') === 'pt' ? 'pt' : 'en'; } catch { return 'en'; }
+}
+const getServerSnapshot = (): Lang => 'en';
+
+function setLang(newLang: Lang) {
+  try { localStorage.setItem('hm-lang', newLang); } catch {}
+  document.documentElement.lang = newLang === 'pt' ? 'pt-BR' : 'en';
+  listeners.forEach((l) => l());
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>('en');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('hm-lang') as Lang | null;
-    if (saved === 'en' || saved === 'pt') {
-      setLangState(saved);
-      document.documentElement.lang = saved;
-    }
-  }, []);
-
-  const setLang = (newLang: Lang) => {
-    setLangState(newLang);
-    localStorage.setItem('hm-lang', newLang);
-    document.documentElement.lang = newLang;
-  };
-
-  return (
-    <LanguageContext.Provider value={{ lang, setLang }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  const lang = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  return <LanguageContext.Provider value={{ lang, setLang }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

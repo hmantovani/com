@@ -3,121 +3,119 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 import { useLanguage } from '@/context/LanguageContext';
 import { content } from '@/data/content';
 
-export default function Header() {
+function LangSwitch() {
   const { lang, setLang } = useLanguage();
+  return (
+    <div className="flex items-center font-mono text-[0.72rem] tracking-[0.08em] uppercase" role="group" aria-label="Language">
+      {(['en', 'pt'] as const).map((l, i) => (
+        <span key={l} className="flex items-center">
+          {i > 0 && <span className="text-ink-4 px-0.5" aria-hidden="true">/</span>}
+          <button
+            type="button"
+            onClick={() => setLang(l)}
+            aria-pressed={lang === l}
+            className={`px-1.5 py-2 transition-colors ${lang === l ? 'text-ink' : 'text-ink-4 hover:text-ink-2'}`}
+          >
+            {l}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export default function Header() {
+  const { lang } = useLanguage();
   const c = content[lang].nav;
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { label: c.home, href: '/' },
-    { label: c.services, href: '/#services' },
-    { label: c.realCases, href: '/#real-cases' },
+  // Lock page scroll while the menu is open; links close it on click.
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  const links = [
+    { label: c.realCases, href: '/#work' },
     { label: c.projects, href: '/#projects' },
+    { label: c.services, href: '/#services' },
+    { label: c.about, href: '/#about' },
     { label: c.contact, href: '/#contact' },
   ];
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        background: scrolled ? 'rgba(8,8,15,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid #1e1e3f' : '1px solid transparent',
-      }}
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 border-b ${
+        scrolled || open ? 'bg-bg/85 backdrop-blur-md border-line' : 'bg-transparent border-transparent'
+      }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Logo />
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 sm:px-8">
+        <Logo onClick={() => setOpen(false)} />
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors duration-200 ${
-                link.href === '/#contact'
-                  ? 'px-4 py-2 rounded-lg border border-[#6241a4] bg-[#8b5cf622] text-[#c4b5fd] hover:bg-[#8b5cf644]'
-                  : 'text-[#94a3b8] hover:text-[#f1f5f9]'
-              }`}
-            >
-              {link.label}
+        <nav className="hidden md:flex items-center gap-7" aria-label="Main">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} className="link-draw text-[0.9rem] text-ink-2 hover:text-ink">
+              {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          {/* Language toggle */}
-          <div
-            className="flex items-center rounded-full p-0.5 gap-0.5"
-            style={{ background: '#1e1e3f' }}
-          >
-            {(['en', 'pt'] as const).map((l) => (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200"
-                style={{
-                  background: lang === l ? '#8b5cf6' : 'transparent',
-                  color: lang === l ? '#fff' : '#94a3b8',
-                }}
-              >
-                {l}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile hamburger */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          <LangSwitch />
+          <ThemeToggle />
           <button
-            className="md:hidden flex flex-col gap-1 p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            type="button"
+            className="md:hidden h-10 pl-2 font-mono text-[0.72rem] uppercase tracking-[0.08em] text-ink"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            <span
-              className="w-5 h-0.5 bg-[#94a3b8] block transition-all duration-200"
-              style={{ transform: mobileOpen ? 'rotate(45deg) translateY(6px)' : 'none' }}
-            />
-            <span
-              className="w-5 h-0.5 bg-[#94a3b8] block transition-all duration-200"
-              style={{ opacity: mobileOpen ? 0 : 1 }}
-            />
-            <span
-              className="w-5 h-0.5 bg-[#94a3b8] block transition-all duration-200"
-              style={{ transform: mobileOpen ? 'rotate(-45deg) translateY(-6px)' : 'none' }}
-            />
+            {open ? c.close : c.menu}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          className="md:hidden border-t"
-          style={{ background: 'rgba(8,8,15,0.97)', borderColor: '#1e1e3f' }}
-        >
-          <nav className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-[#94a3b8] hover:text-[#f1f5f9] transition-colors py-1"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
+      {/* Mobile menu: full-height sheet with large serif links */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden fixed inset-x-0 top-16 bottom-0 bg-bg transition-[opacity,visibility] duration-300 ${
+          open ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+      >
+        <nav className="flex flex-col px-5 pt-6" aria-label="Mobile">
+          {links.map((l, i) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="flex items-baseline justify-between border-b border-line py-4 font-serif text-[2rem] leading-tight text-ink transition-[opacity,transform] duration-500 ease-out-soft"
+              style={{
+                transitionDelay: open ? `${60 + i * 45}ms` : '0ms',
+                opacity: open ? 1 : 0,
+                transform: open ? 'none' : 'translateY(10px)',
+              }}
+            >
+              {l.label}
+              <span className="font-mono text-xs text-ink-4">0{i + 1}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 }

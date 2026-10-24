@@ -19,18 +19,33 @@ export interface ProjectData {
 }
 
 export interface SiteContent {
-  nav: { home: string; services: string; realCases: string; projects: string; contact: string };
-  hero: { title: string; bio: string; ctaWork: string; ctaContact: string; available: string };
-  sections: {
-    realCases: { title: string; subtitle: string };
-    projects: { title: string; subtitle: string };
-    contact: { title: string; subtitle: string };
+  nav: { home: string; services: string; realCases: string; projects: string; about: string; contact: string; menu: string; close: string; theme: { toLight: string; toDark: string } };
+  hero: {
+    title: string;
+    eyebrow: string;
+    headline: [string, string];
+    intro: string[];
+    ctaWork: string;
+    ctaContact: string;
+    available: string;
+    previously: string;
+    figureLabel: string;
+    figureCaption: string;
+    figureLink: string;
   };
+  services: { eyebrow: string; title: string; items: { t: string; d: string }[]; cta: string };
+  sections: {
+    realCases: { eyebrow: string; title: string; subtitle: string };
+    projects: { eyebrow: string; title: string; subtitle: string; featured: string; more: string; view: string };
+    about: { eyebrow: string; title: string; text: string; experience: string; education: string };
+    contact: { eyebrow: string; title: string; subtitle: string };
+  };
+  experience: { role: string; org: string; period: string; note: string }[];
+  education: { degree: string; org: string; period: string }[];
   contact: {
     emailLabel: string;
     downloadCV: string;
     cvNote: string;
-    fiverrNote: string;
     socialHeading: string;
     or: string;
   };
@@ -54,34 +69,78 @@ export interface SiteContent {
 
 export const content: Record<Lang, SiteContent> = {
   en: {
-    nav: { home: 'Home', services: 'Services', realCases: 'Real cases', projects: 'Projects', contact: 'Let’s talk' },
+    nav: {
+      home: 'Home', services: 'Services', realCases: 'Work', projects: 'Projects', about: 'About', contact: 'Contact',
+      menu: 'Menu', close: 'Close', theme: { toLight: 'Switch to light theme', toDark: 'Switch to dark theme' },
+    },
     hero: {
-      title: 'Data Professional | Engineering · Science · Analytics',
-      bio: 'I combine an appreciation for efficiency from Production Engineering (PUC-SP) with the analytical depth of Data Science (PUC-RS). I used both sides to translate complex operations into information ecosystems in three experiences at leading global companies in their sectors: IBM, Keyence and Thermo Fisher Scientific.\n\nMy pillars are building ETL pipelines, data modeling for analytical process automation, and developing predictive analyses and models — structuring raw data into reliable databases with a focus on consistency, scalability and measurability.',
-      ctaWork: 'View my work',
+      title: 'Data engineering, analytics and modeling',
+      eyebrow: 'Henrique Mantovani — Data engineering & analytics',
+      headline: ['Data work that holds up', 'when someone checks it.'],
+      intro: [
+        'I’m a production engineer (PUC-SP) with a postgraduate degree in data science and AI (PUC-RS). I build ETL pipelines, data models and predictive analyses, and I’ve done it at IBM, Keyence and Thermo Fisher Scientific.',
+        'Most of my projects start with a manual process: reports exported by hand, spreadsheets that freeze, numbers nobody can trace. They end with something automated and auditable that people stop worrying about.',
+      ],
+      ctaWork: 'See the work',
       ctaContact: 'Get in touch',
-      available: 'Open to full-time, freelance & remote',
+      available: 'Open to full-time, freelance and remote work',
+      previously: 'Previously at',
+      figureLabel: 'Fig. 1 — Title odds, eight snapshots',
+      figureCaption: 'My World Cup 2026 model, re-run after every stage. Spain started second favourite and won the Final.',
+      figureLink: 'Read the forecast',
+    },
+    services: {
+      eyebrow: 'Services',
+      title: 'Less manual work. Numbers you can trace.',
+      items: [
+        { t: 'Automate recurring work', d: 'Replace repetitive exports, spreadsheet updates and manual checks with scheduled, monitored workflows.' },
+        { t: 'Connect systems and data', d: 'Bring ERP, APIs and files into one consistent data layer, with history, that your team can reuse.' },
+        { t: 'Make reporting useful', d: 'Turn scattered numbers into dashboards and analyses tied to the decisions people actually make.' },
+      ],
+      cta: 'Tell me what you need',
     },
     sections: {
       realCases: {
-        title: 'Real cases',
-        subtitle: 'Real-world data automation and reporting solutions built for business operations.',
+        eyebrow: 'Selected work',
+        title: 'Built for real operations',
+        subtitle: 'Two systems running in production. Company details are kept private.',
       },
       projects: {
-        title: 'Projects',
-        subtitle: 'Independent data projects you can explore, from a live forecast to practical reporting and automation demos.',
+        eyebrow: 'Projects',
+        title: 'Independent projects',
+        subtitle: 'Built on my own time. Demo data is synthetic and labelled as such.',
+        featured: 'Featured',
+        more: 'More projects',
+        view: 'View project',
+      },
+      about: {
+        eyebrow: 'Background',
+        title: 'An engineer’s habits, a data scientist’s tools',
+        text: 'Production engineering taught me to look for the bottleneck before the technology. Data science gave me the methods to measure it. I work mostly in Python (pandas, scikit-learn, Streamlit) with SQL, Parquet, Power BI and Excel, plus SAP and API integrations when the data lives there.',
+        experience: 'Experience',
+        education: 'Education',
       },
       contact: {
-        title: 'Get in touch',
-        subtitle: 'Available for opportunities, freelance projects and collaboration.',
+        eyebrow: 'Contact',
+        title: 'Have a process that should run itself?',
+        subtitle: 'Write to me about the report, pipeline or model you have in mind. I’m open to full-time roles, freelance projects and remote work.',
       },
     },
+    experience: [
+      { role: 'Data Specialist', org: 'Current role', period: '2025 —', note: 'Leads data work at a consumer-goods company: analysis, reporting and a Python extraction library on the ERP API.' },
+      { role: 'Market Data Analyst II', org: 'Keyence Brazil', period: '2023 – 2025', note: 'Python for SAP ETL into Power BI, a data warehouse behind the reports, and Python training for the department.' },
+      { role: 'Data Analyst, Early Associate', org: 'IBM', period: '2022', note: 'Intensive programme in EDA, APIs, NLP and image recognition, then document control on a client project.' },
+      { role: 'Vertical Markets Intern', org: 'Thermo Fisher Scientific', period: '2020 – 2022', note: 'Key-account dashboards and marketing initiatives, gathering data across departments.' },
+    ],
+    education: [
+      { degree: 'Postgraduate, Data Science and Artificial Intelligence', org: 'PUC-RS', period: '2023 – 2025' },
+      { degree: 'Bachelor’s, Production Engineering', org: 'PUC-SP', period: '2018 – 2022' },
+    ],
     contact: {
-      emailLabel: 'Send an email',
-      downloadCV: 'Download CV',
-      cvNote: 'CV available soon',
-      fiverrNote: 'Fiverr profile coming soon',
-      socialHeading: 'Find me on',
+      emailLabel: 'Email',
+      downloadCV: 'Curriculum vitae',
+      cvNote: 'PDF, English or Portuguese',
+      socialHeading: 'Elsewhere',
       or: 'or',
     },
     realCases: [
@@ -216,34 +275,78 @@ export const content: Record<Lang, SiteContent> = {
   },
 
   pt: {
-    nav: { home: 'Início', services: 'Serviços', realCases: 'Casos Reais', projects: 'Projetos', contact: 'Vamos conversar' },
+    nav: {
+      home: 'Início', services: 'Serviços', realCases: 'Trabalho', projects: 'Projetos', about: 'Sobre', contact: 'Contato',
+      menu: 'Menu', close: 'Fechar', theme: { toLight: 'Mudar para tema claro', toDark: 'Mudar para tema escuro' },
+    },
     hero: {
-      title: 'Data Professional | Engineering · Science · Analytics',
-      bio: 'Combino o apreço pela eficiência da Engenharia de Produção (PUC-SP) com a profundidade analítica da Ciência de Dados (PUC-RS). Utilizei essa combinação para traduzir operações complexas em ecossistemas de informação em três experiências em empresas líderes globais de seus setores: IBM, Keyence e Thermo Fisher Scientific.\n\nMeus pilares são a construção de pipelines de ETL, a modelagem de dados para automação de processos analíticos e o desenvolvimento de análises e modelos preditivos — estruturando dados brutos em bases confiáveis com foco em consistência, escalabilidade e mensurabilidade.',
-      ctaWork: 'Ver Meu Trabalho',
-      ctaContact: 'Entrar em Contato',
-      available: 'Disponível para oportunidades em tempo integral, freelance e remoto',
+      title: 'Engenharia de dados, analytics e modelagem',
+      eyebrow: 'Henrique Mantovani — Engenharia de dados & analytics',
+      headline: ['Trabalho com dados que se sustenta', 'quando alguém confere.'],
+      intro: [
+        'Sou engenheiro de produção (PUC-SP), com pós-graduação em ciência de dados e IA (PUC-RS). Construo pipelines de ETL, modelos de dados e análises preditivas, e fiz isso na IBM, na Keyence e na Thermo Fisher Scientific.',
+        'A maioria dos meus projetos começa com um processo manual: relatórios exportados à mão, planilhas que travam, números que ninguém consegue rastrear. E termina com algo automatizado e auditável, com que ninguém mais precisa se preocupar.',
+      ],
+      ctaWork: 'Ver o trabalho',
+      ctaContact: 'Entrar em contato',
+      available: 'Aberto a vagas, freelance e trabalho remoto',
+      previously: 'Passagens por',
+      figureLabel: 'Fig. 1 — Chances de título, oito momentos',
+      figureCaption: 'Meu modelo da Copa 2026, refeito após cada fase. A Espanha começou como segunda favorita e venceu a final.',
+      figureLink: 'Ver a previsão',
+    },
+    services: {
+      eyebrow: 'Serviços',
+      title: 'Menos trabalho manual. Números rastreáveis.',
+      items: [
+        { t: 'Automatizar tarefas recorrentes', d: 'Substituir exportações repetitivas, atualizações de planilhas e conferências manuais por fluxos agendados e monitorados.' },
+        { t: 'Conectar sistemas e dados', d: 'Reunir ERP, APIs e arquivos numa base consistente, com histórico, que a equipe possa reutilizar.' },
+        { t: 'Relatórios que servem para algo', d: 'Transformar números dispersos em painéis e análises ligados às decisões que as pessoas de fato tomam.' },
+      ],
+      cta: 'Conte o que você precisa',
     },
     sections: {
       realCases: {
-        title: 'Casos Reais',
-        subtitle: 'Soluções reais de automação de dados e relatórios para operações empresariais.',
+        eyebrow: 'Trabalhos selecionados',
+        title: 'Feito para operações reais',
+        subtitle: 'Dois sistemas em produção. Detalhes das empresas são mantidos em sigilo.',
       },
       projects: {
-        title: 'Projetos',
-        subtitle: 'Projetos independentes para explorar: da previsão da Copa a demos práticas de relatórios e automação.',
+        eyebrow: 'Projetos',
+        title: 'Projetos independentes',
+        subtitle: 'Feitos no meu tempo livre. Dados de demonstração são sintéticos e identificados como tal.',
+        featured: 'Destaque',
+        more: 'Outros projetos',
+        view: 'Ver projeto',
+      },
+      about: {
+        eyebrow: 'Formação',
+        title: 'Hábitos de engenheiro, ferramentas de cientista de dados',
+        text: 'A engenharia de produção me ensinou a procurar o gargalo antes da tecnologia. A ciência de dados me deu os métodos para medi-lo. Trabalho principalmente com Python (pandas, scikit-learn, Streamlit), SQL, Parquet, Power BI e Excel, além de SAP e integrações via API quando os dados estão lá.',
+        experience: 'Experiência',
+        education: 'Educação',
       },
       contact: {
-        title: 'Entrar em Contato',
-        subtitle: 'Disponível para novas oportunidades, projetos freelance e colaboração.',
+        eyebrow: 'Contato',
+        title: 'Tem um processo que deveria rodar sozinho?',
+        subtitle: 'Escreva sobre o relatório, pipeline ou modelo que você tem em mente. Estou aberto a vagas, projetos freelance e trabalho remoto.',
       },
     },
+    experience: [
+      { role: 'Data Specialist', org: 'Função atual', period: '2025 —', note: 'Responsável pelos dados numa empresa de bens de consumo: análises, relatórios e uma biblioteca Python de extração sobre a API do ERP.' },
+      { role: 'Market Data Analyst II', org: 'Keyence Brasil', period: '2023 – 2025', note: 'Python no ETL do SAP para o Power BI, um data warehouse por trás dos relatórios e treinamento de Python para o departamento.' },
+      { role: 'Data Analyst, Early Associate', org: 'IBM', period: '2022', note: 'Programa intensivo de EDA, APIs, NLP e reconhecimento de imagem, depois controle de documentos num projeto de cliente.' },
+      { role: 'Estagiário, Vertical Markets', org: 'Thermo Fisher Scientific', period: '2020 – 2022', note: 'Dashboards de contas-chave e iniciativas de marketing, reunindo dados entre departamentos.' },
+    ],
+    education: [
+      { degree: 'Pós-graduação, Ciência de Dados e Inteligência Artificial', org: 'PUC-RS', period: '2023 – 2025' },
+      { degree: 'Bacharelado, Engenharia de Produção', org: 'PUC-SP', period: '2018 – 2022' },
+    ],
     contact: {
-      emailLabel: 'Enviar E-mail',
-      downloadCV: 'Baixar CV',
-      cvNote: 'CV disponível em breve',
-      fiverrNote: 'Perfil no Fiverr em breve',
-      socialHeading: 'Me encontre em',
+      emailLabel: 'E-mail',
+      downloadCV: 'Currículo',
+      cvNote: 'PDF, português ou inglês',
+      socialHeading: 'Em outros lugares',
       or: 'ou',
     },
     realCases: [

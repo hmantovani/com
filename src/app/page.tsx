@@ -1,318 +1,291 @@
 'use client';
 
-import Image from 'next/image';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
-import { content } from '@/data/content';
-import ProjectCard from '@/components/ProjectCard';
+import { content, ProjectData } from '@/data/content';
+import { COMPANIES, CV_LINKS, EMAIL, EMAIL_ALT, SOCIAL_LINKS } from '@/data/site';
+import HeroFigure from '@/components/HeroFigure';
+import SectionHead from '@/components/SectionHead';
 
-const SOCIAL_LINKS = {
-  github: 'https://github.com/hmantovani',
-  linkedin: 'https://www.linkedin.com/in/hmantovani/',
-  upwork: 'https://www.upwork.com/freelancers/~011c4553024d9ba7cc',
-};
+const FEATURED = '2026-world-cup';
+const CASE_ORDER = ['erp-data-platform', 'sap-pipeline-automation'];
 
-const COMPANIES = [
-  {
-    name: 'IBM',
-    logo: (
-      <svg viewBox="0 0 60 24" className="h-5 fill-current" aria-label="IBM">
-        <text x="0" y="20" fontSize="22" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="2">IBM</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Keyence',
-    logo: (
-      <svg viewBox="0 0 110 24" className="h-5 fill-current" aria-label="Keyence">
-        <text x="0" y="19" fontSize="18" fontWeight="700" fontFamily="Arial, sans-serif" letterSpacing="1">KEYENCE</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Thermo Fisher Scientific',
-    logo: (
-      <svg viewBox="0 0 220 24" className="h-5 fill-current" aria-label="Thermo Fisher Scientific">
-        <text x="0" y="19" fontSize="15" fontWeight="600" fontFamily="Arial, sans-serif" letterSpacing="0.5">Thermo Fisher Scientific</text>
-      </svg>
-    ),
-  },
-];
+function Arrow() {
+  return (
+    <span aria-hidden="true" className="inline-block transition-transform duration-500 ease-out-soft group-hover:translate-x-1.5">
+      →
+    </span>
+  );
+}
+
+function ProjectFrame({ project, priority, aspect = 'aspect-[16/10]' }: { project: ProjectData; priority?: boolean; aspect?: string }) {
+  return (
+    <div className={`shot relative overflow-hidden border border-line bg-bg-soft ${aspect}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={project.image}
+        alt=""
+        loading={priority ? 'eager' : 'lazy'}
+        className="absolute inset-0 h-full w-full object-cover object-top"
+      />
+    </div>
+  );
+}
 
 export default function HomePage() {
   const { lang } = useLanguage();
   const c = content[lang];
 
-  const bioParagraphs = c.hero.bio.split('\n\n');
+  const cases = [...c.realCases].sort((a, b) => CASE_ORDER.indexOf(a.slug) - CASE_ORDER.indexOf(b.slug));
+  const featured = c.projects.find((p) => p.slug === FEATURED)!;
+  const withImage = c.projects.filter((p) => p.slug !== FEATURED && p.image);
+  const others = c.projects.filter((p) => p.slug !== FEATURED && !p.image);
 
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center dot-grid overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, #08080f 100%)' }}
-        />
-        <div
-          className="absolute top-0 left-0 w-96 h-96 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)' }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%)' }}
-        />
-
-        <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-20 w-full">
-          {/* Available badge */}
-          <div className="mb-8 inline-flex">
-            <span
-              className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border"
-              style={{ background: 'rgba(13,148,136,0.1)', borderColor: 'rgba(13,148,136,0.3)', color: '#2dd4bf' }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#0d9488' }} />
-              {c.hero.available}
-            </span>
-          </div>
-
-          {/* Name */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f1f5f9] mb-4 leading-none">
-            Henrique{' '}
-            <span className="gradient-purple-teal">Mantovani</span>
-          </h1>
-
-          {/* Title */}
-          <p className="text-lg sm:text-xl text-[#94a3b8] mb-8 font-light tracking-wide">
-            {c.hero.title}
-          </p>
-
-          {/* Bio */}
-          <div className="max-w-2xl mb-10 space-y-4">
-            {bioParagraphs.map((para, i) => (
-              <p key={i} className="text-[#94a3b8] leading-relaxed text-base">{para}</p>
-            ))}
-          </div>
-
-          {/* Primary CTAs */}
-          <div className="flex flex-wrap items-center gap-4 mb-8">
-            <a
-              href="#real-cases"
-              className="px-6 py-3 rounded-lg font-semibold text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
-              style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)' }}
-            >
-              {c.hero.ctaWork}
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
-              style={{ border: '1px solid #1e1e3f', color: '#94a3b8', background: 'transparent' }}
-            >
-              {c.hero.ctaContact}
-            </a>
-          </div>
-
-          {/* Social link buttons */}
-          <div className="flex flex-wrap gap-2">
-            {[
-              { label: 'GitHub', href: SOCIAL_LINKS.github, live: true },
-              { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin, live: true },
-              { label: 'Upwork', href: SOCIAL_LINKS.upwork, live: true },
-              { label: 'Fiverr', href: null, live: false },
-            ].map((s) =>
-              s.live ? (
-                <a
-                  key={s.label}
-                  href={s.href!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
-                  style={{ border: '1px solid #1e1e3f', color: '#94a3b8', background: '#0d0d1f' }}
-                >
-                  {s.label} <span className="text-xs opacity-60">↗</span>
-                </a>
-              ) : (
-                <span
-                  key={s.label}
-                  title="Coming soon"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed"
-                  style={{ border: '1px dashed #1e1e3f', color: '#475569', background: '#0d0d1f' }}
-                >
-                  {s.label} <span className="text-xs opacity-50">Soon</span>
-                </span>
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ── COMPANIES BAR ────────────────────────────────────────────── */}
-      <section className="border-y py-10" style={{ borderColor: '#1e1e3f', background: '#0d0d1f' }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-[#475569] mb-8">
-            {lang === 'en' ? 'Experienced at global market leaders' : 'Experiência em líderes globais de mercado'}
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-20">
-            {COMPANIES.map((company) => (
-              <div
-                key={company.name}
-                className="text-[#64748b] hover:text-[#94a3b8] transition-colors duration-200"
-                title={company.name}
-              >
-                {company.logo}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SERVICES ─────────────────────────────────────────────────── */}
-      <section id="services" className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-2xl mb-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2dd4bf] mb-3">
-              {lang === 'en' ? 'How I can help' : 'Como posso ajudar'}
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#f1f5f9] mb-3">
-              {lang === 'en' ? 'Less manual work. More useful data.' : 'Menos trabalho manual. Mais valor nos dados.'}
-            </h2>
-            <p className="text-[#94a3b8] leading-relaxed">
-              {lang === 'en'
-                ? <>Practical data services for teams that need reliable<br className="hidden sm:block" /> answers without adding unnecessary complexity.</>
-                : <>Serviços de dados práticos para equipes que precisam de respostas confiáveis<br className="hidden sm:block" /> sem adicionar complexidade desnecessária.</>}
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-4">
-            {(lang === 'en'
-              ? [
-                  { n: '01', t: 'Automate recurring work', d: 'Replace repetitive exports, spreadsheet updates, and manual checks with dependable workflows.' },
-                  { n: '02', t: 'Connect systems and data', d: 'Bring ERP, APIs, and files into a consistent data layer your team can trust and reuse.' },
-                  { n: '03', t: 'Make reporting actionable', d: 'Turn scattered numbers into clear dashboards and analysis tied to day-to-day decisions.' },
-                ]
-              : [
-                  { n: '01', t: 'Automatizar tarefas recorrentes', d: 'Substitua exportações repetitivas, atualizações de planilhas e conferências manuais por fluxos confiáveis.' },
-                  { n: '02', t: 'Conectar sistemas e dados', d: 'Reúna ERP, APIs e arquivos em uma base consistente, confiável e reutilizável.' },
-                  { n: '03', t: 'Transformar relatórios em ação', d: 'Converta números dispersos em painéis e análises ligados às decisões do dia a dia.' },
-                ]).map((item) => (
-              <article key={item.n} className="rounded-xl border p-6" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
-                <span className="text-base font-mono font-semibold text-[#2dd4bf]">{item.n}</span>
-                <h3 className="text-lg font-semibold text-[#f1f5f9] mt-5 mb-2">{item.t}</h3>
-                <p className="text-sm text-[#94a3b8] leading-relaxed">{item.d}</p>
-              </article>
-            ))}
-          </div>
-          <a href="#contact" className="inline-flex items-center gap-2 mt-7 text-sm font-semibold text-[#2dd4bf] hover:text-white transition-colors">
-            {lang === 'en' ? 'Tell me what you need' : 'Conte o que você precisa'} <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </section>
-
-      {/* ── REAL CASES ───────────────────────────────────────────────── */}
-      <section id="real-cases" className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#8b5cf6' }}>
-            {c.sections.realCases.title}
-          </h2>
-          <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.realCases.subtitle}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[...c.realCases]
-              .sort((a, b) => (a.slug === 'erp-data-platform' ? -1 : b.slug === 'erp-data-platform' ? 1 : 0))
-              .map((project) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                variant="real"
-                badge={c.projectPage.realCaseBadge}
-              />
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <section className="relative mx-auto max-w-[1200px] px-5 sm:px-8 pt-32 sm:pt-40 pb-16 sm:pb-24">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-10 items-end">
+          <div className="lg:col-span-8">
+            <p className="eyebrow enter" style={{ ['--d' as string]: '50ms' }}>{c.hero.eyebrow}</p>
+            <h1 className="display mt-6 text-[clamp(2.7rem,1.4rem+5.6vw,6.1rem)] text-ink">
+              <span className="block enter" style={{ ['--d' as string]: '120ms' }}>{c.hero.headline[0]}</span>
+              <span className="block enter italic text-ink-2" style={{ ['--d' as string]: '220ms' }}>{c.hero.headline[1]}</span>
+            </h1>
+            <div className="mt-9 grid gap-4 max-w-[38rem] enter" style={{ ['--d' as string]: '360ms' }}>
+              {c.hero.intro.map((p, i) => (
+                <p key={i} className={i === 0 ? 'text-[1.08rem] leading-relaxed text-ink-2' : 'text-[0.98rem] leading-relaxed text-ink-3'}>
+                  {p}
+                </p>
               ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── PROJECTS ─────────────────────────────────────────────────── */}
-      <section
-        id="projects"
-        className="py-24"
-        style={{ background: 'linear-gradient(180deg, #08080f 0%, #0d0d1f 50%, #08080f 100%)' }}
-      >
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#0d9488' }}>
-            {c.sections.projects.title}
-          </h2>
-          <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.projects.subtitle}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {c.projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} variant="project" />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CONTACT ──────────────────────────────────────────────────── */}
-      <section id="contact" className="py-24 border-t" style={{ borderColor: '#1e1e3f' }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: '#c4a135' }}>
-            {c.sections.contact.title}
-          </h2>
-          <p className="text-[#94a3b8] mb-12 max-w-xl">{c.sections.contact.subtitle}</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a
-              href="mailto:contato@hmantovani.com"
-              className="group p-6 rounded-xl border card-transition hover:border-[#8b5cf6]"
-              style={{ background: '#13132b', borderColor: '#2a2a50' }}
-            >
-              <div className="text-2xl mb-3">✉️</div>
-              <div className="text-sm font-semibold text-[#f1f5f9] mb-1">{c.contact.emailLabel}</div>
-              <div className="text-xs text-[#94a3b8]">contato@hmantovani.com</div>
-              <div className="text-xs text-[#64748b] mt-1">{c.contact.or} hq.mantovani@gmail.com</div>
-            </a>
-
-            <div className="p-6 rounded-xl border" style={{ background: '#13132b', borderColor: '#2a2a50' }}>
-              <div className="text-2xl mb-3">📄</div>
-              <div className="text-sm font-semibold text-[#f1f5f9] mb-1">{c.contact.downloadCV}</div>
-              <div className="text-xs text-[#64748b] mb-4">
-                {lang === 'en' ? 'Choose your preferred language.' : 'Escolha o idioma de sua preferência.'}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <a href="/cv/henrique-mantovani-cv-pt-br.pdf" download className="text-xs font-semibold px-3 py-2 rounded-lg border hover:border-[#8b5cf6] transition-colors" style={{ borderColor: '#2a2a50', color: '#cbd5e1' }}>PT-BR ↓</a>
-                <a href="/cv/henrique-mantovani-cv-en-us.pdf" download className="text-xs font-semibold px-3 py-2 rounded-lg border hover:border-[#8b5cf6] transition-colors" style={{ borderColor: '#2a2a50', color: '#cbd5e1' }}>EN-US ↓</a>
-              </div>
             </div>
-
-            <div
-              className="p-6 rounded-xl border relative overflow-hidden"
-              style={{ background: '#13132b', borderColor: '#2a2a50', borderStyle: 'dashed' }}
-            >
-              <div className="text-2xl mb-3">🎯</div>
-              <div className="text-sm font-semibold text-[#f1f5f9] mb-1">Fiverr</div>
-              <div className="text-xs text-[#64748b]">{c.contact.fiverrNote}</div>
-              <span
-                className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-medium"
-                style={{ background: 'rgba(196,161,53,0.2)', color: '#d4b44a' }}
+            <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 enter" style={{ ['--d' as string]: '460ms' }}>
+              <Link
+                href="#work"
+                className="group inline-flex items-center gap-3 bg-ink px-6 py-3.5 text-sm text-bg transition-colors hover:bg-accent hover:text-accent-ink"
               >
-                Soon
+                {c.hero.ctaWork} <Arrow />
+              </Link>
+              <Link href="#contact" className="group inline-flex items-center gap-2 text-sm text-ink">
+                <span className="link-draw">{c.hero.ctaContact}</span> <Arrow />
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 enter" style={{ ['--d' as string]: '400ms' }}>
+            <HeroFigure label={c.hero.figureLabel} caption={c.hero.figureCaption} linkText={c.hero.figureLink} />
+          </div>
+        </div>
+
+        {/* Credentials strip */}
+        <div
+          className="mt-20 sm:mt-28 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-baseline sm:justify-between enter"
+          style={{ ['--d' as string]: '600ms' }}
+        >
+          <p className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+            <span className="eyebrow">{c.hero.previously}</span>
+            {COMPANIES.map((name) => (
+              <span key={name} className="font-serif text-xl sm:text-2xl text-ink-2">{name}</span>
+            ))}
+          </p>
+          <p className="flex items-center gap-2 text-sm text-ink-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-pos" aria-hidden="true" />
+            {c.hero.available}
+          </p>
+        </div>
+      </section>
+
+      {/* ── Selected work (real cases) ───────────────────────────────── */}
+      <section id="work" className="mx-auto max-w-[1200px] px-5 sm:px-8 py-20 sm:py-28">
+        <SectionHead eyebrow={c.sections.realCases.eyebrow} title={c.sections.realCases.title} lead={c.sections.realCases.subtitle} />
+        <ol className="mt-14 border-t border-line">
+          {cases.map((p, i) => (
+            <li key={p.slug} data-reveal style={{ ['--d' as string]: `${i * 80}ms` }}>
+              <Link
+                href={`/projects/${p.slug}`}
+                className="group grid gap-4 border-b border-line py-10 sm:py-12 md:grid-cols-12 md:gap-8 transition-colors hover:bg-bg-soft/60"
+              >
+                <div className="md:col-span-3 flex md:flex-col gap-3 md:gap-2">
+                  <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="eyebrow">{p.category}</span>
+                </div>
+                <div className="md:col-span-6">
+                  <h3 className="font-serif text-[clamp(1.6rem,1.2rem+1.4vw,2.35rem)] leading-[1.1] tracking-[-0.015em] text-ink transition-colors group-hover:text-accent">
+                    {p.title}
+                  </h3>
+                  <p className="mt-4 text-[0.97rem] leading-relaxed text-ink-2 max-w-[60ch]">{p.cardDescription}</p>
+                </div>
+                <div className="md:col-span-3 flex flex-col justify-between gap-6">
+                  <p className="font-mono text-[0.72rem] leading-6 text-ink-3">{p.tags.slice(0, 5).join(' · ')}</p>
+                  <span className="text-sm text-ink inline-flex items-center gap-2">
+                    {c.sections.projects.view} <Arrow />
+                  </span>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* ── Projects ─────────────────────────────────────────────────── */}
+      <section id="projects" className="bg-bg-soft border-y border-line">
+        <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-20 sm:py-28">
+          <SectionHead eyebrow={c.sections.projects.eyebrow} title={c.sections.projects.title} lead={c.sections.projects.subtitle} />
+
+          {/* Featured */}
+          <Link href={`/projects/${featured.slug}`} className="group mt-14 grid gap-8 lg:grid-cols-12 lg:gap-12 items-center" data-reveal>
+            <div className="lg:col-span-7">
+              <ProjectFrame project={featured} priority aspect="aspect-[3392/1248]" />
+            </div>
+            <div className="lg:col-span-5">
+              <p className="eyebrow">{c.sections.projects.featured} — {featured.category}</p>
+              <h3 className="mt-4 font-serif text-[clamp(1.9rem,1.3rem+2vw,2.9rem)] leading-[1.05] tracking-[-0.02em] text-ink transition-colors group-hover:text-accent">
+                {featured.title}
+              </h3>
+              <p className="mt-5 text-[0.97rem] leading-relaxed text-ink-2">{featured.cardDescription}</p>
+              <p className="mt-5 font-mono text-[0.72rem] text-ink-3">{featured.tags.join(' · ')}</p>
+              <span className="mt-7 inline-flex items-center gap-2 text-sm text-ink">
+                {c.sections.projects.view} <Arrow />
               </span>
             </div>
+          </Link>
+
+          {/* Demos with screenshots: offset two-up */}
+          <div className="mt-20 grid gap-14 md:grid-cols-2 md:gap-10">
+            {withImage.map((p, i) => (
+              <Link key={p.slug} href={`/projects/${p.slug}`} className={`group block ${i % 2 ? 'md:mt-24' : ''}`} data-reveal>
+                <ProjectFrame project={p} />
+                <div className="mt-5 flex items-baseline justify-between gap-4">
+                  <p className="eyebrow">{p.category}</p>
+                  {p.status && <p className="font-mono text-[0.7rem] text-accent">{p.status}</p>}
+                </div>
+                <h3 className="mt-2 font-serif text-[1.65rem] leading-[1.15] tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-2">{p.cardDescription}</p>
+              </Link>
+            ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#475569]">
-              {c.contact.socialHeading}
-            </span>
-            {[
-              { label: 'GitHub', href: SOCIAL_LINKS.github },
-              { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin },
-              { label: 'Upwork', href: SOCIAL_LINKS.upwork },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium px-4 py-2 rounded-lg border transition-all duration-200 hover:border-[#8b5cf6] hover:text-[#f1f5f9]"
-                style={{ borderColor: '#1e1e3f', color: '#94a3b8', background: '#0d0d1f' }}
-              >
-                {s.label} ↗
+          {/* Everything else as an index */}
+          {others.length > 0 && (
+            <div className="mt-20" data-reveal>
+              <p className="eyebrow mb-4">{c.sections.projects.more}</p>
+              <ul className="border-t border-line">
+                {others.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/projects/${p.slug}`}
+                      className="group grid grid-cols-[1fr_auto] gap-x-6 gap-y-1 border-b border-line py-5 sm:grid-cols-12 sm:items-baseline"
+                    >
+                      <span className="font-serif text-xl text-ink transition-colors group-hover:text-accent sm:col-span-6">{p.title}</span>
+                      <span className="hidden sm:block sm:col-span-3 text-sm text-ink-3">{p.category}</span>
+                      <span className="col-start-1 row-start-2 sm:row-start-auto sm:col-start-auto sm:col-span-2 font-mono text-[0.7rem] text-ink-3">{p.status}</span>
+                      <span className="row-span-2 sm:row-span-1 self-center text-right text-ink sm:col-span-1"><Arrow /></span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── Services ─────────────────────────────────────────────────── */}
+      <section id="services" className="mx-auto max-w-[1200px] px-5 sm:px-8 py-20 sm:py-28">
+        <SectionHead eyebrow={c.services.eyebrow} title={c.services.title} />
+        <ol className="mt-14 grid gap-px bg-line border border-line md:grid-cols-3">
+          {c.services.items.map((s, i) => (
+            <li key={s.t} className="bg-bg p-7 sm:p-9" data-reveal style={{ ['--d' as string]: `${i * 90}ms` }}>
+              <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="mt-10 font-serif text-[1.55rem] leading-[1.15] text-ink">{s.t}</h3>
+              <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-2">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+        <Link href="#contact" className="group mt-8 inline-flex items-center gap-2 text-sm text-ink">
+          <span className="link-draw">{c.services.cta}</span> <Arrow />
+        </Link>
+      </section>
+
+      {/* ── Background ───────────────────────────────────────────────── */}
+      <section id="about" className="border-t border-line">
+        <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-20 sm:py-28 grid gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5" data-reveal>
+            <p className="eyebrow">{c.sections.about.eyebrow}</p>
+            <h2 className="h-section mt-5 text-ink">{c.sections.about.title}</h2>
+            <p className="prose-body mt-6 text-[1rem]">{c.sections.about.text}</p>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7" data-reveal style={{ ['--d' as string]: '120ms' }}>
+            <h3 className="eyebrow mb-2">{c.sections.about.experience}</h3>
+            <ol className="border-t border-line">
+              {c.experience.map((e) => (
+                <li key={e.role + e.org} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-5">
+                  <span className="font-mono text-[0.72rem] text-ink-3 pt-1">{e.period}</span>
+                  <div>
+                    <p className="text-ink">
+                      {e.role} <span className="text-ink-3">— {e.org}</span>
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-3">{e.note}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <h3 className="eyebrow mt-12 mb-2">{c.sections.about.education}</h3>
+            <ol className="border-t border-line">
+              {c.education.map((e) => (
+                <li key={e.degree} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-5">
+                  <span className="font-mono text-[0.72rem] text-ink-3 pt-1">{e.period}</span>
+                  <p className="text-ink">
+                    {e.degree} <span className="text-ink-3">— {e.org}</span>
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ──────────────────────────────────────────────────── */}
+      <section id="contact" className="bg-ink text-bg">
+        <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-24 sm:py-32">
+          <p className="eyebrow !text-bg/60" data-reveal>{c.sections.contact.eyebrow}</p>
+          <h2 className="display mt-6 max-w-[14ch] text-[clamp(2.5rem,1.3rem+4.6vw,5.2rem)]" data-reveal>
+            {c.sections.contact.title}
+          </h2>
+          <p className="mt-6 max-w-[46ch] text-[1.02rem] leading-relaxed text-bg/70" data-reveal>{c.sections.contact.subtitle}</p>
+
+          <div className="mt-16 grid gap-12 border-t border-bg/15 pt-10 md:grid-cols-12" data-reveal>
+            <div className="md:col-span-6">
+              <p className="eyebrow !text-bg/55 mb-3">{c.contact.emailLabel}</p>
+              <a href={`mailto:${EMAIL}`} className="group inline-flex items-baseline gap-3 font-serif text-[clamp(1.5rem,1.1rem+1.6vw,2.4rem)] leading-tight break-all">
+                <span className="link-draw">{EMAIL}</span> <Arrow />
               </a>
-            ))}
+              <p className="mt-2 text-sm text-bg/55">
+                {c.contact.or} <a href={`mailto:${EMAIL_ALT}`} className="link-draw text-bg/80">{EMAIL_ALT}</a>
+              </p>
+            </div>
+            <div className="md:col-span-3">
+              <p className="eyebrow !text-bg/55 mb-3">{c.contact.downloadCV}</p>
+              <ul className="space-y-2">
+                {CV_LINKS.map((cv) => (
+                  <li key={cv.href}>
+                    <a href={cv.href} download className="link-draw text-bg/90">{cv.label} ↓</a>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 text-xs text-bg/45">{c.contact.cvNote}</p>
+            </div>
+            <div className="md:col-span-3">
+              <p className="eyebrow !text-bg/55 mb-3">{c.contact.socialHeading}</p>
+              <ul className="space-y-2">
+                {SOCIAL_LINKS.map((s) => (
+                  <li key={s.label}>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="link-draw text-bg/90">{s.label} ↗</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

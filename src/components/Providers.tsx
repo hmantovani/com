@@ -1,8 +1,16 @@
 'use client';
 
 import { LanguageProvider } from '@/context/LanguageContext';
+import { useSystemThemeSync } from '@/context/ThemeContext';
 import { ReactNode } from 'react';
+import RevealObserver from './RevealObserver';
 
 export default function Providers({ children }: { children: ReactNode }) {
-  return <LanguageProvider>{children}</LanguageProvider>;
+  useSystemThemeSync();
+  return (
+    <LanguageProvider>
+      <RevealObserver />
+      {children}
+    </LanguageProvider>
+  );
 }
