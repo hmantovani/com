@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Flag from '@/components/copa2026/Flag';
+import MatchExplorer from '@/components/copa2026/MatchExplorer';
+import MomentTimeline from '@/components/copa2026/MomentTimeline';
+import StoryPanel from '@/components/copa2026/StoryPanel';
 import OutcomeBar from '@/components/copa2026/OutcomeBar';
 import { useLanguage } from '@/context/LanguageContext';
-import type { MomentData, MatchPrediction, StandingRow, BracketMatch, Bracket } from '@/data/copa2026';
+import { story, type MomentData, type StandingRow, type BracketMatch, type Bracket, type StoryMatch } from '@/data/copa2026';
 import { copaCopy, teamName, type CopaCopy } from '@/data/copa2026/copy';
+import { storyCopy } from '@/data/copa2026/storyCopy';
 import type { Lang } from '@/data/content';
 
 const ACCENT = '#2dd4bf';
@@ -16,68 +19,6 @@ const GREEN = 'rgba(74,222,128,0.13)';
 const GREEN_BD = 'rgba(74,222,128,0.45)';
 const BLUE = 'rgba(96,165,250,0.13)';
 const BLUE_BD = 'rgba(96,165,250,0.45)';
-
-function pctStr(p: number) {
-  return `${Math.round(p * 100)}%`;
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col items-center px-2 py-1.5 rounded-md" style={{ background: '#0a0a16' }}>
-      <span className="text-[9px] uppercase tracking-wider text-[#475569]">{label}</span>
-      <span className="text-xs font-semibold text-[#f1f5f9] mt-0.5">{value}</span>
-    </div>
-  );
-}
-
-function MatchCard({ m, c, lang }: { m: MatchPrediction; c: CopaCopy; lang: Lang }) {
-  const isPlayed = m.actual_home !== undefined;
-  const top = m.top_scores[0];
-  return (
-    <div className="rounded-xl border p-4" style={{ background: '#0d0d1f', borderColor: '#1e1e3f' }}>
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2 flex-1 min-w-0">
-          <Flag iso2={m.home_iso} size={22} title={m.home} />
-          <div className="min-w-0">
-            <div className="text-sm font-semibold text-[#f1f5f9] leading-tight">{teamName(m.home, lang)}</div>
-            <div className="text-[10px] font-mono text-[#475569]">Elo {m.home_elo}</div>
-          </div>
-        </div>
-        <div className="px-3 text-center shrink-0">
-          <div className="text-[10px] text-[#475569] font-mono">{m.date.slice(5)}</div>
-          {isPlayed ? (
-            <div className="text-sm font-bold tabular-nums" style={{ color: ACCENT }}>
-              {m.actual_home} – {m.actual_away}
-            </div>
-          ) : (
-            <div className="text-xs font-bold text-[#94a3b8]">vs</div>
-          )}
-        </div>
-        <div className="flex items-center gap-2 flex-1 min-w-0 justify-end">
-          <div className="min-w-0 text-right">
-            <div className="text-sm font-semibold text-[#f1f5f9] leading-tight">{teamName(m.away, lang)}</div>
-            <div className="text-[10px] font-mono text-[#475569]">Elo {m.away_elo}</div>
-          </div>
-          <Flag iso2={m.away_iso} size={22} title={m.away} />
-        </div>
-      </div>
-
-      {isPlayed && (
-        <div className="text-[9px] uppercase tracking-widest text-[#475569] mb-1">{c.preMatchOdds}</div>
-      )}
-      <div className={isPlayed ? 'opacity-40' : ''}>
-        <OutcomeBar pHome={m.p_home} pDraw={m.p_draw} pAway={m.p_away} />
-      </div>
-
-      <div className="grid grid-cols-4 gap-1.5 mt-3">
-        <Stat label={c.statLikely} value={top.score} />
-        <Stat label={c.statXg} value={`${m.exp_home_goals}–${m.exp_away_goals}`} />
-        <Stat label={c.statOver} value={pctStr(m.over25)} />
-        <Stat label={c.statBtts} value={pctStr(m.btts_yes)} />
-      </div>
-    </div>
-  );
-}
 
 // ── Champion odds table ──────────────────────────────────────────────────────
 
@@ -91,8 +32,10 @@ const KO_COLS: Array<{ key: 'p_ro32' | 'p_ro16' | 'p_qf' | 'p_sf' | 'p_final' | 
 ];
 
 function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang: Lang }) {
+  const sc = storyCopy[lang];
   const sorted = Object.entries(data.ko_probs)
     .sort((a, b) => b[1].p_champion - a[1].p_champion);
+  const prev = data.moment > 1 ? story.moments[data.moment - 2].p_champion : null;
 
   const allRows = Object.values(data.standings).flat();
 
@@ -115,6 +58,7 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
                 {col.label}
               </th>
             ))}
+            {prev && <th className="text-right font-medium px-3 py-2">Δ 🏆 {sc.champDelta}</th>}
           </tr>
         </thead>
         <tbody>
@@ -132,6 +76,11 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
                   <div className="flex items-center gap-2">
                     <Flag iso2={iso2} size={16} title={team} />
                     <span className="text-[#f1f5f9] text-xs truncate">{teamName(team, lang)}</span>
+                    {team === story.champion && (
+                      <span className="text-[10px]" title={sc.champWent} aria-label={sc.champWent} style={{ color: ACCENT }}>
+                        ★
+                      </span>
+                    )}
                   </div>
                 </td>
                 {cols.map((col) => {
@@ -147,6 +96,15 @@ function ChampionTable({ data, c, lang }: { data: MomentData; c: CopaCopy; lang:
                     </td>
                   );
                 })}
+                {prev && (
+                  <td
+                    className="px-3 py-2 text-right font-mono text-xs"
+                    style={{ color: kp.p_champion - (prev[team] ?? 0) >= 0.05 ? '#4ade80' : kp.p_champion - (prev[team] ?? 0) <= -0.05 ? '#f87171' : '#475569' }}
+                  >
+                    {kp.p_champion - (prev[team] ?? 0) > 0 ? '+' : ''}
+                    {(kp.p_champion - (prev[team] ?? 0)).toFixed(1)}
+                  </td>
+                )}
               </tr>
             );
           })}
@@ -197,6 +155,11 @@ function BracketTeamRow({
 
 function BracketMatchCard({ m, c, lang }: { m: BracketMatch; c: CopaCopy; lang: Lang }) {
   const isActual = m.status === 'actual';
+  const sc = storyCopy[lang];
+  const real: StoryMatch | undefined = story.matches.find((x) => x.id === m.id);
+  const samePair = !!real && real.home === m.home && real.away === m.away;
+  // odds to show: the pre-match forecast of the real tie if it was already played here, else this snapshot's
+  const advHome = isActual && real ? real.pred.p_adv_home ?? m.pred.p_adv_home : m.pred.p_adv_home;
   return (
     <div
       className="rounded-xl border p-4"
@@ -234,6 +197,34 @@ function BracketMatchCard({ m, c, lang }: { m: BracketMatch; c: CopaCopy; lang: 
       {isActual && m.duration === 'AP' && (
         <div className="text-[10px] text-[#475569] mt-2">
           {c.bracketPens} {m.home_pens}–{m.away_pens}
+        </div>
+      )}
+      {advHome !== undefined && (
+        <div className="mt-3">
+          <div className="text-[9px] uppercase tracking-wider text-[#475569] mb-1">{sc.advProb}</div>
+          <OutcomeBar
+            pHome={advHome}
+            pDraw={0}
+            pAway={1 - advHome}
+            homeLabel={teamName(m.home, lang)}
+            awayLabel={teamName(m.away, lang)}
+            twoWay
+          />
+        </div>
+      )}
+      {!isActual && real && (
+        <div className="mt-3 text-[11px] leading-relaxed rounded-md p-2" style={{ background: '#0a0a16', border: '1px dashed #2a2a55', color: '#94a3b8' }}>
+          {samePair ? (
+            <>
+              <span className="text-[#f1f5f9] font-semibold">{sc.actualLater}: </span>
+              {real.home_score}–{real.away_score}
+              {real.duration === 'AET' ? ` (${sc.extraTime})` : real.duration === 'AP' ? ` (${real.home_pens}–${real.away_pens} ${sc.pens})` : ''}
+              {' · '}
+              {real.winner === m.winner ? sc.calledAdv : sc.missedAdv}
+            </>
+          ) : (
+            sc.mismatchNote(teamName(real.home, lang), teamName(real.away, lang))
+          )}
         </div>
       )}
     </div>
@@ -311,9 +302,8 @@ function StandingsTable({
 export default function MomentPage({ data }: { data: MomentData }) {
   const { lang } = useLanguage();
   const c = copaCopy[lang];
-  const [round, setRound] = useState(1);
+  const sc = storyCopy[lang];
 
-  const matches = data.matches.filter((m) => m.round === round);
   const isFinalStandings = data.known_rounds.length === 3;
 
   const thirds = Object.values(data.standings)
@@ -322,7 +312,7 @@ export default function MomentPage({ data }: { data: MomentData }) {
   const thirdQualifies = new Set(thirds.slice(0, 8).map((r) => r.team));
 
   const groupLetters = Object.keys(data.standings);
-  const stageLabel = `${c.stageWord} ${data.moment} · ${data.label}`;
+  const stageLabel = `${c.stageWord} ${data.moment} · ${c.moments[data.moment - 1].label}`;
 
   return (
     <div className="min-h-screen">
@@ -336,6 +326,8 @@ export default function MomentPage({ data }: { data: MomentData }) {
           <span className="transition-transform duration-200 group-hover:-translate-x-1">←</span>
           {c.backOverview}
         </Link>
+
+        <MomentTimeline current={data.moment} />
 
         {/* Header */}
         <header className="mb-12">
@@ -355,42 +347,15 @@ export default function MomentPage({ data }: { data: MomentData }) {
           </p>
         </header>
 
-        {/* ── Match predictions ─────────────────────────────── */}
+        <StoryPanel data={data} story={story} />
+
+        {/* ── Match explorer ─────────────────────────────────── */}
         <section className="mb-16">
           <h2 className="text-xl font-bold text-[#f1f5f9] mb-4 flex items-center gap-3">
             <span className="w-1 h-6 rounded-full inline-block" style={{ background: ACCENT }} />
-            {c.matchPredictions}
+            {sc.explorerTitle}
           </h2>
-
-          <div
-            className="inline-flex rounded-lg p-1 mb-6 gap-1"
-            style={{ background: '#0d0d1f', border: '1px solid #1e1e3f' }}
-          >
-            {[1, 2, 3].map((r) => {
-              const isPlayed = data.known_rounds.includes(r);
-              const isActive = round === r;
-              return (
-                <button
-                  key={r}
-                  onClick={() => setRound(r)}
-                  className="px-4 py-1.5 rounded-md text-sm font-semibold transition-all flex items-center gap-1.5"
-                  style={{
-                    background: isActive ? ACCENT : 'transparent',
-                    color: isActive ? '#08080f' : isPlayed ? '#64748b' : '#94a3b8',
-                  }}
-                >
-                  {isPlayed && !isActive && <span className="text-[10px]">✓</span>}
-                  {c.roundWord} {r}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-3">
-            {matches.map((m) => (
-              <MatchCard key={`${m.home}-${m.away}`} m={m} c={c} lang={lang} />
-            ))}
-          </div>
+          <MatchExplorer data={data} story={story} />
         </section>
 
         {/* ── Final standings ───────────────────────────────── */}
@@ -464,7 +429,11 @@ export default function MomentPage({ data }: { data: MomentData }) {
           </div>
         </section>
 
-        <p className="text-xs text-[#475569] mt-12 leading-relaxed">
+        <div className="mt-14">
+          <MomentTimeline current={data.moment} />
+        </div>
+
+        <p className="text-xs text-[#475569] mt-4 leading-relaxed">
           {c.momentFootnote(
             Math.round(data.model.ensemble.A_weight * 100),
             Math.round(data.model.ensemble.B_weight * 100)

@@ -68,7 +68,7 @@ export interface CopaCopy {
 const HOW_CARDS_EN = [
   {
     t: 'Two models, one ensemble',
-    d: 'A Poisson + Elo regression over the full history is blended (40/60) with a Poisson GLM that learns per-team attack & defense strengths from 2010 onward. Recent matches are weighted more heavily.',
+    d: 'A Poisson + Elo regression over the full history is blended (60/40) with a Poisson GLM that learns per-team attack & defense strengths from 2010 onward. Recent matches are weighted more heavily.',
   },
   {
     t: 'Goals → everything',
@@ -78,12 +78,16 @@ const HOW_CARDS_EN = [
     t: 'Simulated 20,000 times',
     d: 'The entire tournament — group stage through the final — is Monte-Carlo simulated 20,000 times. Each run resolves the bracket using the official FIFA seeding rules for third-place teams.',
   },
+  {
+    t: 'Updated by results, never by hindsight',
+    d: 'After each stage the real scores are locked in and every team’s Elo is updated with the World Football Elo formula. The two models are not refitted, and a played match always keeps the odds the model had before kickoff.',
+  },
 ];
 
 const HOW_CARDS_PT = [
   {
     t: 'Dois modelos, um ensemble',
-    d: 'Uma regressão Poisson + Elo sobre toda a história é combinada (40/60) com um GLM de Poisson que aprende a força de ataque e defesa de cada seleção a partir de 2010. Partidas recentes têm peso maior.',
+    d: 'Uma regressão Poisson + Elo sobre toda a história é combinada (60/40) com um GLM de Poisson que aprende a força de ataque e defesa de cada seleção a partir de 2010. Partidas recentes têm peso maior.',
   },
   {
     t: 'Gols → tudo',
@@ -92,6 +96,10 @@ const HOW_CARDS_PT = [
   {
     t: 'Simulado 20.000 vezes',
     d: 'O torneio inteiro — da fase de grupos à final — é simulado via Monte Carlo 20.000 vezes. Cada rodada resolve o chaveamento usando as regras oficiais da FIFA para seleções em terceiro.',
+  },
+  {
+    t: 'Atualizado pelos resultados, nunca pelo retrospecto',
+    d: 'Após cada fase os placares reais são travados e o Elo de cada seleção é atualizado com a fórmula do World Football Elo. Os dois modelos não são retreinados, e uma partida já jogada sempre mantém as probabilidades que o modelo tinha antes do apito.',
   },
 ];
 
@@ -253,17 +261,18 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     heroSubtitle: 'Prediction Model',
     heroLead: (matches, cutoff) => (
       <>
-        A living statistical model that forecasts the 2026 World Cup one stage at a time. It is trained on{' '}
-        <strong className="text-[#f1f5f9]">{matches}</strong> international matches and re-run after every round, so
-        each prediction uses everything known up to that moment.
+        A statistical model that forecast the 2026 World Cup one stage at a time. It is trained on{' '}
+        <strong className="text-[#f1f5f9]">{matches}</strong> international matches; after every stage the real results
+        were fed back in and the whole tournament was re-simulated. Walk through the eight snapshots to see what the
+        model thought, when it thought it, and how it turned out.
       </>
     ),
     howTitle: 'How it works',
     howCards: HOW_CARDS_EN,
-    stagesTitle: 'Prediction stages',
+    stagesTitle: 'The eight snapshots',
     stagesSubtitle:
-      'As real results come in, the training window grows and a new forecast is published for everything that remains. Eight snapshots, from kickoff to the final.',
-    stageWord: 'Stage',
+      'As real results came in, a new forecast was published for everything that remained. Eight snapshots, from before kickoff to the Final — open any of them to see its predictions.',
+    stageWord: 'Snapshot',
     live: 'LIVE',
     soon: 'SOON',
     moments: MOMENTS_EN,
@@ -317,17 +326,18 @@ export const copaCopy: Record<Lang, CopaCopy> = {
     heroSubtitle: 'Modelo de Previsão',
     heroLead: (matches, cutoff) => (
       <>
-        Um modelo estatístico vivo que prevê a Copa do Mundo de 2026 etapa por etapa. É treinado em{' '}
-        <strong className="text-[#f1f5f9]">{matches}</strong> partidas internacionais e reexecutado após cada rodada,
-        de modo que cada previsão usa tudo o que se sabe até aquele momento.
+        Um modelo estatístico que previu a Copa do Mundo de 2026 etapa por etapa. É treinado em{' '}
+        <strong className="text-[#f1f5f9]">{matches}</strong> partidas internacionais; após cada fase os resultados
+        reais foram incorporados e o torneio inteiro foi simulado de novo. Percorra os oito instantâneos para ver o que
+        o modelo pensava, quando pensava e como terminou.
       </>
     ),
     howTitle: 'Como funciona',
     howCards: HOW_CARDS_PT,
-    stagesTitle: 'Etapas de previsão',
+    stagesTitle: 'Os oito instantâneos',
     stagesSubtitle:
-      'Conforme os resultados reais saem, a janela de treino cresce e uma nova previsão é publicada para tudo o que resta. Oito instantâneos, do apito inicial à final.',
-    stageWord: 'Etapa',
+      'Conforme os resultados reais saíam, uma nova previsão era publicada para tudo o que restava. Oito instantâneos, de antes do apito inicial até a final — abra qualquer um para ver suas previsões.',
+    stageWord: 'Instantâneo',
     live: 'AO VIVO',
     soon: 'EM BREVE',
     moments: MOMENTS_PT,
