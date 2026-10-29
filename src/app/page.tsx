@@ -150,10 +150,10 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* Demos with screenshots: offset two-up */}
+          {/* Demos with screenshots */}
           <div className="mt-20 grid gap-14 md:grid-cols-2 md:gap-10">
-            {withImage.map((p, i) => (
-              <Link key={p.slug} href={`/projects/${p.slug}`} className={`group block ${i % 2 ? 'md:mt-24' : ''}`} data-reveal>
+            {withImage.map((p) => (
+              <Link key={p.slug} href={`/projects/${p.slug}`} className="group block" data-reveal>
                 <ProjectFrame project={p} />
                 <div className="mt-5 flex items-baseline justify-between gap-4">
                   <p className="eyebrow">{p.category}</p>
