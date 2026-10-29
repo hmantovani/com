@@ -23,7 +23,6 @@ export interface SiteContent {
   hero: {
     title: string;
     eyebrow: string;
-    headline: [string, string];
     intro: string[];
     ctaWork: string;
     ctaContact: string;
@@ -75,8 +74,7 @@ export const content: Record<Lang, SiteContent> = {
     },
     hero: {
       title: 'Data engineering, analytics and modeling',
-      eyebrow: 'Henrique Mantovani — Data engineering & analytics',
-      headline: ['Data work that holds up', 'when someone checks it.'],
+      eyebrow: 'Data engineering, analytics and modeling',
       intro: [
         'I’m a production engineer (PUC-SP) with a postgraduate degree in data science and AI (PUC-RS). I build ETL pipelines, data models and predictive analyses, and I’ve done it at IBM, Keyence and Thermo Fisher Scientific.',
         'Most of my projects start with a manual process: reports exported by hand, spreadsheets that freeze, numbers nobody can trace. They end with something automated and auditable that people stop worrying about.',
@@ -108,7 +106,7 @@ export const content: Record<Lang, SiteContent> = {
       projects: {
         eyebrow: 'Projects',
         title: 'Independent projects',
-        subtitle: 'Built on my own time. Demo data is synthetic and labelled as such.',
+        subtitle: 'Varied applications across multiple technologies and use cases, from forecasting to reporting and automation. Each one tackles a problem that also shows up in real business operations.',
         featured: 'Featured',
         more: 'More projects',
         view: 'View project',
@@ -281,8 +279,7 @@ export const content: Record<Lang, SiteContent> = {
     },
     hero: {
       title: 'Engenharia de dados, analytics e modelagem',
-      eyebrow: 'Henrique Mantovani — Engenharia de dados & analytics',
-      headline: ['Trabalho com dados que se sustenta', 'quando alguém confere.'],
+      eyebrow: 'Engenharia de dados, analytics e modelagem',
       intro: [
         'Sou engenheiro de produção (PUC-SP), com pós-graduação em ciência de dados e IA (PUC-RS). Construo pipelines de ETL, modelos de dados e análises preditivas, e fiz isso na IBM, na Keyence e na Thermo Fisher Scientific.',
         'A maioria dos meus projetos começa com um processo manual: relatórios exportados à mão, planilhas que travam, números que ninguém consegue rastrear. E termina com algo automatizado e auditável, com que ninguém mais precisa se preocupar.',
@@ -314,7 +311,7 @@ export const content: Record<Lang, SiteContent> = {
       projects: {
         eyebrow: 'Projetos',
         title: 'Projetos independentes',
-        subtitle: 'Feitos no meu tempo livre. Dados de demonstração são sintéticos e identificados como tal.',
+        subtitle: 'Aplicações diversas, com múltiplas tecnologias e casos de uso, de previsão a relatórios e automação. Cada projeto resolve um problema que também existe em operações reais de negócio.',
         featured: 'Destaque',
         more: 'Outros projetos',
         view: 'Ver projeto',

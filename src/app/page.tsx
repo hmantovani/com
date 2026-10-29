@@ -44,13 +44,13 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative mx-auto max-w-[1200px] px-5 sm:px-8 pt-32 sm:pt-40 pb-16 sm:pb-24">
+      <section className="relative mx-auto max-w-[1200px] px-5 sm:px-8 pt-24 sm:pt-28 pb-16 sm:pb-24">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10 items-end">
           <div className="lg:col-span-8">
             <p className="eyebrow enter" style={{ ['--d' as string]: '50ms' }}>{c.hero.eyebrow}</p>
-            <h1 className="display mt-6 text-[clamp(2.7rem,1.4rem+5.6vw,6.1rem)] text-ink">
-              <span className="block enter" style={{ ['--d' as string]: '120ms' }}>{c.hero.headline[0]}</span>
-              <span className="block enter italic text-ink-2" style={{ ['--d' as string]: '220ms' }}>{c.hero.headline[1]}</span>
+            <h1 className="display mt-6 text-[clamp(2.4rem,1.3rem+4.4vw,5.25rem)] text-ink">
+              <span className="block enter" style={{ ['--d' as string]: '120ms' }}>Henrique</span>
+              <span className="block enter text-accent" style={{ ['--d' as string]: '220ms' }}>Mantovani</span>
             </h1>
             <div className="mt-9 grid gap-4 max-w-[38rem] enter" style={{ ['--d' as string]: '360ms' }}>
               {c.hero.intro.map((p, i) => (
@@ -103,21 +103,21 @@ export default function HomePage() {
             <li key={p.slug} data-reveal style={{ ['--d' as string]: `${i * 80}ms` }}>
               <Link
                 href={`/projects/${p.slug}`}
-                className="group grid gap-4 border-b border-line py-10 sm:py-12 md:grid-cols-12 md:gap-8 transition-colors hover:bg-bg-soft/60"
+                className="group grid gap-4 border-b border-line py-10 sm:py-12 md:grid-cols-12 md:grid-rows-[auto_auto_1fr] md:gap-x-8 md:gap-y-0 transition-colors hover:bg-bg-soft/60"
               >
-                <div className="md:col-span-3 flex md:flex-col gap-3 md:gap-2">
+                <div className="md:col-span-3 md:col-start-1 md:row-start-1 flex md:flex-col gap-3 md:gap-2">
                   <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, '0')}</span>
                   <span className="eyebrow">{p.category}</span>
                 </div>
-                <div className="md:col-span-6">
+                <div className="md:col-span-9 md:col-start-4 md:row-start-1 md:row-span-3">
                   <h3 className="font-serif text-[clamp(1.6rem,1.2rem+1.4vw,2.35rem)] leading-[1.1] tracking-[-0.015em] text-ink transition-colors group-hover:text-accent">
                     {p.title}
                   </h3>
-                  <p className="mt-4 text-[0.97rem] leading-relaxed text-ink-2 max-w-[60ch]">{p.cardDescription}</p>
+                  <p className="mt-4 text-[0.97rem] leading-relaxed text-ink-2 max-w-[68ch]">{p.cardDescription}</p>
                 </div>
-                <div className="md:col-span-3 flex flex-col justify-between gap-6">
-                  <p className="font-mono text-[0.72rem] leading-6 text-ink-3">{p.tags.slice(0, 5).join(' · ')}</p>
-                  <span className="text-sm text-ink inline-flex items-center gap-2">
+                <div className="md:col-span-3 md:col-start-1 md:row-start-2 md:pt-6 flex flex-col gap-5">
+                  <p className="font-mono text-[0.72rem] leading-6 text-ink">{p.tags.slice(0, 5).join(' · ')}</p>
+                  <span className="text-sm text-accent inline-flex items-center gap-2">
                     {c.sections.projects.view} <Arrow />
                   </span>
                 </div>

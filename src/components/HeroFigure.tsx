@@ -19,6 +19,9 @@ export default function HeroFigure({ label, caption, linkText }: { label: string
   const yMax = Math.ceil(max / 10) * 10 || 10;
   const x = (i: number) => PAD.l + (i / (n - 1)) * (W - PAD.l - PAD.r);
   const y = (v: number) => H - PAD.b - (v / yMax) * (H - PAD.t - PAD.b);
+  // Whichever line ends higher gets its label above, so the two never collide.
+  const endOf = (name: string) => story.moments[n - 1].p_champion[name] ?? 0;
+  const higher = endOf(teams[0].name) >= endOf(teams[1].name) ? teams[0].name : teams[1].name;
 
   return (
     <figure className="w-full">
@@ -60,7 +63,7 @@ export default function HeroFigure({ label, caption, linkText }: { label: string
                 <circle key={i} cx={px} cy={py} r={ti === 0 ? 2.6 : 2} fill="var(--bg)" stroke={t.stroke} strokeWidth="1.25"
                   style={{ animation: `fade 0.4s ease ${700 + ti * 250 + i * 120}ms both` }} />
               ))}
-              <text x={lx + 8} y={ly + (ti === 0 ? -4 : 12)} fontSize="11" fill={ti === 0 ? 'var(--ink)' : 'var(--ink-3)'}
+              <text x={lx + 8} y={ly + (t.name === higher ? -4 : 12)} fontSize="11" fill={ti === 0 ? 'var(--ink)' : 'var(--ink-3)'}
                 style={{ animation: `fade 0.6s ease ${1900 + ti * 250}ms both` }}>
                 {t.name} <tspan fontFamily="var(--font-geist-mono)" fontSize="9" fill="var(--ink-3)">{Math.round(last)}%</tspan>
               </text>
