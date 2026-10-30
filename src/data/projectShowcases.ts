@@ -1,4 +1,5 @@
 import type { Lang } from './content';
+import { newShowcases } from './newProjectShowcases';
 
 export interface ProjectShowcase {
   lead: string;
@@ -149,5 +150,5 @@ const showcases: Record<Lang, Record<string, ProjectShowcase>> = {
 };
 
 export function getProjectShowcase(slug: string, lang: Lang): ProjectShowcase | undefined {
-  return showcases[lang][slug];
+  return newShowcases[lang][slug] ?? showcases[lang][slug];
 }
