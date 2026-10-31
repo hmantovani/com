@@ -39,7 +39,6 @@ export default function HomePage() {
   const cases = [...c.realCases].sort((a, b) => CASE_ORDER.indexOf(a.slug) - CASE_ORDER.indexOf(b.slug));
   const featured = c.projects.find((p) => p.slug === FEATURED)!;
   const withImage = c.projects.filter((p) => p.slug !== FEATURED && p.image);
-  const others = c.projects.filter((p) => p.slug !== FEATURED && !p.image);
 
   return (
     <>
@@ -167,27 +166,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Everything else as an index */}
-          {others.length > 0 && (
-            <div className="mt-20" data-reveal>
-              <p className="eyebrow mb-4">{c.sections.projects.more}</p>
-              <ul className="border-t border-line">
-                {others.map((p) => (
-                  <li key={p.slug}>
-                    <Link
-                      href={`/projects/${p.slug}`}
-                      className="group grid grid-cols-[1fr_auto] gap-x-6 gap-y-1 border-b border-line py-5 sm:grid-cols-12 sm:items-baseline"
-                    >
-                      <span className="font-serif text-xl text-ink transition-colors group-hover:text-accent sm:col-span-6">{p.title}</span>
-                      <span className="hidden sm:block sm:col-span-3 text-sm text-ink-3">{p.category}</span>
-                      <span className="col-start-1 row-start-2 sm:row-start-auto sm:col-start-auto sm:col-span-2 font-mono text-[0.7rem] text-ink-3">{p.status}</span>
-                      <span className="row-span-2 sm:row-span-1 self-center text-right text-ink sm:col-span-1"><Arrow /></span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
       </section>
 

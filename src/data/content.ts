@@ -35,7 +35,7 @@ export interface SiteContent {
   services: { eyebrow: string; title: string; items: { t: string; d: string }[]; cta: string };
   sections: {
     realCases: { eyebrow: string; title: string; subtitle: string };
-    projects: { eyebrow: string; title: string; subtitle: string; featured: string; more: string; view: string };
+    projects: { eyebrow: string; title: string; subtitle: string; featured: string; view: string };
     about: { eyebrow: string; title: string; text: string; experience: string; education: string };
     contact: { eyebrow: string; title: string; subtitle: string };
   };
@@ -108,7 +108,6 @@ export const content: Record<Lang, SiteContent> = {
         title: 'Independent projects',
         subtitle: 'Varied applications across multiple technologies and use cases, from forecasting to reporting and automation. Each one tackles a problem that also shows up in real business operations.',
         featured: 'Featured',
-        more: 'More projects',
         view: 'View project',
       },
       about: {
@@ -236,17 +235,6 @@ export const content: Record<Lang, SiteContent> = {
         githubUrl: 'https://github.com/hmantovani/api-to-reporting-pipeline',
       },
       {
-        slug: 'world-cup-model-validation',
-        title: 'World Cup Forecast: Validation & Uncertainty',
-        category: 'Data Science', status: 'Complete',
-        tags: ['Log Loss', 'Brier Score', 'Backtesting', 'Baselines', 'Statistics'],
-        cardDescription: 'How good was the World Cup forecast? Every one of the 104 matches scored against the odds the model had before kickoff, with simple baselines and a backtested blend weight.',
-        overview: 'The evaluation companion to the FIFA World Cup 2026 forecast: it measures forecast quality and communicates uncertainty instead of only showing predictions. It lives as the scorecard on the World Cup project page.',
-        challenge: 'A prediction is only useful when its probabilities are evaluated fairly and its limitations are clear. Re-scoring a played match with ratings that already contain the tournament would flatter the model.',
-        solution: 'The ensemble weight and the Dixon-Coles correction were fitted by time-aware backtesting on the 2014, 2018 and 2022 World Cups (ranked probability score). During the tournament each match was scored against the odds from the last snapshot before kickoff, never against odds recomputed with hindsight, using log loss and Brier score against a one-third-each or coin-flip baseline, plus a test of whether updating Elo mid-tournament helped.',
-        results: 'Group results were called 60% of the time (33% by chance), with a log loss of 0.87 against 1.10 for the baseline; the favoured team advanced in 25 of 32 knockout ties. Matchday 1 was the hardest stage, and updating Elo helped on matchday 2 but not on matchday 3. With 24 matches per matchday or fewer, stage-to-stage differences are treated as mostly noise, and none of this is a guarantee of future accuracy.',
-      },
-      {
         slug: 'customer-retention-analysis',
         title: 'Customer Retention & Revenue Analysis',
         category: 'Analytics & SQL', status: 'Live demo',
@@ -317,7 +305,6 @@ export const content: Record<Lang, SiteContent> = {
         title: 'Projetos independentes',
         subtitle: 'Aplicações diversas, com múltiplas tecnologias e casos de uso, de previsão a relatórios e automação. Cada projeto resolve um problema que também existe em operações reais de negócio.',
         featured: 'Destaque',
-        more: 'Outros projetos',
         view: 'Ver projeto',
       },
       about: {
@@ -443,17 +430,6 @@ export const content: Record<Lang, SiteContent> = {
         solution: 'O Python coleta páginas com novas tentativas e espera progressiva, valida a resposta completa e grava observações e revisões em uma transação. Um registro de execuções e um relatório HTML mostram a última coleta bem-sucedida e a atualização da fonte.',
         results: 'A fotografia incluída contém 48 linhas de origem para três países; execuções repetidas não duplicam observações. O CPI anual não é previsão nem índice de custos de uma empresa. Agendamento e monitoramento externo precisam ser configurados separadamente.',
         githubUrl: 'https://github.com/hmantovani/api-to-reporting-pipeline',
-      },
-      {
-        slug: 'world-cup-model-validation',
-        title: 'Previsão da Copa: Validação e Incerteza',
-        category: 'Ciência de Dados', status: 'Concluído',
-        tags: ['Log Loss', 'Brier Score', 'Backtesting', 'Baselines', 'Estatística'],
-        cardDescription: 'Quão boa foi a previsão da Copa? Cada uma das 104 partidas avaliada com as probabilidades que o modelo tinha antes do apito, com baselines simples e um peso de combinação validado por backtest.',
-        overview: 'O complemento de avaliação da previsão da Copa do Mundo 2026: mede a qualidade das previsões e comunica a incerteza, em vez de só mostrar previsões. Está no placar do modelo da página do projeto da Copa.',
-        challenge: 'Uma previsão só é útil quando suas probabilidades são avaliadas com rigor e suas limitações são claras. Reavaliar uma partida já jogada com ratings que já contêm o torneio favoreceria o modelo.',
-        solution: 'O peso do ensemble e a correção de Dixon-Coles foram ajustados por backtesting temporal nas Copas de 2014, 2018 e 2022 (ranked probability score). Durante o torneio cada partida foi avaliada com as probabilidades do último instantâneo antes do apito, nunca com probabilidades recalculadas com retrospecto, usando log loss e Brier score contra uma referência de um terço para cada ou cara ou coroa, além de um teste de se atualizar o Elo durante o torneio ajudou.',
-        results: 'Os resultados de grupo foram acertados em 60% dos jogos (33% ao acaso), com log loss de 0,87 contra 1,10 da referência; o favorito avançou em 25 de 32 confrontos do mata-mata. A rodada 1 foi a mais difícil, e atualizar o Elo ajudou na rodada 2, mas não na rodada 3. Com 24 jogos por rodada ou menos, as diferenças entre fases são tratadas como em boa parte ruído, e nada disso é garantia de precisão futura.',
       },
       {
         slug: 'customer-retention-analysis',
